@@ -1,0 +1,61 @@
+services:
+  db:
+    image: mariadb:10.6.18
+    container_name: zoomrei_db
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./db/backup:/db_backup
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+
+  wordpress:
+    image: wordpress:6.5.4-fpm
+    container_name: zoomrei_wordpress
+    volumes:
+      - wordpress_data:/var/www/html
+      - ./wp-content:/var/www/html/wp-content
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: ${DB_NAME}
+      WORDPRESS_DB_USER: ${DB_USER}
+      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}
+    depends_on:
+      - db
+
+  nginx:
+    image: nginx:latest
+    container_name: zoomrei_nginx
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./nginx/snippets:/etc/nginx/snippets
+      - ./ssl:/etc/ssl
+      - wordpress_data:/var/www/html
+      - ./wp-content:/var/www/html/wp-content
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - wordpress
+
+  wp-cli:
+    image: wordpress:cli
+    container_name: zoomrei_wp_cli
+    volumes:
+      - wordpress_data:/var/www/html
+      - ./wp-content:/var/www/html/wp-content
+      - ./db/backup:/db_backup
+    entrypoint: ['wp', '--allow-root']
+    depends_on:
+      - wordpress
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: ${DB_NAME}
+      WORDPRESS_DB_USER: ${DB_USER}
+      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}
+
+volumes:
+  db_data:
+  wordpress_data:

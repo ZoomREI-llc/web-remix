@@ -1,0 +1,48 @@
+name: Deploy to Staging
+
+on:
+  push:
+    branches:
+      - stg
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.STG_SSH_PRIVATE_KEY }}
+
+      - name: Add known hosts
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.KNOWN_HOSTS }}" >> ~/.ssh/known_hosts
+
+      - name: Sync wp-content
+        run: |
+          rsync -avz --delete --exclude 'wp-content/cache/*' --exclude 'wp-content/upgrade/*' ./wp-content/ rootadmin@${{ secrets.STG_SERVER_IP }}:/home/rootadmin/public_html/remix.chrisbuyshomes.com/wp-content
+
+      - name: Transfer SQL dump
+        run: |
+          scp ./db/backup/backup.sql rootadmin@${{ secrets.STG_SERVER_IP }}:/home/rootadmin/backup.sql
+
+      - name: Import SQL dump
+        run: |
+          ssh rootadmin@${{ secrets.STG_SERVER_IP }} "mysql -u${{ secrets.STG_DB_USER }} -p'${{ secrets.STG_DB_PASSWORD }}' ${{ secrets.STG_DB_NAME }} < /home/rootadmin/backup.sql"
+
+      - name: Update WordPress site title and URLs 
+        run: |
+          ssh rootadmin@${{ secrets.STG_SERVER_IP }} <<EOF
+          mysql -u${{ secrets.STG_DB_USER }} -p${{ secrets.STG_DB_PASSWORD }} ${{ secrets.STG_DB_NAME }} -e "UPDATE wp_options SET option_value = 'stage/Doctor Homes' WHERE option_name = 'blogname';"
+          mysql -u${{ secrets.STG_DB_USER }} -p${{ secrets.STG_DB_PASSWORD }} ${{ secrets.STG_DB_NAME }} -e "UPDATE wp_options SET option_value = 'https://remix.chrisbuyshomes.com' WHERE option_name = 'siteurl';"
+          mysql -u${{ secrets.STG_DB_USER }} -p${{ secrets.STG_DB_PASSWORD }} ${{ secrets.STG_DB_NAME }} -e "UPDATE wp_options SET option_value = 'https://remix.chrisbuyshomes.com' WHERE option_name = 'home';"
+          mysql -u${{ secrets.STG_DB_USER }} -p${{ secrets.STG_DB_PASSWORD }} ${{ secrets.STG_DB_NAME }} -e "UPDATE wp_posts SET guid = REPLACE(guid, 'https://zoomrei.dev', 'https://remix.chrisbuyshomes.com');"
+          mysql -u${{ secrets.STG_DB_USER }} -p${{ secrets.STG_DB_PASSWORD }} ${{ secrets.STG_DB_NAME }} -e "UPDATE wp_posts SET post_content = REPLACE(post_content, 'https://zoomrei.dev', 'https://remix.chrisbuyshomes.com');"
+          mysql -u${{ secrets.STG_DB_USER }} -p${{ secrets.STG_DB_PASSWORD }} ${{ secrets.STG_DB_NAME }} -e "UPDATE wp_postmeta SET meta_value = REPLACE(meta_value, 'https://zoomrei.dev', 'https://remix.chrisbuyshomes.com');"
+          EOF
+        shell: bash
