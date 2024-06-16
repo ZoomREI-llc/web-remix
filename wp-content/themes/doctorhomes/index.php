@@ -9,10 +9,7 @@
 
 <body <?php body_class(); ?>>
   <?php wp_body_open(); ?>
-  <header class="bg-blue-500 text-white p-4">
-    <h1><?php bloginfo('name'); ?></h1>
-    <p><?php bloginfo('description'); ?></p>
-  </header>
+  <?php get_header(); ?>
   <main>
     <?php
     if (have_posts()) :
@@ -24,9 +21,7 @@
     endif;
     ?>
   </main>
-  <footer>
-    <p>&copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?></p>
-  </footer>
+  <?php get_footer(); ?>
   <?php wp_footer(); ?>
 </body>
 

@@ -1,0 +1,21 @@
+:root {
+	--primaryBlue1: #2b3849;
+	--primaryBlue2: #3c4b5f;
+	--primaryGray: #ced3d9;
+	--secondaryYellow: #dfa01f;
+	--secondaryBeige: #f1f1e6;
+
+	--font-ruddy: "Ruddy", sans-serif;
+	--font-proxima: "Proxima Nova", sans-serif;
+
+	--font-h1: 4rem;
+	--line-height-h1: 1.2;
+	--font-h2: 3rem;
+	--line-height-h2: 1.3;
+	--font-h3: 1.5rem;
+	--line-height-h3: 1.4;
+	--font-subtitle: 1.5rem;
+	--line-height-subtitle: 1.5;
+	--font-p: 1.375rem;
+	--line-height-p: 1.6;
+}

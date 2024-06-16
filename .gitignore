@@ -13,9 +13,6 @@ vendor/
 .env
 .env.local
 
-# SQL Dump Shell Script
-create_sql_dump.sh
-
 # WordPress specific
 wp-content/upgrade/
 wp-content/cache/
