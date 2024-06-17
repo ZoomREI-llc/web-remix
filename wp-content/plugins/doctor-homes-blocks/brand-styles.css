@@ -18,4 +18,14 @@
 	--line-height-subtitle: 1.5;
 	--font-p: 1.375rem;
 	--line-height-p: 1.6;
+	--what-is-love: 1rem;
+}
+
+.btn {
+	padding: 1.25rem 3.75rem;
+	background-color: var(--secondaryYellow);
+	border-radius: 100vmax;
+	font-size: 1.25rem;
+	font-weight: bold;
+	color: white;
 }
