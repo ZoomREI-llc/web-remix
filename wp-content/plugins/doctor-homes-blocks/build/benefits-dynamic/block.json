@@ -3,7 +3,7 @@
   "apiVersion": 3,
   "name": "doctor-homes-blocks/benefits-dynamic",
   "version": "0.1.0",
-  "title": "Benefits-Dynamic",
+  "title": "DH Benefits-Dynamic",
   "category": "widgets",
   "icon": "screenoptions",
   "description": "Benefits block built for the front-page.",

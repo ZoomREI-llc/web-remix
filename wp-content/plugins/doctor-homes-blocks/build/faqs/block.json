@@ -3,7 +3,7 @@
   "apiVersion": 3,
   "name": "doctor-homes-blocks/faqs",
   "version": "0.1.0",
-  "title": "FAQs",
+  "title": "DH FAQs",
   "category": "widgets",
   "icon": "editor-help",
   "description": "A carousel of client FAQs.",

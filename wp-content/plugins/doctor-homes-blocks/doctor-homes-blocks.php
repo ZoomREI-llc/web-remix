@@ -22,10 +22,17 @@ function doctor_homes_blocks_doctor_homes_blocks_block_init()
 {
 	register_block_type(__DIR__ . '/build/hero');
 	register_block_type(__DIR__ . '/build/form');
+	register_block_type(__DIR__ . '/build/media');
 	register_block_type(__DIR__ . '/build/benefits-dynamic');
+	register_block_type(__DIR__ . '/build/steps');
+	register_block_type(__DIR__ . '/build/forbes');
+	register_block_type(__DIR__ . '/build/comparison');
 	register_block_type(__DIR__ . '/build/testimonials');
 	register_block_type(__DIR__ . '/build/faqs');
+	register_block_type(__DIR__ . '/build/cta');
+	register_block_type(__DIR__ . '/build/blog');
 }
+
 add_action('init', 'doctor_homes_blocks_doctor_homes_blocks_block_init');
 
 function doctor_homes_blocks_enqueue_scripts()

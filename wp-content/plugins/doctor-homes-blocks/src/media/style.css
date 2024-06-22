@@ -1,0 +1,47 @@
+.featured-in {
+    background-color: white;
+    padding: 0.75rem 1.25rem;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    overflow: hidden;
+}
+
+.featured-in span {
+    margin: 0;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.featured-in .logos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2.75rem;
+    width: 100%;
+    overflow: hidden;
+}
+
+.featured-in .logo {
+    flex: 0 0 auto;
+    width: auto;
+    padding: 0 1rem;
+    height: 100%;
+}
+
+@media (max-width: 1024px) {
+    .featured-in .logos {
+        display: flex;
+        animation: scroll 20s linear infinite;
+    }
+
+    @keyframes scroll {
+        0% {
+            transform: translateX(100%);
+        }
+        100% {
+            transform: translateX(-100%);
+        }
+    }
+}

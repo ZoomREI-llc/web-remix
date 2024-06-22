@@ -3,7 +3,7 @@
   "apiVersion": 3,
   "name": "doctor-homes-blocks/hero",
   "version": "0.1.0",
-  "title": "Hero",
+  "title": "DH Hero",
   "category": "widgets",
   "icon": "superhero-alt",
   "description": "The Hero Section of the front-page.",

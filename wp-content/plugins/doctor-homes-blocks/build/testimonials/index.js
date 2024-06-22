@@ -126,7 +126,7 @@ module.exports = window["wp"]["i18n"];
   \*************************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"doctor-homes-blocks/testimonial-carousel","version":"0.1.0","title":"Testimonial Carousel","category":"widgets","icon":"star-filled","description":"A carousel of client testimonials.","supports":{"html":false},"textdomain":"doctor-homes-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php","viewScript":"file:./view.js","attributes":{}}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"doctor-homes-blocks/testimonial-carousel","version":"0.1.0","title":"DH Testimonial Carousel","category":"widgets","icon":"testimonial","description":"A carousel of client testimonials.","supports":{"html":false},"textdomain":"doctor-homes-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php","viewScript":"file:./view.js","attributes":{}}');
 
 /***/ })
 

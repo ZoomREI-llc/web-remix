@@ -3,9 +3,9 @@
   "apiVersion": 3,
   "name": "doctor-homes-blocks/testimonial-carousel",
   "version": "0.1.0",
-  "title": "Testimonial Carousel",
+  "title": "DH Testimonial Carousel",
   "category": "widgets",
-  "icon": "star-filled",
+  "icon": "testimonial",
   "description": "A carousel of client testimonials.",
   "supports": {
     "html": false
