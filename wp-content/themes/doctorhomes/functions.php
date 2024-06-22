@@ -45,6 +45,7 @@ function doctor_homes_theme_support()
         'flex-height' => true,
         'flex-width' => true,
     ));
+    add_theme_support('post-thumbnails');
 }
 
 add_action('after_setup_theme', 'doctor_homes_theme_support');

@@ -56,14 +56,6 @@
 	margin: 0 auto;
 }
 
-.comparison-column span.checkmark {
-	color: #27ae60;
-}
-
-.comparison-column span.crossmark {
-	color: #e74c3c;
-}
-
 @media (max-width: 768px) {
 	.comparison-row {
 		flex-direction: column;

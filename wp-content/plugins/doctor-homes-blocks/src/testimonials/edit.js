@@ -5,12 +5,9 @@ import "./editor.css";
 export default function Edit() {
 	return (
 		<div {...useBlockProps()}>
-			<p>
-				{__(
-					"Testimonial Carousel – select testimonials in the sidebar.",
-					"doctor-homes",
-				)}
-			</p>
+			<h3>
+				{__("DH Testimonials Placeholder", "doctor-homes")}
+			</h3>
 		</div>
 	);
 }

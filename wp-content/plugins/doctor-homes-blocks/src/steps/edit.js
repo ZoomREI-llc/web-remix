@@ -5,9 +5,9 @@ import "./editor.css";
 export default function Edit() {
 	return (
 		<div {...useBlockProps()}>
-			<p>
-				{__("Doctor Homes Media Strip", "doctor-homes")}
-			</p>
+			<h3>
+				{__("DH Steps Placeholder", "doctor-homes")}
+			</h3>
 		</div>
 	);
 }

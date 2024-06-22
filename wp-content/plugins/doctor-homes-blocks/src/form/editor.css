@@ -1,7 +1,10 @@
-/* Placeholder styles for the Gutenberg editor */
-.wp-block-doctor-homes-lead-form {
-	padding: 20px;
-	background: #f3f3f3;
-	border: 1px dashed #ccc;
-	text-align: center;
+.wp-block-doctor-homes-blocks-form {
+	padding-block: 1.5rem !important;
+	background-color: var(--primaryBlue1);
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	margin-block: 1rem !important;
 }

@@ -5,9 +5,9 @@ import "./editor.css";
 export default function Edit() {
 	return (
 		<div {...useBlockProps()}>
-			<p>
-				{__("FAQ Section – Add your questions and answers.", "doctor-homes")}
-			</p>
+			<h3>
+				{__("DH FAQs Placeholder", "doctor-homes")}
+			</h3>
 		</div>
 	);
 }

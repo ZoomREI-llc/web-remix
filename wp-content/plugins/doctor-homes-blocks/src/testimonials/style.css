@@ -30,7 +30,7 @@
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow */
 }
 
-.testimonial img {
+.testimonial__image {
 	border-radius: 50%;
 	width: 100px;
 	height: 100px;
@@ -43,8 +43,12 @@
 }
 
 .testimonial-rating {
-	color: gold;
-	margin-top: 10px; /* Spacing above the rating */
+	display: flex;
+}
+
+.testimomonial__star {
+	width: 2.5rem;
+	height: auto;
 }
 
 .testimonial.active {
@@ -77,10 +81,8 @@
 	position: absolute;
 	top: 50%;
 	transform: translateY(-50%);
-	background-color: rgba(0, 0, 0, 0.5);
 	color: white;
 	border: none;
-	padding: 10px;
 	cursor: pointer;
 	z-index: 1;
 }
@@ -93,8 +95,11 @@
 	right: 10px;
 }
 
+.carousel-next img {
+	transform: translateX(-100%) rotate(180deg);
+}
+
 .carousel-prev:disabled,
 .carousel-next:disabled {
-	background-color: rgba(0, 0, 0, 0.2);
 	cursor: not-allowed;
 }

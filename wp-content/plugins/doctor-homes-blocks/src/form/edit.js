@@ -1,10 +1,13 @@
 import { __ } from "@wordpress/i18n";
 import { useBlockProps } from "@wordpress/block-editor";
+import "./editor.css";
 
 export default function Edit() {
 	return (
 		<div {...useBlockProps()}>
-			<p>{__("Lead Form Placeholder", "doctor-homes")}</p>
+			<h3>
+				{__("DH Form Placeholder", "doctor-homes")}
+			</h3>
 		</div>
 	);
 }

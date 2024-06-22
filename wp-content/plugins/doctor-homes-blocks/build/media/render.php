@@ -2,16 +2,16 @@
 $nbc_logo_id = 94;
 $nbc_logo_url = wp_get_attachment_url($nbc_logo_id);
 
-$forbes_logo_id = 93;
+$forbes_logo_id = 92;
 $forbes_logo_url = wp_get_attachment_url($forbes_logo_id);
 
-$abc_logo_id = 92;
+$abc_logo_id = 90;
 $abc_logo_url = wp_get_attachment_url($abc_logo_id);
 
 $cbs_logo_id = 91;
 $cbs_logo_url = wp_get_attachment_url($cbs_logo_id);
 
-$fox_logo_id = 90;
+$fox_logo_id = 93;
 $fox_logo_url = wp_get_attachment_url($fox_logo_id);
 ?>
 

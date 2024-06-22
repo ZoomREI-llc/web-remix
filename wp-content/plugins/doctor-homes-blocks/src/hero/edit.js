@@ -4,10 +4,10 @@ import "./editor.css";
 
 export default function Edit() {
 	return (
-		<div className="placeholder-block" {...useBlockProps()}>
-			<p>
-				{__("Doctor Homes Hero", "doctor-homes")}
-			</p>
+		<div {...useBlockProps()}>
+			<h3>
+				{__("DH Hero Placeholder", "doctor-homes")}
+			</h3>
 		</div>
 	);
 }
