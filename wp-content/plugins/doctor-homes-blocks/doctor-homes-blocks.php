@@ -20,18 +20,32 @@ if (!defined('ABSPATH')) {
 
 function doctor_homes_blocks_doctor_homes_blocks_block_init()
 {
-	register_block_type(__DIR__ . '/build/benefits');
+	register_block_type(__DIR__ . '/build/hero');
+	register_block_type(__DIR__ . '/build/form');
+	register_block_type(__DIR__ . '/build/benefits-dynamic');
+	register_block_type(__DIR__ . '/build/testimonials');
+	register_block_type(__DIR__ . '/build/faqs');
 }
 add_action('init', 'doctor_homes_blocks_doctor_homes_blocks_block_init');
 
-function doctor_homes_blocks_enqueue_assets()
+function doctor_homes_blocks_enqueue_scripts()
 {
-	wp_enqueue_style(
-		'doctor-homes-brand-styles',
-		plugins_url('brand-styles.css', __FILE__),
+	// Enqueue the view.js script
+	wp_enqueue_script(
+		'hero-view-script',
+		plugin_dir_url(__FILE__) . 'src/hero/view.js',
 		array(),
-		'1.0.0'
+		filemtime(plugin_dir_path(__FILE__) . 'src/hero/view.js'),
+		true
 	);
-}
 
-add_action('enqueue_block_assets', 'doctor_homes_blocks_enqueue_assets');
+	// Fetch the arrow icon URL
+	$arrow_icon_id = 131; // Replace with your arrow icon attachment ID
+	$arrow_icon_url = wp_get_attachment_url($arrow_icon_id);
+
+	// Localize script with arrow icon URL
+	wp_localize_script('hero-view-script', 'gformData', array(
+		'arrowIconUrl' => $arrow_icon_url,
+	));
+}
+add_action('wp_enqueue_scripts', 'doctor_homes_blocks_enqueue_scripts');

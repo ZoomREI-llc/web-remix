@@ -1,0 +1,62 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "doctor-homes-blocks/benefits-dynamic",
+	"version": "0.1.0",
+	"title": "Benefits-Dynamic",
+	"category": "widgets",
+	"icon": "screenoptions",
+	"description": "Benefits block built for the front-page.",
+	"supports": {
+		"html": false
+	},
+	"textdomain": "doctor-homes-blocks",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php",
+	"viewScript": "file:./view.js",
+	"attributes": {
+		"title": {
+			"type": "string",
+			"source": "html",
+			"selector": "h2",
+			"default": "When to Reach Out to Doctor Homes"
+		},
+		"paragraph": {
+			"type": "string",
+			"source": "html",
+			"selector": "p",
+			"default": "No matter what property-related life challenge you're facing, we can help you sell your house as-is for cash fast! We buy any house in any condition, and let you close on your timeline."
+		},
+		"benefitItems": {
+			"type": "array",
+			"default": [
+				{ "id": 52, "text": "Fixer Upper", "uuid": "uuid-1" },
+				{ "id": 54, "text": "Job Relocation", "uuid": "uuid-2" },
+				{ "id": 50, "text": "Downsizing or Upsizing", "uuid": "uuid-3" },
+				{ "id": 53, "text": "Inherited Property", "uuid": "uuid-4" },
+				{ "id": 57, "text": "Vacant Property", "uuid": "uuid-5" },
+				{ "id": 55, "text": "Tenant Trouble", "uuid": "uuid-6" },
+				{ "id": 58, "text": "Water & Fire Damage", "uuid": "uuid-7" },
+				{ "id": 51, "text": "Financial Issues", "uuid": "uuid-8" },
+				{ "id": 56, "text": "Unexpected Life Events", "uuid": "uuid-9" },
+				{ "id": 49, "text": "Divorce", "uuid": "uuid-10" }
+			],
+			"items": {
+				"type": "object",
+				"properties": {
+					"id": {
+						"type": "number"
+					},
+					"text": {
+						"type": "string"
+					},
+					"uuid": {
+						"type": "string"
+					}
+				}
+			}
+		}
+	}
+}

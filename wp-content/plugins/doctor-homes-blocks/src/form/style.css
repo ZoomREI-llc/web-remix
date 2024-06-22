@@ -1,0 +1,16 @@
+/* #lead-form {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+#lead-form input,
+#lead-form button {
+	padding: 10px;
+	font-size: 16px;
+}
+
+.hidden-fields {
+	display: none;
+	opacity: 0;
+} */

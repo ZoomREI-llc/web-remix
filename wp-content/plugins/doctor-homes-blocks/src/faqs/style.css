@@ -1,0 +1,27 @@
+.faq-section {
+	width: 100%;
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+.faq-item {
+	margin-bottom: 10px;
+	border-bottom: 1px solid #ddd;
+	padding-bottom: 10px;
+}
+
+.faq-question {
+	background-color: #f7f7f7;
+	padding: 10px;
+	cursor: pointer;
+	font-weight: bold;
+	border-radius: 5px;
+}
+
+.faq-answer {
+	background-color: #e7e7e7;
+	border-radius: 5px;
+	margin-top: 5px;
+	overflow: hidden;
+	padding: 0 10px; /* Horizontal padding remains, vertical will be added dynamically */
+}

@@ -1,0 +1,100 @@
+.carousel-container {
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.testimonial-carousel {
+	display: flex;
+	position: relative;
+	justify-content: center;
+	transition: transform 1s ease;
+}
+
+.testimonial {
+	flex: 0 0 auto;
+	text-align: center;
+	margin: 0 15px;
+	opacity: 0.5;
+	transition:
+		opacity 0.3s,
+		transform 1s ease;
+	display: inline-block;
+	width: 300px; /* Adjust to match design */
+	background-color: #fff; /* Background color based on design */
+	border-radius: 15px; /* Rounded corners */
+	padding: 20px; /* Padding inside each testimonial */
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow */
+}
+
+.testimonial img {
+	border-radius: 50%;
+	width: 100px;
+	height: 100px;
+	margin-bottom: 15px; /* Spacing below the image */
+}
+
+.testimonial-name {
+	font-weight: bold;
+	margin-top: 10px; /* Spacing above the name */
+}
+
+.testimonial-rating {
+	color: gold;
+	margin-top: 10px; /* Spacing above the rating */
+}
+
+.testimonial.active {
+	opacity: 1;
+	transform: scale(1.1); /* Slightly larger active item */
+}
+
+.carousel-navigation {
+	display: flex;
+	justify-content: center;
+	margin: 10px 0;
+}
+
+.carousel-dot {
+	width: 10px;
+	height: 10px;
+	background-color: gray;
+	border-radius: 50%;
+	margin: 0 5px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+
+.carousel-dot.active {
+	background-color: black;
+}
+
+.carousel-prev,
+.carousel-next {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	background-color: rgba(0, 0, 0, 0.5);
+	color: white;
+	border: none;
+	padding: 10px;
+	cursor: pointer;
+	z-index: 1;
+}
+
+.carousel-prev {
+	left: 10px;
+}
+
+.carousel-next {
+	right: 10px;
+}
+
+.carousel-prev:disabled,
+.carousel-next:disabled {
+	background-color: rgba(0, 0, 0, 0.2);
+	cursor: not-allowed;
+}

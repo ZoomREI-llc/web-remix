@@ -25,6 +25,8 @@ services:
       WORDPRESS_DEBUG: 'true'
       WORDPRESS_DEBUG_LOG: 'true'
       SCRIPT_DEBUG: 'true'
+      GOOGLE_MAPS_API_KEY: ${GOOGLE_MAPS_API_KEY}
+      CRM_WEBHOOK_URL: ${CRM_WEBHOOK_URL}
     depends_on:
       - db
 

@@ -11,10 +11,25 @@ function doctor_homes_enqueue_assets()
     // Enqueue the Interactivity API script with file modification time as version
     wp_enqueue_script('interactivity-api', get_template_directory_uri() . '/dist/script.js', array(), $script_version, true);
 
-    // Enqueue the Interactivity API script with file modification time as version
+    // Enqueue the mobile menu script with no version
     wp_enqueue_script('doctor-homes-mobile-menu', get_template_directory_uri() . '/src/js/mobile-menu.js', array(), null, true);
+
+    // Localize script with API keys and webhook URL
+    wp_localize_script('interactivity-api', 'formConfig', array(
+        'googleMapsApiKey' => GOOGLE_MAPS_API_KEY,
+        'crmWebhookUrl' => CRM_WEBHOOK_URL,
+    ));
 }
 add_action('wp_enqueue_scripts', 'doctor_homes_enqueue_assets');
+
+// Function to add async and defer attributes to scripts
+function add_async_defer_attributes($tag, $handle)
+{
+    if ('google-maps' === $handle) {
+        return str_replace(' src', ' async="async" defer="defer" src', $tag);
+    }
+    return $tag;
+}
 
 // Theme support for various features
 function doctor_homes_theme_support()
