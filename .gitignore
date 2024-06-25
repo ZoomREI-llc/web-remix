@@ -6,9 +6,6 @@ logs
 *.log
 npm-debug.log*
 
-# Dependency directories
-vendor/
-
 # Environment variables
 .env
 .env.local
