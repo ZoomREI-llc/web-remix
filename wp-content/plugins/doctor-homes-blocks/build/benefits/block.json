@@ -34,51 +34,61 @@
       "default": [
         {
           "id": 52,
+          "position": "left",
           "text": "Fixer Upper",
           "uuid": "uuid-1"
         },
         {
           "id": 54,
+          "position": "right",
           "text": "Job Relocation",
           "uuid": "uuid-2"
         },
         {
           "id": 50,
+          "position": "left",
           "text": "Downsizing or Upsizing",
           "uuid": "uuid-3"
         },
         {
           "id": 53,
+          "position": "right",
           "text": "Inherited Property",
           "uuid": "uuid-4"
         },
         {
           "id": 57,
+          "position": "left",
           "text": "Vacant Property",
           "uuid": "uuid-5"
         },
         {
           "id": 55,
+          "position": "right",
           "text": "Tenant Trouble",
           "uuid": "uuid-6"
         },
         {
           "id": 58,
+          "position": "left",
           "text": "Water & Fire Damage",
           "uuid": "uuid-7"
         },
         {
           "id": 51,
+          "position": "right",
           "text": "Financial Issues",
           "uuid": "uuid-8"
         },
         {
           "id": 56,
+          "position": "left",
           "text": "Unexpected Life Events",
           "uuid": "uuid-9"
         },
         {
           "id": 49,
+          "position": "right",
           "text": "Divorce",
           "uuid": "uuid-10"
         }

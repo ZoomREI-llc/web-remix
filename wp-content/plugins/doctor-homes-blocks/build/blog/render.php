@@ -17,9 +17,9 @@
                                 <img src="path/to/default-image.jpg" alt="<?php the_title(); ?>">
                             <?php } ?>
                         </a>
+                        <span class="category-name"><?php the_category(', '); ?></span>
                     </div>
                     <div class="post-content">
-                        <span class="category-name"><?php the_category(', '); ?></span>
                         <h3 class="post-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
                         <p class="post-meta">By <?php the_author(); ?> on <?php echo get_the_date(); ?></p>
                     </div>

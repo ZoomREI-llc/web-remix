@@ -6277,6 +6277,7 @@ document.addEventListener("DOMContentLoaded", () => {
   faqs.forEach(faq => {
     const question = faq.querySelector(".faq-question");
     const answer = faq.querySelector(".faq-answer");
+    const icon = question.querySelector("img");
 
     // Ensure answers are hidden by default
     gsap__WEBPACK_IMPORTED_MODULE_0__["default"].set(answer, {
@@ -6299,9 +6300,13 @@ document.addEventListener("DOMContentLoaded", () => {
             answer.style.height = "0";
           }
         });
+        gsap__WEBPACK_IMPORTED_MODULE_0__["default"].to(icon, {
+          scaleY: 1,
+          duration: 0.5
+        });
       } else {
         answer.style.height = "auto";
-        const fullHeight = answer.scrollHeight + 20; // Add padding top and bottom
+        const fullHeight = answer.scrollHeight + 48; // Add padding top and bottom
         gsap__WEBPACK_IMPORTED_MODULE_0__["default"].set(answer, {
           height: 0,
           opacity: 0,
@@ -6311,12 +6316,16 @@ document.addEventListener("DOMContentLoaded", () => {
         gsap__WEBPACK_IMPORTED_MODULE_0__["default"].to(answer, {
           height: fullHeight,
           opacity: 1,
-          paddingTop: "10px",
-          paddingBottom: "10px",
+          paddingTop: "1.5rem",
+          paddingBottom: "1.5rem",
           duration: 0.5,
           onComplete: () => {
             answer.style.height = "auto";
           }
+        });
+        gsap__WEBPACK_IMPORTED_MODULE_0__["default"].to(icon, {
+          scaleY: -1,
+          duration: 0.5
         });
       }
     });

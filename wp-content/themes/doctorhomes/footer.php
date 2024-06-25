@@ -1,4 +1,10 @@
 <footer id="doctor-homes-footer">
+    <a href="#top" class="back-to-top">
+        <div class="back-to-top-icon">
+            <img src="<?php echo wp_get_attachment_url(150); ?>" alt="">
+        </div>
+        <span>Back to top</span>
+    </a>
     <div class="footer-content">
         <div class="footer-logo">
             <img src="<?php echo wp_get_attachment_url(23); ?>" alt="Site Logo" class="logo-img">

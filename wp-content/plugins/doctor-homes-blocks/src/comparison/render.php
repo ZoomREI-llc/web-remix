@@ -10,55 +10,137 @@ $crossmark_icon_url = wp_get_attachment_url($crossmark_icon_id);
 ?>
 
 <section class="comparison">
-    <h2>Why Us vs. Traditional Agent</h2>
-    <p>Doctor Homes is transforming the process of selling homes fast. Our team of market experts assists homeowners daily in selling their houses quickly, even in poor condition, for the highest possible off-market price. Learn why selling your house as is with Doctor Homes is the smartest choice in the market.</p>
+    <div class="comparison__text">
+        <h2>Why Us vs. Traditional Agent</h2>
+        <p>Doctor Homes is transforming the process of selling homes fast. Our team of market experts assists homeowners daily in selling their houses quickly, even in poor condition, for the highest possible off-market price. Learn why selling your house as is with Doctor Homes is the smartest choice in the market.</p>
+    </div>
     <div class="comparison-table">
         <div class="comparison-row header">
             <div class="comparison-column"></div>
             <div class="comparison-column doctor-homes">
-                <img src="<?php echo esc_url($dh_logo_url); ?>" alt="Doctor Homes">
+                <img id="comparison-logo" src="<?php echo esc_url($dh_logo_url); ?>" alt="Doctor Homes">
             </div>
             <div class="comparison-column">Selling with a Real Estate Agent</div>
         </div>
-        <div class="comparison-row">
-            <div class="comparison-column">Commissions / Fees</div>
-            <div class="comparison-column doctor-homes"><img src="<?php echo esc_url($checkmark_icon_url); ?>" /> None</div>
-            <div class="comparison-column"><img src="<?php echo esc_url($crossmark_icon_url); ?>" /> The seller (you) pays 6% on average</div>
+        <div class="comparison-row comparison-row--uneven">
+            <div class="comparison-column comparison-column--first"><span>Commissions / Fees</span></div>
+            <div class="comparison-column doctor-homes">
+                <div class="column__content">
+                    <img src="<?php echo esc_url($checkmark_icon_url); ?>" />
+                    <span>None</span>
+                </div>
+            </div>
+            <div class="comparison-column">
+                <div class="column__content">
+                    <img src="<?php echo esc_url($crossmark_icon_url); ?>" />
+                    <span>The seller (you) pays 6% on average</span>
+                </div>
+            </div>
         </div>
-        <div class="comparison-row">
-            <div class="comparison-column">Closing Costs</div>
-            <div class="comparison-column doctor-homes"><img src="<?php echo esc_url($checkmark_icon_url); ?>" /> NONE - We pay them all</div>
-            <div class="comparison-column"><img src="<?php echo esc_url($crossmark_icon_url); ?>" /> The seller (you) pays 2% on average</div>
+        <div class="comparison-row comparison-row--even">
+            <div class="comparison-column comparison-column--first"><span>Closing Costs</span></div>
+            <div class="comparison-column doctor-homes">
+                <div class="column__content">
+                    <img src="<?php echo esc_url($checkmark_icon_url); ?>" />
+                    <span>None - We pay them all</span>
+                </div>
+            </div>
+            <div class="comparison-column">
+                <div class="column__content">
+                    <img src="<?php echo esc_url($crossmark_icon_url); ?>" />
+                    <span>The seller (you) pays 2% on average</span>
+                </div>
+            </div>
         </div>
-        <div class="comparison-row">
-            <div class="comparison-column">Inspections / Financing</div>
-            <div class="comparison-column doctor-homes"><img src="<?php echo esc_url($checkmark_icon_url); ?>" /> None</div>
-            <div class="comparison-column"><img src="<?php echo esc_url($crossmark_icon_url); ?>" /> Yes. Around 15% of sales fall through</div>
+        <div class="comparison-row comparison-row--uneven">
+            <div class="comparison-column comparison-column--first"><span>Inspections / Financing</span></div>
+            <div class="comparison-column doctor-homes">
+                <div class="column__content">
+                    <img src="<?php echo esc_url($checkmark_icon_url); ?>" />
+                    <span>None</span>
+                </div>
+            </div>
+            <div class="comparison-column">
+                <div class="column__content">
+                    <img src="<?php echo esc_url($crossmark_icon_url); ?>" />
+                    <span>Yes. Around 15% of sales fall through</span>
+                </div>
+            </div>
         </div>
-        <div class="comparison-row">
-            <div class="comparison-column">Repairs</div>
-            <div class="comparison-column doctor-homes"><img src="<?php echo esc_url($checkmark_icon_url); ?>" /> NO - We make a cash offer</div>
-            <div class="comparison-column"><img src="<?php echo esc_url($crossmark_icon_url); ?>" /> Negotiated after inspection</div>
+        <div class="comparison-row comparison-row--even">
+            <div class="comparison-column comparison-column--first"><span>Repairs</span></div>
+            <div class="comparison-column doctor-homes">
+                <div class="column__content">
+                    <img src="<?php echo esc_url($checkmark_icon_url); ?>" />
+                    <span>No - We make a cash offer</span>
+                </div>
+            </div>
+            <div class="comparison-column">
+                <div class="column__content">
+                    <img src="<?php echo esc_url($crossmark_icon_url); ?>" />
+                    <span>Negotiated after inspection</span>
+                </div>
+            </div>
         </div>
-        <div class="comparison-row">
-            <div class="comparison-column">Average Days Until Sold</div>
-            <div class="comparison-column doctor-homes"><img src="<?php echo esc_url($checkmark_icon_url); ?>" /> Immediate cash offer</div>
-            <div class="comparison-column"><img src="<?php echo esc_url($crossmark_icon_url); ?>" /> 91 days on average</div>
+        <div class="comparison-row comparison-row--uneven">
+            <div class="comparison-column comparison-column--first"><span>Average Days Until Sold</span></div>
+            <div class="comparison-column doctor-homes">
+                <div class="column__content">
+                    <img src="<?php echo esc_url($checkmark_icon_url); ?>" />
+                    <span>Immediate cash offer</span>
+                </div>
+            </div>
+            <div class="comparison-column">
+                <div class="column__content">
+                    <img src="<?php echo esc_url($crossmark_icon_url); ?>" />
+                    <span>91 days on average</span>
+                </div>
+            </div>
         </div>
-        <div class="comparison-row">
-            <div class="comparison-column">Number Of Showings</div>
-            <div class="comparison-column doctor-homes"><img src="<?php echo esc_url($checkmark_icon_url); ?>" /> 1 - Just us</div>
-            <div class="comparison-column"><img src="<?php echo esc_url($crossmark_icon_url); ?>" /> No upper limit</div>
+        <div class="comparison-row comparison-row--even">
+            <div class="comparison-column comparison-column--first"><span>Number Of Showings</span></div>
+            <div class="comparison-column doctor-homes">
+                <div class="column__content">
+                    <img src="<?php echo esc_url($checkmark_icon_url); ?>" />
+                    <span>1 - Just us</span>
+                </div>
+            </div>
+            <div class="comparison-column">
+                <div class="column__content">
+                    <img src="<?php echo esc_url($crossmark_icon_url); ?>" />
+                    <span>No upper limit</span>
+                </div>
+            </div>
         </div>
-        <div class="comparison-row">
-            <div class="comparison-column">Closing Date</div>
-            <div class="comparison-column doctor-homes"><img src="<?php echo esc_url($checkmark_icon_url); ?>" /> Whenever you choose</div>
-            <div class="comparison-column"><img src="<?php echo esc_url($crossmark_icon_url); ?>" /> On average, 30-60 days after offer</div>
+        <div class="comparison-row comparison-row--uneven">
+            <div class="comparison-column comparison-column--first"><span>Closing Date</span></div>
+            <div class="comparison-column doctor-homes">
+                <div class="column__content">
+                    <img src="<?php echo esc_url($checkmark_icon_url); ?>" />
+                    <span>Whenever you choose</span>
+                </div>
+            </div>
+            <div class="comparison-column">
+                <div class="column__content">
+                    <img src="<?php echo esc_url($crossmark_icon_url); ?>" />
+                    <span>On average, 30-60 days after offer</span>
+                </div>
+            </div>
         </div>
-        <div class="comparison-row">
-            <div class="comparison-column">Appraisal Required</div>
-            <div class="comparison-column doctor-homes"><img src="<?php echo esc_url($checkmark_icon_url); ?>" /> NONE - We pay for them</div>
-            <div class="comparison-column"><img src="<?php echo esc_url($crossmark_icon_url); ?>" /> Yes. Most sales are subject to an appraisal</div>
+        <div class="comparison-row comparison-row--even">
+            <div class="comparison-column comparison-column--first"><span>Appraisal Required</span></div>
+            <div class="comparison-column doctor-homes">
+                <div class="column__content">
+                    <img src="<?php echo esc_url($checkmark_icon_url); ?>" />
+                    <span>None - We pay for them</span>
+                </div>
+            </div>
+            <div class="comparison-column">
+                <div class="column__content">
+                    <img src="<?php echo esc_url($crossmark_icon_url); ?>" />
+                    <span>Yes. Most sales are subject to an appraisal</span>
+                </div>
+            </div>
         </div>
     </div>
 </section>

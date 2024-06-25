@@ -35,24 +35,26 @@
                     <img src="<?php echo wp_get_attachment_url(14); ?>" alt="Phone Icon" class="phone-icon">
                     Call us on: (510) 945-3588
                 </a>
-                <a href="#" class="get-offer-button">
+                <a href="#lead-form" class="get-offer-button">
                     Get My Offer
                 </a>
             </div>
         </div>
+        <div id="mobile-menu" class="mobile-menu">
+            <button id="close-mobile-menu" class="close-mobile-menu">
+                <img src="<?php echo wp_get_attachment_url(48); ?>" alt="Close Mobile Navigation Menu">
+            </button>
+            <?php
+            wp_nav_menu(array(
+                'theme_location' => 'primary-menu',
+                'container'      => '',
+                'menu_class'     => 'mobile-nav-menu',
+                'walker'         => new Mobile_Walker_Nav_Menu(),
+                'add_polygon'    => true,
+            ));
+            ?>
+            <a href="#" class="get-offer-button">
+                Get My Offer <img src="<?php echo wp_get_attachment_url(131); ?>" alt="Get My Offer">
+            </a>
+        </div>
     </header>
-    <div id="mobile-menu" class="mobile-menu">
-        <button id="close-mobile-menu" class="close-mobile-menu">
-            <img src="<?php echo wp_get_attachment_url(48); ?>" alt="Close Mobile Navigation Menu">
-        </button>
-        <?php
-        wp_nav_menu(array(
-            'theme_location' => 'primary-menu',
-            'container'      => '',
-            'menu_class'     => 'mobile-nav-menu',
-        ));
-        ?>
-        <a href="#" class="get-offer-button">
-            Get My Offer →
-        </a>
-    </div>

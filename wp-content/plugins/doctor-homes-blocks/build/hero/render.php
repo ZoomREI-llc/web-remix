@@ -3,6 +3,9 @@
 $background_image_id = 84;
 $background_image_url = wp_get_attachment_url($background_image_id);
 
+$doctor_homes_image_id = 83;
+$doctor_homes_image_url = wp_get_attachment_url($doctor_homes_image_id);
+
 $arrow_icon_id = 131;
 $arrow_icon_url = wp_get_attachment_url($arrow_icon_id);
 
@@ -23,11 +26,8 @@ $bbb_icon_url = wp_get_attachment_url($bbb_icon_id);
 
 $a_plus_icon_id = 87;
 $a_plus_icon_url = wp_get_attachment_url($a_plus_icon_id);
-
-$doctor_homes_image_id = 136;
-$doctor_homes_image_url = wp_get_attachment_url($doctor_homes_image_id);
 ?>
-
+<a id="top"></a>
 <section class="hero" style="--background-image: url('<?php echo esc_url($background_image_url); ?>');">
     <div class="hero__content">
         <div class="hero__reviews">
@@ -118,6 +118,6 @@ $doctor_homes_image_url = wp_get_attachment_url($doctor_homes_image_id);
                 </li>
             </ul>
         </div>
-        <div class="hero__doctor-homes"><img src="<?php echo esc_url($doctor_homes_image_url); ?>" alt=""></div>
+        <div class="hero__doctor-homes"><img src="<?php echo esc_url($doctor_homes_image_url); ?>" alt="Sell your house fast for cash with Doctor Homes"></div>
     </div>
 </section>

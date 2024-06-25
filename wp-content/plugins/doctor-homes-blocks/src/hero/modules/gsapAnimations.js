@@ -14,7 +14,7 @@ export function showAdditionalFields(form, fields, formBtnNext) {
 
 	fields.forEach((field) => {
 		const fieldContainer = field.closest("div");
-		gsap.set(fieldContainer, { display: "flex", opacity: 0 });
+		gsap.set(fieldContainer, { display: "grid", opacity: 0 });
 	});
 
 	const newHeight = form.scrollHeight;

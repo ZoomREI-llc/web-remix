@@ -89,7 +89,7 @@ function showAdditionalFields(form, fields, formBtnNext) {
   fields.forEach(field => {
     const fieldContainer = field.closest("div");
     gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.set(fieldContainer, {
-      display: "flex",
+      display: "grid",
       opacity: 0
     });
   });

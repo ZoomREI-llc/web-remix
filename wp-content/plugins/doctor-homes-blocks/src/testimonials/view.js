@@ -4,9 +4,9 @@ document.addEventListener("DOMContentLoaded", () => {
 	const carouselContainer = document.querySelector(".carousel-container");
 	const carousel = document.querySelector(".testimonial-carousel");
 	const testimonials = carousel.querySelectorAll(".testimonial");
-	const prevButton = carouselContainer.querySelector(".carousel-prev");
-	const nextButton = carouselContainer.querySelector(".carousel-next");
-	const dots = carouselContainer.querySelectorAll(".carousel-dot");
+	const prevButton = document.querySelector(".carousel-prev");
+	const nextButton = document.querySelector(".carousel-next");
+	const dots = document.querySelectorAll(".carousel-dot");
 
 	let currentIndex = 0;
 
@@ -27,8 +27,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 		const carouselWidth = carouselContainer.clientWidth;
 		const testimonialWidth = testimonials[currentIndex].clientWidth;
-		const offset = (carouselWidth - testimonialWidth) / 2;
-		const translateX = -(currentIndex * (testimonialWidth + 30) - offset);
+		let offset = (carouselWidth - testimonialWidth) / 2;
+
+		if (window.innerWidth >= 1024) {
+			offset = (carouselContainer.clientWidth - testimonialWidth) / 4;
+		}
+
+		const translateX = -(currentIndex * (testimonialWidth + 30)) + offset;
 
 		gsap.to(carousel, {
 			x: translateX,
@@ -62,5 +67,5 @@ document.addEventListener("DOMContentLoaded", () => {
 		});
 	});
 
-	updateCarousel();
+	updateCarousel(); // Initial call to set up the carousel
 });

@@ -61,3 +61,23 @@ function doctor_homes_register_menus()
     ));
 }
 add_action('init', 'doctor_homes_register_menus');
+
+class Mobile_Walker_Nav_Menu extends Walker_Nav_Menu
+{
+    // Start the element output.
+    public function start_el(&$output, $item, $depth = 0, $args = array(), $id = 0)
+    {
+        $polygon_icon_url = wp_get_attachment_url(150);
+        $output .= '<li class="menu-item menu-item-' . $item->ID . '">';
+        $output .= '<a href="' . esc_url($item->url) . '">' . esc_html($item->title) . '</a>';
+        if (in_array('menu-item-has-children', $item->classes)) {
+            $output .= '<span class="polygon-icon" style="background-image: url(' . $polygon_icon_url . ');"></span>';
+        }
+    }
+
+    // End the element output.
+    public function end_el(&$output, $item, $depth = 0, $args = array())
+    {
+        $output .= "</li>\n";
+    }
+}
