@@ -12,7 +12,7 @@ services:
       MYSQL_PASSWORD: ${DB_PASSWORD}
 
   wordpress:
-    image: wordpress:6.5.4-fpm
+    image: wordpress:6.5.5-fpm
     container_name: zoomrei_wordpress
     volumes:
       - wordpress_data:/var/www/html

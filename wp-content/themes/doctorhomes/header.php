@@ -33,7 +33,7 @@
             <div class="contact-actions">
                 <a href="tel:5109453588" class="contact-phone">
                     <img src="<?php echo wp_get_attachment_url(14); ?>" alt="Phone Icon" class="phone-icon">
-                    Call us on: (510) 945-3588
+                    <span>Call us on: (510) 945-3588</span>
                 </a>
                 <a href="#lead-form" class="get-offer-button">
                     Get My Offer
