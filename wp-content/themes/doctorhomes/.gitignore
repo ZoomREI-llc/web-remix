@@ -9,12 +9,9 @@ npm-debug.log*
 # Dependency directories
 node_modules/
 
-# Tailwind CSS
-/dist/*
+# Post-build
+dist
 !.gitkeep
-
-# Compiled CSS
-*.css
 
 # Operating system files
 .DS_Store

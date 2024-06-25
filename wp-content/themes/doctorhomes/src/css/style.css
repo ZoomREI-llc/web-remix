@@ -1,0 +1,92 @@
+@import "./reset.css";
+@import "./fonts.css";
+@import "./block-editor.css";
+
+@import "./header.css";
+@import "./footer.css";
+
+:root {
+  --primaryBlue1: #2b3849;
+  --primaryBlue2: #3c4b5f;
+  --primaryGray: #ced3d9;
+  --secondaryYellow: #dfa01f;
+  --secondaryBeige: #f1f1e6;
+  --warningColor: #ff0000;
+
+  --font-ruddy: "Ruddy", sans-serif;
+  --font-proxima: "Proxima Nova", sans-serif;
+
+  --font-h1: 2.75rem;
+  --line-height-h1: 1.2;
+  --font-h2: 2.25rem;
+  --line-height-h2: 1.1;
+  --font-h3: 1.375rem;
+  --line-height-h3: 1.4;
+  --font-subtitle: 1.375rem;
+  --line-height-subtitle: 1.2;
+  --font-p: 1.125rem;
+  --line-height-p: 1.2;
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --font-h1: 4rem;
+    --line-height-h1: 1.2;
+    --font-h2: 3rem;
+    --line-height-h2: 1.2;
+    --font-h3: 1.375rem;
+    --line-height-h3: 1.4;
+    --font-subtitle: 1.5rem;
+    --line-height-subtitle: 1.2;
+    --font-p: 1.375rem;
+    --line-height-p: 1.2;
+  }
+}
+
+body {
+  font-family: var(--font-proxima);
+}
+
+.entry-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  font-family: var(--font-ruddy);
+  font-size: var(--font-h1);
+  line-height: var(--line-height-h1);
+  font-weight: 700;
+}
+
+h2 {
+  font-size: var(--font-h2);
+  line-height: var(--line-height-h2);
+  font-weight: 700;
+}
+
+h3 {
+  font-size: var(--font-h3);
+  line-height: var(--line-height-h3);
+  font-weight: 600;
+}
+
+.subtitle {
+  font-size: var(--font-subtitle);
+  line-height: var(--line-height-subtitle);
+}
+
+p {
+  font-size: var(--font-p);
+  line-height: var(--line-height-p);
+}
+
+.btn {
+  padding: 1.25rem 3.75rem;
+  background-color: var(--secondaryYellow);
+  border-radius: 100vmax;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: white;
+}
