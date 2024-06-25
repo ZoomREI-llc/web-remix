@@ -12,5 +12,8 @@ DB_NAME=$DB_NAME
 DB_CONTAINER_NAME=$DB_CONTAINER_NAME
 DUMP_PATH=./db/backup/backup.sql
 
-# Docker command to create the SQL dump
-docker exec -i $DB_CONTAINER_NAME mysqldump -u$DB_USER -p$DB_PASSWORD $DB_NAME > $DUMP_PATH
+# Ensure the backup directory exists
+mkdir -p ./db/backup
+
+# Docker command to create the SQL dump and remove trailing whitespace
+docker exec -i $DB_CONTAINER_NAME mysqldump -u$DB_USER -p$DB_PASSWORD $DB_NAME | sed -e 's/[ \t]*$//' > $DUMP_PATH
