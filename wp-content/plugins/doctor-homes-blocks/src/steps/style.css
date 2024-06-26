@@ -10,6 +10,7 @@
 
 @media (min-width: 1024px) {
 	.how-it-works {
+		padding-inline: 6rem;
 		margin-bottom: 3.875rem;
 	}
 }
@@ -64,6 +65,7 @@
 	justify-content: center;
 	align-items: center;
 	gap: 0.625rem;
+	padding-inline: 1rem;
 }
 
 .step__content h3 {

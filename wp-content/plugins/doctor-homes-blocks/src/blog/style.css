@@ -10,6 +10,7 @@
 @media (min-width: 1024px) {
 	.latest-blog-posts {
 		text-align: left;
+		padding-inline: 6rem;
 	}
 }
 
@@ -19,11 +20,22 @@
 }
 
 .posts-container {
-	display: flex;
+	display: grid;
 	justify-content: space-between;
-	flex-wrap: wrap;
+	grid-template-columns: 1fr;
 	gap: 1.5rem;
-	padding-inline: 0.75rem;
+}
+
+@media (min-width: 1024px) {
+	.posts-container {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+@media (min-width: 1440px) {
+	.posts-container {
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+	}
 }
 
 .post {
@@ -44,7 +56,7 @@
 
 .post-image img {
 	height: 20.5rem;
-	width: auto;
+	width: 100%;
 	display: block;
 	object-fit: cover;
 }

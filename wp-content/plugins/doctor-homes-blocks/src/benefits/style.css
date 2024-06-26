@@ -25,14 +25,8 @@
 }
 
 .benefits > p {
-	font-size: 1.375rem;
+	font-size: clamp(1.25rem, 5vw, 1.5rem);
 	margin-bottom: 2rem;
-}
-
-@media (min-width: 1024px) {
-	.benefits p {
-		font-size: 1.5rem;
-	}
 }
 
 .benefits__grid {
@@ -40,14 +34,13 @@
 	justify-items: center;
 	align-items: center;
 	grid-template-columns: 1fr 1fr;
-	column-gap: 2.75rem;
+	column-gap: clamp(1.5rem, 9vw, 4.375rem);
 	row-gap: 1rem;
 }
 
 @media (min-width: 1024px) {
 	.benefits__grid {
 		grid-template-columns: repeat(5, 1fr);
-		column-gap: 4.375rem;
 		row-gap: 3.25rem;
 	}
 }

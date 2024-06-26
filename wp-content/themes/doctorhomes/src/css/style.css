@@ -16,7 +16,7 @@
   --font-ruddy: "Ruddy", sans-serif;
   --font-proxima: "Proxima Nova", sans-serif;
 
-  --font-h1: 2.75rem;
+  --font-h1: clamp(2.25rem, 10vw, 4rem);
   --line-height-h1: 1.2;
   --font-h2: 2.25rem;
   --line-height-h2: 1.1;
@@ -27,7 +27,7 @@
   --font-p: 1.125rem;
   --line-height-p: 1.2;
 }
-
+/* 
 @media (min-width: 1024px) {
   :root {
     --font-h1: 4rem;
@@ -41,7 +41,7 @@
     --font-p: 1.375rem;
     --line-height-p: 1.2;
   }
-}
+} */
 
 body {
   font-family: var(--font-proxima);
