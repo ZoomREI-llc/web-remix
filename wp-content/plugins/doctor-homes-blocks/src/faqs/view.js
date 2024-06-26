@@ -20,6 +20,30 @@ document.addEventListener("DOMContentLoaded", () => {
 		question.addEventListener("click", () => {
 			const isVisible = parseInt(gsap.getProperty(answer, "height")) > 0;
 
+			// Close all other answers
+			faqs.forEach((otherFaq) => {
+				if (otherFaq !== faq) {
+					const otherAnswer = otherFaq.querySelector(".faq-answer");
+					gsap.set(otherFaq.querySelector(".faq-question"), {
+						borderRadius: "10px",
+					});
+					gsap.to(otherAnswer, {
+						height: 0,
+						opacity: 0,
+						paddingTop: 0,
+						paddingBottom: 0,
+						duration: 0.5,
+						onComplete: () => {
+							otherAnswer.style.height = "0";
+						},
+					});
+					gsap.to(otherFaq.querySelector(".faq-question img"), {
+						scaleY: 1,
+						duration: 0.5,
+					});
+				}
+			});
+
 			if (isVisible) {
 				gsap.to(answer, {
 					height: 0,
@@ -27,6 +51,11 @@ document.addEventListener("DOMContentLoaded", () => {
 					paddingTop: 0,
 					paddingBottom: 0,
 					duration: 0.5,
+					onStart: () => {
+						gsap.set(question, {
+							borderRadius: "10px",
+						});
+					},
 					onComplete: () => {
 						answer.style.height = "0";
 					},
@@ -38,11 +67,8 @@ document.addEventListener("DOMContentLoaded", () => {
 			} else {
 				answer.style.height = "auto";
 				const fullHeight = answer.scrollHeight + 48; // Add padding top and bottom
-				gsap.set(answer, {
-					height: 0,
-					opacity: 0,
-					paddingTop: 0,
-					paddingBottom: 0,
+				gsap.set(question, {
+					borderRadius: "10px 10px 0 0",
 				});
 				gsap.to(answer, {
 					height: fullHeight,

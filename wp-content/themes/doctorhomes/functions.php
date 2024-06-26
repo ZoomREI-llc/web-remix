@@ -69,9 +69,9 @@ class Mobile_Walker_Nav_Menu extends Walker_Nav_Menu
     {
         $polygon_icon_url = wp_get_attachment_url(150);
         $output .= '<li class="menu-item menu-item-' . $item->ID . '">';
-        $output .= '<a href="' . esc_url($item->url) . '">' . esc_html($item->title) . '</a>';
+        $output .= '<div class="menu-item-title"><a href="' . esc_url($item->url) . '">' . esc_html($item->title) . '</a>';
         if (in_array('menu-item-has-children', $item->classes)) {
-            $output .= '<span class="polygon-icon" style="background-image: url(' . $polygon_icon_url . ');"></span>';
+            $output .= '<img class="polygon-icon" src="' . $polygon_icon_url . '"></span></div>';
         }
     }
 

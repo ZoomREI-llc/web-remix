@@ -9,6 +9,9 @@ document.addEventListener("DOMContentLoaded", () => {
 	const dots = document.querySelectorAll(".carousel-dot");
 
 	let currentIndex = 0;
+	let isDragging = false;
+	let startX;
+	let currentX;
 
 	function updateCarousel() {
 		testimonials.forEach((testimonial, index) => {
@@ -27,24 +30,82 @@ document.addEventListener("DOMContentLoaded", () => {
 
 		const carouselWidth = carouselContainer.clientWidth;
 		const testimonialWidth = testimonials[currentIndex].clientWidth;
-		let offset = (carouselWidth - testimonialWidth) / 2;
+		const gap = 48; // Adjust this value based on your desired gap between slides
+
+		let offset = 0;
 
 		if (window.innerWidth >= 1024) {
-			offset = (carouselContainer.clientWidth - testimonialWidth) / 4;
+			// Calculate the offset for desktop
+			const containerWidth = carouselContainer.clientWidth;
+			const numVisibleItems = Math.floor(
+				containerWidth / (testimonialWidth + gap),
+			);
+			const visibleItemsWidth =
+				numVisibleItems * testimonialWidth + (numVisibleItems - 1) * gap;
+			offset = (containerWidth - visibleItemsWidth) / 2;
 		}
 
-		const translateX = -(currentIndex * (testimonialWidth + 30)) + offset;
+		// For mobile, keep offset 0 as we want the first item to start at the very beginning
+		if (currentIndex === 0) {
+			offset = 0;
+		}
+
+		const translateX = -(currentIndex * (testimonialWidth + gap)) + offset;
 
 		gsap.to(carousel, {
 			x: translateX,
 			duration: 1,
-			ease: "power2.inOut",
+			ease: "easeInOutExpo",
 		});
 
 		// Disable prev/next buttons at boundaries
 		prevButton.disabled = currentIndex === 0;
 		nextButton.disabled = currentIndex === testimonials.length - 1;
 	}
+
+	function handleTouchStart(event) {
+		isDragging = true;
+		startX = event.touches[0].clientX;
+		currentX = startX;
+	}
+
+	function handleTouchMove(event) {
+		if (!isDragging) {
+			return;
+		}
+
+		event.preventDefault();
+		currentX = event.touches[0].clientX;
+	}
+
+	function handleTouchEnd(event) {
+		if (!isDragging) {
+			return;
+		}
+
+		isDragging = false;
+		const distance = currentX - startX;
+		const threshold = 50; // Adjust this value to set the swipe threshold
+
+		if (Math.abs(distance) >= threshold) {
+			if (distance > 0) {
+				// Swipe right
+				if (currentIndex > 0) {
+					currentIndex--;
+				}
+			} else {
+				// Swipe left
+				if (currentIndex < testimonials.length - 1) {
+					currentIndex++;
+				}
+			}
+			updateCarousel();
+		}
+	}
+
+	carousel.addEventListener("touchstart", handleTouchStart);
+	carousel.addEventListener("touchmove", handleTouchMove);
+	carousel.addEventListener("touchend", handleTouchEnd);
 
 	prevButton.addEventListener("click", () => {
 		if (currentIndex > 0) {
