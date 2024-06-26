@@ -102,6 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			updateCarousel();
 		}
 	}
+	
 
 	carousel.addEventListener("touchstart", handleTouchStart);
 	carousel.addEventListener("touchmove", handleTouchMove);
