@@ -3,13 +3,13 @@ function doctor_homes_enqueue_assets()
 {
     // Get the file modification time
     $style_version = filemtime(get_template_directory() . '/dist/style.css');
-    $script_version = filemtime(get_template_directory() . '/dist/script.js');
+    // $script_version = filemtime(get_template_directory() . '/dist/script.js');
 
     // Enqueue the main stylesheet with file modification time as version
     wp_enqueue_style('doctorhomes-style', get_template_directory_uri() . '/dist/style.css', array(), $style_version);
 
-    // Enqueue the Interactivity API script with file modification time as version
-    wp_enqueue_script('interactivity-api', get_template_directory_uri() . '/dist/script.js', array(), $script_version, true);
+    // // Enqueue the Interactivity API script with file modification time as version
+    // wp_enqueue_script('interactivity-api', get_template_directory_uri() . '/dist/script.js', array(), $script_version, true);
 
     // Enqueue the mobile menu script with no version
     wp_enqueue_script('doctor-homes-mobile-menu', get_template_directory_uri() . '/src/js/mobile-menu.js', array(), null, true);
