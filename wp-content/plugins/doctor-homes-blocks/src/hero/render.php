@@ -92,14 +92,16 @@ $a_plus_icon_url = wp_get_attachment_url($a_plus_icon_id);
                 <div class="hero__credibility-content">
                     <p class="hero__credibility-text">“We are very grateful for Doctor Homes. They were always professional and reliable, they answered my first call right away and kept me updated throughout the whole selling process.”</p>
                     <div class="hero__credibility-testimonial-name">
-                        <span>Liv Skyler</span>
-                        <div class="hero__credibility-stars-wrapper">
-                            <span class="hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
-                            <span class="hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
-                            <span class="hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
-                            <span class="hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
-                            <span class="hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
-                        </div>
+                        <span class="hero__credibility-testimonial-name-container">
+                            <span>Liv Skyler</span>
+                            <div class="hero__credibility-stars-wrapper">
+                                <span class="hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
+                                <span class="hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
+                                <span class="hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
+                                <span class="hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
+                                <span class="hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
+                            </div>
+                        </span>
                     </div>
                 </div>
             </div>

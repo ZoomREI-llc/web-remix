@@ -153,6 +153,11 @@
   .main-nav .nav-menu > li:hover {
     background-color: var(--secondaryBeige);
   }
+
+  .main-nav .nav-menu > li:hover > .sub-menu {
+    display: flex;
+    z-index: 500;
+  }
 }
 
 .contact-actions {

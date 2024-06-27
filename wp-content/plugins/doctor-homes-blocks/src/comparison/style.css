@@ -84,6 +84,14 @@
 		height: 12.5rem;
 	}
 
+	.comparison-row.header > .comparison-column {
+		text-align: center;
+	}
+
+	.comparison-column--first {
+		padding: 1.5rem 5rem;
+	}
+
 	.comparison-row.header,
 	.comparison-column--first {
 		font-size: 1.5rem;
@@ -150,9 +158,14 @@ div.comparison-row:nth-child(2) > div:nth-child(1) {
 }
 
 @media (min-width: 1024px) {
-	.comparison-column {
+	.comparison-row > .comparison-column {
 		align-items: start;
-		padding: 1.5rem 5.5rem;
+		padding: 1.5rem 2rem 1.5rem 3.25rem;
+		text-align: left;
+	}
+
+	.comparison-column.doctor-homes {
+		padding: 1.5rem 4.75rem;
 	}
 }
 
@@ -168,7 +181,7 @@ div.comparison-row:nth-child(2) > div:nth-child(1) {
 	.column__content {
 		flex-direction: row;
 		gap: 0.625rem;
-		font-size: 1.125rem;
+		font-size: 1rem;
 		align-items: center;
 	}
 }

@@ -79,13 +79,13 @@
   gap: 1rem;
 }
 
-.footer-disclaimer hr {
+/* .footer-disclaimer hr {
   margin: 1rem 0;
-}
+} */
 
 .footer-disclaimer p {
-  font-size: 0.75em;
+  font-size: 0.625em;
   padding: 0 1rem;
   line-height: 1rem;
-  text-align: center;
+  /* text-align: center; */
 }
