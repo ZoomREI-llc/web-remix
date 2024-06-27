@@ -5,10 +5,17 @@
 	width: 100%;
 	position: relative;
 	z-index: 5;
-	margin-bottom: 4.875rem;
+	margin-bottom: 3.75rem;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+@media (min-width: 1024px) {
+	.quote-section {
+		margin-bottom: 4.5rem;
+
+	}
 }
 
 .quote-section__content {

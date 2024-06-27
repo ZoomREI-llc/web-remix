@@ -3,7 +3,7 @@
 	flex-direction: column;
 	gap: 4.25rem;
 	padding-inline: 1.25rem;
-	margin-bottom: 6.25rem;
+	margin-bottom: 3.75rem;
 	text-align: center;
 }
 
@@ -11,6 +11,7 @@
 	.latest-blog-posts {
 		text-align: left;
 		padding-inline: 6rem;
+		margin-bottom: 4.5rem;
 	}
 }
 

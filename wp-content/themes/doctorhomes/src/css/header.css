@@ -156,7 +156,7 @@
 
   .main-nav .nav-menu > li:hover > .sub-menu {
     display: flex;
-    z-index: 500;
+    z-index: 102;
   }
 }
 
@@ -186,6 +186,11 @@
     transform: none;
     max-width: none;
   }
+}
+
+.custom-logo {
+  max-width: 6.25rem;
+  height: auto;
 }
 
 @media (min-width: 1024px) {

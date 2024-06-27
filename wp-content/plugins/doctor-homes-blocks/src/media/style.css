@@ -10,12 +10,12 @@
 	padding: 0;
 	text-align: center; /* Center text */
 	width: 100%;
-	margin-bottom: 3.25rem;
+	margin-bottom: 3.75rem;
 }
 
 @media (min-width: 1024px) {
 	.featured-in {
-		margin-bottom: 1.625rem;
+		margin-bottom: 4.5rem;
 	}
 }
 
@@ -28,7 +28,7 @@
 
 .featured-in__text {
 	flex-shrink: 0;
-	display: flex;
+	display: none;
 	align-items: center; /* Center text vertically */
 	background-color: white;
 	z-index: 3;
@@ -39,6 +39,7 @@
 
 @media (min-width: 1024px) {
 	.featured-in__text {
+		display: flex;
 		padding-right: 6.25rem;
 	}
 }

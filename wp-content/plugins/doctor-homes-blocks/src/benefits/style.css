@@ -1,14 +1,14 @@
 .benefits {
 	text-align: center;
 	padding-inline: 1.25rem;
-	margin-bottom: 3rem;
+	margin-bottom: 3.75rem;
 }
 
 @media (min-width: 1024px) {
 	.benefits {
 		max-width: 64.375rem;
 		padding-inline: 0;
-		margin-bottom: 4.375rem;
+		margin-bottom: 4.5rem;
 	}
 }
 
