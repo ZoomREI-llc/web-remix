@@ -12,6 +12,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   handleFormSubmit: () => (/* binding */ handleFormSubmit)
 /* harmony export */ });
+window.addEventListener('load', event => {
+  const form = document.querySelector('.hero form');
+  if (form) {
+    // Your form modification code goes here
+
+    // Show the form content after modification
+    form.style.opacity = '1';
+  }
+});
 function handleFormSubmit(event) {
   event.preventDefault();
   const form = event.target;

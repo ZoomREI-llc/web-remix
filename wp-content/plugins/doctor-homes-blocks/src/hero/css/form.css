@@ -4,6 +4,8 @@
 	align-items: center;
 	gap: 0.625rem;
 	width: 100%;
+	opacity: 0;
+	transition: opacity 0.3s ease; /* Smooth transition for better UX */
 }
 
 @media (min-width: 1024px) {

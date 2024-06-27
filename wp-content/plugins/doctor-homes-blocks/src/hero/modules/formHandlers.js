@@ -1,10 +1,18 @@
+window.addEventListener('load', (event) => {
+	const form = document.querySelector('.hero form');
+	if (form) {
+		// Your form modification code goes here
+		
+		// Show the form content after modification
+		form.style.opacity = '1';
+	}
+});
+
 export function handleFormSubmit(event) {
 	event.preventDefault();
 
 	const form = event.target;
-	const autocompleteField = form.querySelector(
-		'input[name="property_address"]',
-	);
+	const autocompleteField = form.querySelector('input[name="property_address"]');
 	const fullNameField = form.querySelector('input[name="full_name"]');
 	const emailField = form.querySelector('input[name="email"]');
 	const phoneField = form.querySelector('input[name="phone"]');
