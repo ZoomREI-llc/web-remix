@@ -38,9 +38,9 @@ jobs:
         run: |
           rsync -avz --delete --exclude 'wp-content/cache/*' --exclude 'wp-content/upgrade/*' ./wp-content/ rootadmin@${{ secrets.STG_SERVER_IP }}:/home/rootadmin/public_html/remix.chrisbuyshomes.com/wp-content
 
-      - name: Regenerate Thumbnails with WP-CLI
-        run: |
-          ssh rootadmin@${{ secrets.STG_SERVER_IP }} "cd /home/rootadmin/public_html/remix.chrisbuyshomes.com && wp media regenerate --yes"
+      # - name: Regenerate Thumbnails with WP-CLI
+      #   run: |
+      #     ssh rootadmin@${{ secrets.STG_SERVER_IP }} "cd /home/rootadmin/public_html/remix.chrisbuyshomes.com && wp media regenerate --yes"
 
       # Uncomment and configure the following steps if you want to handle SQL dump transfer and database updates
       - name: Transfer SQL dump
