@@ -1,11 +1,11 @@
 <footer id="doctor-homes-footer">
     <div class="footer-content">
         <div class="footer-logo">
-            <img src="<?php echo wp_get_attachment_url(23); ?>" alt="Site Logo" class="logo-img">
+            <img src="<?php echo wp_get_attachment_url(423); ?>" alt="Site Logo" class="logo-img">
         </div>
         <a href="#top" class="back-to-top">
             <div class="back-to-top-icon">
-                <img src="<?php echo wp_get_attachment_url(150); ?>" alt="">
+                <img src="<?php echo wp_get_attachment_url(406); ?>" alt="">
             </div>
             <span>Back to top</span>
         </a>
@@ -52,12 +52,12 @@
             </div>
             <div class="footer-contact">
                 <span class="footer-title">Contact Us</span>
-                <p class="contact-item"><img src="<?php echo wp_get_attachment_url(22); ?>" alt="Phone Icon" class="contact-icon"> +1 386-688-3295</p>
-                <p class="contact-item"><img src="<?php echo wp_get_attachment_url(21); ?>" alt="Email Icon" class="contact-icon"> Ourstudio@hello.com</p>
+                <p class="contact-item"><img src="<?php echo wp_get_attachment_url(438); ?>" alt="Phone Icon" class="contact-icon"> +1 386-688-3295</p>
+                <p class="contact-item"><img src="<?php echo wp_get_attachment_url(434); ?>" alt="Email Icon" class="contact-icon"> hello@doctorhomes.com</p>
             </div>
             <div class="social-icons">
-                <a href="#"><img src="<?php echo wp_get_attachment_url(19); ?>" alt="Facebook Icon" class="social-icon"></a>
-                <a href="#"><img src="<?php echo wp_get_attachment_url(20); ?>" alt="YouTube Icon" class="social-icon"></a>
+                <a href="#"><img src="<?php echo wp_get_attachment_url(435); ?>" alt="Facebook Icon" class="social-icon"></a>
+                <a href="#"><img src="<?php echo wp_get_attachment_url(439); ?>" alt="YouTube Icon" class="social-icon"></a>
             </div>
         </div>
     </div>

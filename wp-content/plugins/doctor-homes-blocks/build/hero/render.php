@@ -1,30 +1,30 @@
 <?php
 // dynamically rendering images and SVGs
-$background_image_id = 84;
+$background_image_id = 417;
 $background_image_url = wp_get_attachment_url($background_image_id);
 
-$doctor_homes_image_id = 83;
+$doctor_homes_image_id = 415;
 $doctor_homes_image_url = wp_get_attachment_url($doctor_homes_image_id);
 
-$arrow_icon_id = 131;
+$arrow_icon_id = 412;
 $arrow_icon_url = wp_get_attachment_url($arrow_icon_id);
 
-$star_icon_id = 124;
+$star_icon_id = 408;
 $star_icon_url = wp_get_attachment_url($star_icon_id);
 
-$checkmark_icon_id = 123;
+$checkmark_icon_id = 411;
 $checkmark_icon_url = wp_get_attachment_url($checkmark_icon_id);
 
-$testimonial_image_id = 100;
+$testimonial_image_id = 455;
 $testimonial_image_url = wp_get_attachment_url($testimonial_image_id);
 
-$google_icon_id = 89;
+$google_icon_id = 431;
 $google_icon_url = wp_get_attachment_url($google_icon_id);
 
-$bbb_icon_id = 88;
+$bbb_icon_id = 430;
 $bbb_icon_url = wp_get_attachment_url($bbb_icon_id);
 
-$a_plus_icon_id = 87;
+$a_plus_icon_id = 429;
 $a_plus_icon_url = wp_get_attachment_url($a_plus_icon_id);
 ?>
 <a id="top"></a>

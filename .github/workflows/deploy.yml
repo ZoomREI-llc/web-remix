@@ -26,7 +26,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: "20" # Ensure this matches the Node.js version your project requires
+          node-version: "20"
 
       - name: Install dependencies and build theme
         working-directory: ./wp-content/themes/doctorhomes
@@ -38,22 +38,27 @@ jobs:
         run: |
           rsync -avz --delete --exclude 'wp-content/cache/*' --exclude 'wp-content/upgrade/*' ./wp-content/ rootadmin@${{ secrets.STG_SERVER_IP }}:/home/rootadmin/public_html/remix.chrisbuyshomes.com/wp-content
 
-      # - name: Transfer SQL dump
-      #   run: |
-      #     scp ./db/backup/backup.sql rootadmin@${{ secrets.STG_SERVER_IP }}:/home/rootadmin/backup.sql
+      - name: Regenerate Thumbnails with WP-CLI
+        run: |
+          ssh rootadmin@${{ secrets.STG_SERVER_IP }} "cd /home/rootadmin/public_html/remix.chrisbuyshomes.com && wp media regenerate --yes"
 
-      # - name: Import SQL dump
-      #   run: |
-      #     ssh rootadmin@${{ secrets.STG_SERVER_IP }} "mysql -u${{ secrets.STG_DB_USER }} -p'${{ secrets.STG_DB_PASSWORD }}' ${{ secrets.STG_DB_NAME }} < /home/rootadmin/backup.sql"
+      # Uncomment and configure the following steps if you want to handle SQL dump transfer and database updates
+      - name: Transfer SQL dump
+        run: |
+          scp ./db/backup/backup.sql rootadmin@${{ secrets.STG_SERVER_IP }}:/home/rootadmin/backup.sql
 
-      # - name: Update WordPress site title and URLs
-      #   run: |
-      #     ssh rootadmin@${{ secrets.STG_SERVER_IP }} <<EOF
-      #     mysql -u${{ secrets.STG_DB_USER }} -p${{ secrets.STG_DB_PASSWORD }} ${{ secrets.STG_DB_NAME }} -e "UPDATE wp_options SET option_value = 'stage/Doctor Homes' WHERE option_name = 'blogname';"
-      #     mysql -u${{ secrets.STG_DB_USER }} -p${{ secrets.STG_DB_PASSWORD }} ${{ secrets.STG_DB_NAME }} -e "UPDATE wp_options SET option_value = 'https://remix.chrisbuyshomes.com' WHERE option_name = 'siteurl';"
-      #     mysql -u${{ secrets.STG_DB_USER }} -p${{ secrets.STG_DB_PASSWORD }} ${{ secrets.STG_DB_NAME }} -e "UPDATE wp_options SET option_value = 'https://remix.chrisbuyshomes.com' WHERE option_name = 'home';"
-      #     mysql -u${{ secrets.STG_DB_USER }} -p${{ secrets.STG_DB_PASSWORD }} ${{ secrets.STG_DB_NAME }} -e "UPDATE wp_posts SET guid = REPLACE(guid, 'https://zoomrei.dev', 'https://remix.chrisbuyshomes.com');"
-      #     mysql -u${{ secrets.STG_DB_USER }} -p${{ secrets.STG_DB_PASSWORD }} ${{ secrets.STG_DB_NAME }} -e "UPDATE wp_posts SET post_content = REPLACE(post_content, 'https://zoomrei.dev', 'https://remix.chrisbuyshomes.com');"
-      #     mysql -u${{ secrets.STG_DB_USER }} -p${{ secrets.STG_DB_PASSWORD }} ${{ secrets.STG_DB_NAME }} -e "UPDATE wp_postmeta SET meta_value = REPLACE(meta_value, 'https://zoomrei.dev', 'https://remix.chrisbuyshomes.com');"
-      #     EOF
-      #   shell: bash
+      - name: Import SQL dump
+        run: |
+          ssh rootadmin@${{ secrets.STG_SERVER_IP }} "mysql -u${{ secrets.STG_DB_USER }} -p'${{ secrets.STG_DB_PASSWORD }}' ${{ secrets.STG_DB_NAME }} < /home/rootadmin/backup.sql"
+
+      - name: Update WordPress site title and URLs
+        run: |
+          ssh rootadmin@${{ secrets.STG_SERVER_IP }} <<EOF
+          mysql -u${{ secrets.STG_DB_USER }} -p${{ secrets.STG_DB_PASSWORD }} ${{ secrets.STG_DB_NAME }} -e "UPDATE wp_options SET option_value = 'stage/Doctor Homes' WHERE option_name = 'blogname';"
+          mysql -u${{ secrets.STG_DB_USER }} -p${{ secrets.STG_DB_PASSWORD }} ${{ secrets.STG_DB_NAME }} -e "UPDATE wp_options SET option_value = 'https://remix.chrisbuyshomes.com' WHERE option_name = 'siteurl';"
+          mysql -u${{ secrets.STG_DB_USER }} -p${{ secrets.STG_DB_PASSWORD }} ${{ secrets.STG_DB_NAME }} -e "UPDATE wp_options SET option_value = 'https://remix.chrisbuyshomes.com' WHERE option_name = 'home';"
+          mysql -u${{ secrets.STG_DB_USER }} -p${{ secrets.STG_DB_PASSWORD }} ${{ secrets.STG_DB_NAME }} -e "UPDATE wp_posts SET guid = REPLACE(guid, 'https://zoomrei.dev', 'https://remix.chrisbuyshomes.com');"
+          mysql -u${{ secrets.STG_DB_USER }} -p${{ secrets.STG_DB_PASSWORD }} ${{ secrets.STG_DB_NAME }} -e "UPDATE wp_posts SET post_content = REPLACE(post_content, 'https://zoomrei.dev', 'https://remix.chrisbuyshomes.com');"
+          mysql -u${{ secrets.STG_DB_USER }} -p${{ secrets.STG_DB_PASSWORD }} ${{ secrets.STG_DB_NAME }} -e "UPDATE wp_postmeta SET meta_value = REPLACE(meta_value, 'https://zoomrei.dev', 'https://remix.chrisbuyshomes.com');"
+          EOF
+        shell: bash

@@ -52,7 +52,7 @@ services:
       - wordpress_data:/var/www/html
       - ./wp-content:/var/www/html/wp-content
       - ./db/backup:/db_backup
-    entrypoint: [ 'wp', '--allow-root' ]
+    entrypoint: [ "sh", "-c", "while :; do sleep 2073600; done" ]
     depends_on:
       - wordpress
     environment:

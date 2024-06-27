@@ -12,6 +12,10 @@
   position: relative;
 }
 
+.footer-logo img {
+  max-width: 8.75rem;
+}
+
 .back-to-top {
   display: flex;
   flex-direction: column;

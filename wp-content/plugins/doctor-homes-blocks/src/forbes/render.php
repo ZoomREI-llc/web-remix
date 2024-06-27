@@ -1,8 +1,8 @@
 <?php
-$forbes_logo_id = 92;
+$forbes_logo_id = 426;
 $forbes_logo_url = wp_get_attachment_url($forbes_logo_id);
 
-$quote_icon_id = 85;
+$quote_icon_id = 407;
 $quote_icon_url = wp_get_attachment_url($quote_icon_id);
 ?>
 

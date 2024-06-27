@@ -1,14 +1,14 @@
 <?php
-$dh_image_id = 153;
+$dh_image_id = 416;
 $dh_image_url = wp_get_attachment_url($dh_image_id);
 
-$arrow_icon_id = 131;
+$arrow_icon_id = 412;
 $arrow_icon_url = wp_get_attachment_url($arrow_icon_id);
 
-$testi_image_id = 100;
+$testi_image_id = 455;
 $testi_image_url = wp_get_attachment_url($testi_image_id);
 
-$star_icon_id = 124;
+$star_icon_id = 408;
 $star_icon_url = wp_get_attachment_url($star_icon_id);
 ?>
 

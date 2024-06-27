@@ -12,7 +12,7 @@
     <header id="doctor-homes-header">
         <div class="header-content">
             <button id="mobile-menu-button" class="mobile-menu-button">
-                <img src="<?php echo wp_get_attachment_url(46); ?>" alt="Mobile Navigation Menu">
+                <img src="<?php echo wp_get_attachment_url(436); ?>" alt="Mobile Navigation Menu">
             </button>
             <div class="logo">
                 <?php
@@ -32,7 +32,7 @@
             </nav>
             <div class="contact-actions">
                 <a href="tel:5109453588" class="contact-phone">
-                    <img src="<?php echo wp_get_attachment_url(14); ?>" alt="Phone Icon" class="phone-icon">
+                    <img src="<?php echo wp_get_attachment_url(437); ?>" alt="Phone Icon" class="phone-icon">
                     <span>Call us on: (510) 945-3588</span>
                 </a>
                 <a href="#lead-form" class="get-offer-button">
@@ -42,7 +42,7 @@
         </div>
         <div id="mobile-menu" class="mobile-menu">
             <button id="close-mobile-menu" class="close-mobile-menu">
-                <img src="<?php echo wp_get_attachment_url(48); ?>" alt="Close Mobile Navigation Menu">
+                <img src="<?php echo wp_get_attachment_url(432); ?>" alt="Close Mobile Navigation Menu">
             </button>
             <?php
             wp_nav_menu(array(
@@ -54,7 +54,7 @@
             ));
             ?>
             <a href="#" class="get-offer-button">
-                Get My Offer <img src="<?php echo wp_get_attachment_url(131); ?>" alt="Get My Offer">
+                Get My Offer <img src="<?php echo wp_get_attachment_url(412); ?>" alt="Get My Offer">
             </a>
         </div>
     </header>

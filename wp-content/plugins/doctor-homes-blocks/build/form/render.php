@@ -1,6 +1,5 @@
 <?php
-// Fetch the arrow icon URL
-$arrow_icon_id = 131; // Replace with your arrow icon attachment ID
+$arrow_icon_id = 412;
 $arrow_icon_url = wp_get_attachment_url($arrow_icon_id);
 ?>
 

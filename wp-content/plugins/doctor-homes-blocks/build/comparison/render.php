@@ -1,11 +1,11 @@
 <?php
-$dh_logo_id = 23;
+$dh_logo_id = 423;
 $dh_logo_url = wp_get_attachment_url($dh_logo_id);
 
-$checkmark_icon_id = 81;
+$checkmark_icon_id = 410;
 $checkmark_icon_url = wp_get_attachment_url($checkmark_icon_id);
 
-$crossmark_icon_id = 86;
+$crossmark_icon_id = 409;
 $crossmark_icon_url = wp_get_attachment_url($crossmark_icon_id);
 ?>
 

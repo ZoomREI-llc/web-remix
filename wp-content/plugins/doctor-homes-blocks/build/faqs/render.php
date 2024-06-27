@@ -34,7 +34,7 @@ $faqs = array(
     ),
 );
 
-$polygon_icon_id = 150;
+$polygon_icon_id = 406;
 $polygon_icon_url = wp_get_attachment_url($polygon_icon_id);
 ?>
 
