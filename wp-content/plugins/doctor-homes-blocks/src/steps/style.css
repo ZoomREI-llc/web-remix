@@ -4,7 +4,7 @@
 	justify-content: center;
 	align-items: center;
 	padding-inline: 1.25rem;
-	gap: 3.125rem;
+	gap: 2rem;
 	margin-bottom: 3.75rem;
 }
 
@@ -12,6 +12,7 @@
 	.how-it-works {
 		padding-inline: 6rem;
 		margin-bottom: 4.5rem;
+		gap: 3.25rem;
 	}
 }
 
@@ -22,6 +23,7 @@
 .how-it-works__text h2 {
 	font-size: 2.25rem;
 	color: var(--primaryBlue2);
+	margin-bottom: 0.625rem;
 }
 
 .how-it-works p {

@@ -6,8 +6,10 @@ $benefit_items = $attributes['benefitItems'] ?? [];
 
 ?>
 <section class="benefits">
-	<h2><?php echo esc_html($title); ?></h2>
-	<p><?php echo esc_html($paragraph); ?></p>
+	<div class="benefits__text">
+		<h2><?php echo esc_html($title); ?></h2>
+		<p><?php echo esc_html($paragraph); ?></p>
+	</div>
 	<div class="benefits__grid">
 		<?php foreach ($benefit_items as $item) : ?>
 			<div class="benefits__item <?php echo esc_attr($item['position']); ?>">

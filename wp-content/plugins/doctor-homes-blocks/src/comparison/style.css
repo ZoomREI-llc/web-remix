@@ -1,7 +1,7 @@
 .comparison {
 	display: flex;
 	flex-direction: column;
-	gap: 1.5rem;
+	gap: 2rem;
 	padding-inline: 1rem;
 	text-align: center;
 	background: none;
@@ -12,10 +12,10 @@
 	.comparison {
 		margin-bottom: 4.5rem;
 		max-width: 82rem;
-		gap: 6.125rem;
+		gap: 3.25rem;
 	}
 }
-
+ 
 .comparison__text {
 	display: flex;
 	flex-direction: column;

@@ -140,13 +140,13 @@
   .main-nav > .nav-menu {
     display: flex;
     height: 100%;
-    gap: 0.625rem;
+    justify-content: space-between;
     align-items: center;
   }
 
   .main-nav > .nav-menu > li {
     height: 100%;
-    padding: 2.375rem 1.5rem;
+    padding: 2.375rem 1rem;
     position: relative;
   }
 

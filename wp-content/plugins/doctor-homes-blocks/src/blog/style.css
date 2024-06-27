@@ -33,7 +33,7 @@
 	}
 }
 
-@media (min-width: 1440px) {
+@media (min-width: 1280px) {
 	.posts-container {
 		grid-template-columns: 1fr 1fr 1fr 1fr;
 	}

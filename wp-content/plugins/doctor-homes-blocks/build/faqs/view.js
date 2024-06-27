@@ -6356,6 +6356,33 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
+
+  // Open the first FAQ by default
+  if (faqs.length > 0) {
+    const firstFaq = faqs[0];
+    const firstQuestion = firstFaq.querySelector(".faq-question");
+    const firstAnswer = firstFaq.querySelector(".faq-answer");
+    const firstIcon = firstQuestion.querySelector("img");
+    firstAnswer.style.height = "auto";
+    const fullHeight = firstAnswer.scrollHeight + 48; // Add padding top and bottom
+    gsap__WEBPACK_IMPORTED_MODULE_0__["default"].set(firstQuestion, {
+      borderRadius: "10px 10px 0 0"
+    });
+    gsap__WEBPACK_IMPORTED_MODULE_0__["default"].to(firstAnswer, {
+      height: fullHeight,
+      opacity: 1,
+      paddingTop: "1.5rem",
+      paddingBottom: "1.5rem",
+      duration: 0.5,
+      onComplete: () => {
+        firstAnswer.style.height = "auto";
+      }
+    });
+    gsap__WEBPACK_IMPORTED_MODULE_0__["default"].to(firstIcon, {
+      scaleY: -1,
+      duration: 0.5
+    });
+  }
 });
 /******/ })()
 ;
