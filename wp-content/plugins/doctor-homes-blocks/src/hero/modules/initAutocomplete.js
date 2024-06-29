@@ -44,6 +44,14 @@ export function initAutocomplete() {
 	// Hide additional fields initially
 	hideInitialFields([fullNameField, emailField, phoneField, formSubmitBtn]);
 
+	let isAddressValid = false;
+
+	// Reset address validity on key strokes
+	autocompleteField.addEventListener("input", function () {
+		isAddressValid = false;
+		autocompleteField.setCustomValidity(""); // Reset custom validity message
+	});
+
 	// Prevent form submission on "Enter" keypress until validation passes
 	form.addEventListener("keypress", function (event) {
 		if (event.key === "Enter" && !autocompleteField.value) {
@@ -61,6 +69,8 @@ export function initAutocomplete() {
 
 		if (!place.geometry) {
 			console.error("No geometry found for the place");
+			handleInvalidAddress(autocompleteField);
+			isAddressValid = false;
 			return;
 		}
 
@@ -71,12 +81,15 @@ export function initAutocomplete() {
 			zipcode = "",
 			country = "";
 
+		let hasStreetNumber = false;
+
 		for (const component of place.address_components) {
 			const componentType = component.types[0];
 
 			switch (componentType) {
 				case "street_number":
 					streetAddress = component.long_name;
+					hasStreetNumber = true;
 					break;
 				case "route":
 					streetAddress += " " + component.long_name;
@@ -99,16 +112,31 @@ export function initAutocomplete() {
 			}
 		}
 
+		if (!hasStreetNumber) {
+			console.error("Selected place does not have a street number");
+			handleInvalidAddress(autocompleteField);
+			isAddressValid = false;
+			return;
+		}
+
 		autocompleteField.value = `${streetAddress}, ${city}, ${stateShort}, ${country}`;
 		if (autocompleteField.value) {
 			autocompleteField.classList.remove("invalid");
+			autocompleteField.placeholder = "Type Your Property Address";
+			resetBorderColor(autocompleteField);
+			isAddressValid = true;
+			autocompleteField.setCustomValidity(""); // Clear any previous custom validity message
 		}
 	});
 
 	formBtnNext.addEventListener("click", function (event) {
 		event.preventDefault();
-		if (!autocompleteField.value) {
+		if (!isAddressValid || !autocompleteField.value) {
 			handleInvalidAddress(autocompleteField);
+			autocompleteField.setCustomValidity(
+				"Please use the autocomplete to enter a complete property address.",
+			); // Set custom validity message
+			autocompleteField.reportValidity(); // Trigger native validation UI
 			return;
 		}
 

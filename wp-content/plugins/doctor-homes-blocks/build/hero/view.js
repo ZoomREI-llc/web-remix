@@ -95,6 +95,11 @@ function hideInitialFields(fields) {
 // Show additional fields with animation
 function showAdditionalFields(form, fields, formBtnNext) {
   const initialHeight = form.offsetHeight;
+
+  // Temporarily hide the formBtnNext to calculate the correct new height
+  gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.set(formBtnNext, {
+    display: "none"
+  });
   fields.forEach(field => {
     const fieldContainer = field.closest("div");
     gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.set(fieldContainer, {
@@ -102,6 +107,8 @@ function showAdditionalFields(form, fields, formBtnNext) {
       opacity: 0
     });
   });
+
+  // Calculate the new height after displaying the additional fields
   const newHeight = form.scrollHeight;
   const tl = gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.timeline();
   tl.to(form, {
@@ -113,10 +120,14 @@ function showAdditionalFields(form, fields, formBtnNext) {
     duration: 0.5,
     stagger: 0.2,
     ease: "power2.out"
-  }, "-=0.3");
+  }, "-=0.3").to(form, {
+    height: "auto",
+    // Set the height back to auto after the animation
+    duration: 0
+  });
   gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.set(formBtnNext, {
     display: "none"
-  });
+  }); // Ensure the formBtnNext remains hidden
 }
 
 // Handle invalid address
@@ -180,6 +191,13 @@ function initAutocomplete() {
 
   // Hide additional fields initially
   (0,_gsapAnimations__WEBPACK_IMPORTED_MODULE_2__.hideInitialFields)([fullNameField, emailField, phoneField, formSubmitBtn]);
+  let isAddressValid = false;
+
+  // Reset address validity on key strokes
+  autocompleteField.addEventListener("input", function () {
+    isAddressValid = false;
+    autocompleteField.setCustomValidity(""); // Reset custom validity message
+  });
 
   // Prevent form submission on "Enter" keypress until validation passes
   form.addEventListener("keypress", function (event) {
@@ -197,6 +215,8 @@ function initAutocomplete() {
     const place = autocomplete.getPlace();
     if (!place.geometry) {
       console.error("No geometry found for the place");
+      (0,_gsapAnimations__WEBPACK_IMPORTED_MODULE_2__.handleInvalidAddress)(autocompleteField);
+      isAddressValid = false;
       return;
     }
     let streetAddress = "",
@@ -205,11 +225,13 @@ function initAutocomplete() {
       stateLong = "",
       zipcode = "",
       country = "";
+    let hasStreetNumber = false;
     for (const component of place.address_components) {
       const componentType = component.types[0];
       switch (componentType) {
         case "street_number":
           streetAddress = component.long_name;
+          hasStreetNumber = true;
           break;
         case "route":
           streetAddress += " " + component.long_name;
@@ -231,15 +253,27 @@ function initAutocomplete() {
           break;
       }
     }
+    if (!hasStreetNumber) {
+      console.error("Selected place does not have a street number");
+      (0,_gsapAnimations__WEBPACK_IMPORTED_MODULE_2__.handleInvalidAddress)(autocompleteField);
+      isAddressValid = false;
+      return;
+    }
     autocompleteField.value = `${streetAddress}, ${city}, ${stateShort}, ${country}`;
     if (autocompleteField.value) {
       autocompleteField.classList.remove("invalid");
+      autocompleteField.placeholder = "Type Your Property Address";
+      (0,_gsapAnimations__WEBPACK_IMPORTED_MODULE_2__.resetBorderColor)(autocompleteField);
+      isAddressValid = true;
+      autocompleteField.setCustomValidity(""); // Clear any previous custom validity message
     }
   });
   formBtnNext.addEventListener("click", function (event) {
     event.preventDefault();
-    if (!autocompleteField.value) {
+    if (!isAddressValid || !autocompleteField.value) {
       (0,_gsapAnimations__WEBPACK_IMPORTED_MODULE_2__.handleInvalidAddress)(autocompleteField);
+      autocompleteField.setCustomValidity("Please use the autocomplete to enter a complete property address."); // Set custom validity message
+      autocompleteField.reportValidity(); // Trigger native validation UI
       return;
     }
     autocompleteField.classList.remove("invalid");

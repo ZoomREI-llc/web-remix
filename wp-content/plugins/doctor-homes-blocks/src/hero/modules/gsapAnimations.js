@@ -12,11 +12,15 @@ export function hideInitialFields(fields) {
 export function showAdditionalFields(form, fields, formBtnNext) {
 	const initialHeight = form.offsetHeight;
 
+	// Temporarily hide the formBtnNext to calculate the correct new height
+	gsap.set(formBtnNext, { display: "none" });
+
 	fields.forEach((field) => {
 		const fieldContainer = field.closest("div");
 		gsap.set(fieldContainer, { display: "grid", opacity: 0 });
 	});
 
+	// Calculate the new height after displaying the additional fields
 	const newHeight = form.scrollHeight;
 
 	const tl = gsap.timeline();
@@ -24,13 +28,18 @@ export function showAdditionalFields(form, fields, formBtnNext) {
 		height: newHeight,
 		duration: 0.5,
 		ease: "power2.out",
-	}).to(
-		fields.map((field) => field.closest("div")),
-		{ opacity: 1, duration: 0.5, stagger: 0.2, ease: "power2.out" },
-		"-=0.3",
-	);
+	})
+		.to(
+			fields.map((field) => field.closest("div")),
+			{ opacity: 1, duration: 0.5, stagger: 0.2, ease: "power2.out" },
+			"-=0.3",
+		)
+		.to(form, {
+			height: "auto", // Set the height back to auto after the animation
+			duration: 0,
+		});
 
-	gsap.set(formBtnNext, { display: "none" });
+	gsap.set(formBtnNext, { display: "none" }); // Ensure the formBtnNext remains hidden
 }
 
 // Handle invalid address

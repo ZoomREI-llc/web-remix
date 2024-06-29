@@ -90,6 +90,13 @@
 	color: var(--primaryBlue2);
 }
 
+.cta-button:hover svg path,
+.cta-button:focus svg path,
+.cta-button:active svg path {
+	transition: all 0.2s ease;
+	fill: var(--primaryBlue2);
+}
+
 @media (min-width: 1024px) {
 	a:has(.cta-button) {
 		padding: 0.625rem 0;
@@ -126,7 +133,7 @@
 
 .cta__credibility-data-number {
 	font-weight: bold;
-	font-size: clamp(1.875rem, 9vw ,2.875rem);
+	font-size: clamp(1.875rem, 9vw, 2.875rem);
 }
 
 .cta__credibility-data-text {

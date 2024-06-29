@@ -14,7 +14,6 @@
 		grid-row: 4;
 		display: flex;
 		align-items: center;
-		gap: 1rem;
 	}
 }
 
@@ -83,6 +82,7 @@ form button:active {
 	align-items: center;
 	justify-content: center;
 	width: 100%;
+	gap: 0.625rem;
 }
 
 @media (min-width: 1024px) {
@@ -101,9 +101,9 @@ form button:active {
 	}
 }
 
-input[name="property_address"] {
+/* input[name="property_address"] {
 	margin-bottom: 0.625rem;
-}
+} */
 
 @media (min-width: 1024px) {
 	input[name="property_address"] {

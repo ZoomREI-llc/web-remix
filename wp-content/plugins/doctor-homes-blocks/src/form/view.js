@@ -5,6 +5,7 @@ import { initAutocomplete } from "./modules/initAutocomplete";
 window.initAutocomplete = initAutocomplete;
 
 document.addEventListener("DOMContentLoaded", function () {
+	console.log("DOM fully loaded and parsed.");
 	// Load Google Maps API only if not already loaded
 	if (!window.google || !window.google.maps) {
 		loadScript(

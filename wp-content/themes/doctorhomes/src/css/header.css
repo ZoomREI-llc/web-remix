@@ -179,18 +179,25 @@
   max-width: 5rem;
 }
 
+/* .logo a {
+  display: block;
+  max-width: 100%;
+} */
+
 @media (min-width: 1024px) {
   .logo {
     position: static;
     transform: none;
     max-width: none;
   }
+
+  .custom-logo {
+    max-width: 6.25rem;
+    height: auto;
+  }
 }
 
-.custom-logo {
-  max-width: 6.25rem;
-  height: auto;
-}
+
 
 @media (min-width: 1024px) {
   .mobile-menu-button {
