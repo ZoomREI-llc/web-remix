@@ -35,7 +35,7 @@
                     <img src="<?php echo wp_get_attachment_url(437); ?>" alt="Phone Icon" class="phone-icon">
                     <span>Call us on: (510) 945-3588</span>
                 </a>
-                <a href="#lead-form" class="get-offer-button">
+                <a href="#top" class="get-offer-button">
                     Get My Offer
                 </a>
             </div>
