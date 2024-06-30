@@ -7,9 +7,15 @@
   flex-direction: column;
   gap: 2.5rem;
   background-color: var(--primaryBlue1);
-  padding: 3.5rem;
+  padding: 3.5rem 2.5rem;
   color: white;
   position: relative;
+}
+
+@media (min-width: 1024px) {
+  #doctor-homes-footer {
+    padding: 3.5rem;
+  }
 }
 
 .footer-logo img {

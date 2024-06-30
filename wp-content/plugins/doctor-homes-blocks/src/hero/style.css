@@ -236,6 +236,7 @@
 .hero__credibility-data {
 	display: flex;
 	justify-content: space-between;
+	align-items: start;
 	text-align: left;
 }
 
