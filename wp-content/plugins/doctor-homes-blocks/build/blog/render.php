@@ -8,7 +8,7 @@
         ));
         if ($latest_posts->have_posts()) :
             while ($latest_posts->have_posts()) : $latest_posts->the_post(); ?>
-                <div class="post">
+                <div class="latest-post">
                     <div class="post-image">
                         <a href="<?php the_permalink(); ?>">
                             <?php if (has_post_thumbnail()) {

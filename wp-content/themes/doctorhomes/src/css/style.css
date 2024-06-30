@@ -2,6 +2,7 @@
 @import "./fonts.css";
 @import "./block-editor.css";
 
+@import "./article.css";
 @import "./header.css";
 @import "./footer.css";
 
@@ -48,10 +49,11 @@ body {
   overflow-x: hidden;
 }
 
-.entry-content {
+main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #f0f0f0;
 }
 
 h1 {

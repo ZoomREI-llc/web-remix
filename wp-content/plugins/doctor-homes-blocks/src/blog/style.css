@@ -39,7 +39,7 @@
 	}
 }
 
-.post {
+.latest-post {
 	background-color: var(--primaryGray);
 	overflow: hidden;
 	display: flex;
@@ -47,7 +47,7 @@
 	transition: transform 0.3s ease;
 }
 
-.post:hover {
+.latest-post:hover {
 	transform: translateY(-8px);
 }
 

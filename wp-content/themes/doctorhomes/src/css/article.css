@@ -1,0 +1,9 @@
+article {
+  background-color: white;
+}
+
+.entry-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

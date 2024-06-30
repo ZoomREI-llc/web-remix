@@ -11,8 +11,8 @@ html,
 body {
   height: 100%;
   min-height: 100vh;
-  background-color: #f0f0f0;
   scroll-behavior: smooth;
+  margin: 0 auto;
 }
 
 img,
@@ -63,8 +63,4 @@ h5,
 h6,
 p {
   margin: 0;
-}
-
-.entry-title {
-  display: none;
 }
