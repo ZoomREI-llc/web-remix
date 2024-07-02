@@ -35,7 +35,7 @@
                     <img src="<?php echo wp_get_attachment_url(437); ?>" alt="Phone Icon" class="phone-icon">
                     <span>Call us on: (510) 945-3588</span>
                 </a>
-                <a href="#top" class="get-offer-button">
+                <a href="<?php echo get_offer_button_link(); ?>" class="get-offer-button">
                     Get My Offer
                 </a>
             </div>
@@ -53,7 +53,7 @@
                 'add_polygon'    => true,
             ));
             ?>
-            <a href="#" class="get-offer-button">
+            <a href="<?php echo get_offer_button_link(); ?>" class="get-offer-button">
                 Get My Offer <img src="<?php echo wp_get_attachment_url(412); ?>" alt="Get My Offer">
             </a>
         </div>

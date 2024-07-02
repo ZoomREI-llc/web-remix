@@ -9,6 +9,8 @@ doctor_homes_get_header(); ?>
         error_log('single.php - End rendering post ID: ' . get_the_ID());
     endwhile; // End of the loop.
     ?>
+    
+    <?php echo do_shortcode('[doctor_homes_blog]'); ?>
 </main>
 
 <?php

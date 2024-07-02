@@ -20,18 +20,31 @@ if (!defined('ABSPATH')) {
 
 function doctor_homes_blocks_doctor_homes_blocks_block_init()
 {
-	register_block_type(__DIR__ . '/build/hero');
-	register_block_type(__DIR__ . '/build/form');
-	register_block_type(__DIR__ . '/build/media');
-	register_block_type(__DIR__ . '/build/benefits');
-	// register_block_type(__DIR__ . '/build/benefits-dynamic');
-	register_block_type(__DIR__ . '/build/steps');
-	register_block_type(__DIR__ . '/build/forbes');
-	register_block_type(__DIR__ . '/build/comparison');
-	register_block_type(__DIR__ . '/build/testimonials');
-	register_block_type(__DIR__ . '/build/faqs');
-	register_block_type(__DIR__ . '/build/cta');
-	register_block_type(__DIR__ . '/build/blog');
+	$blocks = [
+		'hero',
+		'form',
+		'media',
+		'benefits',
+		'steps',
+		'forbes',
+		'comparison',
+		'testimonials',
+		'faqs',
+		'cta',
+		'blog',
+		'post-banner',
+	];
+
+	foreach ($blocks as $block) {
+		register_block_type(__DIR__ . "/build/$block");
+		add_shortcode("doctor_homes_$block", function ($atts) use ($block) {
+			$attributes = shortcode_atts([], $atts);
+			return render_block([
+				'blockName' => "doctor-homes/$block",
+				'attrs' => $attributes,
+			]);
+		});
+	}
 }
 
 add_action('init', 'doctor_homes_blocks_doctor_homes_blocks_block_init');

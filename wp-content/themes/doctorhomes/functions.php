@@ -10,6 +10,10 @@ function doctor_homes_enqueue_assets()
     wp_enqueue_script('interactivity-api', get_template_directory_uri() . '/src/js/script.js', array(), $script_version, true);
     wp_enqueue_script('doctor-homes-mobile-menu', get_template_directory_uri() . '/src/js/mobile-menu.js', array(), null, true);
 
+    if (is_single()) {
+        wp_enqueue_script('share-bar-js', get_template_directory_uri() . '/src/js/share-bar.js', array(), '1.0.0', true);
+    }
+
     wp_localize_script('interactivity-api', 'formConfig', array(
         'googleMapsApiKey' => GOOGLE_MAPS_API_KEY,
         'crmWebhookUrl' => CRM_WEBHOOK_URL,
@@ -125,7 +129,7 @@ function doctor_homes_template_include($template)
     // Log the current template and custom template path
     error_log('Current template: ' . $template);
 
-    // Specific check for single posts
+    // Specific checks for different template types
     if (is_single()) {
         $single_template = locate_template('templates/single.php');
         if ($single_template) {
@@ -136,7 +140,6 @@ function doctor_homes_template_include($template)
         }
     }
 
-    // Specific check for pages
     if (is_page()) {
         $page_template = locate_template('templates/page.php');
         if ($page_template) {
@@ -147,7 +150,67 @@ function doctor_homes_template_include($template)
         }
     }
 
-    // Create the path to the custom template in the 'templates' directory
+    if (is_author()) {
+        $author_template = locate_template('templates/author.php');
+        if ($author_template) {
+            error_log('Author template found: ' . $author_template);
+            return $author_template;
+        } else {
+            error_log('Author template not found');
+        }
+    }
+
+    if (is_category()) {
+        $category_template = locate_template('templates/category.php');
+        if ($category_template) {
+            error_log('Category template found: ' . $category_template);
+            return $category_template;
+        } else {
+            error_log('Category template not found');
+        }
+    }
+
+    if (is_tag()) {
+        $tag_template = locate_template('templates/tag.php');
+        if ($tag_template) {
+            error_log('Tag template found: ' . $tag_template);
+            return $tag_template;
+        } else {
+            error_log('Tag template not found');
+        }
+    }
+
+    if (is_archive()) {
+        $archive_template = locate_template('templates/archive.php');
+        if ($archive_template) {
+            error_log('Archive template found: ' . $archive_template);
+            return $archive_template;
+        } else {
+            error_log('Archive template not found');
+        }
+    }
+
+    if (is_search()) {
+        $search_template = locate_template('templates/search.php');
+        if ($search_template) {
+            error_log('Search template found: ' . $search_template);
+            return $search_template;
+        } else {
+            error_log('Search template not found');
+        }
+    }
+
+    if (is_404()) {
+        $error_template = locate_template('templates/404.php');
+        if ($error_template) {
+            error_log('404 template found: ' . $error_template);
+            return $error_template;
+        } else {
+            error_log('404 template not found');
+        }
+    }
+
+    // Default custom template path
     $custom_template_path = 'templates/' . $template_name;
     $custom_template = locate_template($custom_template_path);
 
@@ -164,3 +227,122 @@ function doctor_homes_template_include($template)
     return $template;
 }
 add_filter('template_include', 'doctor_homes_template_include');
+
+// Add custom user fields
+function add_custom_user_fields($user)
+{
+?>
+    <h3>Extra Profile Information</h3>
+    <table class="form-table">
+        <tr>
+            <th><label for="author_title">Author Title</label></th>
+            <td>
+                <input type="text" name="author_title" id="author_title" value="<?php echo esc_attr(get_the_author_meta('author_title', $user->ID)); ?>" class="regular-text" />
+            </td>
+        </tr>
+        <tr>
+            <th><label for="full_bio">Full Bio</label></th>
+            <td>
+                <textarea name="full_bio" id="full_bio" rows="5" cols="30"><?php echo esc_textarea(get_the_author_meta('full_bio', $user->ID)); ?></textarea>
+            </td>
+        </tr>
+    </table>
+<?php
+}
+add_action('show_user_profile', 'add_custom_user_fields');
+add_action('edit_user_profile', 'add_custom_user_fields');
+
+// Save custom user fields
+function save_custom_user_fields($user_id)
+{
+    if (!current_user_can('edit_user', $user_id)) {
+        return false;
+    }
+    update_user_meta($user_id, 'author_title', $_POST['author_title']);
+    update_user_meta($user_id, 'full_bio', $_POST['full_bio']);
+}
+add_action('personal_options_update', 'save_custom_user_fields');
+add_action('edit_user_profile_update', 'save_custom_user_fields');
+
+function get_breadcrumb()
+{
+    global $post;
+    $breadcrumb = '<nav class="breadcrumb">';
+    if (!is_home()) {
+        $breadcrumb .= '<a href="' . home_url() . '">Home</a> > ';
+        if (is_category() || is_single()) {
+            $breadcrumb .= '<a href="' . get_permalink(get_option('page_for_posts')) . '">Blog</a> > ';
+            if (is_single()) {
+                $categories = get_the_category();
+                if ($categories) {
+                    $category = $categories[0];
+                    $breadcrumb .= '<a href="' . get_category_link($category->term_id) . '">' . $category->name . '</a> > ';
+                }
+                $breadcrumb .= '<span>' . get_the_title() . '</span>';
+            }
+        } elseif (is_page()) {
+            if ($post->post_parent) {
+                $parent_id  = $post->post_parent;
+                $breadcrumbs = array();
+                while ($parent_id) {
+                    $page = get_page($parent_id);
+                    $breadcrumbs[] = '<a href="' . get_permalink($page->ID) . '">' . get_the_title($page->ID) . '</a>';
+                    $parent_id  = $page->post_parent;
+                }
+                $breadcrumbs = array_reverse($breadcrumbs);
+                foreach ($breadcrumbs as $crumb) $breadcrumb .= $crumb . ' > ';
+            }
+            $breadcrumb .= '<span>' . get_the_title() . '</span>';
+        }
+    }
+    $breadcrumb .= '</nav>';
+    return $breadcrumb;
+}
+
+function get_offer_button_link()
+{
+    if (is_front_page()) {
+        return '#top';
+    } else {
+        return home_url('/#top');
+    }
+}
+
+// // Remove category base
+// // Remove category base
+// function custom_remove_category_base()
+// {
+//     // Remove the category base from permalinks
+//     add_filter('category_rewrite_rules', 'custom_category_rewrite_rules');
+//     add_filter('request', 'custom_category_request');
+// }
+// add_action('init', 'custom_remove_category_base');
+
+// function custom_category_rewrite_rules($category_rewrite)
+// {
+//     $category_rewrite = array();
+//     $categories = get_categories(array('hide_empty' => false));
+//     foreach ($categories as $category) {
+//         $category_nicename = $category->slug;
+//         if ($category->parent == $category->cat_ID) {
+//             $category->parent = 0;
+//         } elseif ($category->parent != 0) {
+//             $category_nicename = get_category_parents($category->parent, false, '/', true) . $category_nicename;
+//         }
+//         $category_rewrite['blog/' . $category_nicename . '/?$'] = 'index.php?category_name=' . $category->slug;
+//         $category_rewrite['blog/' . $category_nicename . '/page/?([0-9]{1,})/?$'] = 'index.php?category_name=' . $category->slug . '&paged=$matches[1]';
+//         $category_rewrite['blog/' . $category_nicename . '/(.*)$'] = 'index.php?category_name=' . $category->slug . '&attachment=$matches[1]';
+//     }
+//     return $category_rewrite;
+// }
+
+// function custom_category_request($request)
+// {
+//     if (isset($request['category_name'])) {
+//         $category_name = explode('/', $request['category_name']);
+//         if (isset($category_name[1])) {
+//             $request['category_name'] = $category_name[1];
+//         }
+//     }
+//     return $request;
+// }

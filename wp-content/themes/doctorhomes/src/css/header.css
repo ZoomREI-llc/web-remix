@@ -179,10 +179,9 @@
   max-width: 5rem;
 }
 
-/* .logo a {
-  display: block;
-  max-width: 100%;
-} */
+.custom-logo {
+  max-height: 2.75rem;
+}
 
 @media (min-width: 1024px) {
   .logo {
@@ -196,8 +195,6 @@
     height: auto;
   }
 }
-
-
 
 @media (min-width: 1024px) {
   .mobile-menu-button {

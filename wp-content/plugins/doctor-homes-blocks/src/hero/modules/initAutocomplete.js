@@ -134,7 +134,7 @@ export function initAutocomplete() {
 		if (!isAddressValid || !autocompleteField.value) {
 			handleInvalidAddress(autocompleteField);
 			autocompleteField.setCustomValidity(
-				"Please use the autocomplete to enter a complete property address.",
+				"Please use autocomplete to enter a complete property address.",
 			); // Set custom validity message
 			autocompleteField.reportValidity(); // Trigger native validation UI
 			return;

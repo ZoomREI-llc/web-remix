@@ -10,7 +10,7 @@ $faqs = array(
     ),
     array(
         "question" => "How are you different from a real estate agent?",
-        "answer" => "Agents don’t buy your house; they list it, charge fees, and you deal with costs and showings.<br/>We’re cash buyers, directly purchasing your house or connecting you with others who do. Skip the agent hassle – get a quick offer and close on your timeline. We cover selling expenses."
+        "answer" => "Agents don’t buy your house; they list it, charge fees, and you deal with costs and showings.<br/>We’re cash buyers, directly purchasing your house or connecting you with others who do. Skip the agent hassle – get a quick offer and close on your timeline.<br/>We cover selling expenses."
     ),
     array(
         "question" => "Do I need to clean before I move out?",

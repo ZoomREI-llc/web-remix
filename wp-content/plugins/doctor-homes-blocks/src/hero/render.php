@@ -44,7 +44,7 @@ $a_plus_icon_url = wp_get_attachment_url($a_plus_icon_id);
         </div>
         <div class="hero__titles">
             <h1>Sell Your Home To Doctor Homes</h1>
-            <h3>Sell Your House Fast For Cash In Any Condition.</h3>
+            <h2>Sell Your House Fast For Cash In Any Condition.</h2>
         </div>
         <form id="lead-form" method="POST">
             <div class="address-wrapper">

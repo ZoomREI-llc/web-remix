@@ -272,7 +272,7 @@ function initAutocomplete() {
     event.preventDefault();
     if (!isAddressValid || !autocompleteField.value) {
       (0,_gsapAnimations__WEBPACK_IMPORTED_MODULE_2__.handleInvalidAddress)(autocompleteField);
-      autocompleteField.setCustomValidity("Please use the autocomplete to enter a complete property address."); // Set custom validity message
+      autocompleteField.setCustomValidity("Please use autocomplete to enter a complete property address."); // Set custom validity message
       autocompleteField.reportValidity(); // Trigger native validation UI
       return;
     }
