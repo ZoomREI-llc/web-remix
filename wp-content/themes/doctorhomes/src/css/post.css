@@ -133,14 +133,6 @@ article h2 {
   font-weight: 700;
 }
 
-.entry-header .share-bar__bottom--text {
-  display: none;
-}
-
-.entry-footer .share-bar__top--text {
-  display: none;
-}
-
 .share-bar {
   display: flex;
   align-items: center;
@@ -151,6 +143,16 @@ article h2 {
   font-size: 0.875rem;
   font-weight: 600;
   color: white;
+}
+
+.entry-footer .share-bar {
+  align-self: center;
+}
+
+@media (min-width: 1024px) {
+  .entry-footer .share-bar {
+    align-self: start;
+  }
 }
 
 .share-bar__content {
@@ -170,6 +172,14 @@ article h2 {
     width: 42.5rem;
     justify-content: space-between;
   }
+}
+
+.entry-header .share-bar__bottom--text {
+  display: none;
+}
+
+.entry-footer .share-bar__top--text {
+  display: none;
 }
 
 .share-icons {

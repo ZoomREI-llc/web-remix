@@ -141,6 +141,19 @@ function doctor_homes_template_include($template)
     }
 
     if (is_page()) {
+        global $post;
+        // Check if the page is the Privacy Policy or Terms of Use page
+        if ($post->ID == 3 || $post->ID == 507) {
+            $legal_template = locate_template('templates/legal.php');
+            if ($legal_template) {
+                error_log('Legal page template found: ' . $legal_template);
+                return $legal_template;
+            } else {
+                error_log('Legal page template not found');
+            }
+        }
+
+        // Check for other specific page templates
         $page_template = locate_template('templates/page.php');
         if ($page_template) {
             error_log('Page template found: ' . $page_template);

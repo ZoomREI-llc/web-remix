@@ -6,6 +6,7 @@
 @import "./footer.css";
 @import "./page.css";
 @import "./post.css";
+@import "./legal.css";
 
 :root {
   --primaryBlue1: #2b3849;
