@@ -93,3 +93,15 @@ p {
   font-weight: bold;
   color: white;
 }
+
+.wp-block-separator {
+  width: 10rem !important;
+  margin-bottom: 3.75rem;
+  background-color: var(--primaryBlue1);
+}
+
+@media (min-width: 1024px) {
+  .wp-block-separator {
+    display: none;
+  }
+}

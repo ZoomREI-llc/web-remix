@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "title": "DH Form",
   "category": "widgets",
-  "icon": "screenoptions",
+  "icon": "feedback",
   "description": "Form block built for the front-page.",
   "supports": {
     "html": false

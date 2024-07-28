@@ -321,6 +321,35 @@ function get_offer_button_link()
     }
 }
 
+// Register the REST route
+add_action('rest_api_init', function () {
+    register_rest_route('custom/v1', '/submit-form', array(
+        'methods' => 'POST',
+        'callback' => 'handle_form_submission',
+        'permission_callback' => '__return_true', // Allow public access
+    ));
+});
+
+// Define the form submission handler
+function handle_form_submission(WP_REST_Request $request)
+{
+    $form_data = $request->get_params();
+
+    $response = wp_remote_post(CRM_WEBHOOK_URL, array(
+        'body' => http_build_query($form_data),
+        'headers' => array(
+            'Content-Type' => 'application/x-www-form-urlencoded'
+        ),
+    ));
+
+    if (is_wp_error($response)) {
+        return new WP_REST_Response('Error sending data to webhook', 500);
+    }
+
+    return new WP_REST_Response('Form submitted successfully', 200);
+}
+
+
 // // Remove category base
 // // Remove category base
 // function custom_remove_category_base()

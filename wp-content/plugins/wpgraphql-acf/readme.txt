@@ -1,10 +1,10 @@
 === WPGraphQL for ACF ===
-Contributors: jasonbahl, wpgraphql
-Tags: GraphQL, ACF, API, NextJS, Faust, Headless, Decoupled, React, Vue, Svelte, JSON, REST
-Requires at least: 6.0
-Tested up to: 6.4
-Requires PHP: 7.4
-Stable Tag: 2.2.0
+Contributors: jasonbahl
+Tags: GraphQL, ACF, API, NextJS, Headless
+Requires at least: 5.9
+Tested up to: 6.5
+Requires PHP: 7.3
+Stable Tag: 2.4.1
 License: GPL-3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -104,6 +104,10 @@ Learn more about how [Appsero collects and uses data](https://appsero.com/privac
 
 == Upgrade Notice ==
 
+= 2.3.0 =
+
+This release refactored some internals regarding how Clone fields and Group fields behave. There was no intentional breaking changes to the Schema, but if you are using Clone and Group fields there is a chance that if you were benefiting from a "bug as a feature" there might be some changes that could impact your Schema and/or resolvers, we recommend testing this update on a staging site to ensure things are still working for you as expected. Should you run into any problems, please [open a new issue](https://github.com/wp-graphql/wpgraphql-acf/issues/new/choose) and provide as much detail as possible to help us reproduce the scenario. Thanks! 🙏
+
 = 2.1.0 =
 
 While fixing some [performance issues](https://github.com/wp-graphql/wpgraphql-acf/pull/152) we had to adjust the fallback logic for mapping ACF Field Groups to the Schema if they do not have "graphql_types" defined.
@@ -115,6 +119,35 @@ ACF Field Groups that did not have "graphql_types" defined AND were assigned to 
 This release is a complete re-architecture of WPGraphQL for ACF, introducing breaking changes to the GraphQL Schema and PHP API. Please read the [upgrade guide](https://acf.wpgraphql.com/upgrade-guide/) before upgrading.
 
 == Changelog ==
+
+= 2.4.1 =
+
+**Chores / Bugfixes**
+
+- chore: update "tested up to" and stable version tags.
+
+= 2.4.0 =
+
+**New Features**
+
+- [#211](https://github.com/wp-graphql/wpgraphql-acf/pull/211): feat: add wp-graphql as required plugin dependency. Thanks @stefanmomm!
+
+**Chores / Bugfixes**
+
+- [#224](https://github.com/wp-graphql/wpgraphql-acf/pull/224): chore: update issue templates config.yml to link to Discord instead of Slack
+- [#223](https://github.com/wp-graphql/wpgraphql-acf/pull/223): chore: update branding assets
+- [#214](https://github.com/wp-graphql/wpgraphql-acf/pull/214): chore: bump composer/composer from 2.7.4 to 2.7.7 in the composer group across 1 directory
+- [#231](https://github.com/wp-graphql/wpgraphql-acf/pull/231): fix: block type tests failing
+
+= 2.3.0 =
+
+**New Features**
+
+- [#193](https://github.com/wp-graphql/wpgraphql-acf/pull/193): feat: improved handling of clone and group fields
+
+**Chores / Bugfixes**
+
+- [#194](https://github.com/wp-graphql/wpgraphql-acf/pull/194): ci: test against WordPress 6.5
 
 = 2.2.0 =
 

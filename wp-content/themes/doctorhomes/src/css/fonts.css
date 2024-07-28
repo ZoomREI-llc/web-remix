@@ -38,3 +38,11 @@
   font-weight: normal;
   font-style: normal;
 }
+
+@font-face {
+  font-family: "Proxima Nova";
+  src: url("../src/fonts/ProximaNova/ProximaNova-LightIt.woff2") format("woff2"),
+    url("../src/fonts/ProximaNova/ProximaNova-LightIt.woff") format("woff");
+  font-weight: 300;
+  font-style: italic;
+}

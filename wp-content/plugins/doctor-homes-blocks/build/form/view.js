@@ -12,6 +12,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   handleFormSubmit: () => (/* binding */ handleFormSubmit)
 /* harmony export */ });
+window.addEventListener("load", event => {
+  const form = document.querySelector("#dh-lead-form");
+  if (form) {
+    form.style.opacity = "1";
+    form.addEventListener("submit", handleFormSubmit);
+  }
+});
 function handleFormSubmit(event) {
   event.preventDefault();
   const form = event.target;
@@ -33,10 +40,12 @@ function handleFormSubmit(event) {
     }
   });
   window.dataLayer.push({
-    event: "lead",
+    event: "dh-lead",
     form_data: formData
   });
-  fetch(formConfig.crmWebhookUrl, {
+  console.log("Submitting to WordPress endpoint");
+  console.log("Form data:", formData);
+  fetch("/wp-json/custom/v1/submit-form", {
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded"
@@ -48,7 +57,11 @@ function handleFormSubmit(event) {
     }
     return response.json();
   }).then(data => {
-    window.location.href = `/page-id-127?phone=${phoneField.value}&email=${emailField.value}&propaddress=${autocompleteField.value}&propcity=${city}&propstate=${stateLong}&propzip=${zipcode}&propcountry=USA`;
+    console.log("Response from WordPress endpoint:", data);
+    const city = ""; // Extract this from the form or another source
+    const stateLong = ""; // Extract this from the form or another source
+    const zipcode = ""; // Extract this from the form or another source
+    window.location.href = `/step-2?phone=${phoneField.value}&email=${emailField.value}&propaddress=${autocompleteField.value}&propcity=${city}&propstate=${stateLong}&propzip=${zipcode}&propcountry=USA`;
   }).catch(error => {
     console.error("Error sending data to webhook:", error);
   });
@@ -86,13 +99,20 @@ function hideInitialFields(fields) {
 // Show additional fields with animation
 function showAdditionalFields(form, fields, formBtnNext) {
   const initialHeight = form.offsetHeight;
+
+  // Temporarily hide the formBtnNext to calculate the correct new height
+  gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.set(formBtnNext, {
+    display: "none"
+  });
   fields.forEach(field => {
     const fieldContainer = field.closest("div");
     gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.set(fieldContainer, {
-      display: "block",
+      display: "grid",
       opacity: 0
     });
   });
+
+  // Calculate the new height after displaying the additional fields
   const newHeight = form.scrollHeight;
   const tl = gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.timeline();
   tl.to(form, {
@@ -104,10 +124,14 @@ function showAdditionalFields(form, fields, formBtnNext) {
     duration: 0.5,
     stagger: 0.2,
     ease: "power2.out"
-  }, "-=0.3");
+  }, "-=0.3").to(form, {
+    height: "auto",
+    // Set the height back to auto after the animation
+    duration: 0
+  });
   gsap__WEBPACK_IMPORTED_MODULE_0__.gsap.set(formBtnNext, {
     display: "none"
-  });
+  }); // Ensure the formBtnNext remains hidden
 }
 
 // Handle invalid address
@@ -149,7 +173,7 @@ __webpack_require__.r(__webpack_exports__);
 
 // Ensure initAutocomplete is globally accessible
 function initAutocomplete() {
-  const form = document.getElementById("lead-form");
+  const form = document.getElementById("dh-lead-form");
   if (!form) {
     console.error("Custom form not found.");
     return;
@@ -171,6 +195,13 @@ function initAutocomplete() {
 
   // Hide additional fields initially
   (0,_gsapAnimations__WEBPACK_IMPORTED_MODULE_2__.hideInitialFields)([fullNameField, emailField, phoneField, formSubmitBtn]);
+  let isAddressValid = false;
+
+  // Reset address validity on key strokes
+  autocompleteField.addEventListener("input", function () {
+    isAddressValid = false;
+    autocompleteField.setCustomValidity(""); // Reset custom validity message
+  });
 
   // Prevent form submission on "Enter" keypress until validation passes
   form.addEventListener("keypress", function (event) {
@@ -188,6 +219,8 @@ function initAutocomplete() {
     const place = autocomplete.getPlace();
     if (!place.geometry) {
       console.error("No geometry found for the place");
+      (0,_gsapAnimations__WEBPACK_IMPORTED_MODULE_2__.handleInvalidAddress)(autocompleteField);
+      isAddressValid = false;
       return;
     }
     let streetAddress = "",
@@ -196,11 +229,13 @@ function initAutocomplete() {
       stateLong = "",
       zipcode = "",
       country = "";
+    let hasStreetNumber = false;
     for (const component of place.address_components) {
       const componentType = component.types[0];
       switch (componentType) {
         case "street_number":
           streetAddress = component.long_name;
+          hasStreetNumber = true;
           break;
         case "route":
           streetAddress += " " + component.long_name;
@@ -222,15 +257,27 @@ function initAutocomplete() {
           break;
       }
     }
+    if (!hasStreetNumber) {
+      console.error("Selected place does not have a street number");
+      (0,_gsapAnimations__WEBPACK_IMPORTED_MODULE_2__.handleInvalidAddress)(autocompleteField);
+      isAddressValid = false;
+      return;
+    }
     autocompleteField.value = `${streetAddress}, ${city}, ${stateShort}, ${country}`;
     if (autocompleteField.value) {
       autocompleteField.classList.remove("invalid");
+      autocompleteField.placeholder = "Type Your Property Address";
+      (0,_gsapAnimations__WEBPACK_IMPORTED_MODULE_2__.resetBorderColor)(autocompleteField);
+      isAddressValid = true;
+      autocompleteField.setCustomValidity(""); // Clear any previous custom validity message
     }
   });
   formBtnNext.addEventListener("click", function (event) {
     event.preventDefault();
-    if (!autocompleteField.value) {
+    if (!isAddressValid || !autocompleteField.value) {
       (0,_gsapAnimations__WEBPACK_IMPORTED_MODULE_2__.handleInvalidAddress)(autocompleteField);
+      autocompleteField.setCustomValidity("Please use autocomplete to enter a complete property address."); // Set custom validity message
+      autocompleteField.reportValidity(); // Trigger native validation UI
       return;
     }
     autocompleteField.classList.remove("invalid");

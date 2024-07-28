@@ -105,8 +105,6 @@ class FieldConfig {
 			} elseif ( ! empty( $parent_group ) ) {
 				$type_name = $this->registry->get_field_group_graphql_type_name( $parent_group );
 				$type_name = $this->get_parent_graphql_type_name( $parent_group, $type_name );
-			} else {
-				$type_name = $this->get_parent_graphql_type_name( $acf_field, '' );
 			}
 		}
 
@@ -412,6 +410,11 @@ class FieldConfig {
 		}
 
 		// Else check if the values are being passed down via the name
+		if ( isset( $field_config['name'] ) && ! empty( $root[ '_' . $field_config['name'] ] ) ) {
+			return $this->prepare_acf_field_value( $root[ '_' . $field_config['name'] ], $node, $node_id, $field_config );
+		}
+
+		// Else check if the values are being passed down via the name
 		if ( isset( $field_config['name'] ) && ! empty( $root[ $field_config['name'] ] ) ) {
 			return $this->prepare_acf_field_value( $root[ $field_config['name'] ], $node, $node_id, $field_config );
 		}
@@ -433,7 +436,6 @@ class FieldConfig {
 			return $pre_value;
 		}
 
-		$parent_field      = null;
 		$parent_field_name = null;
 		if ( ! empty( $field_config['parent'] ) ) {
 			$parent_field = acf_get_field( $field_config['parent'] );
@@ -442,12 +444,19 @@ class FieldConfig {
 			}
 		}
 
-
 		// resolve block field
-		if ( is_array( $node ) && isset( $node['blockName'] ) && isset( $node['attrs'] ) ) {
-			$block    = acf_prepare_block( $node['attrs'] );
+		if ( is_array( $node ) && isset( $node['blockName'], $node['attrs'] ) ) {
+			$block = $node['attrs'];
+
+			// Ensure the block has an ID
+			if ( ! isset( $block['id'] ) ) {
+				$block['id'] = uniqid( 'block_', true );
+			}
+
+			$block    = acf_prepare_block( $block );
 			$block_id = acf_get_block_id( $node['attrs'] );
 			$block_id = acf_ensure_block_id_prefix( $block_id );
+
 			acf_setup_meta( $block['data'], $block_id, true );
 
 			$return_value = $this->get_field( $field_config['name'], $parent_field_name, $block_id, $should_format_value );
@@ -603,7 +612,9 @@ class FieldConfig {
 		}
 
 		// Register the connection to the Field Group Type
-		register_graphql_connection( $connection_config );
+		if ( defined( 'WPGRAPHQL_VERSION' ) && version_compare( WPGRAPHQL_VERSION, '1.23.0', '<=' ) ) {
+			register_graphql_connection( $connection_config );
+		}
 
 		// Register the connection to the Field Group Fields Interface
 		register_graphql_connection( array_merge( $connection_config, [ 'fromType' => $type_name . '_Fields' ] ) );

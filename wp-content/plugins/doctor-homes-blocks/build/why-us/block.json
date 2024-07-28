@@ -1,0 +1,79 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "doctor-homes/why-us",
+  "version": "0.1.0",
+  "title": "DH Why Choose Us",
+  "category": "widgets",
+  "icon": "admin-users",
+  "description": "Block to display reasons why clients should choose the service.",
+  "supports": {
+    "html": false
+  },
+  "textdomain": "doctor-homes-blocks",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "render": "file:./render.php",
+  "viewScript": "file:./view.js",
+  "attributes": {
+    "title": {
+      "type": "string",
+      "source": "html",
+      "selector": "h2",
+      "default": "Why Choose Us?"
+    },
+    "reasons": {
+      "type": "array",
+      "default": [
+        {
+          "id": 544,
+          "title": "People Who Want to Move Fast",
+          "description": "We specialize in helping individuals and families navigate lifestyle transitions. Whether you’re downsizing, upgrading, or moving for any reason, our fast and flexible home sales make it simple. Sell your house as is, with no repairs needed, and receive cash offers for houses. Enjoy a hassle-free process and a flexible timeline tailored to your needs.",
+          "uuid": "uuid-1"
+        },
+        {
+          "id": 545,
+          "title": "Property Challenges",
+          "description": "Are you a tired landlord, dealing with an inherited property, or managing a vacant home? We specialize in solving property challenges for absentee owners. Sell property fast for cash, without the need for repairs. Our process is designed to be quick and flexible, offering cash offers for houses and allowing you to sell your house as is. Enjoy a seamless experience and regain peace of mind.",
+          "uuid": "uuid-2"
+        },
+        {
+          "id": 447,
+          "title": "Life Changes",
+          "description": "Experiencing personal changes or career changes? Whether it's a medical reason, moving to senior living, divorce or an urgent job transfer - we are here to help. We offer a fast and easy process for selling your home online. Sell your house fast for cash, without the hassle of repairs. Our service is designed to make your transition smooth and stress-free, with cash offers and a flexible timeline.",
+          "uuid": "uuid-3"
+        },
+        {
+          "id": 541,
+          "title": "Financial Issues",
+          "description": "Dealing with debt, financial struggles, or unemployment? We help you sell your house fast for cash. If you're an elderly homeowner needing to liquidate assets or facing foreclosure, we offer an instant offer on home. Sell your home as is, with no repairs needed, and get cash quickly. Avoid legal issues and credit damage with our fast and easy home sale solutions.",
+          "uuid": "uuid-4"
+        },
+        {
+          "id": 443,
+          "title": "Damaged Properties",
+          "description": "Got a trashed house, fire damage, or a flooded basement? We help homeowners sell their properties in any condition fast. Learn the pros and cons of a cash offer on a house and how to sell a house as is. No need for repairs. We provide a quick and straightforward process to get cash for your damaged property, making it easy to move on without the hassle.",
+          "uuid": "uuid-5"
+        }
+      ],
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "uuid": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

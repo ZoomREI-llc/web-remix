@@ -38,21 +38,6 @@ $crossmark_icon_url = wp_get_attachment_url($crossmark_icon_id);
             </div>
         </div>
         <div class="comparison-row comparison-row--even">
-            <div class="comparison-column comparison-column--first"><span>Closing Costs</span></div>
-            <div class="comparison-column doctor-homes">
-                <div class="column__content">
-                    <img src="<?php echo esc_url($checkmark_icon_url); ?>" />
-                    <span>None - We pay them all</span>
-                </div>
-            </div>
-            <div class="comparison-column">
-                <div class="column__content">
-                    <img src="<?php echo esc_url($crossmark_icon_url); ?>" />
-                    <span>The seller (you) pays 2% on average</span>
-                </div>
-            </div>
-        </div>
-        <div class="comparison-row comparison-row--uneven">
             <div class="comparison-column comparison-column--first"><span>Inspections / Financing</span></div>
             <div class="comparison-column doctor-homes">
                 <div class="column__content">
@@ -67,7 +52,7 @@ $crossmark_icon_url = wp_get_attachment_url($crossmark_icon_id);
                 </div>
             </div>
         </div>
-        <div class="comparison-row comparison-row--even">
+        <div class="comparison-row comparison-row--uneven">
             <div class="comparison-column comparison-column--first"><span>Repairs</span></div>
             <div class="comparison-column doctor-homes">
                 <div class="column__content">
@@ -82,7 +67,7 @@ $crossmark_icon_url = wp_get_attachment_url($crossmark_icon_id);
                 </div>
             </div>
         </div>
-        <div class="comparison-row comparison-row--uneven">
+        <div class="comparison-row comparison-row--even">
             <div class="comparison-column comparison-column--first"><span>Average Days Until Sold</span></div>
             <div class="comparison-column doctor-homes">
                 <div class="column__content">
@@ -94,21 +79,6 @@ $crossmark_icon_url = wp_get_attachment_url($crossmark_icon_id);
                 <div class="column__content">
                     <img src="<?php echo esc_url($crossmark_icon_url); ?>" />
                     <span>91 days on average</span>
-                </div>
-            </div>
-        </div>
-        <div class="comparison-row comparison-row--even">
-            <div class="comparison-column comparison-column--first"><span>Number Of Showings</span></div>
-            <div class="comparison-column doctor-homes">
-                <div class="column__content">
-                    <img src="<?php echo esc_url($checkmark_icon_url); ?>" />
-                    <span>1 - Just us</span>
-                </div>
-            </div>
-            <div class="comparison-column">
-                <div class="column__content">
-                    <img src="<?php echo esc_url($crossmark_icon_url); ?>" />
-                    <span>No upper limit</span>
                 </div>
             </div>
         </div>
