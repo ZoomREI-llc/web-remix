@@ -23,6 +23,7 @@ function doctor_homes_blocks_doctor_homes_blocks_block_init()
 	$blocks = [
 		'hero',
 		'sell-fast-hero',
+		'how-it-works-hero',
 		'form',
 		'media',
 		'benefits',
@@ -30,6 +31,7 @@ function doctor_homes_blocks_doctor_homes_blocks_block_init()
 		'steps',
 		'sell-fast-steps',
 		'why-us',
+		'how-it-works-why-us',
 		'forbes',
 		'comparison',
 		'sell-fast-comparison',
@@ -37,6 +39,7 @@ function doctor_homes_blocks_doctor_homes_blocks_block_init()
 		'sell-fast-testimonials',
 		'faqs',
 		'sell-fast-faqs',
+		'how-it-works-faqs',
 		'cta',
 		'blog',
 		'post-banner',

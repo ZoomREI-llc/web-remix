@@ -1,0 +1,68 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "doctor-homes/how-it-works-why-us",
+	"version": "0.1.0",
+	"title": "How It Works Why Choose Us",
+	"category": "widgets",
+	"icon": "admin-users",
+	"description": "Block to display reasons why clients should choose the service.",
+	"supports": {
+		"html": false
+	},
+	"textdomain": "doctor-homes-blocks",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php",
+	"viewScript": "file:./view.js",
+	"attributes": {
+		"title": {
+			"type": "string",
+			"source": "html",
+			"selector": "h2",
+			"default": "Doctor Homes Makes It Easy To Sell Your House Fast And Get Cash Offers For Houses Quickly"
+		},
+		"reasons": {
+			"type": "array",
+			"default": [
+				{
+					"id": 568,
+					"title": "Contact us and get a cash offer in just 7 minutes",
+					"description": "Start by connecting with us in the way that suits you best. You can fill out our online form or give us a call. We understand that each homeowner has unique needs, and we’re here to accommodate them.<br><br>Within 7 minutes or less, you'll receive a quick cash offer on your house. Our process is designed to be fast and hassle-free. We buy homes as-is, in any condition, so there’s no need for repairs or cleaning. Sell your house fast for cash with Doctor Homes.",
+					"uuid": "uuid-1"
+				},
+				{
+					"id": 565,
+					"title": "We manage all the details, so you don’t need to lift a finger!",
+					"description": "We will conduct an assessment of your property, evaluating its condition and finalizing a competitive cash offer for you to consider. Once you accept our cash offer, we assign you a dedicated transaction coordinator who will guide you through every step of the process. Our coordinator will assist with any documentation, ensuring that all the paperwork is handled smoothly and efficiently, saving you the hassle.<br><br>From start to finish, we handle every detail. You can sit back and relax, knowing that we’ve got everything covered.",
+					"uuid": "uuid-2"
+				},
+				{
+					"id": 564,
+					"title": "Cash Out on Your Home - You can close whenever you want",
+					"description": "We understand that every homeowner's situation is unique, which is why we offer a flexible timeline to close the sale. You choose the closing date that works best for you, and we adjust to your needs.<br><br>Whether you need to close in a few days or prefer to wait a bit longer, we accommodate your schedule. Our goal is to provide you with the convenience and peace of mind you deserve. Once everything is finalized, you’ll receive your payment promptly by wireless deposit or check, ensuring you get your money without delays or dependencies on loans or funding.",
+					"uuid": "uuid-3"
+				}
+			],
+
+			"items": {
+				"type": "object",
+				"properties": {
+					"id": {
+						"type": "number"
+					},
+					"title": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"uuid": {
+						"type": "string"
+					}
+				}
+			}
+		}
+	}
+}

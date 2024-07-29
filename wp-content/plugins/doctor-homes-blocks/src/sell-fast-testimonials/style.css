@@ -1,7 +1,9 @@
-.testimonial-carousel-wrapper {
+.sf-testimonial-carousel-wrapper {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	background-color: white;
+	padding-block: 2rem;
 	padding-inline: 1.25rem;
 	gap: 2rem;
 	margin-bottom: 3.75rem;
@@ -10,10 +12,11 @@
 }
 
 @media (min-width: 1024px) {
-	.testimonial-carousel-wrapper {
+	.sf-testimonial-carousel-wrapper {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
 		padding-inline: 6.25rem;
+		padding-block: 5.5rem;
 		margin-bottom: 4.5rem;
 	}
 }
@@ -46,14 +49,14 @@
 	overflow: hidden;
 	position: relative;
 	width: 100%;
-	padding: 8.5rem 0 1rem 0;
+	padding: 6.5rem 0 1rem 0;
 }
 
 @media (min-width: 1024px) {
 	.carousel-container {
 		grid-column: 2 / 4;
 		grid-row: span 2;
-		padding: 8.5rem 0 1.5rem 0;
+		padding: 5.8rem 0 1.5rem 0;
 	}
 }
 
@@ -87,24 +90,24 @@
 	color: white;
 }
 
-.testimonial-image-wrapper {
+.sf-testimonial-image-wrapper {
 	position: absolute;
 	top: -25%;
 	left: 50%;
 	transform: translateX(-50%);
 	border-radius: 50%;
-	background-color: #f0f0f0;
+	background-color: white;
 	padding: 0.5rem;
 	overflow: hidden;
 	width: 12rem;
 	height: 12rem;
 }
 
-.testimonial-image-border {
+.sf-testimonial-image-border {
 	position: relative;
 	border-radius: 50%;
 	padding: 0.5rem;
-	background-color: #f0f0f0;
+	background-color: white;
 	overflow: hidden;
 	width: 100%;
 	height: 100%;

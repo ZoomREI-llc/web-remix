@@ -46,14 +46,14 @@
 	overflow: hidden;
 	position: relative;
 	width: 100%;
-	padding: 8.5rem 0 1rem 0;
+	padding: 6.5rem 0 1rem 0;
 }
 
 @media (min-width: 1024px) {
 	.carousel-container {
 		grid-column: 2 / 4;
 		grid-row: span 2;
-		padding: 8.5rem 0 1.5rem 0;
+		padding: 5.8rem 0 1.5rem 0;
 	}
 }
 

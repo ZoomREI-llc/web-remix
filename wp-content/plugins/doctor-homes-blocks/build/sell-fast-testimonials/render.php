@@ -40,7 +40,7 @@ $testimonials = [
 ];
 ?>
 
-<section class="testimonial-carousel-wrapper">
+<section class="sf-testimonial-carousel-wrapper">
     <div class="testimonial-carousel-text">
         <h2>Real Customer Testimonials</h2>
         <p>Fast sales, helpful & professional, zero hassle.
@@ -50,8 +50,8 @@ $testimonials = [
         <div class="testimonial-carousel">
             <?php foreach ($testimonials as $index => $testimonial) : ?>
                 <div class="testimonial">
-                    <div class="testimonial-image-wrapper">
-                        <div class="testimonial-image-border">
+                    <div class="sf-testimonial-image-wrapper">
+                        <div class="sf-testimonial-image-border">
                             <img src="<?php echo esc_url($testimonial['image']); ?>" alt="<?php echo esc_attr($testimonial['name']); ?>" class="testimonial__image">
                         </div>
                     </div>

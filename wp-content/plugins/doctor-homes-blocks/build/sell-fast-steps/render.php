@@ -5,7 +5,7 @@ $time_logo_url = wp_get_attachment_url($time_logo_id);
 $document_logo_id = 450;
 $document_logo_url = wp_get_attachment_url($document_logo_id);
 
-$paid_logo_id = 452;
+$paid_logo_id = 563;
 $paid_logo_url = wp_get_attachment_url($paid_logo_id);
 ?>
 
