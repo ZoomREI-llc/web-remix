@@ -1,0 +1,21 @@
+.our-story {
+	padding-inline: 1rem;
+	text-align: left;
+	margin-bottom: 6.25rem;
+	max-width: 77.5rem;
+}
+
+@media (min-width: 1024px) {
+	.our-story {
+		padding-inline: 6.25rem;
+	}
+}
+
+.our-story h2 {
+	color: var(--primaryBlue2);
+	margin-bottom: 2.5rem;
+}
+
+.our-story p:has(+ p) {
+	margin-bottom: 2em;
+}
