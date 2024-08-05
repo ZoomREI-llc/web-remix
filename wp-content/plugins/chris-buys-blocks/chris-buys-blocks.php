@@ -28,8 +28,8 @@ if (!defined('ABSPATH')) {
 function chris_buys_blocks_chris_buys_blocks_block_init()
 {
 	$blocks = [
-		'full-form',
-		'2step-form',
+		// 'full-form',
+		// '2step-form',
 	];
 
 	foreach ($blocks as $block) {
