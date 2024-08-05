@@ -83,6 +83,24 @@
 	}
 }
 
+.about-us-hero__heading {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 1rem;
+}
+
+.about-us-hero__about,
+.about-us-hero__doctor-homes {
+	white-space: nowrap;
+}
+
+@media (max-width: 40.5rem) {
+	.about-us-hero__heading {
+		flex-direction: column;
+	}
+}
+
 .about-us-hero__content h1 {
 	position: relative;
 	font-size: 2.75rem;

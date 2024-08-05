@@ -23,7 +23,10 @@ $mobile_text_vector_url = wp_get_attachment_url($mobile_text_vector_id);
     <div class="about-us-hero__content">
         <div class="about-us-hero__text">
             <div class="about-us-hero__heading-wrapper">
-                <h1>About Doctor Homes</h1>
+                <h1 class="about-us-hero__heading">
+                    <span class="about-us-hero__about">About</span>
+                    <span class="about-us-hero__doctor">Doctor Homes</span>
+                </h1>
             </div>
             <h2>Simplifying Home Sales with Fast, Stress-Free Solutions.</h2>
         </div>
