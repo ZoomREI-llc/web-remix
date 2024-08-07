@@ -38,7 +38,7 @@ $a_plus_icon_url = wp_get_attachment_url($a_plus_icon_id);
             and Sell Your House as is</h2>
         <p>Selling your home can be stressful and time-consuming.</br>
             We make it fast and hassle-free. At Doctor Homes, we buy houses in any condition, offering you a fair cash offer with no fees, no commissions, and no repairs needed.</p>
-        <?php echo do_shortcode('[doctor_homes_form]'); ?>
+        <?php echo do_shortcode('[doctor_homes_lead-form]'); ?>
         <!-- [gravityform id="1" title="false"] -->
         <div class="sf-hero__trust-icons">
             <img class="dh-hero__trust-icon" src="<?php echo esc_url($google_icon_url); ?>" alt="">
