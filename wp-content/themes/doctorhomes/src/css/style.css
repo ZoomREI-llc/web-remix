@@ -85,6 +85,13 @@ p {
   line-height: var(--line-height-p);
 }
 
+.sub-menu {
+  display: none;
+}
+.sub-menu.visible {
+  display: block;
+}
+
 .btn {
   padding: 1.25rem 3.75rem;
   background-color: var(--secondaryYellow);
