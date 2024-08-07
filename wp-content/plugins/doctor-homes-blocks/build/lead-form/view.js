@@ -28,7 +28,7 @@ function handleFormSubmit(event) {
   const phoneField = form.querySelector('input[name="phone"]');
   const formData = {
     property_address: autocompleteField.value,
-    full_name: fullNameField.value,
+    name: fullNameField.value,
     email: emailField.value,
     phone: phoneField.value
   };
@@ -263,7 +263,7 @@ function initAutocomplete() {
       isAddressValid = false;
       return;
     }
-    autocompleteField.value = `${streetAddress}, ${city}, ${stateShort}, ${country}`;
+    autocompleteField.value = `${streetAddress}, ${city}, ${stateShort}, ${zipcode}`;
     if (autocompleteField.value) {
       autocompleteField.classList.remove("invalid");
       autocompleteField.placeholder = "Type Your Property Address";
@@ -366,11 +366,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   loadScript: () => (/* binding */ loadScript)
 /* harmony export */ });
 function loadScript(src) {
+  console.log("Appending script:", src);
   const script = document.createElement("script");
   script.type = "text/javascript";
   script.src = src;
   script.async = true;
   script.defer = true;
+  script.onload = function () {
+    console.log("Google Maps API script loaded.");
+  };
   document.head.appendChild(script);
 }
 
@@ -6651,14 +6655,39 @@ __webpack_require__.r(__webpack_exports__);
 
 // Ensure initAutocomplete is globally accessible
 window.initAutocomplete = _modules_initAutocomplete__WEBPACK_IMPORTED_MODULE_1__.initAutocomplete;
+
+// Use a global flag to prevent multiple loads
+window.googleMapsApiLoading = window.googleMapsApiLoading || false;
+function pollForGoogleMaps(callback, interval = 50, maxAttempts = 20) {
+  let attempts = 0;
+  const poll = setInterval(() => {
+    attempts++;
+    console.log(`Polling for window.google: attempt ${attempts}`);
+    if (window.google && window.google.maps) {
+      clearInterval(poll);
+      console.log("Google Maps API is available");
+      callback();
+    } else if (attempts >= maxAttempts) {
+      clearInterval(poll);
+      console.error("Google Maps API is not available after polling");
+    }
+  }, interval);
+}
+function checkGoogleMapsApi() {
+  console.log("Checking for window.google:", !!window.google);
+  if (window.google && window.google.maps) {
+    console.log("Google Maps API already loaded");
+    (0,_modules_initAutocomplete__WEBPACK_IMPORTED_MODULE_1__.initAutocomplete)();
+  } else if (!window.googleMapsApiLoading) {
+    console.log("Loading Google Maps API");
+    window.googleMapsApiLoading = true; // Set the flag to indicate loading in progress
+    (0,_modules_utils__WEBPACK_IMPORTED_MODULE_0__.loadScript)(`https://maps.googleapis.com/maps/api/js?key=${formConfig.googleMapsApiKey}&libraries=places&callback=initAutocomplete`);
+    pollForGoogleMaps(_modules_initAutocomplete__WEBPACK_IMPORTED_MODULE_1__.initAutocomplete); // Start polling for Google Maps API availability
+  }
+}
 document.addEventListener("DOMContentLoaded", function () {
   console.log("DOM fully loaded and parsed.");
-  // Load Google Maps API only if not already loaded
-  if (!window.google || !window.google.maps) {
-    (0,_modules_utils__WEBPACK_IMPORTED_MODULE_0__.loadScript)(`https://maps.googleapis.com/maps/api/js?key=${formConfig.googleMapsApiKey}&libraries=places&callback=initAutocomplete`);
-  } else {
-    window.initAutocomplete();
-  }
+  checkGoogleMapsApi();
 });
 /******/ })()
 ;

@@ -42,12 +42,12 @@ $airplane_icon_url = wp_get_attachment_url($airplane_icon_id);
         </div>
         <form id="contact-form" method="POST">
             <fieldset class="contact-form__input">
-                <label class="required-label" for="first_name">First Name</label>
-                <input type="text" name="first_name" required>
+                <label class="required-label" for="address">Your Address</label>
+                <input type="text" name="address" required>
             </fieldset>
             <fieldset class="contact-form__input">
-                <label class="required-label" for="last_name">Last Name</label>
-                <input type="text" name="last_name" required>
+                <label class="required-label" for="full_name">Full Name</label>
+                <input type="text" name="full_name" required>
             </fieldset>
             <fieldset class="contact-form__input">
                 <label class="required-label" for="email">Email</label>

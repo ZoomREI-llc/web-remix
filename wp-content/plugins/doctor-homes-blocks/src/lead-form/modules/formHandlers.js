@@ -19,7 +19,7 @@ export function handleFormSubmit(event) {
 
 	const formData = {
 		property_address: autocompleteField.value,
-		full_name: fullNameField.value,
+		name: fullNameField.value,
 		email: emailField.value,
 		phone: phoneField.value,
 	};

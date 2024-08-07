@@ -119,7 +119,7 @@ export function initAutocomplete() {
 			return;
 		}
 
-		autocompleteField.value = `${streetAddress}, ${city}, ${stateShort}, ${country}`;
+		autocompleteField.value = `${streetAddress}, ${city}, ${stateShort}, ${zipcode}`;
 		if (autocompleteField.value) {
 			autocompleteField.classList.remove("invalid");
 			autocompleteField.placeholder = "Type Your Property Address";
