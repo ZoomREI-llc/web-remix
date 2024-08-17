@@ -55,7 +55,7 @@ jobs:
         run: |
           ssh rootadmin@${{ secrets.STG_SERVER_IP }} <<EOF
           mysql -u${{ secrets.STG_DB_USER }} -p${{ secrets.STG_DB_PASSWORD }} ${{ secrets.STG_DB_NAME }} -e "UPDATE wp_options SET option_value = 'stage/Doctor Homes' WHERE option_name = 'blogname';"
-          mysql -u${{ secrets.STG_DB_USER }} -p${{ secrets.STG_DB_PASSWORD }} ${{ secrets.STG_DB_NAME }} -e "UPDATE wp_options SET option_value = 'https://remix.chrisbuyshomes.com' WHERE option_name = 'siteurl';"
+          mysql -u${{ secrets.STG_DB_USER }} -p${{ secrets.STG_DB_PASSWORD }} ${{ secrets.STG_DB_NAME }} -e "UPDATE wp_options SET option_value = 'https://doctorhomes.com' WHERE option_name = 'siteurl';"
           mysql -u${{ secrets.STG_DB_USER }} -p${{ secrets.STG_DB_PASSWORD }} ${{ secrets.STG_DB_NAME }} -e "UPDATE wp_options SET option_value = 'https://remix.chrisbuyshomes.com' WHERE option_name = 'home';"
           mysql -u${{ secrets.STG_DB_USER }} -p${{ secrets.STG_DB_PASSWORD }} ${{ secrets.STG_DB_NAME }} -e "UPDATE wp_posts SET guid = REPLACE(guid, 'https://zoomrei.dev', 'https://remix.chrisbuyshomes.com');"
           mysql -u${{ secrets.STG_DB_USER }} -p${{ secrets.STG_DB_PASSWORD }} ${{ secrets.STG_DB_NAME }} -e "UPDATE wp_posts SET post_content = REPLACE(post_content, 'https://zoomrei.dev', 'https://remix.chrisbuyshomes.com');"
