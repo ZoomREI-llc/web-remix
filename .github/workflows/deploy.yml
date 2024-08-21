@@ -46,15 +46,14 @@ jobs:
         run: |
           ssh rootadmin@${{ secrets.STG_SERVER_IP }} "mysql -u${{ secrets.PROD_DB_USER }} -p'${{ secrets.PROD_DB_PASSWORD }}' ${{ secrets.PROD_DB_NAME }} < /home/rootadmin/public_html/prod.chrisbuyshomes.com/backup.sql"
 
-          
-      # - name: Update WordPress site title and URLs
-      #   run: |
-      #     ssh rootadmin@${{ secrets.STG_SERVER_IP }} <<EOF
-      #     mysql -u${{ secrets.PROD_DB_USER }} -p${{ secrets.PROD_DB_PASSWORD }} ${{ secrets.PROD_DB_NAME }} -e "UPDATE wp_options SET option_value = 'stage/Doctor Homes' WHERE option_name = 'blogname';"
-      #     mysql -u${{ secrets.PROD_DB_USER }} -p${{ secrets.PROD_DB_PASSWORD }} ${{ secrets.PROD_DB_NAME }} -e "UPDATE wp_options SET option_value = 'https://doctorhomes.com' WHERE option_name = 'siteurl';"
-      #     mysql -u${{ secrets.PROD_DB_USER }} -p${{ secrets.PROD_DB_PASSWORD }} ${{ secrets.PROD_DB_NAME }} -e "UPDATE wp_options SET option_value = 'https://doctorhomes.com' WHERE option_name = 'home';"
-      #     mysql -u${{ secrets.PROD_DB_USER }} -p${{ secrets.PROD_DB_PASSWORD }} ${{ secrets.PROD_DB_NAME }} -e "UPDATE wp_posts SET guid = REPLACE(guid, 'https://zoomrei.dev', 'https://doctorhomes.com');"
-      #     mysql -u${{ secrets.PROD_DB_USER }} -p${{ secrets.PROD_DB_PASSWORD }} ${{ secrets.PROD_DB_NAME }} -e "UPDATE wp_posts SET post_content = REPLACE(post_content, 'https://zoomrei.dev', 'https://doctorhomes.com');"
-      #     mysql -u${{ secrets.PROD_DB_USER }} -p${{ secrets.PROD_DB_PASSWORD }} ${{ secrets.PROD_DB_NAME }} -e "UPDATE wp_postmeta SET meta_value = REPLACE(meta_value, 'https://zoomrei.dev', 'https://doctorhomes.com');"
-      #     EOF
-      #   shell: bash
+      - name: Update WordPress site title and URLs
+        run: |
+          ssh rootadmin@${{ secrets.STG_SERVER_IP }} <<EOF
+          mysql -u${{ secrets.PROD_DB_USER }} -p${{ secrets.PROD_DB_PASSWORD }} ${{ secrets.PROD_DB_NAME }} -e "UPDATE wp_options SET option_value = 'Doctor Homes' WHERE option_name = 'blogname';"
+          mysql -u${{ secrets.PROD_DB_USER }} -p${{ secrets.PROD_DB_PASSWORD }} ${{ secrets.PROD_DB_NAME }} -e "UPDATE wp_options SET option_value = 'https://prod.chrisbuyshomes.com' WHERE option_name = 'siteurl';"
+          mysql -u${{ secrets.PROD_DB_USER }} -p${{ secrets.PROD_DB_PASSWORD }} ${{ secrets.PROD_DB_NAME }} -e "UPDATE wp_options SET option_value = 'https://prod.chrisbuyshomes.com' WHERE option_name = 'home';"
+          mysql -u${{ secrets.PROD_DB_USER }} -p${{ secrets.PROD_DB_PASSWORD }} ${{ secrets.PROD_DB_NAME }} -e "UPDATE wp_posts SET guid = REPLACE(guid, 'https://zoomrei.dev', 'https://prod.chrisbuyshomes.com');"
+          mysql -u${{ secrets.PROD_DB_USER }} -p${{ secrets.PROD_DB_PASSWORD }} ${{ secrets.PROD_DB_NAME }} -e "UPDATE wp_posts SET post_content = REPLACE(post_content, 'https://zoomrei.dev', 'https://prod.chrisbuyshomes.com');"
+          mysql -u${{ secrets.PROD_DB_USER }} -p${{ secrets.PROD_DB_PASSWORD }} ${{ secrets.PROD_DB_NAME }} -e "UPDATE wp_postmeta SET meta_value = REPLACE(meta_value, 'https://zoomrei.dev', 'https://prod.chrisbuyshomes.com');"
+          EOF
+        shell: bash
