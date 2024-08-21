@@ -44,7 +44,7 @@ jobs:
 
       - name: Import SQL dump
         run: |
-          ssh rootadmin@${{ secrets.STG_SERVER_IP }} "mysql -u${{ secrets.PROD_DB_USER }} -p'${{ secrets.PROD_DB_PASSWORD }}' ${{ secrets.PROD_DB_NAME }} < /home/rootadmin/backup.sql"
+          ssh rootadmin@${{ secrets.STG_SERVER_IP }} "mysql -u${{ secrets.PROD_DB_USER }} -p'${{ secrets.PROD_DB_PASSWORD }}' ${{ secrets.PROD_DB_NAME }} < /home/rootadmin/public_html/prod.chrisbuyshomes.com/backup.sql"
 
       # - name: Update WordPress site title and URLs
       #   run: |
