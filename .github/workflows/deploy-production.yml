@@ -40,4 +40,6 @@ jobs:
         run: |
           ssh rootadmin@${{ secrets.SERVER_IP }} "wp option update blogname 'Doctor Homes' --path=/home/rootadmin/public_html/prod.chrisbuyshomes.com"
 
-          
+      - name: Run Database Migrations in Production
+        run: |
+          ssh rootadmin@${{ secrets.SERVER_IP }} "wp core update-db --path=/home/rootadmin/public_html/prod.chrisbuyshomes.com"
