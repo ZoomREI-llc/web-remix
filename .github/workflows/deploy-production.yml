@@ -39,3 +39,5 @@ jobs:
       - name: Set Site Title (blogname) in Production
         run: |
           ssh rootadmin@${{ secrets.SERVER_IP }} "wp option update blogname 'Doctor Homes' --path=/home/rootadmin/public_html/prod.chrisbuyshomes.com"
+
+          
