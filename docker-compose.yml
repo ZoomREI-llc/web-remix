@@ -1,22 +1,25 @@
 services:
   db:
     image: mariadb:10.6.18
-    container_name: zoomrei_db
+    container_name: ${ENV_NAME}_db
     volumes:
-      - db_data:/var/lib/mysql
+      - db_data_${ENV_NAME}:/var/lib/mysql
       - ./db/backup:/db_backup
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
       MYSQL_DATABASE: ${DB_NAME}
       MYSQL_USER: ${DB_USER}
       MYSQL_PASSWORD: ${DB_PASSWORD}
+    networks:
+      - doctorhomes_network
 
   wordpress:
     image: wordpress:6.6.1-fpm
-    container_name: zoomrei_wordpress
+    container_name: ${ENV_NAME}_wordpress
     volumes:
-      - wordpress_data:/var/www/html
+      - wordpress_data_${ENV_NAME}:/var/www/html
       - ./wp-content:/var/www/html/wp-content
+      - ./php.ini:/usr/local/etc/php/conf.d/custom-php.ini
     environment:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_NAME: ${DB_NAME}
@@ -29,27 +32,31 @@ services:
       CRM_WEBHOOK_URL: ${CRM_WEBHOOK_URL}
     depends_on:
       - db
+    networks:
+      - doctorhomes_network
 
   nginx:
     image: nginx:latest
-    container_name: zoomrei_nginx
+    container_name: ${ENV_NAME}_nginx
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d
       - ./nginx/snippets:/etc/nginx/snippets
       - ./ssl:/etc/ssl
-      - wordpress_data:/var/www/html
+      - wordpress_data_${ENV_NAME}:/var/www/html
       - ./wp-content:/var/www/html/wp-content
     ports:
-      - "80:80"
-      - "443:443"
+      - "${NGINX_PORT_HTTP:-80}:80"
+      - "${NGINX_PORT_HTTPS:-443}:443"
     depends_on:
       - wordpress
+    networks:
+      - doctorhomes_network
 
   wp-cli:
     image: wordpress:cli
-    container_name: zoomrei_wp_cli
+    container_name: ${ENV_NAME}_wp_cli
     volumes:
-      - wordpress_data:/var/www/html
+      - wordpress_data_${ENV_NAME}:/var/www/html
       - ./wp-content:/var/www/html/wp-content
       - ./db/backup:/db_backup
     entrypoint: [ "sh", "-c", "while :; do sleep 2073600; done" ]
@@ -60,7 +67,14 @@ services:
       WORDPRESS_DB_NAME: ${DB_NAME}
       WORDPRESS_DB_USER: ${DB_USER}
       WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}
+    networks:
+      - doctorhomes_network
 
 volumes:
-  db_data:
-  wordpress_data:
+  db_data_doctorhomes:
+  wordpress_data_doctorhomes:
+
+
+networks:
+  doctorhomes_network:
+    driver: bridge
