@@ -15,10 +15,10 @@ function doctor_homes_enqueue_assets()
         wp_enqueue_script('share-bar-js', get_template_directory_uri() . '/src/js/share-bar.js', array(), '1.0.0', true);
     }
 
-    wp_localize_script('interactivity-api', 'formConfig', array(
-        'googleMapsApiKey' => GOOGLE_MAPS_API_KEY,
-        'crmWebhookUrl' => CRM_WEBHOOK_URL,
-    ));
+//    wp_localize_script('interactivity-api', 'formConfig', array(
+//        'googleMapsApiKey' => GOOGLE_MAPS_API_KEY,
+//        'crmWebhookUrl' => CRM_WEBHOOK_URL,
+//    ));
 }
 add_action('wp_enqueue_scripts', 'doctor_homes_enqueue_assets');
 
@@ -54,23 +54,23 @@ function doctor_homes_register_menus()
 add_action('init', 'doctor_homes_register_menus');
 
 // Custom Mobile Navigation Walker
-class Mobile_Walker_Nav_Menu extends Walker_Nav_Menu
-{
-    public function start_el(&$output, $item, $depth = 0, $args = array(), $id = 0)
-    {
-        $polygon_icon_url = wp_get_attachment_url(406);
-        $output .= '<li class="menu-item menu-item-' . $item->ID . '">';
-        $output .= '<div class="menu-item-title"><a href="' . esc_url($item->url) . '">' . esc_html($item->title) . '</a>';
-        if (in_array('menu-item-has-children', $item->classes)) {
-            $output .= '<img class="polygon-icon" src="' . $polygon_icon_url . '"></div>';
-        }
-    }
-
-    public function end_el(&$output, $item, $depth = 0, $args = array())
-    {
-        $output .= "</li>\n";
-    }
-}
+//class Mobile_Walker_Nav_Menu extends Walker_Nav_Menu
+//{
+//    public function start_el(&$output, $item, $depth = 0, $args = array(), $id = 0)
+//    {
+//        $polygon_icon_url = wp_get_attachment_url(406);
+//        $output .= '<li class="menu-item menu-item-' . $item->ID . '">';
+//        $output .= '<div class="menu-item-title"><a href="' . esc_url($item->url) . '">' . esc_html($item->title) . '</a>';
+//        if (in_array('menu-item-has-children', $item->classes)) {
+//            $output .= '<img class="polygon-icon" src="' . $polygon_icon_url . '"></div>';
+//        }
+//    }
+//
+//    public function end_el(&$output, $item, $depth = 0, $args = array())
+//    {
+//        $output .= "</li>\n";
+//    }
+//}
 
 // Template Part Loading Function
 function doctor_homes_get_template_part($slug, $name = null)

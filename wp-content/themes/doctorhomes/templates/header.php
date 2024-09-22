@@ -60,13 +60,13 @@
                 <img src="<?php echo wp_get_attachment_url(432); ?>" alt="Close Mobile Navigation Menu">
             </button>
             <?php
-            wp_nav_menu(array(
-                'theme_location' => 'primary-menu',
-                'container'      => '',
-                'menu_class'     => 'mobile-nav-menu',
-                'walker'         => new Mobile_Walker_Nav_Menu(),
-                'add_polygon'    => true,
-            ));
+//            wp_nav_menu(array(
+//                'theme_location' => 'primary-menu',
+//                'container'      => '',
+//                'menu_class'     => 'mobile-nav-menu',
+//                'walker'         => new Mobile_Walker_Nav_Menu(),
+//                'add_polygon'    => true,
+//            ));
             ?>
             <a href="<?php echo get_offer_button_link(); ?>" class="get-offer-button">
                 Get My Offer <img src="<?php echo wp_get_attachment_url(412); ?>" alt="Get My Offer">

@@ -51,6 +51,26 @@ function doctor_homes_blocks_doctor_homes_blocks_block_init()
 		'cta',
 		'blog',
 		'post-banner',
+        
+        'cw-as-seen-on-carousel',
+        'cw-blockquote',
+        'cw-cta',
+        'cw-faqs',
+        'cw-footer',
+        'cw-footer-v2',
+        'cw-fresh-start',
+        'cw-guarantee',
+        'cw-header',
+        'cw-hero',
+        'cw-meet-doctorhomes',
+        'cw-number-one',
+        'cw-property-management',
+        'cw-sell-today',
+        'cw-service',
+        'cw-steps',
+        'cw-testimonials',
+        'cw-virtue-carousel',
+        'cw-why-choose-us',
 	];
 
 	foreach ($blocks as $block) {

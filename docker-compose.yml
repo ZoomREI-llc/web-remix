@@ -71,8 +71,8 @@ services:
       - doctorhomes_network
 
 volumes:
-  db_data_doctorhomes:
-  wordpress_data_doctorhomes:
+  db_data_zoomrei:
+  wordpress_data_zoomrei:
 
 
 networks:
