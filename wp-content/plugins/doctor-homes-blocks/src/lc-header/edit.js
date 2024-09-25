@@ -9,7 +9,7 @@ import "./editor.css";
 
 // Static base path for logos relative to the plugin directory
 const logosBasePath =
-	"/wp-content/plugins/chris-buys-blocks/src/lc-header/assets/";
+	"/wp-content/plugins/doctor-homes-blocks/src/lc-header/assets/";
 
 export default function Edit({ attributes, setAttributes }) {
 	const { selectedMarket, phoneNumber } = attributes;
@@ -37,11 +37,11 @@ export default function Edit({ attributes, setAttributes }) {
 		<div {...useBlockProps()}>
 			<InspectorControls>
 				<PanelBody
-					title={__("Header Settings", "chris-buys-blocks")}
+					title={__("Header Settings", "doctor-homes-blocks")}
 					initialOpen={true}
 				>
 					<SelectControl
-						label={__("Select Market", "chris-buys-blocks")}
+						label={__("Select Market", "doctor-homes-blocks")}
 						value={selectedMarket}
 						options={[
 							{ label: "Kansas City", value: "Kansas City" },
@@ -54,17 +54,17 @@ export default function Edit({ attributes, setAttributes }) {
 						onChange={onChangeSelectedMarket}
 					/>
 					<TextControl
-						label={__("Phone Number", "chris-buys-blocks")}
+						label={__("Phone Number", "doctor-homes-blocks")}
 						value={phoneNumber}
 						onChange={onChangePhoneNumber}
-						placeholder={__("Enter phone number", "chris-buys-blocks")}
+						placeholder={__("Enter phone number", "doctor-homes-blocks")}
 					/>
 				</PanelBody>
 			</InspectorControls>
 			<div className="cw-header">
-				<h3>{__("Life Changes Header", "chris-buys-blocks")}</h3>
+				<h3>{__("Life Changes Header", "doctor-homes-blocks")}</h3>
 				<div className="cw-header__logo">
-					<img src={logoUrl} alt={__("Logo", "chris-buys-blocks")} />
+					<img src={logoUrl} alt={__("Logo", "doctor-homes-blocks")} />
 				</div>
 				<div className="cw-header__phone-number">
 					<RichText
@@ -72,7 +72,7 @@ export default function Edit({ attributes, setAttributes }) {
 						href={`tel:${phoneNumber}`}
 						value={phoneNumber}
 						onChange={onChangePhoneNumber}
-						placeholder={__("Enter phone number", "chris-buys-blocks")}
+						placeholder={__("Enter phone number", "doctor-homes-blocks")}
 					/>
 				</div>
 			</div>

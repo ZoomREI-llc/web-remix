@@ -7,7 +7,7 @@ const ALLOWED_BLOCKS = ["gravityforms/form"];
 export default function Edit() {
 	return (
 		<div {...useBlockProps()}>
-			<h3>{__("Life Changes Hero", "chris-buys")}</h3>
+			<h3>{__("Life Changes Hero", "doctor-homes")}</h3>
 			<InnerBlocks allowedBlocks={ALLOWED_BLOCKS} />
 		</div>
 	);

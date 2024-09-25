@@ -28,7 +28,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 // Static base path for logos relative to the plugin directory
-const logosBasePath = "/wp-content/plugins/chris-buys-blocks/src/lc-header/assets/";
+const logosBasePath = "/wp-content/plugins/doctor-homes-blocks/src/lc-header/assets/";
 function Edit({
   attributes,
   setAttributes
@@ -59,10 +59,10 @@ function Edit({
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)()
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Header Settings", "chris-buys-blocks"),
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Header Settings", "doctor-homes-blocks"),
     initialOpen: true
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Select Market", "chris-buys-blocks"),
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Select Market", "doctor-homes-blocks"),
     value: selectedMarket,
     options: [{
       label: "Kansas City",
@@ -85,17 +85,17 @@ function Edit({
     }],
     onChange: onChangeSelectedMarket
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Phone Number", "chris-buys-blocks"),
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Phone Number", "doctor-homes-blocks"),
     value: phoneNumber,
     onChange: onChangePhoneNumber,
-    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Enter phone number", "chris-buys-blocks")
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Enter phone number", "doctor-homes-blocks")
   }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "cw-header"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Life Changes Header", "chris-buys-blocks")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Life Changes Header", "doctor-homes-blocks")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "cw-header__logo"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
     src: logoUrl,
-    alt: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Logo", "chris-buys-blocks")
+    alt: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Logo", "doctor-homes-blocks")
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "cw-header__phone-number"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
@@ -103,7 +103,7 @@ function Edit({
     href: `tel:${phoneNumber}`,
     value: phoneNumber,
     onChange: onChangePhoneNumber,
-    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Enter phone number", "chris-buys-blocks")
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Enter phone number", "doctor-homes-blocks")
   }))));
 }
 
@@ -211,7 +211,7 @@ module.exports = window["wp"]["i18n"];
   \**********************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"chris-buys/lc-header","version":"0.1.0","title":"LC Header","category":"widgets","icon":"align-center","description":"Dynamic Header for the Life Changes CW Design","supports":{"html":false},"textdomain":"chris-buys-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php","viewScript":"file:./view.js","attributes":{"selectedMarket":{"type":"string","default":"St. Louis"},"phoneNumber":{"type":"string","default":"(314) 887-8043"}}}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"doctor-homes/lc-header","version":"0.1.0","title":"LC Header","category":"widgets","icon":"align-center","description":"Dynamic Header for the Life Changes CW Design","supports":{"html":false},"textdomain":"doctor-homes-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php","viewScript":"file:./view.js","attributes":{"selectedMarket":{"type":"string","default":"St. Louis"},"phoneNumber":{"type":"string","default":"(314) 887-8043"}}}');
 
 /***/ })
 

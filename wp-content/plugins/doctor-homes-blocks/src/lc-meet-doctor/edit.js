@@ -5,7 +5,7 @@ import "./editor.css";
 export default function Edit( ) {
 	return (
 		<div {...useBlockProps()}>
-			<h3>{__("LC Meet Chris", "chris-buys")}</h3>
+			<h3>{__("LC Meet Doctor", "doctor-homes")}</h3>
 		</div>
 	);
 }

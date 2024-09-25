@@ -6,7 +6,7 @@ export default function Edit( ) {
 
 	return (
 		<div {...useBlockProps()}>
-			<h3>{__("Life Changes Faqs Placeholder", "chris-buys")}</h3>
+			<h3>{__("Life Changes Faqs Placeholder", "doctor-homes")}</h3>
 		</div>
 	);
 }

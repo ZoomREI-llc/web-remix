@@ -85,6 +85,20 @@ function doctor_homes_blocks_doctor_homes_blocks_block_init()
         'lc-testimonials',
         'lc-virtue-carousel',
         'lc-why-choose-us',
+        
+        'ao-why-choose-us',
+        'ao-virtue-carousel',
+        'ao-testimonials',
+        'ao-steps',
+        'ao-property-management',
+        'ao-meet-doctor',
+        'ao-hero',
+        'ao-header',
+        'ao-guarantee',
+        'ao-fresh-start',
+        'ao-faqs',
+        'ao-cta',
+        'ao-as-seen-on-carousel'
 	];
 
 	foreach ($blocks as $block) {

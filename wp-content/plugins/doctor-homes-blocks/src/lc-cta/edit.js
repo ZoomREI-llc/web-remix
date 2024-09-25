@@ -7,7 +7,7 @@ export default function Edit() {
 	return (
 		<div {...useBlockProps()}>
 
-			<h3>{__("LC CTA", "chris-buys")}</h3>
+			<h3>{__("LC CTA", "doctor-homes")}</h3>
 		</div>
 	);
 }
