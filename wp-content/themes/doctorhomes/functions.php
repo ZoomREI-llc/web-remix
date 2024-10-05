@@ -130,6 +130,11 @@ function doctor_homes_template_include($template)
     // Log the current template and custom template path
     error_log('Current template: ' . $template);
 
+    if (is_front_page() || is_home()) {
+        error_log('Using index.php for the front page or blog home page');
+        return get_template_directory() . '/index.php';
+    }
+
     // Specific checks for different template types
     if (is_single()) {
         $single_template = locate_template('templates/single.php');

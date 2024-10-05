@@ -98,7 +98,12 @@ function doctor_homes_blocks_doctor_homes_blocks_block_init()
         'ao-fresh-start',
         'ao-faqs',
         'ao-cta',
-        'ao-as-seen-on-carousel'
+        'ao-as-seen-on-carousel',
+        
+        
+        'blog-hero',
+        'blog-latest',
+        'blog-categories',
 	];
 
 	foreach ($blocks as $block) {
