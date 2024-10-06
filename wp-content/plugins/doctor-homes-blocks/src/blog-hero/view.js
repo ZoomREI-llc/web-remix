@@ -1,16 +1,134 @@
 import gsap from "gsap";
 import { Draggable } from "gsap/Draggable";
+import { ScrollSmoother } from "gsap/ScrollToPlugin";
 
 gsap.registerPlugin(Draggable);
 
 document.addEventListener("DOMContentLoaded", function () {
   let sections = document.querySelectorAll('.blog-hero')
 
+  function dynamicListener(events, selector, handler, context){
+    events.split(' ').forEach(function (event) {
+      (document || context).addEventListener(event, function (e) {
+        if(e.target.matches(selector) || e.target.closest(selector)){
+          handler.call(e.target.closest(selector), e);
+        }
+      })
+    })
+  }
+  function fadeIn(el, timeout = 0.5, display = 'block', afterFunc = false) {
+    gsap.to(el, {
+      opacity: 1,
+      duration: timeout,
+      display: display,
+      onComplete: function() {
+        if (afterFunc) {
+          afterFunc();
+        }
+      }
+    });
+  }
+  function fadeOut(el, timeout = 0.5, afterFunc = false) {
+    gsap.to(el, {
+      opacity: 0,
+      duration: timeout,
+      onComplete: function() {
+        gsap.set(el, { display: 'none' });
+        if (afterFunc) {
+          afterFunc();
+        }
+      }
+    });
+  }
+  function smoothScrollInit() {
+    let requestAnimFrame = (function() {
+      return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || function(callback) {
+        window.setTimeout(callback, 1000 / 60);
+      };
+    })();
+    function scrollTo(target, duration = 1.5, callback) {
+      if (!isDomElement(target)) {
+        target = document.querySelector(target);
+      }
+
+      if (!target && target !== 0) {
+        return;
+      }
+
+      let scrollPos = offsetTop(target);
+
+      function move(amount) {
+        document.documentElement.scrollTop = amount;
+        document.body.parentNode.scrollTop = amount;
+        document.body.scrollTop = amount;
+      }
+
+
+      var start = window.scrollY,
+        change = scrollPos - start,
+        currentTime = 0,
+        increment = 20;
+
+      var animateScroll = function() {
+        currentTime += increment;
+        var val = Math.easeInOutQuad(currentTime, start, change, duration);
+        move(val);
+        if (currentTime < duration) {
+          requestAnimFrame(animateScroll);
+        }
+        else {
+          if (callback && typeof(callback) === 'function') {
+            callback();
+          }
+        }
+      };
+
+      Math.easeInOutQuad = function(t, b, c, d) {
+        t /= d / 2;
+        if (t < 1) {
+          return c / 2 * t * t + b
+        }
+        t--;
+        return -c / 2 * (t * (t - 2) - 1) + b;
+      };
+      animateScroll();
+    }
+    function isDomElement(obj) {
+      return obj instanceof Element;
+    }
+    function offsetTop(element) {
+      let offsetTop = 0;
+      while (element) {
+        offsetTop += element.offsetTop;
+        element = element.offsetParent;
+      }
+      return offsetTop;
+    }
+
+    document.scrollTo = scrollTo;
+  }
+  function anchors() {
+    document.querySelectorAll('a[href^="#"]:not([data-fancybox])').forEach(anchor => {
+      if(anchor.getAttribute('href').length <= 1 || !document.querySelector(anchor.getAttribute('href'))){
+        return;
+      }
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        document.scrollTo(this.getAttribute('href'), 700)
+      });
+    });
+    if (document.location.hash) {
+      window.scrollTo(0, 0);
+      document.scrollTo(document.location.hash);
+    }
+  }
+
+
   function initSlider(carouselWrapper, duration = 0.8, autoplayDuration = 2, autoHeight = false) {
     let dots = carouselWrapper.querySelectorAll(".cw-dot");
     let wrap = true;
     let slides = carouselWrapper.querySelectorAll("._carousel-slide");
-    let activeSlideIndex = 0
     let prevButton = carouselWrapper.querySelector(".prevButton");
     let nextButton = carouselWrapper.querySelector(".nextButton");
     let heightArr = [];
@@ -19,16 +137,6 @@ document.addEventListener("DOMContentLoaded", function () {
       let heightBlock = elem.offsetHeight;
       heightArr.push(heightBlock);
     });
-
-    function isElementVisibleInContainer(element) {
-      const elemRect = element.getBoundingClientRect();
-      const containerRect = carouselWrapper.getBoundingClientRect();
-
-      return (
-        elemRect.left >= containerRect.left &&
-        elemRect.right <= containerRect.right
-      );
-    }
 
     if(!autoHeight) {
       carouselWrapper.style.height = `${Math.max.apply(null, heightArr)}px`;
@@ -171,12 +279,10 @@ document.addEventListener("DOMContentLoaded", function () {
       btnSelector: '.dropdown__btn',
       closeBtnClass: '',
       dropdownSelector: '.dropdown__list',
-      timing: 300,
-      effect: 'fade',
+      timing: .3,
       closeOnClick: true,
       closeOnClickOutside: true,
     };
-    let timing = 300;
     opts = { ...opts, ...options }
 
     let openTimeout = false;
@@ -207,13 +313,7 @@ document.addEventListener("DOMContentLoaded", function () {
       container.classList.add('is-open')
       container.style.zIndex = '4';
 
-      if (opts.effect === 'fade') {
-        fadeIn(thisDropdown, timing)
-      } else if(opts.effect === 'slide') {
-        slideDown(thisDropdown, timing)
-      } else {
-        console.error('Dropdown plugin: There is no effect called "' + opts.effect + '". Effects: "slide", "fade".')
-      }
+      fadeIn(thisDropdown, opts.timing)
     }
     function close(dontClose) {
       let dropdownsToClose = document.querySelectorAll('.' + opts.containerClass);
@@ -233,13 +333,8 @@ document.addEventListener("DOMContentLoaded", function () {
         dropdownToClose.classList.remove('is-open')
         dropdownToClose.querySelectorAll('li').forEach(item => item.classList.remove('hover'))
         dropdownToClose.style.zIndex = ''
-        if (opts.effect === 'fade') {
-          fadeOut(dropdownToClose.querySelector(opts.dropdownSelector), timing)
-        } else if(opts.effect === 'slide') {
-          slideUp(dropdownToClose.querySelector(opts.dropdownSelector), timing)
-        } else {
-          console.error('Dropdown plugin: There is no effect called "' + opts.effect + '". Effects: "slide", "fade".')
-        }
+
+        fadeOut(dropdownToClose.querySelector(opts.dropdownSelector), opts.timing)
       })
     }
 
@@ -262,12 +357,6 @@ document.addEventListener("DOMContentLoaded", function () {
       close(e.target.closest('.' + opts.containerClass));
     });
 
-    if (opts.timing !== false) {
-      timing = opts.timing;
-    }
-    if (opts.containerClass === 'select') {
-      timing = 0;
-    }
     if (opts.closeOnClick) {
       dynamicListener('click', opts.globalContainer + ' .' + opts.containerClass + ' ' + opts.dropdownSelector, function (e) {
         if (!e.target.closest('.' + opts.containerClass).classList.contains('checkbox')) {
@@ -275,6 +364,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       });
     }
+    close()
   }
 
   sections.forEach(function (section) {
@@ -282,4 +372,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     initSlider(slider, 0.8, false, true)
   })
+
+  dynamicListener('click', '.blog-hero-dpl a', function () {
+    this.closest('.blog-hero-dpl').querySelector('.output-text').textContent = this.textContent
+  })
+  dropdown({
+    containerClass: 'blog-hero-dpl',
+    btnSelector: '.output-text',
+    dropdownSelector: 'ul',
+  })
+  smoothScrollInit()
+  anchors()
 });

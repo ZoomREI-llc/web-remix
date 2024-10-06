@@ -4,27 +4,25 @@
 <section class="blog-hero">
     <div class="blog-hero__container">
         <div class="blog-hero-title"><h1>Doctor Homes Blog</h1></div>
-        <div class="blog-hero-caption"><h3>Categories:</h3></div>
-        <div class="blog-hero-group mobile-hide">
-            <?php if(!empty($categories)): ?>
+        <?php if(!empty($categories)): ?>
+            <div class="blog-hero-caption"><h3>Categories:</h3></div>
+            <div class="blog-hero-group mobile-hide">
                 <?php foreach($categories as $category): ?>
                     <a href="#category-<?= esc_html( $category->slug ) ?>" class="blog-hero-elem"><span><?= esc_html( $category->name ) ?></span></a>
                 <?php endforeach; ?>
-            <?php endif; ?>
-        </div>
-        <div class="blog-hero-dpl mobile-show">
-            <span class="output-text"></span>
-            <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0.837757 1.21358C0.509995 1.55202 0.509936 2.08949 0.837624 2.42801L5.70394 7.45513C6.48786 8.26215 7.75492 8.26215 8.53885 7.45513L13.4121 2.42135C13.7398 2.08286 13.7396 1.54539 13.4118 1.20707C13.0688 0.853126 12.5009 0.853276 12.1581 1.2074L7.32416 6.20085C7.21217 6.31641 7.03089 6.31641 6.91917 6.20085L2.09207 1.21375C1.74908 0.859386 1.18084 0.85931 0.837757 1.21358Z" fill="#2B3849"></path>
-            </svg>
-            <ul>
-                <?php if(!empty($categories)): ?>
+            </div>
+            <div class="blog-hero-dpl mobile-show">
+                <span class="output-text"><?= esc_html( $categories[0]->name ) ?></span>
+                <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0.837757 1.21358C0.509995 1.55202 0.509936 2.08949 0.837624 2.42801L5.70394 7.45513C6.48786 8.26215 7.75492 8.26215 8.53885 7.45513L13.4121 2.42135C13.7398 2.08286 13.7396 1.54539 13.4118 1.20707C13.0688 0.853126 12.5009 0.853276 12.1581 1.2074L7.32416 6.20085C7.21217 6.31641 7.03089 6.31641 6.91917 6.20085L2.09207 1.21375C1.74908 0.859386 1.18084 0.85931 0.837757 1.21358Z" fill="#2B3849"></path>
+                </svg>
+                <ul>
                     <?php foreach($categories as $index=>$category): ?>
-                        <li><a href="#<?= esc_html( $category->slug ) ?>" <?= $index === 0 ? 'class="is-selected"' : '' ?>><?= esc_html( $category->name ) ?></a></li>
+                        <li><a href="#category-<?= esc_html( $category->slug ) ?>" <?= $index === 0 ? 'class="is-selected"' : '' ?>><?= esc_html( $category->name ) ?></a></li>
                     <?php endforeach; ?>
-                <?php endif; ?>
-            </ul>
-        </div>
+                </ul>
+            </div>
+        <?php endif; ?>
         
         
         <?php

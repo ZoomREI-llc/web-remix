@@ -174,11 +174,28 @@
     -ms-flex-align: center;
     align-items: center;
     margin: 1rem 0 0;
+    height: 3rem;
 }
 .blog-hero-dpl span {
     font-size: max(1.125rem, 14px);
     line-height: max(1.675rem, 12px);
     color: #2b3849;
+    padding: .625rem 1.5rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.blog-hero-dpl > svg {
+    position: absolute;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform .3s ease-in-out;
+}
+.blog-hero-dpl.mobile-show.is-open > svg {
+    transform: translateY(-50%) rotate(180deg);
 }
 .blog-hero-single {
     display: flex;
