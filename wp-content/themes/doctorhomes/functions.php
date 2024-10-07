@@ -133,9 +133,12 @@ function doctor_homes_template_include($template)
     }
 
     // Prioritize landing page template without other checks overriding it
-    if (is_page_template('landing-page.php')) {
-        error_log('Landing page template found: ' . $template);
-        return $template; // Return and stop further processing
+    if (is_page_template('templates/landing-page.php')) {
+        $landing_template = locate_template('templates/landing-page.php');
+        if ($landing_template) {
+            error_log('Landing page template located: ' . $landing_template);
+            return $landing_template; // Return and stop further processing
+        }
     }
 
     // Specific checks for different template types

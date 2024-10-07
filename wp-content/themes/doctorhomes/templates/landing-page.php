@@ -4,10 +4,29 @@ Template Name: Landing Page
 */
 ?>
 
-<?php
-// Include the header
-wp_head(); ?>
+<!DOCTYPE html>
+<html <?php language_attributes(); ?>>
 
+<head>
+    <!-- Start Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H3Y9EBZKYD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-H3Y9EBZKYD');
+    </script>
+    <!-- End Google tag (gtag.js) -->
+
+    <meta charset="<?php bloginfo('charset'); ?>">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?php wp_title(''); ?></title>
+    <?php wp_head(); ?>
+</head>
 
 <main id="main" class="site-main" role="main">
     <div class="page-container">
@@ -39,6 +58,8 @@ wp_head(); ?>
         text-align: center;
     }
 </style>
-<?php
-// Include the footer
-wp_footer();
+
+<?php wp_footer(); ?>
+</body>
+
+</html>
