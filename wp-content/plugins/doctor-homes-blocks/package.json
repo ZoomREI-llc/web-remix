@@ -6,27 +6,31 @@
 	"license": "GPL-2.0-or-later",
 	"main": "build/index.js",
 	"scripts": {
-	  "build": "wp-scripts build --webpack-copy-php && npm run build:css",
-	  "format": "wp-scripts format",
-	  "lint:css": "wp-scripts lint-style",
-	  "lint:js": "wp-scripts lint-js",
-	  "packages-update": "wp-scripts packages-update",
-	  "plugin-zip": "wp-scripts plugin-zip",
-	  "start": "wp-scripts start --webpack-copy-php && npm run watch:css",
-	  "watch:css": "postcss src/**/*.css --dir build --watch",
-	  "build:css": "postcss src/**/*.css --dir build"
+		"build": "wp-scripts build --webpack-copy-php && npm run build:css && npm run process-images",
+		"process-images": "node build-scripts/process-images.js",
+		"format": "wp-scripts format",
+		"lint:css": "wp-scripts lint-style",
+		"lint:js": "wp-scripts lint-js",
+		"packages-update": "wp-scripts packages-update",
+		"plugin-zip": "wp-scripts plugin-zip",
+		"start": "wp-scripts start --webpack-copy-php && npm run watch:css",
+		"watch:css": "postcss src/**/*.css --dir build --watch",
+		"build:css": "postcss src/**/*.css --dir build"
 	},
 	"devDependencies": {
-	  "@wordpress/scripts": "^27.9.0",
-	  "autoprefixer": "^10.4.19",
-	  "cssnano": "^7.0.2",
-	  "postcss": "^8.4.38",
-	  "postcss-cli": "^11.0.0",
-	  "postcss-import": "^16.1.0",
-	  "postcss-nested": "^6.0.1"
+		"@wordpress/scripts": "^27.9.0",
+		"autoprefixer": "^10.4.19",
+		"concurrently": "^9.0.1",
+		"cssnano": "^7.0.2",
+		"postcss": "^8.4.38",
+		"postcss-cli": "^11.0.0",
+		"postcss-import": "^16.1.0",
+		"postcss-nested": "^6.0.1",
+		"sharp": "^0.33.5",
+		"webpack": "^5.95.0",
+		"webpack-cli": "^5.1.4"
 	},
 	"dependencies": {
-	  "gsap": "^3.12.5"
+		"gsap": "^3.12.5"
 	}
-  }
-  
+}

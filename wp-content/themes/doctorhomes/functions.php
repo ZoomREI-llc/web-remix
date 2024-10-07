@@ -124,11 +124,19 @@ function doctor_homes_get_template_part_with_fallback($slug, $name = null)
 // Template Include Filter
 function doctor_homes_template_include($template)
 {
-    // Get the base name of the current template file
-    $template_name = basename($template);
-
-    // Log the current template and custom template path
+    // Log the current template being processed
     error_log('Current template: ' . $template);
+
+    if (is_home()) {
+        error_log('Using index.php for the front page or blog home page');
+        return get_template_directory() . '/index.php';
+    }
+
+    // Prioritize landing page template without other checks overriding it
+    if (is_page_template('landing-page.php')) {
+        error_log('Landing page template found: ' . $template);
+        return $template; // Return and stop further processing
+    }
 
     // Specific checks for different template types
     if (is_single()) {
@@ -136,41 +144,35 @@ function doctor_homes_template_include($template)
         if ($single_template) {
             error_log('Single post template found: ' . $single_template);
             return $single_template;
-        } else {
-            error_log('Single post template not found');
         }
     }
 
     if (is_page()) {
         global $post;
+
         // Check if the page is the Privacy Policy or Terms of Use page
         if ($post->ID == 3 || $post->ID == 507) {
             $legal_template = locate_template('templates/legal.php');
             if ($legal_template) {
                 error_log('Legal page template found: ' . $legal_template);
                 return $legal_template;
-            } else {
-                error_log('Legal page template not found');
             }
         }
 
-        // Check for other specific page templates
+        // If no special page template applies, use the general page template
         $page_template = locate_template('templates/page.php');
         if ($page_template) {
-            error_log('Page template found: ' . $page_template);
+            error_log('General page template found: ' . $page_template);
             return $page_template;
-        } else {
-            error_log('Page template not found');
         }
     }
 
+    // Other template checks (author, category, etc.)
     if (is_author()) {
         $author_template = locate_template('templates/author.php');
         if ($author_template) {
             error_log('Author template found: ' . $author_template);
             return $author_template;
-        } else {
-            error_log('Author template not found');
         }
     }
 
@@ -179,8 +181,6 @@ function doctor_homes_template_include($template)
         if ($category_template) {
             error_log('Category template found: ' . $category_template);
             return $category_template;
-        } else {
-            error_log('Category template not found');
         }
     }
 
@@ -189,8 +189,6 @@ function doctor_homes_template_include($template)
         if ($tag_template) {
             error_log('Tag template found: ' . $tag_template);
             return $tag_template;
-        } else {
-            error_log('Tag template not found');
         }
     }
 
@@ -199,8 +197,6 @@ function doctor_homes_template_include($template)
         if ($archive_template) {
             error_log('Archive template found: ' . $archive_template);
             return $archive_template;
-        } else {
-            error_log('Archive template not found');
         }
     }
 
@@ -209,8 +205,6 @@ function doctor_homes_template_include($template)
         if ($search_template) {
             error_log('Search template found: ' . $search_template);
             return $search_template;
-        } else {
-            error_log('Search template not found');
         }
     }
 
@@ -219,27 +213,16 @@ function doctor_homes_template_include($template)
         if ($error_template) {
             error_log('404 template found: ' . $error_template);
             return $error_template;
-        } else {
-            error_log('404 template not found');
         }
     }
 
-    // Default custom template path
-    $custom_template_path = 'templates/' . $template_name;
-    $custom_template = locate_template($custom_template_path);
-
-    // If a custom template is found, return it
-    if ($custom_template) {
-        error_log('Custom template found: ' . $custom_template);
-        return $custom_template;
-    }
-
     // Log if no custom template was found
-    error_log('Custom template not found, using default: ' . $template);
+    error_log('No specific template found, using default: ' . $template);
 
     // Return the original template if no custom template is found
     return $template;
 }
+
 add_filter('template_include', 'doctor_homes_template_include');
 
 // Add custom user fields

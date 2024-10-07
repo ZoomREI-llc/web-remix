@@ -1,0 +1,28 @@
+.wp-block-doctor-homes-cw-footer {
+	padding-block: 1.5rem !important;
+	background-color: var(--primaryBlue1);
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	margin-block: 1rem !important;
+}
+
+.wp-block-doctor-homes-cw-footer .cw-footer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: transparent;
+	gap: 0.5rem;
+}
+
+.wp-block-doctor-homes-cw-footer .cw-footer__logo {
+	background-color: white;
+	padding: 1rem 0.5rem;
+	border-radius: 0.25rem;
+}
+
+.wp-block-doctor-homes-cw-footer .cw-footer__logo img {
+	max-width: 5.25rem;
+}

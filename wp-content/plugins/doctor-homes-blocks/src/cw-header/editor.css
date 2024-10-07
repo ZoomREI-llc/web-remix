@@ -1,0 +1,22 @@
+.wp-block-doctor-homes-cw-header {
+	padding-block: 1.5rem !important;
+	background-color: var(--primaryBlue1);
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	margin-block: 1rem !important;
+}
+
+.wp-block-doctor-homes-cw-header .cw-header__logo {
+	background-color: white;
+	padding: 1rem 0.5rem;
+	border-radius: 0.25rem;
+	max-width: 12rem;
+}
+
+.wp-block-doctor-homes-cw-header .cw-header__phone-number {
+	color: white;
+	background-color: transparent;
+}

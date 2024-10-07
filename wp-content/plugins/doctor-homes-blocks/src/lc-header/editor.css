@@ -1,0 +1,30 @@
+.wp-block-doctor-homes-lc-header {
+	padding-block: 1.5rem !important;
+	background-color: var(--primaryBlue1);
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	margin-block: 1rem !important;
+}
+
+.wp-block-doctor-homes-lc-header .lc-header {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.5rem;
+	background-color: transparent;
+}
+
+.wp-block-doctor-homes-lc-header .lc-header__phone-number {
+	color: white;
+	background-color: transparent;
+}
+
+.wp-block-doctor-homes-lc-header .lc-header__logo {
+	background-color: white;
+	padding: 1rem 0.5rem;
+	border-radius: 0.25rem;
+	max-width: 12rem;
+}

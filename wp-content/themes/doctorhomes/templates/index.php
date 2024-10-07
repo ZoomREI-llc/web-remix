@@ -12,14 +12,16 @@
     <?php doctor_homes_get_header(); ?>
     <main>
         <?php
-        if (have_posts()) :
-            while (have_posts()) : the_post();
-                doctor_homes_get_template_part_with_fallback('template-parts/content', get_post_format());
-            endwhile;
-        else :
-            doctor_homes_get_template_part_with_fallback('template-parts/content', 'none');
-        endif;
+        echo do_shortcode("[doctor_homes_blog-hero]");
+        echo do_shortcode("[doctor_homes_blog-latest]");
+        echo do_shortcode("[doctor_homes_post-banner]");
+        echo do_shortcode("[doctor_homes_blog-categories]");
         ?>
+        <div class="entry-content">
+            <?php
+            echo do_shortcode("[doctor_homes_post-banner]");
+            ?>
+        </div>
     </main>
     <?php doctor_homes_get_footer(); ?>
     <?php wp_footer(); ?>
