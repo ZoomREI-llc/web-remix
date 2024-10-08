@@ -30,7 +30,7 @@
     width: 100%;
 }
 .blog-latest-elem {
-    display: flex;
+    display: flex !important;
     flex-direction: column;
     justify-content: space-between;
     margin: 0 0 2rem;
@@ -134,4 +134,23 @@
         font-size: max(1.375rem, 12px);
         line-height: max(1.625rem, 12px);
     }
+    .blog-latest-elem.blog-latest-elem--small .blog-latest-elem__title{
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        overflow: hidden;
+        font-size: 1rem;
+        line-height: normal;
+    }
+    .blog-latest-elem.blog-latest-elem--small .blog-latest-elem__img::before {
+        padding-top: 58.3%;
+    }
+    .blog-latest-elem.blog-latest-elem--small .blog-user-info__content {
+        min-height: 1.6875rem;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+    }
+
 }

@@ -6266,8 +6266,6 @@ TweenMaxWithCSS = gsapWithCSS.core.Tween;
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
-(() => {
 /*!*****************************!*\
   !*** ./src/ao-faqs/view.js ***!
   \*****************************/
@@ -6370,8 +6368,6 @@ document.addEventListener("DOMContentLoaded", () => {
     firstQuestion.style.outlineColor = "#3c4b5f";
   }
 });
-})();
-
 /******/ })()
 ;
 //# sourceMappingURL=view.js.map
