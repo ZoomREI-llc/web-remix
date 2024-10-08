@@ -46,9 +46,9 @@
                 ?>
             </nav>
             <div class="contact-actions">
-                <a href="tel:5109453588" class="contact-phone">
+                <a href="tel:234-374-6637" class="contact-phone">
                     <img src="<?php echo wp_get_attachment_url(437); ?>" alt="Phone Icon" class="phone-icon">
-                    <span>Call us on: (510) 945-3588</span>
+                    <span>Call us on: (234) DR-HOMES</span>
                 </a>
                 <a href="<?php echo get_offer_button_link(); ?>" class="get-offer-button">
                     Get My Offer

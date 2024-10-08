@@ -52,12 +52,16 @@
             </div>
             <div class="footer-contact">
                 <span class="footer-title">Contact Us</span>
-                <p class="contact-item"><img src="<?php echo wp_get_attachment_url(438); ?>" alt="Phone Icon" class="contact-icon"> +1 386-688-3295</p>
-                <p class="contact-item"><img src="<?php echo wp_get_attachment_url(434); ?>" alt="Email Icon" class="contact-icon"> hello@doctorhomes.com</p>
+                <a href="tel:234-374-6637">
+                    <p class="contact-item"><img src="<?php echo wp_get_attachment_url(438); ?>" alt="Phone Icon" class="contact-icon"> +1 234-374-6637</p>
+                </a>
+                <a href="mailto:hello@doctorhomes.com">
+                    <p class="contact-item"><img src="<?php echo wp_get_attachment_url(434); ?>" alt="Email Icon" class="contact-icon"> hello@doctorhomes.com</p>
+                </a>
             </div>
             <div class="social-icons">
-                <a href="#"><img src="<?php echo wp_get_attachment_url(435); ?>" alt="Facebook Icon" class="social-icon"></a>
-                <a href="#"><img src="<?php echo wp_get_attachment_url(439); ?>" alt="YouTube Icon" class="social-icon"></a>
+                <!-- <a href="https://www.facebook.com/DoctorHomes/" target="_blank"><img src="<?php echo wp_get_attachment_url(435); ?>" alt="Facebook Icon" class="social-icon"></a>
+                <a href="https://www.instagram.com/doctorhomes/" target="_blank"><img src="<?php echo wp_get_attachment_url(439); ?>" alt="YouTube Icon" class="social-icon"></a> -->
             </div>
         </div>
     </div>

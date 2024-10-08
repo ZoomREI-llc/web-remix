@@ -28,15 +28,20 @@ $airplane_icon_url = wp_get_attachment_url($airplane_icon_id);
             <div class="contact-form__details-items">
                 <div class="contact-form__contact-detail">
                     <img src="<?php echo esc_url($phone_icon_url); ?>" alt="">
-                    <span>+1 (555) 345 6789</span>
+                    <a href="tel:+1 (234) 374-6637">
+                        <span>+1 (234) 374-6637</span>
+                    </a>
                 </div>
                 <div class="contact-form__contact-detail">
                     <img src="<?php echo esc_url($letter_icon_url); ?>" alt="">
-                    <span>demo@gmail.com</span>
+                    <a href="mailto:hello@doctorhomes.com">
+                        <span>hello@doctorhomes.com</span>
+                    </a>
                 </div>
                 <div class="contact-form__contact-detail">
                     <img src="<?php echo esc_url($location_icon_url); ?>" alt="">
-                    <span>132 Dartmouth Street Boston,</br> Massachusetts 02156 United States</span>
+                    <span>1990 N California Blvd, Ste. 46,</br>
+                        Walnut Creek, CA 94596</span>
                 </div>
             </div>
         </div>
