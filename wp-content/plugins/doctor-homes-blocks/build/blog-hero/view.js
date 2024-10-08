@@ -9419,8 +9419,6 @@ function getGlobalMatrix(element, inverse, adjustGOffset, includeScrollInFixed) 
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
-(() => {
 /*!*******************************!*\
   !*** ./src/blog-hero/view.js ***!
   \*******************************/
@@ -9755,6 +9753,9 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   sections.forEach(function (section) {
     let slider = section.querySelector('._carousel-wrapper');
+    if (!slider) {
+      return;
+    }
     initSlider(slider, 0.8, false, true);
   });
   dynamicListener('click', '.blog-hero-dpl a', function () {
@@ -9768,8 +9769,6 @@ document.addEventListener("DOMContentLoaded", function () {
   smoothScrollInit();
   anchors();
 });
-})();
-
 /******/ })()
 ;
 //# sourceMappingURL=view.js.map

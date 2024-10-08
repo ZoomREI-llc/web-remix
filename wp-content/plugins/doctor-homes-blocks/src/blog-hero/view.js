@@ -370,6 +370,9 @@ document.addEventListener("DOMContentLoaded", function () {
   sections.forEach(function (section) {
     let slider = section.querySelector('._carousel-wrapper')
 
+    if(!slider){
+      return;
+    }
     initSlider(slider, 0.8, false, true)
   })
 

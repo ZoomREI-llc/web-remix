@@ -102,7 +102,10 @@ function doctor_homes_blocks_doctor_homes_blocks_block_init()
 
 		'blog-hero',
 		'blog-latest',
-		'blog-categories'
+		'blog-categories',
+        
+        'blog-category-hero',
+        'blog-category'
 	];
 
 	foreach ($blocks as $block) {
