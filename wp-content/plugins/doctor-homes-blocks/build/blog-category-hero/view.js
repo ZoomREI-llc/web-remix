@@ -6266,6 +6266,8 @@ TweenMaxWithCSS = gsapWithCSS.core.Tween;
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+(() => {
 /*!****************************************!*\
   !*** ./src/blog-category-hero/view.js ***!
   \****************************************/
@@ -6400,6 +6402,8 @@ document.addEventListener("DOMContentLoaded", function () {
     dropdownSelector: 'ul'
   });
 });
+})();
+
 /******/ })()
 ;
 //# sourceMappingURL=view.js.map
