@@ -6266,6 +6266,8 @@ TweenMaxWithCSS = gsapWithCSS.core.Tween;
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+(() => {
 /*!*****************************!*\
   !*** ./src/cw-faqs/view.js ***!
   \*****************************/
@@ -6368,6 +6370,8 @@ document.addEventListener("DOMContentLoaded", () => {
     firstQuestion.classList.add("_active");
   }
 });
+})();
+
 /******/ })()
 ;
 //# sourceMappingURL=view.js.map

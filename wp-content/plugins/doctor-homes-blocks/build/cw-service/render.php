@@ -132,7 +132,7 @@ $logo_url = plugins_url('src/cw-service/assets/logo.webp', dirname(__FILE__, 2))
     </div>
     <h3 class="cw-service__cta-text">Ready to sell your house to us?</h3>
     <div class="cw-service__footer-block">
-        <a class="cw-service__cta" href="#cw-form">Get my offer<img src="<?php echo esc_url($arrow_icon_url); ?>" alt="Arrow"></a>
+        <a class="cw-service__cta cta-btn" href="#cw-form">Get my offer<img src="<?php echo esc_url($arrow_icon_url); ?>" alt="Arrow"></a>
         <div class="cw-hero__reviews">
             <div class="cw-hero__reviews-stars-wrapper">
                 <span class="cw-hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
