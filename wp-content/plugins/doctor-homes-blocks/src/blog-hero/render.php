@@ -43,7 +43,7 @@
                                     </a>
                                     <div class="blog-hero-single__content">
                                         <?php
-                                            $time = str_word_count(get_the_content()) / 200;
+                                            $time = ceil(str_word_count(get_the_content()) / 200);
                                         ?>
                                         <div class="blog-hero-single__time">
                                             <span><?= $time < 1 ? '< 1' : $time?> min read</span>

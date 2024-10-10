@@ -102,6 +102,7 @@ function doctor_homes_blocks_doctor_homes_blocks_block_init()
 
 		'blog-hero',
 		'blog-latest',
+		'blog-post-banner',
 		'blog-categories',
         
         'blog-category-hero',

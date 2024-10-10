@@ -11,7 +11,6 @@
             <div class="blog-section-header__title">
                 <h2>Latest Articles</h2>
             </div>
-            <span class="blog-section-header__line"></span>
             <a href="<?= get_permalink(get_option('page_for_posts')); ?>" class="blog-section-header__link">
                 <span>See all</span>
             </a>

@@ -23,6 +23,8 @@
   .header-content {
     padding: 0 6.5rem;
     gap: 2rem;
+    max-width: 93.125rem;
+    margin: 0 auto;
   }
 }
 
