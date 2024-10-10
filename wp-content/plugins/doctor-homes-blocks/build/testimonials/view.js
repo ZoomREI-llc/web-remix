@@ -6266,8 +6266,6 @@ TweenMaxWithCSS = gsapWithCSS.core.Tween;
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
-(() => {
 /*!**********************************!*\
   !*** ./src/testimonials/view.js ***!
   \**********************************/
@@ -6384,8 +6382,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   updateCarousel(); // Initial call to set up the carousel
 });
-})();
-
 /******/ })()
 ;
 //# sourceMappingURL=view.js.map
