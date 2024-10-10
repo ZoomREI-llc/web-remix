@@ -1,8 +1,5 @@
 import gsap from "gsap";
-import { Draggable } from "gsap/Draggable";
 import { ScrollSmoother } from "gsap/ScrollToPlugin";
-
-gsap.registerPlugin(Draggable);
 
 document.addEventListener("DOMContentLoaded", function () {
   let sections = document.querySelectorAll('.blog-hero')
@@ -173,16 +170,6 @@ document.addEventListener("DOMContentLoaded", function () {
     let maxWidth = wrapWidth;
     let widthOneItem = maxWidth / slides.length;
     let prevMW = 0;
-    let draggable = new Draggable(proxy, {
-      trigger: "._carousel-container",
-      inertia: true,
-      onPress: updateDraggable,
-      onDrag: updateProgress,
-      onThrowUpdate: updateProgress,
-      snap: {
-        x: snapX,
-      },
-    });
 
     resize();
 
@@ -195,14 +182,6 @@ document.addEventListener("DOMContentLoaded", function () {
     nextButton.addEventListener("click", function () {
       animateSlides(-1);
     });
-
-    function updateDraggable() {
-      if(timer) {
-        timer.restart(true);
-      }
-      slideAnimation.kill();
-      this.update();
-    }
 
     function animateSlides(direction) {
       if(timer) {
@@ -224,11 +203,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function autoPlay() {
-      if (draggable.isPressed || draggable.isDragging || draggable.isThrowing) {
-        timer.restart(true);
-      } else {
-        animateSlides(-1);
-      }
+      animateSlides(-1);
     }
 
     function updateProgress() {
@@ -258,9 +233,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
       slideWidth = slides[0].offsetWidth;
       wrapWidth = slideWidth * numSlides;
-
-      wrap ||
-      draggable.applyBounds({ minX: -slideWidth * (numSlides - 1), maxX: 0 });
 
       gsap.set(proxy, {
         x: norm * wrapWidth,

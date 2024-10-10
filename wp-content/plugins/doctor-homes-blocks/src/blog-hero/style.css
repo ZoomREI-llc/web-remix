@@ -13,9 +13,10 @@
     padding: 0 1rem;
     display: flex;
     align-items: flex-end;
+    flex-wrap: wrap;
 }
 .blog-section-header > :not(:last-child) {
-    margin-right: 2.625rem;
+    margin-right: 0.625rem;
 }
 .blog-section-header__title {
     color: #1a1a1a;
@@ -24,6 +25,10 @@
     line-height: 125%;
     -ms-flex-negative: 0;
     flex-shrink: 0;
+    flex-basis: 0;
+    white-space: nowrap;
+    flex-grow: 1;
+    overflow: hidden;
 }
 .blog-section-header__link {
     font-size: 18px;
@@ -39,22 +44,46 @@
     text-decoration: none;
 }
 .blog-section-header__line {
-    display: none;
+    height: 1px;
+    background: #000;
+    margin: 0 -1rem 2rem !important;
+    display: block;
+    width: calc(100% + 2rem);
+    order: -1;
+    flex-shrink: 0;
+}
+.blog-section-header__title > * {
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 @media (min-width: 1024px) {
+    .blog-section-header > :not(:last-child) {
+        margin-right: 2.625rem;
+    }
     .blog-section-header__title {
         font-size: 2rem;
         line-height: 1.875rem;
+        flex-basis: unset;
+        flex-grow: unset;
     }
     .blog-section-header__link {
         font-size: 1.125rem;
         line-height: 1.625rem;
     }
     .blog-section-header__line {
-        border-bottom: 1px solid #000;
         flex-basis: 0;
         flex-grow: 1;
+        display: block;
+        margin: 0!important;
+        height: 1px;
+        background: #000;
+        width: auto;
+        order: unset;
+        flex-shrink: unset;
+    }
+    .blog-section-header__line:not(:last-child) {
+        margin: 0 2.625rem 0 0!important;
     }
 }
 .blog-user-info {
@@ -340,6 +369,10 @@
     font-weight: unset;
     padding: 0 10px;
 }
+.blog-hero ._carousel-slide .blog-hero-single__img::before {
+    padding-top: 92%;
+}
+
 .blog-hero-single__controls > button {
     border: none;
 }
@@ -437,6 +470,7 @@
     .blog-hero-single__img > * {
         border-radius: 0;
     }
+    .blog-hero ._carousel-slide .blog-hero-single__img::before,
     .blog-hero-single__img::before {
         padding-top: 64.3%;
     }
@@ -474,13 +508,17 @@
         line-height: max(1.675rem, 12px);
         color: #2b3849;
     }
+    .blog-hero ._carousel-inner {
+        max-width: unset;
+    }
 
     .blog-hero-single {
         height: 28rem;
         flex-direction: row;
     }
     .blog-hero-single__img {
-        max-width: 39rem;
+        width: 50%;
+        flex-shrink: 0;
         margin-bottom: 0;
     }
     .blog-hero-single__controls {
@@ -514,6 +552,7 @@
     }
     .blog-hero-single.blog-hero-single--vertical .blog-hero-single__img {
         max-width: 100%;
+        width: 100%;
         overflow: hidden;
         max-height: 19.375rem;
     }
