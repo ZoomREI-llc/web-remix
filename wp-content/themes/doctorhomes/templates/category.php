@@ -14,12 +14,8 @@
         <?php
         echo do_shortcode("[doctor_homes_blog-category-hero]");
         echo do_shortcode("[doctor_homes_blog-category]");
+        echo do_shortcode("[doctor_homes_blog-post-banner]");
         ?>
-        <div class="entry-content">
-            <?php
-            echo do_shortcode("[doctor_homes_post-banner]");
-            ?>
-        </div>
     </main>
     <?php doctor_homes_get_footer(); ?>
     <?php wp_footer(); ?>

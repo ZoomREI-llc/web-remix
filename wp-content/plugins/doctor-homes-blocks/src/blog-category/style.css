@@ -100,7 +100,22 @@
 .blog-hero.blog-hero--small + .blog-category .blog-hero-col__title {
     display: none;
 }
-
+.blog-category + .blog-post-banner {
+    margin-bottom: 1.5rem;
+}
+.blog-category__container {
+    padding: 0 1rem;
+}
+.blog-category .blog-latest-elem__img::before {
+    padding-top: 51.3%;
+}
+.blog-category .blog-latest-elem__title {
+    font-size: 1.5rem;
+    line-height: 127%;
+}
+.blog-category .blog-latest-elem__content .blog-user-info__content {
+    margin-top: 0.875rem;
+}
 @media (min-width: 1024px) {
     .blog-category {
         overflow: hidden;
@@ -110,6 +125,7 @@
     }
     .blog-category__container {
         max-width: 1280px;
+        padding: 0;
     }
     .blog-category__cards {
         display: flex;
