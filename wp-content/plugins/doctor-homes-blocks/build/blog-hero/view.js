@@ -6266,6 +6266,8 @@ TweenMaxWithCSS = gsapWithCSS.core.Tween;
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+(() => {
 /*!*******************************!*\
   !*** ./src/blog-hero/view.js ***!
   \*******************************/
@@ -6588,6 +6590,8 @@ document.addEventListener("DOMContentLoaded", function () {
   smoothScrollInit();
   anchors();
 });
+})();
+
 /******/ })()
 ;
 //# sourceMappingURL=view.js.map
