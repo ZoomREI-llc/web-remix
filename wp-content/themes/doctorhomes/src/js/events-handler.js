@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
           event: "form_focus",
           form_id: form.id,
           form_name: form.name,
-          form_field_name: labelText,
+          field_label: labelText,
         });
       }
     },
@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
           event: "form_blur",
           form_id: form.id,
           form_name: form.name,
-          form_field_name: labelText,
+          field_label: labelText,
           field_value: fieldValue, // Add the captured value to the data layer push
         });
       }
