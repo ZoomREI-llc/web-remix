@@ -112,3 +112,18 @@ p {
     display: none;
   }
 }
+
+.rank-math-html-sitemap__section {
+  max-width: 56.5rem;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.rank-math-html-sitemap__section h2,
+.rank-math-html-sitemap__section h3 {
+  margin-bottom: 1.5rem;
+}
+
+.rank-math-html-sitemap__section li {
+  margin-bottom: 0.5rem;
+}
