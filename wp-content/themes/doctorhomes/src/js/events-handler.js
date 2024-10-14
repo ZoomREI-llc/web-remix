@@ -57,7 +57,11 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener(
     "focus",
     (event) => {
-      if (event.target.matches("form input")) {
+      if (
+        event.target.matches(
+          'form input:not([type="submit"], [type="radio"], [type="checkbox"]), form select, form textarea'
+        )
+      ) {
         const form = event.target.closest("form");
         const label = findLabel(event.target);
         const labelText = label ? label.innerText.trim() : "unknown";
@@ -90,7 +94,11 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener(
     "blur",
     (event) => {
-      if (event.target.matches("form input")) {
+      if (
+        event.target.matches(
+          'form input:not([type="submit"], [type="radio"], [type="checkbox"]), form select, form textarea'
+        )
+      ) {
         const form = event.target.closest("form");
         const label = findLabel(event.target);
         const labelText = label ? label.innerText.trim() : "unknown";
