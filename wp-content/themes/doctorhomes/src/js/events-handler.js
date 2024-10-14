@@ -1,25 +1,44 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // General Click Events using Event Delegation
+  console.log("DOM fully loaded and parsed");
+
   document.addEventListener("click", (event) => {
-    // Call Button Click
-    if (event.target.matches(".call-btn")) {
-      const parentSection = event.target.closest("header, footer, section");
+    const callButton = event.target.closest("a.call-btn");
+    if (callButton) {
+      console.log("Call button clicked");
+
+      const parentSection = callButton.closest("header, footer, section");
       const location = parentSection
         ? parentSection.id || parentSection.className
         : "unknown";
+
+      console.log("call_click event", {
+        call_click_id: callButton.id,
+        call_click_location: location,
+        href: callButton.href, // Log the href to ensure it's the right element
+      });
+
       dataLayer.push({
         event: "call_click",
-        call_click_id: event.target.id,
+        call_click_id: callButton.id,
         call_click_location: location,
+        href: callButton.href,
       });
     }
 
     // CTA Button Click
     if (event.target.matches(".cta-btn")) {
+      console.log("CTA button clicked");
+
       const parentSection = event.target.closest("section");
       const sectionName = parentSection
         ? parentSection.id || parentSection.className
         : "unknown";
+
+      console.log("cta_click event", {
+        cta_name: event.target.innerText,
+        cta_section_name: sectionName,
+      });
+
       dataLayer.push({
         event: "cta_click",
         cta_name: event.target.innerText,
@@ -29,6 +48,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // FAQ Item Click
     if (event.target.matches(".faq-question")) {
+      console.log("FAQ question clicked", {
+        faq_question: event.target.innerText,
+      });
+
       dataLayer.push({
         event: "faq_click",
         faq_question: event.target.innerText,
@@ -41,14 +64,23 @@ document.addEventListener("DOMContentLoaded", () => {
     "focus",
     (event) => {
       if (event.target.matches("form input")) {
+        console.log("Form field focused");
+
         const form = event.target.closest("form");
         const label = findLabel(event.target);
         const labelText = label ? label.innerText.trim() : "unknown";
+
+        console.log("form_focus event", {
+          form_id: form.id,
+          form_name: form.name,
+          field_label: labelText,
+        });
+
         dataLayer.push({
           event: "form_focus",
           form_id: form.id,
           form_name: form.name,
-          form_field_name: labelText,
+          field_label: labelText,
         });
       }
     },
@@ -59,33 +91,31 @@ document.addEventListener("DOMContentLoaded", () => {
     "blur",
     (event) => {
       if (event.target.matches("form input")) {
+        console.log("Form field blurred");
+
         const form = event.target.closest("form");
         const label = findLabel(event.target);
         const labelText = label ? label.innerText.trim() : "unknown";
-        const fieldValue = event.target.value || ""; // Capture the current value of the field
+        const fieldValue = event.target.value || "";
+
+        console.log("form_blur event", {
+          form_id: form.id,
+          form_name: form.name,
+          field_label: labelText,
+          field_value: fieldValue,
+        });
+
         dataLayer.push({
           event: "form_blur",
           form_id: form.id,
           form_name: form.name,
-          form_field_name: labelText,
+          field_label: labelText,
           field_value: fieldValue, // Add the captured value to the data layer push
         });
       }
     },
     true
   ); // Use the capture phase to detect blur events reliably
-
-  // Form Submit
-  //   document.addEventListener("submit", (event) => {
-  //     if (event.target.matches("form")) {
-  //       const form = event.target;
-  //       dataLayer.push({
-  //         event: "form_submit",
-  //         form_id: form.id,
-  //         form_name: form.name,
-  //       });
-  //     }
-  //   });
 });
 
 // Helper function to find the corresponding label for an input

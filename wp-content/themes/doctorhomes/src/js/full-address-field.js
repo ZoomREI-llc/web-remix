@@ -31,7 +31,7 @@ function initAutocomplete() {
       dataLayer.push({
         event: "form_submit_error",
         form_id: form.id,
-        error_field_name: labelText,
+        error_field_label: labelText,
         error_message: message,
       });
     }
@@ -137,6 +137,13 @@ function initAutocomplete() {
       checkSubmitButton();
     }
 
+    let autocomplete = new google.maps.places.Autocomplete(autocompleteField, {
+      types: ["address"],
+      componentRestrictions: { country: "us" },
+    });
+
+    autocomplete.addListener("place_changed", validateAddress);
+
     // Validation for other fields (Name & Phone)
     function validateField(field, message) {
       if (field.value.trim() === "") {
@@ -195,4 +202,30 @@ function initAutocomplete() {
       }
     }
   });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  if (
+    typeof gform !== "undefined" &&
+    typeof gform.initializeOnLoaded !== "undefined"
+  ) {
+    gform.initializeOnLoaded(function () {
+      if (typeof google === "object" && typeof google.maps === "object") {
+        initAutocomplete();
+      } else {
+        loadScript(
+          "https://maps.googleapis.com/maps/api/js?key=AIzaSyCwwLF50kEF6wS1rTEqTDPfTXcSlF9REuI&libraries=places&callback=initAutocomplete"
+        );
+      }
+    });
+  }
+});
+
+function loadScript(src) {
+  const script = document.createElement("script");
+  script.type = "text/javascript";
+  script.src = src;
+  script.async = true;
+  script.defer = true;
+  document.head.appendChild(script);
 }

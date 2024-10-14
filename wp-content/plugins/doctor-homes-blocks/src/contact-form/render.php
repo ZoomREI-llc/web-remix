@@ -28,14 +28,14 @@ $airplane_icon_url = wp_get_attachment_url($airplane_icon_id);
             <div class="contact-form__details-items">
                 <div class="contact-form__contact-detail">
                     <img src="<?php echo esc_url($phone_icon_url); ?>" alt="">
-                    <a href="tel:+1 (234) 374-6637">
-                        <span>+1 (234) 374-6637</span>
+                    <a href="tel:(234) DR-HOMES">
+                        <span>(234) DR-HOMES</span>
                     </a>
                 </div>
                 <div class="contact-form__contact-detail">
                     <img src="<?php echo esc_url($letter_icon_url); ?>" alt="">
-                    <a href="mailto:hello@doctorhomes.com">
-                        <span>hello@doctorhomes.com</span>
+                    <a href="mailto:contact@doctorhomes.com">
+                        <span>contact@doctorhomes.com</span>
                     </a>
                 </div>
                 <div class="contact-form__contact-detail">
