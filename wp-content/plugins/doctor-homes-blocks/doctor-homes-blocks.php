@@ -106,7 +106,10 @@ function doctor_homes_blocks_doctor_homes_blocks_block_init()
 		'blog-categories',
         
         'blog-category-hero',
-        'blog-category'
+        'blog-category',
+        
+        'faq-accordions',
+        'faq-form'
 	];
 
 	foreach ($blocks as $block) {
