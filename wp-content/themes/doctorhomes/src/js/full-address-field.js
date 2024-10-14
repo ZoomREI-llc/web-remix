@@ -29,7 +29,7 @@ function initAutocomplete() {
       const label = findLabel(field);
       const labelText = label ? label.innerText.trim() : "unknown";
       dataLayer.push({
-        event: "form_submit_error",
+        event: "form_error",
         form_id: form.id,
         form_name: form.name,
         error_field_label: labelText,
