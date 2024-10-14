@@ -1,21 +1,16 @@
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("DOM fully loaded and parsed");
+  // Track if the form has been interacted with for the first time
+  let formInteractionTracked = new Set();
 
+  // Click Events using Event Delegation
   document.addEventListener("click", (event) => {
+    // Call Button Click
     const callButton = event.target.closest("a.call-btn");
     if (callButton) {
-      console.log("Call button clicked");
-
       const parentSection = callButton.closest("header, footer, section");
       const location = parentSection
         ? parentSection.id || parentSection.className
         : "unknown";
-
-      console.log("call_click event", {
-        call_click_id: callButton.id,
-        call_click_location: location,
-        href: callButton.href, // Log the href to ensure it's the right element
-      });
 
       dataLayer.push({
         event: "call_click",
@@ -27,34 +22,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // CTA Button Click
     if (event.target.matches(".cta-btn")) {
-      console.log("CTA button clicked");
-
       const parentSection = event.target.closest("section");
       const sectionName = parentSection
         ? parentSection.id || parentSection.className
         : "unknown";
 
-      console.log("cta_click event", {
-        cta_name: event.target.innerText,
-        cta_section_name: sectionName,
-      });
-
       dataLayer.push({
         event: "cta_click",
-        cta_name: event.target.innerText,
+        cta_text: event.target.innerText,
         cta_section_name: sectionName,
       });
     }
 
     // FAQ Item Click
     if (event.target.matches(".faq-question")) {
-      console.log("FAQ question clicked", {
-        faq_question: event.target.innerText,
-      });
-
       dataLayer.push({
         event: "faq_click",
         faq_question: event.target.innerText,
+      });
+    }
+
+    // Form Submit Button Click
+    if (event.target.matches('form input[type="submit"]')) {
+      const form = event.target.closest("form");
+      dataLayer.push({
+        event: "form_submit",
+        form_id: form.id,
+        form_name: form.name,
       });
     }
   });
@@ -64,24 +58,30 @@ document.addEventListener("DOMContentLoaded", () => {
     "focus",
     (event) => {
       if (event.target.matches("form input")) {
-        console.log("Form field focused");
-
         const form = event.target.closest("form");
         const label = findLabel(event.target);
         const labelText = label ? label.innerText.trim() : "unknown";
 
-        console.log("form_focus event", {
+        dataLayer.push({
+          event: "form_field_focus",
           form_id: form.id,
           form_name: form.name,
-          field_label: labelText,
+          form_field_label: labelText,
         });
 
-        dataLayer.push({
-          event: "form_focus",
-          form_id: form.id,
-          form_name: form.name,
-          field_label: labelText,
-        });
+        // Trigger form_start on first interaction (keystroke) in the form
+        if (!formInteractionTracked.has(form)) {
+          event.target.addEventListener("input", () => {
+            if (!formInteractionTracked.has(form)) {
+              formInteractionTracked.add(form);
+              dataLayer.push({
+                event: "form_start",
+                form_id: form.id,
+                form_name: form.name,
+              });
+            }
+          });
+        }
       }
     },
     true
@@ -91,26 +91,17 @@ document.addEventListener("DOMContentLoaded", () => {
     "blur",
     (event) => {
       if (event.target.matches("form input")) {
-        console.log("Form field blurred");
-
         const form = event.target.closest("form");
         const label = findLabel(event.target);
         const labelText = label ? label.innerText.trim() : "unknown";
         const fieldValue = event.target.value || "";
 
-        console.log("form_blur event", {
-          form_id: form.id,
-          form_name: form.name,
-          field_label: labelText,
-          field_value: fieldValue,
-        });
-
         dataLayer.push({
-          event: "form_blur",
+          event: "form_field_blur",
           form_id: form.id,
           form_name: form.name,
-          field_label: labelText,
-          field_value: fieldValue, // Add the captured value to the data layer push
+          form_field_label: labelText,
+          form_field_value: fieldValue, // Add the captured value to the data layer push
         });
       }
     },
