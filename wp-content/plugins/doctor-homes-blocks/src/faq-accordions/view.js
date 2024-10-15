@@ -152,7 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 			faqs.forEach((otherFaq) => {
 				if (otherFaq !== faq) {
-					const otherAnswer = otherFaq.querySelector(".faq-faq-accordions-answer");
+					const otherAnswer = otherFaq.querySelector(".faq-accordions-answer");
 					gsap.set(otherFaq.querySelector(".faq-accordions-question"), {
 						borderRadius: "10px",
 					});

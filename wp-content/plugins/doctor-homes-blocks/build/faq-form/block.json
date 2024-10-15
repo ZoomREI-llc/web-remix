@@ -16,5 +16,10 @@
   "style": "file:./style-index.css",
   "render": "file:./render.php",
   "viewScript": "file:./view.js",
-  "attributes": {}
+  "attributes": {
+    "phoneNumber": {
+      "type": "string",
+      "default": "(234) DR-HOMES"
+    }
+  }
 }
