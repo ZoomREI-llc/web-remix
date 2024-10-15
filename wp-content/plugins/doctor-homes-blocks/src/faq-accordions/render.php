@@ -10,14 +10,17 @@
     
     $faqs = $attributes['faqs'] ?: [];
     
-    function generate_anchor_id($text) {
-        $text = strtolower($text);
-        $text = preg_replace('/[^a-z0-9\s]/', '', $text);
-        $text = str_replace(' ', '-', $text);
-        $text = preg_replace('/-+/', '-', $text);
-        $text = trim($text, '-');
+    if(!function_exists('generate_anchor_id')) {
+        function generate_anchor_id($text)
+        {
+            $text = strtolower($text);
+            $text = preg_replace('/[^a-z0-9\s]/', '', $text);
+            $text = str_replace(' ', '-', $text);
+            $text = preg_replace('/-+/', '-', $text);
+            $text = trim($text, '-');
         
-        return $text;
+            return $text;
+        }
     }
     
     $accordion_arrow_icon_url = plugins_url('src/faq-accordions/assets/arrow.svg', dirname(__FILE__, 2));
@@ -60,7 +63,7 @@
 			</div>
 			<?php foreach ($category['items'] as $faq) : ?>
 				<div class="faq-accordions-accordion">
-					<div class="faq-accordions-question">
+					<div class="faq-accordions-question faq-question">
 						<span><?php echo esc_html($faq['question']); ?></span>
 						<div class="faq-accordions-question__img">
 							<img src="<?php echo esc_url($accordion_arrow_icon_url); ?>" alt="">

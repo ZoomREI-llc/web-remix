@@ -11,9 +11,6 @@
 	line-height: inherit;
 	font-weight: inherit;
 }
-.faq-accordions * {
-	font-family: "Proxima Nova";
-}
 .faq-accordions-title {
 	font-family: "Ruddy" !important;
 	font-weight: 700;
@@ -154,7 +151,6 @@
 }
 .faq-accordions-question img {
 	cursor: pointer;
-	transition: transform 250ms;
 }
 .faq-accordions-answer {
 	font-weight: 600;

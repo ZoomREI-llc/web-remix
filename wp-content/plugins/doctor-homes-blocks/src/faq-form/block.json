@@ -17,5 +17,9 @@
 	"render": "file:./render.php",
 	"viewScript": "file:./view.js",
 	"attributes": {
+		"phoneNumber": {
+			"type": "string",
+			"default": "(234) DR-HOMES"
+		}
 	}
 }

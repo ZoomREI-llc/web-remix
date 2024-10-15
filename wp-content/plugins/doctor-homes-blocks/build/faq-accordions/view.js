@@ -6413,7 +6413,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const isVisible = parseInt(gsap__WEBPACK_IMPORTED_MODULE_0__["default"].getProperty(answer, "height")) > 0;
       faqs.forEach(otherFaq => {
         if (otherFaq !== faq) {
-          const otherAnswer = otherFaq.querySelector(".faq-faq-accordions-answer");
+          const otherAnswer = otherFaq.querySelector(".faq-accordions-answer");
           gsap__WEBPACK_IMPORTED_MODULE_0__["default"].set(otherFaq.querySelector(".faq-accordions-question"), {
             borderRadius: "10px"
           });
