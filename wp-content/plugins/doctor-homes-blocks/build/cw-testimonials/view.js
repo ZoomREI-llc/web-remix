@@ -9419,6 +9419,8 @@ function getGlobalMatrix(element, inverse, adjustGOffset, includeScrollInFixed) 
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+(() => {
 /*!*************************************!*\
   !*** ./src/cw-testimonials/view.js ***!
   \*************************************/
@@ -9554,6 +9556,8 @@ document.addEventListener("DOMContentLoaded", function () {
     slideAnimation.progress(1);
   }
 });
+})();
+
 /******/ })()
 ;
 //# sourceMappingURL=view.js.map
