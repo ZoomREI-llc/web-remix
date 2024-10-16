@@ -95,6 +95,7 @@
 	width: 100%;
 	height: 100%;
 	padding: 2.25rem 0 1.375rem;
+	align-items: flex-start;
 }
 .lcp-hero .cw-fresh-start__testimonial blockquote p {
 	text-align: left;
@@ -339,9 +340,6 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-
-	background-color: white;
-	border-radius: 20px;
 	z-index: 1;
 }
 
@@ -450,10 +448,11 @@
 }
 
 .lcp-hero-wrapper .gform__header h3 {
-	font-size: 1.25rem !important;
-	font-weight: 700 !important;
-	line-height: 1.2 !important;
-	color: #004c8d;
+	font-weight: 700;
+	font-size: 1.25rem;
+	line-height: 120%;
+	text-transform: capitalize;
+	color: #3C4B5F;
 }
 
 @media (min-width: 1024px) {
