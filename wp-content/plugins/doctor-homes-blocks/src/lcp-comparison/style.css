@@ -1,0 +1,231 @@
+.lcp-comparison {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	padding-inline: 1rem;
+	text-align: center;
+	background: none;
+	margin-bottom: 3.75rem;
+}
+
+@media (min-width: 1024px) {
+	.lcp-comparison {
+		margin-bottom: 4.5rem;
+		max-width: 82rem;
+		gap: 3.25rem;
+	}
+}
+
+.lcp-comparison__text {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+}
+
+.lcp-comparison h2 {
+	font-size: 2.25rem;
+	color: var(--primaryBlue2);
+}
+
+@media (min-width: 1024px) {
+	.lcp-comparison h2 {
+		font-size: 3rem;
+	}
+}
+
+.comp-vs {
+	display: inline-block;
+	position: relative;
+	font-size: 2.375rem;
+	font-weight: 300;
+	font-style: italic;
+	z-index: 0;
+	padding: 0.5rem;
+}
+
+.comp-vs::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: var(--text-vector);
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	z-index: -1;
+	transform: rotate(4.5deg);
+}
+
+.lcp-comparison p {
+	font-size: 1.375rem;
+}
+
+@media (min-width: 1024px) {
+	.lcp-comparison p {
+		font-size: 1.5rem;
+	}
+}
+
+.lcp-comparison-table {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	margin: 0 auto;
+	overflow-x: auto;
+	background: none; /* Ensure no background color */
+}
+
+#lcp-comparison-logo {
+	width: 5.25rem;
+	height: auto;
+}
+
+@media (min-width: 1024px) {
+	#lcp-comparison-logo {
+		width: 12.125rem;
+	}
+}
+
+.lcp-comparison-row {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	position: relative; /* Ensure pseudo-elements are positioned correctly */
+}
+
+.lcp-comparison-row.header > * {
+	border-radius: 10px 10px 0 0;
+}
+
+.lcp-comparison-column--first > span {
+	z-index: 1;
+}
+
+@media (min-width: 1024px) {
+	.lcp-comparison-row.header {
+		height: 12.5rem;
+	}
+
+	.lcp-comparison-row.header > .lcp-comparison-column {
+		text-align: center;
+	}
+
+	.lcp-comparison-column--first {
+		padding: 1.5rem 5rem;
+	}
+
+	.lcp-comparison-row.header,
+	.lcp-comparison-column--first {
+		font-size: 1.5rem;
+	}
+}
+
+@media (min-width: 1024px) {
+	.lcp-comparison-row.header > div:nth-child(1) {
+		height: 25%;
+		align-self: end;
+		background-color: white !important;
+	}
+
+	.lcp-comparison-row.header > div:nth-child(2) {
+		padding-block: 3.375rem;
+	}
+
+	.lcp-comparison-row.header > div:nth-child(3) {
+		height: 75%;
+		align-self: end;
+	}
+}
+
+@media (min-width: 1024px) {
+	div.lcp-comparison-row:last-child > * {
+		border-radius: 0 0 10px 10px;
+	}
+}
+
+div.lcp-comparison-row:nth-child(1) > div:nth-child(1) {
+	background-color: transparent;
+}
+
+div.lcp-comparison-row:nth-child(2) > div:nth-child(1) {
+	border-radius: 10px 10px 0 0;
+}
+
+.lcp-comparison-row--uneven .lcp-comparison-column::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: var(--primaryGray);
+	opacity: 0.3;
+	pointer-events: none; /* Ensure the overlay does not interfere with clicks */
+	z-index: 0; /* Ensure it is below the text */
+}
+
+.lcp-comparison-column {
+	flex: 1;
+	padding: 0.5rem;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 0.5rem;
+	background-color: white;
+	font-weight: 600;
+	position: relative; /* Ensure content is above the pseudo-element */
+	overflow: hidden; /* Ensure pseudo-element is contained */
+}
+
+@media (min-width: 1024px) {
+	.lcp-comparison-row > .lcp-comparison-column {
+		align-items: start;
+		padding: 1.5rem 2rem 1.5rem 3.25rem;
+		text-align: left;
+	}
+
+	.lcp-comparison-column.doctor-homes {
+		padding: 1.5rem 4.75rem;
+	}
+}
+
+.column__content {
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+	font-size: 0.875rem;
+	z-index: 1; /* Ensure content is above the pseudo-element */
+}
+
+@media (min-width: 1024px) {
+	.column__content {
+		flex-direction: row;
+		gap: 0.625rem;
+		font-size: 1rem;
+		align-items: center;
+	}
+}
+
+.lcp-comparison-column.doctor-homes {
+	background-color: var(--primaryBlue2);
+	color: white;
+	margin-inline: 0.25rem;
+}
+
+.lcp-comparison-column img {
+	width: 1.125rem;
+	height: auto;
+	margin: 0 auto;
+	z-index: 1; /* Ensure images are above the pseudo-element */
+}
+
+@media (min-width: 1024px) {
+	.lcp-comparison-column img {
+		width: 2.75rem;
+	}
+}

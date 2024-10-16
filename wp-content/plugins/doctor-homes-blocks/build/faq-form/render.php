@@ -2,9 +2,8 @@
 
 $phone_img = plugins_url('src/faq-form/assets/phone.svg', dirname(__FILE__, 2));
 
-$tick_icon_id = 585;
-$tick_icon_url = wp_get_attachment_url($tick_icon_id);
-$phoneNumber = '(234) DR-HOMES';
+$tick_icon_url = plugins_url('src/faq-form/assets/tick.svg', dirname(__FILE__, 2));
+
 $phoneNumber = isset($attributes['phoneNumber']) ? esc_html($attributes['phoneNumber']) : '';
 ?>
 

@@ -109,7 +109,17 @@ function doctor_homes_blocks_doctor_homes_blocks_block_init()
         'blog-category',
         
         'faq-accordions',
-        'faq-form'
+        'faq-form',
+        
+        'lcp-hero',
+        'lcp-as-seen-on-carousel',
+        'lcp-benefits',
+        'lcp-steps',
+        'lcp-why-sell',
+        'lcp-testimonials',
+        'lcp-comparison',
+        'lcp-faqs',
+        'lcp-sell-today',
 	];
 
 	foreach ($blocks as $block) {
