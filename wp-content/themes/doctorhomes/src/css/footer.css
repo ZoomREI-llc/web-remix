@@ -69,7 +69,11 @@
 .footer-menus {
   display: flex;
   flex-wrap: wrap;
-  gap: 3.625rem;
+  gap: 2.5rem;
+}
+
+.footer-menus li:not(:first-child) {
+  margin-top: 1.25rem;
 }
 
 @media (min-width: 1024px) {
@@ -102,6 +106,14 @@
 .social-icons {
   display: flex;
   gap: 1rem;
+  height: max-content;
+  margin-top: 1.875rem;
+}
+
+@media (min-width: 1024px) {
+  .social-icons {
+    margin-top: 1.375rem;
+  }
 }
 
 /* .footer-disclaimer hr {
