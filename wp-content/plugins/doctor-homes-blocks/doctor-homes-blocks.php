@@ -123,7 +123,25 @@ function doctor_homes_blocks_doctor_homes_blocks_block_init()
 	];
 
 	foreach ($blocks as $block) {
-		register_block_type(__DIR__ . "/build/$block");
+		register_block_type(__DIR__ . "/build/$block", [
+			// Note: CSS is no longer automatically loaded. We removed the "style" field from block.json 
+			// and now enqueue it manually through the render_callback.
+			'render_callback' => function ($attributes, $content) use ($block) {
+				// Conditionally enqueue CSS.
+				wp_enqueue_style(
+					"doctor-homes-$block-style",
+					plugins_url("build/$block/style-index.css", __FILE__),
+					[],
+					filemtime(__DIR__ . "/build/$block/style-index.css")
+				);
+
+				// Render the block’s dynamic content.
+				ob_start();
+				include __DIR__ . "/src/$block/render.php";
+				return ob_get_clean();
+			}
+		]);
+
 		add_shortcode("doctor_homes_$block", function ($atts) use ($block) {
 			$attributes = shortcode_atts([], $atts);
 			return render_block([
@@ -133,5 +151,6 @@ function doctor_homes_blocks_doctor_homes_blocks_block_init()
 		});
 	}
 }
+
 
 add_action('init', 'doctor_homes_blocks_doctor_homes_blocks_block_init');
