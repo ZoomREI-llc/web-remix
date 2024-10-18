@@ -144,7 +144,12 @@ add_filter('render_block', function ($block_content, $block) {
 	if (strpos($block['blockName'], 'doctor-homes/') === 0) {
 		$block_name = str_replace('doctor-homes/', '', $block['blockName']);
 
-		// Enqueue the block’s CSS only when it's being rendered.
+		// Preload the block's CSS to ensure it loads early.
+		add_action('wp_head', function () use ($block_name) {
+			echo '<link rel="preload" href="' . esc_url(plugins_url("build/{$block_name}/style-index.css", __FILE__)) . '" as="style" onload="this.rel=\'stylesheet\'">';
+		});
+
+		// Enqueue the block's CSS for good measure.
 		wp_enqueue_style(
 			"doctor-homes-{$block_name}-style",
 			plugins_url("build/{$block_name}/style-index.css", __FILE__),
