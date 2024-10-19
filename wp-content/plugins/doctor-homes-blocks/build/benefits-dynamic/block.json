@@ -97,5 +97,6 @@
         }
       }
     }
-  }
+  },
+  "style": "file:./style-index.css"
 }

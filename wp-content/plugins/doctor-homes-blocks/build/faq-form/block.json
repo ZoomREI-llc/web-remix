@@ -20,5 +20,6 @@
       "type": "string",
       "default": "(234) DR-HOMES"
     }
-  }
+  },
+  "style": "file:./style-index.css"
 }

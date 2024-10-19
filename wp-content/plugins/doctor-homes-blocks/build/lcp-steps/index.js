@@ -174,7 +174,7 @@ module.exports = window["wp"]["i18n"];
   \**********************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"doctor-homes/lcp-steps","version":"0.1.0","title":"LCP Steps","category":"widgets","icon":"editor-ol","description":"A steps block.","supports":{"html":false},"textdomain":"doctor-homes-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","render":"file:./render.php","viewScript":"file:./view.js","attributes":{"selectedMarket":{"type":"string","default":"Saint Louis"}}}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"doctor-homes/lcp-steps","version":"0.1.0","title":"LCP Steps","category":"widgets","icon":"editor-ol","description":"A steps block.","supports":{"html":false},"textdomain":"doctor-homes-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","render":"file:./render.php","viewScript":"file:./view.js","attributes":{"selectedMarket":{"type":"string","default":"Saint Louis"}},"style":"file:./style-index.css"}');
 
 /***/ })
 
