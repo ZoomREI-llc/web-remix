@@ -155,7 +155,7 @@ module.exports = window["wp"]["i18n"];
   \*********************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"doctor-homes/faq-form","version":"0.1.0","title":"FAQ form","category":"widgets","icon":"admin-comments","description":"FAQ form","supports":{"html":false},"textdomain":"doctor-homes-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","render":"file:./render.php","viewScript":"file:./view.js","attributes":{"phoneNumber":{"type":"string","default":"(234) DR-HOMES"}}}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"doctor-homes/faq-form","version":"0.1.0","title":"FAQ form","category":"widgets","icon":"admin-comments","description":"FAQ form","supports":{"html":false},"textdomain":"doctor-homes-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","render":"file:./render.php","viewScript":"file:./view.js","attributes":{"phoneNumber":{"type":"string","default":"(234) DR-HOMES"}},"style":"file:./style-index.css"}');
 
 /***/ })
 

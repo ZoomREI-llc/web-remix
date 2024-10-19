@@ -20,5 +20,6 @@
       "type": "array",
       "default": []
     }
-  }
+  },
+  "style": "file:./style-index.css"
 }

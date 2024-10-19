@@ -20,5 +20,6 @@
       "type": "string",
       "default": "St. Louis"
     }
-  }
+  },
+  "style": "file:./style-index.css"
 }

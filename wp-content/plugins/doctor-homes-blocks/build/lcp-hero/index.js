@@ -202,7 +202,7 @@ module.exports = window["wp"]["i18n"];
   \*********************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"doctor-homes/lcp-hero","version":"0.1.0","title":"lcp Hero","category":"widgets","icon":"superhero-alt","description":"The Hero Section of the lcp landing-page.","supports":{"html":false},"textdomain":"doctor-homes-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","render":"file:./render.php","viewScript":"file:./view.js","attributes":{"selectedMarket":{"type":"string","default":"Saint Louis"}}}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"doctor-homes/lcp-hero","version":"0.1.0","title":"lcp Hero","category":"widgets","icon":"superhero-alt","description":"The Hero Section of the lcp landing-page.","supports":{"html":false},"textdomain":"doctor-homes-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","render":"file:./render.php","viewScript":"file:./view.js","attributes":{"selectedMarket":{"type":"string","default":"Saint Louis"}},"style":"file:./style-index.css"}');
 
 /***/ })
 
