@@ -1,4 +1,4 @@
-/* .faq-section {
+.faq-section {
 	width: 100%;
 	max-width: 95.5rem;
 	display: flex;
@@ -51,4 +51,4 @@
 .faq-section a {
 	color: var(--primaryBlue1);
 	text-decoration: underline;
-} */
+}
