@@ -28,6 +28,8 @@
 @media (min-width: 1024px) {
 	.sf-benefits__grid {
 		grid-template-columns: 1fr 1fr;
+		max-width: 1240px;
+		margin: 0 auto;
 	}
 }
 

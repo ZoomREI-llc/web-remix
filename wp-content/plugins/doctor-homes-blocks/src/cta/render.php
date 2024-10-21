@@ -1,15 +1,8 @@
 <?php
-$dh_image_id = 416;
-$dh_image_url = wp_get_attachment_url($dh_image_id);
 
 $arrow_icon_id = 412;
 $arrow_icon_url = wp_get_attachment_url($arrow_icon_id);
 
-$testi_image_id = 455;
-$testi_image_url = wp_get_attachment_url($testi_image_id);
-
-$star_icon_id = 408;
-$star_icon_url = wp_get_attachment_url($star_icon_id);
 ?>
 
 <section class="sell-house">
@@ -42,8 +35,5 @@ $star_icon_url = wp_get_attachment_url($star_icon_id);
                 <span class="cta__credibility-data-text">SATISFIED CUSTOMERS</span>
             </li>
         </ul>
-    </div>
-    <div class="sell-house__image">
-        <img src="<?php echo esc_url($dh_image_url); ?>" alt="We make the process of selling your house fast and easy">
     </div>
 </section>

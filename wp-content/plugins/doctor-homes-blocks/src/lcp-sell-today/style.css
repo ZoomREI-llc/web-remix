@@ -1,5 +1,6 @@
 
 
+
 .lcp-sell-today-wrapper {
 	position: relative;
 	background-image: var(--background-image);
@@ -11,10 +12,12 @@
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
+	padding: 4.375rem 0 2.25rem;
 }
 @media (min-width: 1024px) {
 	.lcp-sell-today-wrapper {
 		flex-direction: row;
+		padding: 3.125rem 0;
 	}
 }
 .lcp-sell-today-wrapper .cw-fresh-start__testimonee {
@@ -78,17 +81,13 @@
 	width: 100%;
 	height: 100%;
 	position: relative;
-	background-color: rgb(0,41,76);
 }
 .lcp-sell-today__media {
-	position: relative;
 	width: 100%;
-	height: auto;
-	top: unset;
-	left: unset;
-
-
-
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
 }
 .lcp-sell-today__media::after{
 	content: '';
@@ -101,20 +100,10 @@ background: linear-gradient(180deg, rgba(0,41,76,0.4) 0%, rgba(0,41,76,0.4) 100%
 display: block;
 z-index: 1;
 }
-.lcp-sell-today__media::before {
-	content: '';
-	position: absolute;
-	width: 100%;
-	height: 10%;
-	left: 0;
-	bottom: 0;
-	background: linear-gradient(180deg, rgba(0,41,76,0) 0%, rgba(0,41,76,1) 100%);
-	display: block;
-	z-index: 3;
-}
+
 .lcp-sell-today__fon {
 	width: 100%;
-	height: 400px;
+	height: 100%;
 	object-fit: cover;
 }
 .lcp-sell-today__foto {
@@ -126,17 +115,15 @@ z-index: 1;
 	transform: translateX(-50%);
 }
 @media (min-width: 1024px) {
-	.lcp-sell-today__media::before {
-		display: none;
-	}
 	.lcp-sell-today {
 		/* padding: 2rem 7.75rem; */
 		flex-direction: row;
-		padding:6rem 1rem;
 		max-width: 1040px;
 		background-color: transparent;
-		justify-content: flex-start;
 		/* gap: 3rem; */
+		justify-content: center;
+		padding: 0 1rem;
+		text-align: center;
 	}
 	.lcp-sell-today__media {
 		position: absolute;
@@ -167,7 +154,6 @@ transform: translateX(-50%);
 }
 .lcp-sell-today-wrapper .cw-hero__content {
 	position: relative;
-	z-index: 3;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -178,18 +164,16 @@ transform: translateX(-50%);
 	gap: 1.5rem;
 	width: 100%;
 	max-width: 320px;
-	margin-bottom: 2rem;
-	/* max-width: 40.25rem; */
 }
 
 @media (min-width: 1024px) {
 	.lcp-sell-today-wrapper .cw-hero__content {
 		align-items: start;
-		gap: 2rem;
-		flex: 0 0 51%;
-		width: 51%;
 		margin: 0;
-		max-width: unset;
+		flex: unset;
+		gap: 25px;
+		width: 100%;
+		max-width: 537px;
 	}
 	.lcp-sell-today__foto {
 		position: absolute;
@@ -232,8 +216,12 @@ left: 65%;
 
 @media (min-width: 1024px) {
 	.lcp-sell-today-wrapper .cw-hero__reviews-text p {
-		font-size: 1rem;
-		text-align: left;
+		text-align: center;
+		font-size: 14px;
+	}
+	.lcp-sell-today-wrapper .cw-hero__reviews-text {
+		margin-left: 0;
+		margin-top: 5px;
 	}
 }
 
@@ -245,7 +233,7 @@ left: 65%;
 	text-align: left;
 	display: flex;
 	flex-direction: column;
-	gap: 1.125rem;
+	gap: 1rem;
 }
 
 .lcp-sell-today-wrapper .cw-hero__titles h1 {
@@ -279,14 +267,15 @@ left: 65%;
 
 @media (min-width: 1024px) {
 	.lcp-sell-today-wrapper .cw-hero__titles {
-		gap: 1.5rem;
+		text-align: center;
+		gap: 10px;
 	}
 	.lcp-sell-today-wrapper .cw-hero__titles h1 {
 		font-size: 45px;
 	}
-	/* .lcp-sell-today-wrapper .cw-hero__titles p {
-		font-size: 1.125rem;
-	} */
+	.lcp-sell-today-wrapper .cw-hero__titles p {
+		margin-top: 18px;
+	}
 	/* .lcp-sell-today-wrapper .cw-hero__subtitle{font-size: 0.9rem;} */
 }
 
@@ -373,7 +362,6 @@ left: 65%;
 	justify-content: center;
 	align-items: center;
 	gap: 0.5rem;
-	padding-block: 1.25rem;
 	background-color: #dfa01f;
 	color: white;
 	border-radius: 70px;
@@ -385,11 +373,14 @@ left: 65%;
 	text-transform: uppercase;
 	text-decoration: none;
 	margin-bottom: 1rem;
+	padding-block: 0.875rem;
 }
 @media (min-width: 1024px) {
 	.lcp-sell-today-wrapper .cw-hero__statistic--list {
-		justify-content: flex-start;
 		gap: 3rem;
+		justify-content: space-between;
+		max-width: 466px;
+		margin: 0 auto;
 	}
 	.lcp-sell-today-wrapper .cw-hero__statistic--text {
 		font-size: 16px;
@@ -428,10 +419,22 @@ left: 65%;
 	.lcp-sell-today-wrapper .cw-hero__cta {
 		font-size: 18px;
 		max-width: 220px;
+		padding-block: 20px;
+		margin: 0;
 	}
 	.lcp-sell-today-wrapper .cw-hero__cta img{
 		width: 15px;
 		height: auto;
+	}
+
+	.lcp-sell-today .cw-hero__footer-block {
+		flex-direction: column;
+		justify-content: center;
+	}
+	.lcp-sell-today-wrapper .cw-hero__footer-block .cw-hero__reviews {
+		align-items: center;
+		justify-content: center;
+		margin-top: 17px;
 	}
 }
 

@@ -98,6 +98,5 @@ $a_plus_icon_url = wp_get_attachment_url($a_plus_icon_id);
                 </li>
             </ul>
         </div>
-        <div class="dh-hero__doctor-homes"><img src="<?php echo esc_url($doctor_homes_image_url); ?>" alt="Sell your house fast for cash with Doctor Homes"></div>
     </div>
 </section>
