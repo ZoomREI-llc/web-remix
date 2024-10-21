@@ -6348,8 +6348,6 @@ TweenMaxWithCSS = gsapWithCSS.core.Tween;
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
-(() => {
 /*!******************************!*\
   !*** ./src/faq-form/view.js ***!
   \******************************/
@@ -6580,8 +6578,6 @@ document.addEventListener("DOMContentLoaded", function () {
   console.log("DOM fully loaded and parsed.");
   checkGoogleMapsApi();
 });
-})();
-
 /******/ })()
 ;
 //# sourceMappingURL=view.js.map
