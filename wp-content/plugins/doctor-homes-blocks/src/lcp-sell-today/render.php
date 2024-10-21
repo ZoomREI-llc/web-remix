@@ -1,5 +1,4 @@
 <?php
-$image_url = plugins_url('src/lcp-sell-today/assets/person-foto.webp', dirname(__FILE__, 2));
 
 $background_image_url = plugins_url('src/lcp-sell-today/assets/last-block-fon.webp', dirname(__FILE__, 2));
 $star_icon_url = plugins_url('src/lcp-sell-today/assets/star.svg', dirname(__FILE__, 2));
@@ -10,7 +9,6 @@ $selectedMarket = isset($attributes['selectedMarket']) ? esc_html($attributes['s
 <section class="lcp-sell-today-wrapper">
          <div class="lcp-sell-today__media">
             <img src="<?php echo esc_url($background_image_url); ?>" alt="" class="lcp-sell-today__fon">
-            <img  src="<?php echo esc_url($image_url); ?>" alt="Doctor Homes" class="lcp-sell-today__foto">
          </div>
     <div class="lcp-sell-today">
 

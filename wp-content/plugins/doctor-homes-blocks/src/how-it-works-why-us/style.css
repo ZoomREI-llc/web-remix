@@ -33,6 +33,9 @@
 		text-align: left;
 		align-items: start;
 	}
+	.why-choose-us__list {
+		margin: 0 auto;
+	}
 }
 
 .why-choose-us__item--image {
