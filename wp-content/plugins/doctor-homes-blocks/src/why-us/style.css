@@ -32,6 +32,9 @@
 		flex-direction: row;
 		text-align: left;
 	}
+	.why-choose-us__list {
+		margin: 0 auto;
+	}
 }
 
 .why-choose-us__item--image {
