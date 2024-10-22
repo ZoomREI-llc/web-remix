@@ -159,23 +159,14 @@
 	display: flex;
 	justify-content: flex-end;
 	align-items: end;
-	background-color: #00172B;
-	background-image: radial-gradient(
-			circle,
-			rgba(255, 255, 255, 0.2) 0%,
-			rgba(255, 255, 255, 0) 100%
-	);
-	border-radius: 18px;
 	overflow: hidden;
 	grid-row: 1;
 	/* max-width: 38.5rem; */
 	height: 100%;
 	width: 100%;
+	background-color: transparent;
+	border-radius: 0;
 }
-.ao-meet-doctor__img img{
-	margin-right:7%;
-}
-
 @media (min-width: 1024px) {
 	.ao-meet-doctor__img {
 		height: 44rem;
@@ -185,7 +176,9 @@
 }
 
 .ao-meet-doctor__img img {
-	max-width: 80%;
+	max-width: 100%;
+	border-radius: 18px;
+	margin-right: 0;
 }
 
 .ao-meet-doctor__cta {
@@ -213,4 +206,42 @@
 		font-size: 20px;
 		margin-bottom: 16px;
 	}
+}
+
+
+.ao-hero__reviews {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	width: 100%;
+}
+
+@media (min-width: 1024px) {
+	.ao-hero__reviews {
+		justify-content: flex-start;
+		align-items: center;
+		display: flex;
+	}
+}
+
+.ao-hero__reviews-text {
+	margin-left: 3px;
+}
+
+.ao-hero__reviews-text p {
+	/* font-size: 0.75rem; */
+	font-size: 12px;
+	margin: 0;
+}
+
+@media (min-width: 1024px) {
+	.ao-hero__reviews-text p {
+		/* font-size: 1rem; */
+		font-size: 16px;
+		margin: 0;
+	}
+}
+
+.ao-hero__reviews-stars-wrapper {
+	display: flex;
 }

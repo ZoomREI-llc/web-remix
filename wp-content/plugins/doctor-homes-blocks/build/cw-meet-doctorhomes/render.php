@@ -12,9 +12,6 @@ $arrow_icon_url = plugins_url('src/cw-meet-doctorhomes/assets/cta-arrow.svg', di
     <div class="cw-meet-doctorhomes">
         <div class="cw-meet-doctorhomes__media">
             <img src="<?php echo esc_url($fon_url); ?>" alt="image fon" class="cw-meet-doctorhomes__media--fon">
-            <div class="cw-meet-doctorhomes__foto">
-                <img src="<?php echo esc_url($image_url); ?>" alt="Doctor Homes" class="">
-            </div>
         </div>
         <div class="cw-meet-doctorhomes__container">
             <div class="cw-meet-doctorhomes__content">

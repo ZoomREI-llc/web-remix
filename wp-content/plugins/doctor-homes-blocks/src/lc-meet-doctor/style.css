@@ -17,7 +17,8 @@
 }
 
 .lc-meet-doctor__container {
-	display: grid;
+	display: flex;
+	flex-direction: column-reverse;
 	grid-template-columns: 1fr;
 	grid-template-rows: 2fr 3fr;
 	justify-content: center;
@@ -28,6 +29,7 @@
 
 @media (min-width: 1024px) {
 	.lc-meet-doctor__container {
+		display: grid;
 		grid-template-columns: 1fr 1fr;
 		grid-template-rows: auto;
 		gap: 3.75rem;
@@ -120,16 +122,16 @@
 	display: flex;
 	justify-content: flex-end;
 	align-items: end;
-	background-color: white;
 	background-image: radial-gradient(
 		circle,
 		rgba(1, 77, 141, 0.3) 0%,
 		rgba(1, 77, 141, 0) 100%
 	);
-	border-radius: 18px;
 	grid-row: 1;
 	max-width: 38.5rem;
 	height: 100%;
+	background-color: transparent;
+	border-radius: 0;
 }
 
 @media (min-width: 1024px) {
@@ -140,8 +142,40 @@
 }
 
 .lc-meet-doctor__img img {
-	max-width: 80%;
-	margin-right: 7%;
+	max-width: 100%;
+	margin-right: 0;
+}
+
+.lc-hero__reviews {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+@media (min-width: 1024px) {
+	.lc-hero__reviews {
+		justify-content: start;
+		align-items: center;
+		display: flex;
+	}
+}
+
+.lc-hero__reviews-text {
+	margin-left: 0.25rem;
+}
+
+.lc-hero__reviews-text p {
+	font-size: 0.8rem;
+}
+
+@media (min-width: 1024px) {
+	.lc-hero__reviews-text p {
+		font-size: 1rem;
+	}
+}
+
+.lc-hero__reviews-stars-wrapper {
+	display: flex;
 }
 
 .lc-meet-doctor__cta {
