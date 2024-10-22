@@ -1,0 +1,10 @@
+.wp-block-doctor-homes-s2-form {
+	padding-block: 1.5rem !important;
+	background-color: #2B3849;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	margin-block: 1rem !important;
+}
