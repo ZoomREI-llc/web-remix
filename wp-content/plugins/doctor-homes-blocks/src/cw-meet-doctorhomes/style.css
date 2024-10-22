@@ -22,6 +22,7 @@
 	width: 100%;
 	height: 100%;
 	position: relative;
+	margin-bottom: 2.75rem;
 }
 .cw-meet-doctorhomes__media--fon {
 	width: 100%;
@@ -64,6 +65,7 @@
 
 		right: 0;
 		top: 0;
+		margin-bottom: 0;
 	}
 	.cw-meet-doctorhomes__foto {
 		position: absolute;
@@ -294,4 +296,35 @@
 		align-items: flex-start;
 		display: flex;
 	}
+}
+
+.cw-hero__reviews {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	width: 100%;
+}
+
+@media (min-width: 1024px) {
+	.cw-hero__reviews {
+		justify-content: start;
+		align-items: center;
+		display: flex;
+	}
+}
+
+.cw-hero__reviews-text p {
+	font-size: 0.75rem;
+	margin: 0;
+	margin-left: 5px;
+}
+
+@media (min-width: 1024px) {
+	.cw-hero__reviews-text p {
+		font-size: 1rem;
+	}
+}
+
+.cw-hero__reviews-stars-wrapper {
+	display: flex;
 }

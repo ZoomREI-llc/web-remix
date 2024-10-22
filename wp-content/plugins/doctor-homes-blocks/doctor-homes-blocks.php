@@ -120,6 +120,8 @@ function doctor_homes_blocks_doctor_homes_blocks_block_init()
 		'lcp-testimonials',
 		'lcp-faqs',
 		'lcp-sell-today',
+  
+		's2-form',
 	];
 
 	foreach ($blocks as $block) {
