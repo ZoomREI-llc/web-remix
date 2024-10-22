@@ -1,5 +1,4 @@
 <?php
-$image_url = plugins_url('src/cw-sell-today/assets/person-foto.webp', dirname(__FILE__, 2));
 
 $background_image_url = plugins_url('src/cw-sell-today/assets/last-block-fon.webp', dirname(__FILE__, 2));
 $foto_image_url = plugins_url('src/cw-sell-today/assets/last-block-foto.webp', dirname(__FILE__, 2));
@@ -11,7 +10,6 @@ $checkmark_icon_url = plugins_url('src/cw-sell-today/assets/check-circle.svg', d
 <section class="cw-sell-today-wrapper">
          <div class="cw-sell-today__media">
             <img src="<?php echo esc_url($background_image_url); ?>" alt="" class="cw-sell-today__fon">
-            <img  src="<?php echo esc_url($image_url); ?>" alt="Doctor Homes" class="cw-sell-today__foto">
          </div>
     <div class="cw-sell-today">
 
