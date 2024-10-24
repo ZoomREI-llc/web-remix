@@ -28,7 +28,7 @@ $a_plus_icon_id = 429;
 $a_plus_icon_url = wp_get_attachment_url($a_plus_icon_id);
 ?>
 <a id="top"></a>
-<section class="dh-hero" style="--background-image: url('<?php echo esc_url($background_image_url); ?>');">
+<section class="dh-hero" style="--bg-image: url('<?php echo esc_url($background_image_url); ?>');">
     <div class="dh-hero__content">
         <div class="dh-hero__reviews">
             <div class="dh-hero__reviews-stars-wrapper">

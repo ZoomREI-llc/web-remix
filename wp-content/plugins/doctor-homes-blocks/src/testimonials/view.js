@@ -1,6 +1,6 @@
-import gsap from "gsap";
+// import gsap from "gsap";
 
-document.addEventListener("DOMContentLoaded", () => {
+function testimonialsCallback() {
 	const carouselContainer = document.querySelector(".carousel-container");
 	const carousel = document.querySelector(".testimonial-carousel");
 	const testimonials = carousel.querySelectorAll(".testimonial");
@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			updateCarousel();
 		}
 	}
-	
+
 
 	carousel.addEventListener("touchstart", handleTouchStart);
 	carousel.addEventListener("touchmove", handleTouchMove);
@@ -130,4 +130,8 @@ document.addEventListener("DOMContentLoaded", () => {
 	});
 
 	updateCarousel(); // Initial call to set up the carousel
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+	loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js', testimonialsCallback)
 });

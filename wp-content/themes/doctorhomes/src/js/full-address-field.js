@@ -205,28 +205,15 @@ function initAutocomplete() {
   });
 }
 
+window.initAutocomplete = initAutocomplete
+
 document.addEventListener("DOMContentLoaded", function () {
   if (
     typeof gform !== "undefined" &&
     typeof gform.initializeOnLoaded !== "undefined"
   ) {
     gform.initializeOnLoaded(function () {
-      if (typeof google === "object" && typeof google.maps === "object") {
-        initAutocomplete();
-      } else {
-        loadScript(
-          "https://maps.googleapis.com/maps/api/js?key=AIzaSyCwwLF50kEF6wS1rTEqTDPfTXcSlF9REuI&libraries=places&callback=initAutocomplete"
-        );
-      }
+      loadScript(`https://maps.googleapis.com/maps/api/js?key=${formConfig.googleMapsApiKey}&libraries=places&callback=initAutocomplete`, initAutocomplete);
     });
   }
 });
-
-function loadScript(src) {
-  const script = document.createElement("script");
-  script.type = "text/javascript";
-  script.src = src;
-  script.async = true;
-  script.defer = true;
-  document.head.appendChild(script);
-}

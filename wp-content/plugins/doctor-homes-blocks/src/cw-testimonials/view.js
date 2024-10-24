@@ -1,9 +1,10 @@
-import gsap from "gsap";
-import { Draggable } from "gsap/Draggable";
+// import gsap from "gsap";
+// import { Draggable } from "gsap/Draggable";
+//
 
-gsap.registerPlugin(Draggable);
+function cwTestimonialsCallback() {
+	gsap.registerPlugin(Draggable);
 
-document.addEventListener("DOMContentLoaded", function () {
 	var dots = document.querySelectorAll(".cw-dot");
 
 	var slideDelay = 2;
@@ -146,7 +147,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		wrapWidth = slideWidth * numSlides;
 
 		wrap ||
-			draggable.applyBounds({ minX: -slideWidth * (numSlides - 1), maxX: 0 });
+		draggable.applyBounds({ minX: -slideWidth * (numSlides - 1), maxX: 0 });
 
 		gsap.set(proxy, {
 			x: norm * wrapWidth,
@@ -155,4 +156,11 @@ document.addEventListener("DOMContentLoaded", function () {
 		animateSlides(0);
 		slideAnimation.progress(1);
 	}
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+	loadScript([
+		'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js',
+		'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Draggable.min.js',
+	], cwTestimonialsCallback)
 });

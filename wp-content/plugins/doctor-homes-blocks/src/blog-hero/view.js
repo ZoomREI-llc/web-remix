@@ -1,7 +1,6 @@
-import gsap from "gsap";
-import { ScrollSmoother } from "gsap/ScrollToPlugin";
+// import gsap from "gsap";
 
-document.addEventListener("DOMContentLoaded", function () {
+function blogHeroCallback() {
   let sections = document.querySelectorAll('.blog-hero')
 
   function dynamicListener(events, selector, handler, context){
@@ -358,4 +357,8 @@ document.addEventListener("DOMContentLoaded", function () {
   })
   smoothScrollInit()
   anchors()
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js', blogHeroCallback)
 });

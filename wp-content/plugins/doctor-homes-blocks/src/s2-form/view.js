@@ -1,6 +1,6 @@
-import gsap from "gsap";
-let pagesInstance;
-document.addEventListener("DOMContentLoaded", function () {
+// import gsap from "gsap";
+
+function s2FormCallback() {
 	function fadingPages(context, opts) {
 		let pages = Array.from(context.querySelectorAll(opts.pageSelector));
 		let activePageName = 'main';
@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 
 
-	pagesInstance = fadingPages(document.body, {
+	let pagesInstance = fadingPages(document.body, {
 		pageSelector: '.s2-form__step',
 		timing: 500
 	})
@@ -85,4 +85,8 @@ document.addEventListener("DOMContentLoaded", function () {
 	jQuery(document).bind('gform_confirmation_loaded', function(event, formId){
 		pagesInstance.show('thanks')
 	});
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+	loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js', s2FormCallback)
 });
