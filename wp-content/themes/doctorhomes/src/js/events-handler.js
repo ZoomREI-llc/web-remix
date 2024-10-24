@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // CTA Button Click
-    if (event.target.matches(".cta-btn")) {
+    if (event.target.matches && event.target.matches(".cta-btn")) {
       const parentSection = event.target.closest("section");
       const sectionName = parentSection
         ? parentSection.id || parentSection.className
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // FAQ Item Click
-    if (event.target.matches(".faq-question")) {
+    if (event.target.matches && event.target.matches(".faq-question")) {
       dataLayer.push({
         event: "faq_click",
         faq_question: event.target.innerText,
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Form Submit Button Click
-    if (event.target.matches('form input[type="submit"]')) {
+    if (event.target.matches && event.target.matches('form input[type="submit"]')) {
       const form = event.target.closest("form");
       dataLayer.push({
         event: "form_submit",
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "focus",
     (event) => {
       if (
-        event.target.matches(
+        event.target.matches && event.target.matches(
           'form input:not([type="submit"], [type="radio"], [type="checkbox"]), form select, form textarea'
         )
       ) {
@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "blur",
     (event) => {
       if (
-        event.target.matches(
+        event.target.matches && event.target.matches(
           'form input:not([type="submit"], [type="radio"], [type="checkbox"]), form select, form textarea'
         )
       ) {

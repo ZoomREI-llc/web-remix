@@ -1,4 +1,3 @@
-import { gsap } from "gsap";
 
 // Hide initial fields
 export function hideInitialFields(fields) {
