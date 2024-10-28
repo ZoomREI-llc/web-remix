@@ -1,8 +1,536 @@
 /******/ (() => { // webpackBootstrap
-var __webpack_exports__ = {};
-/*!*******************************!*\
-  !*** ./src/lead-form/view.js ***!
-  \*******************************/
+/******/ 	"use strict";
+/******/ 	var __webpack_modules__ = ({
+
+/***/ "./src/lead-form/modules/helpers.js":
+/*!******************************************!*\
+  !*** ./src/lead-form/modules/helpers.js ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   dynamicListener: () => (/* binding */ dynamicListener),
+/* harmony export */   fadeIn: () => (/* binding */ fadeIn),
+/* harmony export */   fadeOut: () => (/* binding */ fadeOut),
+/* harmony export */   slideDown: () => (/* binding */ slideDown),
+/* harmony export */   slideUp: () => (/* binding */ slideUp),
+/* harmony export */   trigger: () => (/* binding */ trigger)
+/* harmony export */ });
+function dynamicListener(events, selector, handler, context) {
+  events.split(' ').forEach(function (event) {
+    (document || context).addEventListener(event, function (e) {
+      if (e.target.matches(selector) || e.target.closest(selector)) {
+        handler.call(e.target.closest(selector), e);
+      }
+    });
+  });
+}
+function trigger(el, eventName, params = {}) {
+  let thisEl = el;
+  let thisEventName = eventName;
+  let thisParams = params;
+  if (typeof el === 'string') {
+    thisEventName = el;
+    thisEl = document;
+    if (typeof eventName === 'object') {
+      thisParams = eventName;
+    }
+  }
+  let newEvent = new CustomEvent(thisEventName, {
+    bubbles: true,
+    detail: thisParams
+  });
+  thisEl.dispatchEvent(newEvent);
+}
+function animateHeight(element, duration, startHeight, targetHeight, onComplete) {
+  let elStyles = window.getComputedStyle(element);
+  let paddingTop = elStyles.paddingTop.replace('px', '');
+  let paddingBottom = elStyles.paddingBottom.replace('px', '');
+  if (!startHeight) {
+    startHeight = element.clientHeight;
+  }
+  let currentHeight = startHeight;
+  element.style.transition = '';
+  if (targetHeight) {
+    if (paddingTop) {
+      startHeight -= paddingTop;
+      element.style.paddingTop = '0';
+      setTimeout(function () {
+        element.style.transition = `padding ${duration}ms linear`;
+        element.style.paddingTop = paddingTop + 'px';
+      }, 10);
+    }
+    if (paddingBottom) {
+      startHeight -= paddingBottom;
+      element.style.paddingBottom = '0px';
+      setTimeout(function () {
+        element.style.transition = `padding ${duration}ms linear`;
+        element.style.paddingBottom = paddingBottom + 'px';
+      }, 10);
+    }
+    currentHeight = startHeight;
+  } else {
+    if (paddingTop) {
+      element.style.transition = `padding ${duration}ms linear`;
+      element.style.paddingTop = '0px';
+    }
+    if (paddingBottom) {
+      element.style.transition = `padding ${duration}ms linear`;
+      element.style.paddingBottom = '0px';
+    }
+  }
+  if (startHeight / targetHeight !== Infinity) {
+    duration = duration - duration * (startHeight / targetHeight);
+  }
+  if (element.animation && element.animation.stop) {
+    element.animation.stop();
+  }
+  function updateHeight() {
+    const elapsedTime = performance.now() - startTime;
+    const progress = Math.min(1, elapsedTime / duration);
+    currentHeight = startHeight + progress * (targetHeight - startHeight);
+    element.style.height = currentHeight.toFixed(2) + 'px';
+    if (progress < 1) {
+      element.animation.raf = requestAnimationFrame(updateHeight);
+    } else {
+      element.style.height = '';
+      element.style.paddingTop = '';
+      element.style.paddingBottom = '';
+      element.style.overflow = '';
+      element.style.transition = '';
+      element.animation = false;
+      if (!targetHeight) {
+        element.style.display = 'none';
+      }
+      if (onComplete) {
+        onComplete();
+      }
+    }
+  }
+  function stopAnimation() {
+    cancelAnimationFrame(element.animation.raf);
+  }
+  const startTime = performance.now();
+  element.animation = {
+    raf: 0,
+    type: targetHeight > startHeight ? 'slideDown' : 'slideUp',
+    stop: stopAnimation
+  };
+  updateHeight();
+}
+function slideDown(element, duration, display = 'block', onComplete) {
+  let startHeight = element.clientHeight;
+  element.style.display = display;
+  element.style.height = 'unset';
+  const targetHeight = element.clientHeight;
+  element.style.height = '0px';
+  element.style.overflow = 'hidden';
+  animateHeight(element, duration, startHeight, targetHeight, onComplete);
+}
+function slideUp(element, duration, onComplete) {
+  const targetHeight = 0;
+  element.style.overflow = 'hidden';
+  animateHeight(element, duration, false, targetHeight, onComplete);
+}
+function animateOpacity(element, duration, display = 'block', targetOpacity, onComplete) {
+  const elStyles = window.getComputedStyle(element);
+  const startOpacity = elStyles.display === 'none' ? 0 : parseFloat(elStyles.opacity);
+  let currentOpacity = startOpacity;
+  if (startOpacity !== 1) {
+    duration = duration - duration * startOpacity;
+  }
+  if (targetOpacity) {
+    element.style.opacity = startOpacity;
+    element.style.display = display;
+  }
+  if (element.animation && element.animation.stop) {
+    element.animation.stop();
+  }
+  function updateOpacity() {
+    const elapsedTime = performance.now() - startTime;
+    const progress = Math.min(1, elapsedTime / duration);
+    currentOpacity = startOpacity + progress * (targetOpacity - startOpacity);
+    element.style.opacity = currentOpacity.toFixed(2);
+    if (progress < 1) {
+      element.animation.raf = requestAnimationFrame(updateOpacity);
+    } else {
+      element.style.opacity = '';
+      element.animation = false;
+      if (!targetOpacity) {
+        element.style.display = 'none';
+      }
+      if (onComplete) {
+        onComplete();
+      }
+    }
+  }
+  function stopAnimation() {
+    cancelAnimationFrame(element.animation.raf);
+  }
+  const startTime = performance.now();
+  element.animation = {
+    raf: 0,
+    type: targetOpacity ? 'fadeIn' : 'fadeOut',
+    stop: stopAnimation
+  };
+  updateOpacity();
+}
+function fadeIn(el, timeout, display = 'block', afterFunc = false) {
+  animateOpacity(el, timeout, display, 1, afterFunc);
+}
+function fadeOut(el, timeout, afterFunc = false) {
+  animateOpacity(el, timeout, '', 0, afterFunc);
+}
+
+/***/ }),
+
+/***/ "./src/lead-form/modules/inputSelect.js":
+/*!**********************************************!*\
+  !*** ./src/lead-form/modules/inputSelect.js ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   dropdown: () => (/* binding */ dropdown),
+/* harmony export */   inputSelect: () => (/* binding */ inputSelect)
+/* harmony export */ });
+/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./helpers */ "./src/lead-form/modules/helpers.js");
+
+function dropdown(options) {
+  let opts = {
+    globalContainer: '',
+    containerClass: 'header__lang',
+    btnSelector: '.header__lang-btn',
+    closeBtnClass: '',
+    dropdownSelector: '.header__lang-dropdown',
+    timing: 300,
+    effect: 'slide',
+    closeOnClick: true,
+    closeOnClickOutside: true
+  };
+  let timing = 300;
+  opts = {
+    ...opts,
+    ...options
+  };
+  let openTimeout = false;
+  function open(e) {
+    e.preventDefault();
+    let container = e.target.closest('.' + opts.containerClass);
+    let thisDropdown = container.querySelector(opts.dropdownSelector);
+    if (openTimeout) {
+      return;
+    }
+    setTimeout(function () {
+      openTimeout = false;
+    }, 200);
+    openTimeout = true;
+    if (container.classList.contains('is-open')) {
+      close();
+      return;
+    }
+    if (e.type === 'focusin') {
+      container.classList.add('focusin');
+    }
+    if (e.type !== 'focusin') {
+      container.classList.remove('focusin');
+    }
+    close(container);
+    container.classList.add('is-open');
+    container.style.zIndex = '4';
+    if (opts.effect === 'fade') {
+      (0,_helpers__WEBPACK_IMPORTED_MODULE_0__.fadeIn)(thisDropdown, timing);
+    } else if (opts.effect === 'slide') {
+      (0,_helpers__WEBPACK_IMPORTED_MODULE_0__.slideDown)(thisDropdown, timing);
+    } else {
+      console.error('Dropdown plugin: There is no effect called "' + opts.effect + '". Effects: "slide", "fade".');
+    }
+  }
+  function close(dontClose) {
+    let dropdownsToClose = document.querySelectorAll('.' + opts.containerClass);
+    if (dontClose) {
+      dropdownsToClose = Array.from(dropdownsToClose).filter(item => item !== dontClose);
+    }
+    if (!dropdownsToClose.length) {
+      return;
+    }
+    dropdownsToClose.forEach(function (dropdownToClose) {
+      if (!dropdownToClose.classList.contains('is-open')) {
+        return;
+      }
+      dropdownToClose.classList.remove('is-open');
+      dropdownToClose.querySelectorAll('li').forEach(item => item.classList.remove('hover'));
+      dropdownToClose.style.zIndex = '';
+      if (opts.effect === 'fade') {
+        (0,_helpers__WEBPACK_IMPORTED_MODULE_0__.fadeOut)(dropdownToClose.querySelector(opts.dropdownSelector), timing);
+      } else if (opts.effect === 'slide') {
+        (0,_helpers__WEBPACK_IMPORTED_MODULE_0__.slideUp)(dropdownToClose.querySelector(opts.dropdownSelector), timing);
+      } else {
+        console.error('Dropdown plugin: There is no effect called "' + opts.effect + '". Effects: "slide", "fade".');
+      }
+    });
+  }
+  if (opts.closeOnClickOutside) {
+    document.addEventListener('click', function (e) {
+      let thisEl = e.target;
+      if (opts.closeBtnClass ? thisEl.classList.contains(opts.closeBtnClass) : false) {
+        close();
+      }
+      if (!thisEl.classList.contains(opts.containerClass) && !thisEl.closest('.' + opts.containerClass)) {
+        close();
+      }
+    });
+  }
+  (0,_helpers__WEBPACK_IMPORTED_MODULE_0__.dynamicListener)('click', opts.globalContainer + ' .' + opts.containerClass + ' ' + opts.btnSelector, open);
+  (0,_helpers__WEBPACK_IMPORTED_MODULE_0__.dynamicListener)('focusin', opts.globalContainer + ' .' + opts.containerClass + ' ' + opts.btnSelector, open);
+  (0,_helpers__WEBPACK_IMPORTED_MODULE_0__.dynamicListener)('focusout', opts.globalContainer + ' .' + opts.containerClass + ' ' + opts.btnSelector, function (e) {
+    e.target.closest('.' + opts.containerClass).classList.remove('focusin');
+    close(e.target.closest('.' + opts.containerClass));
+  });
+  document.addEventListener('close-dropdown', close);
+  if (opts.timing !== false) {
+    timing = opts.timing;
+  }
+  if (opts.containerClass === 'select') {
+    timing = 0;
+  }
+  if (opts.closeOnClick) {
+    (0,_helpers__WEBPACK_IMPORTED_MODULE_0__.dynamicListener)('click', opts.globalContainer + ' .' + opts.containerClass + ' ' + opts.dropdownSelector, function (e) {
+      if (!e.target.closest('.' + opts.containerClass).classList.contains('checkbox')) {
+        close();
+      }
+    });
+  }
+}
+function inputSelect() {
+  dropdown({
+    globalContainer: '',
+    containerClass: 'input--select',
+    btnSelector: '.output_text',
+    closeBtnClass: '',
+    dropdownSelector: '.input__dropdown',
+    effect: 'slide',
+    timing: 200
+  });
+  function selectItem(e) {
+    let option = e.target.closest('li');
+    let container = option.closest('.input--select');
+    let text = option.textContent.trim();
+    let value = option.dataset.value;
+    let outText = container.querySelector('.output_text');
+    let outValue = container.querySelector('.output_value');
+    if (outText) {
+      outText.value = text || outText.placeholder;
+    }
+    if (outValue) {
+      outValue.value = value;
+      if (typeof outValue.isValid === 'function') {
+        outValue.isValid();
+      }
+    }
+    option.classList.add('is-selected');
+    Array.from(option.parentElement.children).forEach(function (item) {
+      if (item != option) {
+        item.classList.remove('is-selected');
+      }
+    });
+    if (!container.classList.contains('has-checkbox')) {
+      (0,_helpers__WEBPACK_IMPORTED_MODULE_0__.trigger)('close-dropdown');
+    }
+  }
+  (0,_helpers__WEBPACK_IMPORTED_MODULE_0__.dynamicListener)('click', '.input--select li', selectItem);
+  document.querySelectorAll('.input--select [data-value].is-selected').forEach(function (item) {
+    selectItem({
+      target: item
+    });
+  });
+}
+
+/***/ }),
+
+/***/ "./src/lead-form/modules/telInputMask.js":
+/*!***********************************************!*\
+  !*** ./src/lead-form/modules/telInputMask.js ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   telInputMask: () => (/* binding */ telInputMask)
+/* harmony export */ });
+function telInputMask(input, newOpts = {}) {
+  let defaultOpts = {
+    chars: {
+      number: 'x',
+      letter: 'a'
+    },
+    placeholders: {
+      number: '_',
+      letter: 'x'
+    },
+    hiddenInput: false,
+    mask: '+38 0xx xxx-xx-xx',
+    clearOnBlur: true,
+    showOnFocus: true,
+    onFilled: (unmaskedValue, maskedValue) => {}
+  };
+  let opts = {
+    ...defaultOpts,
+    ...newOpts
+  };
+  if (!opts.mask) {
+    return;
+  }
+  let maskArray = opts.mask.split('');
+  let firstFillableChar = 0;
+  maskArray.find((item, index) => {
+    let isFillable = isMaskCharFillable(item).isFillable;
+    if (isFillable) {
+      firstFillableChar = index;
+    }
+    return isFillable;
+  });
+  if (opts.hiddenInput) {
+    let hiddenInput = document.createElement('input');
+    hiddenInput.type = 'hidden';
+    hiddenInput.name = input.name;
+    input.name = input.name + '_masked';
+    input.hiddenInput = hiddenInput;
+    input.insertAdjacentElement('afterend', hiddenInput);
+    hiddenInput.value = getUnmaskedValue(input.value);
+    if (opts.hiddenInput.mask) {
+      onInput.call(hiddenInput, opts.hiddenInput.mask);
+    }
+  }
+  function getUnmaskedValue(maskedString, mask = opts.mask) {
+    let result = '';
+    let maskIndex = 0;
+    let maskedIndex = 0;
+    maskedString = maskedString.replaceAll(opts.placeholders.number, '').replaceAll(opts.placeholders.letter, '').replaceAll(' ', '');
+    while (maskIndex < mask.length && maskedIndex < maskedString.length) {
+      if (mask[maskIndex] === 'x') {
+        if (/\d/.test(maskedString[maskedIndex])) {
+          result += maskedString[maskedIndex];
+        }
+        maskedIndex++;
+      } else if (mask[maskIndex] === 'a') {
+        if (/[A-Za-zА-Яа-яІіЇїЄєҐґ]/.test(maskedString[maskedIndex])) {
+          result += maskedString[maskedIndex];
+        }
+        maskedIndex++;
+      } else {
+        if (mask[maskIndex] === maskedString[maskedIndex]) {
+          maskedIndex++;
+        }
+      }
+      maskIndex++;
+    }
+    return result;
+  }
+  function isCharFillable(char) {
+    let returnArray = {};
+    returnArray.number = /\d/.test(char);
+    returnArray.letter = /[A-Za-zА-Яа-яІіЇїЄєҐґ]/.test(char);
+    returnArray.isFillable = returnArray.number || returnArray.letter;
+    return returnArray;
+  }
+  function isMaskCharFillable(char) {
+    let returnArray = {};
+    returnArray.number = char === opts.chars.number;
+    returnArray.letter = char === opts.chars.letter;
+    returnArray.isFillable = returnArray.number || returnArray.letter;
+    return returnArray;
+  }
+  function onInput(mask = opts.mask) {
+    let thisValue = this.type !== 'hidden' ? getUnmaskedValue(this.value, mask).split('') : this.value.split('');
+    let finalValue = '';
+    let count = 0;
+    let thisMaskArray = this.type !== 'hidden' ? maskArray : mask.split('');
+    thisValue.forEach(function (valueChar, index) {
+      let fillableChar = isCharFillable(valueChar);
+      if (!fillableChar.isFillable) {
+        return;
+      }
+      let fillableMaskChar;
+      while (count < thisMaskArray.length) {
+        fillableMaskChar = isMaskCharFillable(thisMaskArray[count]);
+        if (fillableMaskChar.isFillable) {
+          break;
+        }
+        finalValue += thisMaskArray[count];
+        count++;
+      }
+      if (fillableMaskChar.number && fillableChar.number || fillableMaskChar.letter && fillableChar.letter) {
+        finalValue += valueChar;
+      }
+      count++;
+    });
+    let finalValueLength = finalValue.length;
+    for (let i = finalValue === '' ? 0 : finalValue.length; i < mask.length; i++) {
+      if (mask[i] === opts.chars.number) {
+        finalValue += opts.placeholders ? opts.placeholders.number : '';
+      } else if (mask[i] === opts.chars.letter) {
+        finalValue += opts.placeholders ? opts.placeholders.letter : '';
+      } else {
+        finalValue += mask[i];
+      }
+    }
+    this.value = finalValue;
+    if (this.type !== 'hidden') {
+      if (finalValueLength) {
+        this.setSelectionRange(finalValueLength, finalValueLength);
+      } else {
+        this.setSelectionRange(firstFillableChar, firstFillableChar);
+      }
+      if (this.hiddenInput) {
+        this.hiddenInput.value = getUnmaskedValue(this.value);
+        if (opts.hiddenInput.mask) {
+          onInput.call(this.hiddenInput, opts.hiddenInput.mask);
+        }
+      }
+    }
+    if (this.value.replaceAll(opts.placeholders.number, '').replaceAll(opts.placeholders.letter, '').length === mask.length) {
+      let unmaskedValue = getUnmaskedValue(this.value);
+      opts.onFilled(unmaskedValue, this.value);
+    }
+  }
+  input.getUnmaskedValue = () => {
+    return getUnmaskedValue(input.value);
+  };
+  input.isFilled = () => {
+    return input.value.replaceAll(opts.placeholders.number, '').replaceAll(opts.placeholders.letter, '').length === opts.mask.length;
+  };
+  input.addEventListener('input', function () {
+    onInput.call(this);
+  });
+  if (opts.showOnFocus) {
+    input.addEventListener('focus', function () {
+      onInput.call(this);
+    });
+  }
+  if (opts.clearOnBlur) {
+    input.addEventListener('blur', function () {
+      if (!getUnmaskedValue(this.value)) {
+        this.value = '';
+      }
+    });
+  }
+}
+
+/***/ }),
+
+/***/ "./src/lead-form/modules/validate.js":
+/*!*******************************************!*\
+  !*** ./src/lead-form/modules/validate.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   validate: () => (/* binding */ validate)
+/* harmony export */ });
 const only_num = /^[0-9.]+$/;
 const only_num_replace = /[^0-9.]/g;
 const email_reg = /^(([^<>()\[\]\\.,;:\s@"]{2,62}(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z-аА-яЯ\-0-9]+\.)+[a-zA-Z-аА-яЯ]{2,62}))$/;
@@ -471,13 +999,12 @@ function validate(form, newOpts = {}) {
               });
             }
           }
-          _this.isValid = isInputValid = input['validity']['valid'] = false;
+          _this.isValid = isInputValid = false;
         }
       });
       if (isInputValid) {
         _this.errorRemove(input);
         _this.unhighlight(input);
-        input['validity']['valid'] = true;
       }
       return isInputValid;
     },
@@ -636,478 +1163,78 @@ function validate(form, newOpts = {}) {
   form.validateMethods = _this;
   return _this;
 }
-function telInputMask(input, newOpts = {}) {
-  let defaultOpts = {
-    chars: {
-      number: 'x',
-      letter: 'a'
-    },
-    placeholders: {
-      number: '_',
-      letter: 'x'
-    },
-    hiddenInput: false,
-    mask: '+38 0xx xxx-xx-xx',
-    clearOnBlur: true,
-    showOnFocus: true,
-    onFilled: (unmaskedValue, maskedValue) => {}
-  };
-  let opts = {
-    ...defaultOpts,
-    ...newOpts
-  };
-  if (!opts.mask) {
-    return;
-  }
-  let maskArray = opts.mask.split('');
-  let firstFillableChar = 0;
-  maskArray.find((item, index) => {
-    let isFillable = isMaskCharFillable(item).isFillable;
-    if (isFillable) {
-      firstFillableChar = index;
-    }
-    return isFillable;
-  });
-  if (opts.hiddenInput) {
-    let hiddenInput = document.createElement('input');
-    hiddenInput.type = 'hidden';
-    hiddenInput.name = input.name;
-    input.name = input.name + '_masked';
-    input.hiddenInput = hiddenInput;
-    input.insertAdjacentElement('afterend', hiddenInput);
-    hiddenInput.value = getUnmaskedValue(input.value);
-    if (opts.hiddenInput.mask) {
-      onInput.call(hiddenInput, opts.hiddenInput.mask);
-    }
-  }
-  function getUnmaskedValue(maskedString, mask = opts.mask) {
-    let result = '';
-    let maskIndex = 0;
-    let maskedIndex = 0;
-    maskedString = maskedString.replaceAll(opts.placeholders.number, '').replaceAll(opts.placeholders.letter, '').replaceAll(' ', '');
-    while (maskIndex < mask.length && maskedIndex < maskedString.length) {
-      if (mask[maskIndex] === 'x') {
-        if (/\d/.test(maskedString[maskedIndex])) {
-          result += maskedString[maskedIndex];
-        }
-        maskedIndex++;
-      } else if (mask[maskIndex] === 'a') {
-        if (/[A-Za-zА-Яа-яІіЇїЄєҐґ]/.test(maskedString[maskedIndex])) {
-          result += maskedString[maskedIndex];
-        }
-        maskedIndex++;
-      } else {
-        if (mask[maskIndex] === maskedString[maskedIndex]) {
-          maskedIndex++;
-        }
-      }
-      maskIndex++;
-    }
-    return result;
-  }
-  function isCharFillable(char) {
-    let returnArray = {};
-    returnArray.number = /\d/.test(char);
-    returnArray.letter = /[A-Za-zА-Яа-яІіЇїЄєҐґ]/.test(char);
-    returnArray.isFillable = returnArray.number || returnArray.letter;
-    return returnArray;
-  }
-  function isMaskCharFillable(char) {
-    let returnArray = {};
-    returnArray.number = char === opts.chars.number;
-    returnArray.letter = char === opts.chars.letter;
-    returnArray.isFillable = returnArray.number || returnArray.letter;
-    return returnArray;
-  }
-  function onInput(mask = opts.mask) {
-    let thisValue = this.type !== 'hidden' ? getUnmaskedValue(this.value, mask).split('') : this.value.split('');
-    let finalValue = '';
-    let count = 0;
-    let thisMaskArray = this.type !== 'hidden' ? maskArray : mask.split('');
-    thisValue.forEach(function (valueChar, index) {
-      let fillableChar = isCharFillable(valueChar);
-      if (!fillableChar.isFillable) {
-        return;
-      }
-      let fillableMaskChar;
-      while (count < thisMaskArray.length) {
-        fillableMaskChar = isMaskCharFillable(thisMaskArray[count]);
-        if (fillableMaskChar.isFillable) {
-          break;
-        }
-        finalValue += thisMaskArray[count];
-        count++;
-      }
-      if (fillableMaskChar.number && fillableChar.number || fillableMaskChar.letter && fillableChar.letter) {
-        finalValue += valueChar;
-      }
-      count++;
-    });
-    let finalValueLength = finalValue.length;
-    for (let i = finalValue === '' ? 0 : finalValue.length; i < mask.length; i++) {
-      if (mask[i] === opts.chars.number) {
-        finalValue += opts.placeholders ? opts.placeholders.number : '';
-      } else if (mask[i] === opts.chars.letter) {
-        finalValue += opts.placeholders ? opts.placeholders.letter : '';
-      } else {
-        finalValue += mask[i];
-      }
-    }
-    this.value = finalValue;
-    if (this.type !== 'hidden') {
-      if (finalValueLength) {
-        this.setSelectionRange(finalValueLength, finalValueLength);
-      } else {
-        this.setSelectionRange(firstFillableChar, firstFillableChar);
-      }
-      if (this.hiddenInput) {
-        this.hiddenInput.value = getUnmaskedValue(this.value);
-        if (opts.hiddenInput.mask) {
-          onInput.call(this.hiddenInput, opts.hiddenInput.mask);
-        }
-      }
-    }
-    if (this.value.replaceAll(opts.placeholders.number, '').replaceAll(opts.placeholders.letter, '').length === mask.length) {
-      let unmaskedValue = getUnmaskedValue(this.value);
-      opts.onFilled(unmaskedValue, this.value);
-    }
-  }
-  input.getUnmaskedValue = () => {
-    return getUnmaskedValue(input.value);
-  };
-  input.isFilled = () => {
-    return input.value.replaceAll(opts.placeholders.number, '').replaceAll(opts.placeholders.letter, '').length === opts.mask.length;
-  };
-  input.addEventListener('input', function () {
-    onInput.call(this);
-  });
-  if (opts.showOnFocus) {
-    input.addEventListener('focus', function () {
-      onInput.call(this);
-    });
-  }
-  if (opts.clearOnBlur) {
-    input.addEventListener('blur', function () {
-      if (!getUnmaskedValue(this.value)) {
-        this.value = '';
-      }
-    });
-  }
-}
-function inputSelect() {
-  dropdown({
-    globalContainer: '',
-    containerClass: 'input--select',
-    btnSelector: '.output_text',
-    closeBtnClass: '',
-    dropdownSelector: '.input__dropdown',
-    effect: 'slide',
-    timing: 200
-  });
-  function selectItem(e) {
-    let option = e.target.closest('li');
-    let container = option.closest('.input--select');
-    let text = option.textContent.trim();
-    let value = option.dataset.value;
-    let outText = container.querySelector('.output_text');
-    let outValue = container.querySelector('.output_value');
-    if (outText) {
-      outText.value = text || outText.placeholder;
-    }
-    if (outValue) {
-      outValue.value = value;
-      if (typeof outValue.isValid === 'function') {
-        outValue.isValid();
-      }
-    }
-    option.classList.add('is-selected');
-    Array.from(option.parentElement.children).forEach(function (item) {
-      if (item != option) {
-        item.classList.remove('is-selected');
-      }
-    });
-    if (!container.classList.contains('has-checkbox')) {
-      trigger('close-dropdown');
-    }
-  }
-  dynamicListener('click', '.input--select li', selectItem);
-  document.querySelectorAll('.input--select [data-value].is-selected').forEach(function (item) {
-    selectItem({
-      target: item
-    });
-  });
-}
-function animateHeight(element, duration, startHeight, targetHeight, onComplete) {
-  let elStyles = window.getComputedStyle(element);
-  let paddingTop = elStyles.paddingTop.replace('px', '');
-  let paddingBottom = elStyles.paddingBottom.replace('px', '');
-  if (!startHeight) {
-    startHeight = element.clientHeight;
-  }
-  let currentHeight = startHeight;
-  element.style.transition = '';
-  if (targetHeight) {
-    if (paddingTop) {
-      startHeight -= paddingTop;
-      element.style.paddingTop = '0';
-      setTimeout(function () {
-        element.style.transition = `padding ${duration}ms linear`;
-        element.style.paddingTop = paddingTop + 'px';
-      }, 10);
-    }
-    if (paddingBottom) {
-      startHeight -= paddingBottom;
-      element.style.paddingBottom = '0px';
-      setTimeout(function () {
-        element.style.transition = `padding ${duration}ms linear`;
-        element.style.paddingBottom = paddingBottom + 'px';
-      }, 10);
-    }
-    currentHeight = startHeight;
-  } else {
-    if (paddingTop) {
-      element.style.transition = `padding ${duration}ms linear`;
-      element.style.paddingTop = '0px';
-    }
-    if (paddingBottom) {
-      element.style.transition = `padding ${duration}ms linear`;
-      element.style.paddingBottom = '0px';
-    }
-  }
-  if (startHeight / targetHeight !== Infinity) {
-    duration = duration - duration * (startHeight / targetHeight);
-  }
-  if (element.animation && element.animation.stop) {
-    element.animation.stop();
-  }
-  function updateHeight() {
-    const elapsedTime = performance.now() - startTime;
-    const progress = Math.min(1, elapsedTime / duration);
-    currentHeight = startHeight + progress * (targetHeight - startHeight);
-    element.style.height = currentHeight.toFixed(2) + 'px';
-    if (progress < 1) {
-      element.animation.raf = requestAnimationFrame(updateHeight);
-    } else {
-      element.style.height = '';
-      element.style.paddingTop = '';
-      element.style.paddingBottom = '';
-      element.style.overflow = '';
-      element.style.transition = '';
-      element.animation = false;
-      if (!targetHeight) {
-        element.style.display = 'none';
-      }
-      if (onComplete) {
-        onComplete();
-      }
-    }
-  }
-  function stopAnimation() {
-    cancelAnimationFrame(element.animation.raf);
-  }
-  const startTime = performance.now();
-  element.animation = {
-    raf: 0,
-    type: targetHeight > startHeight ? 'slideDown' : 'slideUp',
-    stop: stopAnimation
-  };
-  updateHeight();
-}
-function slideDown(element, duration, display = 'block', onComplete) {
-  let startHeight = element.clientHeight;
-  element.style.display = display;
-  element.style.height = 'unset';
-  const targetHeight = element.clientHeight;
-  element.style.height = '0px';
-  element.style.overflow = 'hidden';
-  animateHeight(element, duration, startHeight, targetHeight, onComplete);
-}
-function slideUp(element, duration, onComplete) {
-  const targetHeight = 0;
-  element.style.overflow = 'hidden';
-  animateHeight(element, duration, false, targetHeight, onComplete);
-}
-function animateOpacity(element, duration, display = 'block', targetOpacity, onComplete) {
-  const elStyles = window.getComputedStyle(element);
-  const startOpacity = elStyles.display === 'none' ? 0 : parseFloat(elStyles.opacity);
-  let currentOpacity = startOpacity;
-  if (startOpacity !== 1) {
-    duration = duration - duration * startOpacity;
-  }
-  if (targetOpacity) {
-    element.style.opacity = startOpacity;
-    element.style.display = display;
-  }
-  if (element.animation && element.animation.stop) {
-    element.animation.stop();
-  }
-  function updateOpacity() {
-    const elapsedTime = performance.now() - startTime;
-    const progress = Math.min(1, elapsedTime / duration);
-    currentOpacity = startOpacity + progress * (targetOpacity - startOpacity);
-    element.style.opacity = currentOpacity.toFixed(2);
-    if (progress < 1) {
-      element.animation.raf = requestAnimationFrame(updateOpacity);
-    } else {
-      element.style.opacity = '';
-      element.animation = false;
-      if (!targetOpacity) {
-        element.style.display = 'none';
-      }
-      if (onComplete) {
-        onComplete();
-      }
-    }
-  }
-  function stopAnimation() {
-    cancelAnimationFrame(element.animation.raf);
-  }
-  const startTime = performance.now();
-  element.animation = {
-    raf: 0,
-    type: targetOpacity ? 'fadeIn' : 'fadeOut',
-    stop: stopAnimation
-  };
-  updateOpacity();
-}
-function fadeIn(el, timeout, display = 'block', afterFunc = false) {
-  animateOpacity(el, timeout, display, 1, afterFunc);
-}
-function fadeOut(el, timeout, afterFunc = false) {
-  animateOpacity(el, timeout, '', 0, afterFunc);
-}
-function dynamicListener(events, selector, handler, context) {
-  events.split(' ').forEach(function (event) {
-    (document || context).addEventListener(event, function (e) {
-      if (e.target.matches(selector) || e.target.closest(selector)) {
-        handler.call(e.target.closest(selector), e);
-      }
-    });
-  });
-}
-function trigger(el, eventName, params = {}) {
-  let thisEl = el;
-  let thisEventName = eventName;
-  let thisParams = params;
-  if (typeof el === 'string') {
-    thisEventName = el;
-    thisEl = document;
-    if (typeof eventName === 'object') {
-      thisParams = eventName;
-    }
-  }
-  let newEvent = new CustomEvent(thisEventName, {
-    bubbles: true,
-    detail: thisParams
-  });
-  thisEl.dispatchEvent(newEvent);
-}
-function dropdown(options) {
-  let opts = {
-    globalContainer: '',
-    containerClass: 'header__lang',
-    btnSelector: '.header__lang-btn',
-    closeBtnClass: '',
-    dropdownSelector: '.header__lang-dropdown',
-    timing: 300,
-    effect: 'slide',
-    closeOnClick: true,
-    closeOnClickOutside: true
-  };
-  let timing = 300;
-  opts = {
-    ...opts,
-    ...options
-  };
-  let openTimeout = false;
-  function open(e) {
-    e.preventDefault();
-    let container = e.target.closest('.' + opts.containerClass);
-    let thisDropdown = container.querySelector(opts.dropdownSelector);
-    if (openTimeout) {
-      return;
-    }
-    setTimeout(function () {
-      openTimeout = false;
-    }, 200);
-    openTimeout = true;
-    if (container.classList.contains('is-open')) {
-      close();
-      return;
-    }
-    if (e.type === 'focusin') {
-      container.classList.add('focusin');
-    }
-    if (e.type !== 'focusin') {
-      container.classList.remove('focusin');
-    }
-    close(container);
-    container.classList.add('is-open');
-    container.style.zIndex = '4';
-    if (opts.effect === 'fade') {
-      fadeIn(thisDropdown, timing);
-    } else if (opts.effect === 'slide') {
-      slideDown(thisDropdown, timing);
-    } else {
-      console.error('Dropdown plugin: There is no effect called "' + opts.effect + '". Effects: "slide", "fade".');
-    }
-  }
-  function close(dontClose) {
-    let dropdownsToClose = document.querySelectorAll('.' + opts.containerClass);
-    if (dontClose) {
-      dropdownsToClose = Array.from(dropdownsToClose).filter(item => item !== dontClose);
-    }
-    if (!dropdownsToClose.length) {
-      return;
-    }
-    dropdownsToClose.forEach(function (dropdownToClose) {
-      if (!dropdownToClose.classList.contains('is-open')) {
-        return;
-      }
-      dropdownToClose.classList.remove('is-open');
-      dropdownToClose.querySelectorAll('li').forEach(item => item.classList.remove('hover'));
-      dropdownToClose.style.zIndex = '';
-      if (opts.effect === 'fade') {
-        fadeOut(dropdownToClose.querySelector(opts.dropdownSelector), timing);
-      } else if (opts.effect === 'slide') {
-        slideUp(dropdownToClose.querySelector(opts.dropdownSelector), timing);
-      } else {
-        console.error('Dropdown plugin: There is no effect called "' + opts.effect + '". Effects: "slide", "fade".');
-      }
-    });
-  }
-  if (opts.closeOnClickOutside) {
-    document.addEventListener('click', function (e) {
-      let thisEl = e.target;
-      if (opts.closeBtnClass ? thisEl.classList.contains(opts.closeBtnClass) : false) {
-        close();
-      }
-      if (!thisEl.classList.contains(opts.containerClass) && !thisEl.closest('.' + opts.containerClass)) {
-        close();
-      }
-    });
-  }
-  dynamicListener('click', opts.globalContainer + ' .' + opts.containerClass + ' ' + opts.btnSelector, open);
-  dynamicListener('focusin', opts.globalContainer + ' .' + opts.containerClass + ' ' + opts.btnSelector, open);
-  dynamicListener('focusout', opts.globalContainer + ' .' + opts.containerClass + ' ' + opts.btnSelector, function (e) {
-    e.target.closest('.' + opts.containerClass).classList.remove('focusin');
-    close(e.target.closest('.' + opts.containerClass));
-  });
-  document.addEventListener('close-dropdown', close);
-  if (opts.timing !== false) {
-    timing = opts.timing;
-  }
-  if (opts.containerClass === 'select') {
-    timing = 0;
-  }
-  if (opts.closeOnClick) {
-    dynamicListener('click', opts.globalContainer + ' .' + opts.containerClass + ' ' + opts.dropdownSelector, function (e) {
-      if (!e.target.closest('.' + opts.containerClass).classList.contains('checkbox')) {
-        close();
-      }
-    });
-  }
-}
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/************************************************************************/
+var __webpack_exports__ = {};
+/*!*******************************!*\
+  !*** ./src/lead-form/view.js ***!
+  \*******************************/
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _modules_helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/helpers */ "./src/lead-form/modules/helpers.js");
+/* harmony import */ var _modules_validate__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/validate */ "./src/lead-form/modules/validate.js");
+/* harmony import */ var _modules_telInputMask__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/telInputMask */ "./src/lead-form/modules/telInputMask.js");
+/* harmony import */ var _modules_inputSelect__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/inputSelect */ "./src/lead-form/modules/inputSelect.js");
+
+
+
+
 function leadFormCallback() {
   let leadForm = document.getElementById('dh-lead-form');
   if (!leadForm) {
@@ -1211,28 +1338,28 @@ function leadFormCallback() {
     addressInputBtn.addEventListener('click', function (e) {
       e.preventDefault();
       if (addressInput.isValid()) {
-        slideDown(nextStep, 300);
+        (0,_modules_helpers__WEBPACK_IMPORTED_MODULE_0__.slideDown)(nextStep, 300);
         leadForm.classList.remove('address-error');
         if (window.innerWidth >= 1024) {
-          fadeOut(addressInputBtn, 200);
+          (0,_modules_helpers__WEBPACK_IMPORTED_MODULE_0__.fadeOut)(addressInputBtn, 200);
         } else {
-          slideUp(addressInputBtn, 200);
+          (0,_modules_helpers__WEBPACK_IMPORTED_MODULE_0__.slideUp)(addressInputBtn, 200);
         }
       } else {
         leadForm.classList.add('address-error');
       }
     });
   }
-  telInputMask(phoneInput, {
+  (0,_modules_telInputMask__WEBPACK_IMPORTED_MODULE_2__.telInputMask)(phoneInput, {
     mask: '(xxx) xxx - xxxx',
     hiddenInput: true
   });
-  validate(leadForm, {
+  (0,_modules_validate__WEBPACK_IMPORTED_MODULE_1__.validate)(leadForm, {
     submitFunction: sendAjax,
     trackErrors: true
   });
   initAddress();
-  inputSelect();
+  (0,_modules_inputSelect__WEBPACK_IMPORTED_MODULE_3__.inputSelect)();
 }
 window.leadFormCallback = leadFormCallback;
 document.addEventListener("DOMContentLoaded", function () {
