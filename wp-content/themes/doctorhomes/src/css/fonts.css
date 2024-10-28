@@ -4,6 +4,7 @@
     url("../src/fonts/Ruddy/Ruddy-Bold.woff") format("woff");
   font-weight: bold;
   font-style: normal;
+  font-display: swap
 }
 
 @font-face {
@@ -12,6 +13,7 @@
     url("../src/fonts/Ruddy/Ruddy-Regular.woff") format("woff");
   font-weight: normal;
   font-style: normal;
+  font-display: swap
 }
 
 @font-face {
@@ -20,6 +22,7 @@
     url("../src/fonts/ProximaNova/ProximaNova-Bold.woff") format("woff");
   font-weight: bold;
   font-style: normal;
+  font-display: swap
 }
 
 @font-face {
@@ -29,6 +32,7 @@
     url("../src/fonts/ProximaNova/ProximaNova-Semibold.woff") format("woff");
   font-weight: 600;
   font-style: normal;
+  font-display: swap
 }
 
 @font-face {
@@ -37,6 +41,7 @@
     url("../src/fonts/ProximaNova/ProximaNova-Regular.woff") format("woff");
   font-weight: normal;
   font-style: normal;
+  font-display: swap
 }
 
 @font-face {
@@ -45,4 +50,5 @@
     url("../src/fonts/ProximaNova/ProximaNova-LightIt.woff") format("woff");
   font-weight: 300;
   font-style: italic;
+  font-display: swap
 }

@@ -1,6 +1,6 @@
-import gsap from "gsap";
+// import gsap from "gsap";
 
-document.addEventListener("DOMContentLoaded", () => {
+function lcFaqsCallback() {
 	const faqs = document.querySelectorAll(".lc-faqs__item");
 
 	faqs.forEach((faq) => {
@@ -98,4 +98,8 @@ document.addEventListener("DOMContentLoaded", () => {
 		firstQuestion.style.fontWeight = "600";
 		firstQuestion.style.outlineColor = "#3C4B5F";
 	}
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+	loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js', lcFaqsCallback)
 });

@@ -1,4 +1,4 @@
-import gsap from "gsap";
+// import gsap from "gsap";
 
 function dynamicListener(events, selector, handler, context){
 	events.split(' ').forEach(function (event) {
@@ -128,7 +128,7 @@ function dropdown(options) {
 	close()
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+function faqAccordionsCallback() {
 	const faqs = document.querySelectorAll(".faq-accordions-accordion");
 
 	faqs.forEach((faq) => {
@@ -215,5 +215,8 @@ document.addEventListener("DOMContentLoaded", () => {
 		btnSelector: '.output-text',
 		dropdownSelector: 'ul',
 	})
-});
+}
 
+document.addEventListener("DOMContentLoaded", function () {
+	loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js', faqAccordionsCallback)
+});

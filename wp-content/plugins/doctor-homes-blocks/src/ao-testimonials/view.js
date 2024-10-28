@@ -1,6 +1,6 @@
-import gsap from "gsap";
+// import gsap from "gsap";
 
-document.addEventListener("DOMContentLoaded", function () {
+function testimonialsCallback() {
 	const loadMoreButton = document.querySelector(
 		".ao-testimonials__load-more",
 	);
@@ -18,9 +18,8 @@ document.addEventListener("DOMContentLoaded", function () {
 			},
 		});
 	});
-});
 
-document.addEventListener("DOMContentLoaded", () => {
+
 	const testimoniels = document.querySelectorAll(
 		".ao-testimonials__testimonial",
 	);
@@ -213,4 +212,8 @@ document.addEventListener("DOMContentLoaded", () => {
 			flag = 0;
 		}
 	});
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+	loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js', testimonialsCallback)
 });

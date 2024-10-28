@@ -1,6 +1,6 @@
-import gsap from "gsap";
+// import gsap from "gsap";
 
-document.addEventListener("DOMContentLoaded", function () {
+function blogCategoryHeroCallback() {
   function dynamicListener(events, selector, handler, context){
     events.split(' ').forEach(function (event) {
       (document || context).addEventListener(event, function (e) {
@@ -134,4 +134,8 @@ document.addEventListener("DOMContentLoaded", function () {
     btnSelector: '.output-text',
     dropdownSelector: 'ul',
   })
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js', blogCategoryHeroCallback)
 });
