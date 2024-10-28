@@ -1,231 +1,53 @@
 /******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
-/******/ 	var __webpack_modules__ = ({
-
-/***/ "./src/lead-form/modules/formHandlers.js":
-/*!***********************************************!*\
-  !*** ./src/lead-form/modules/formHandlers.js ***!
-  \***********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   handleFormSubmit: () => (/* binding */ handleFormSubmit)
-/* harmony export */ });
-window.addEventListener("load", event => {
-  const form = document.querySelector("#dh-lead-form");
-  if (form) {
-    form.style.opacity = "1";
-    form.addEventListener("submit", handleFormSubmit);
+var __webpack_exports__ = {};
+/*!*******************************!*\
+  !*** ./src/lead-form/view.js ***!
+  \*******************************/
+const only_num = /^[0-9.]+$/;
+const only_num_replace = /[^0-9.]/g;
+const email_reg = /^(([^<>()\[\]\\.,;:\s@"]{2,62}(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z-аА-яЯ\-0-9]+\.)+[a-zA-Z-аА-яЯ]{2,62}))$/;
+const validationRules = {
+  'email': {
+    'rules': {
+      regex: email_reg
+    }
+  },
+  'numeric': {
+    'rules': {
+      regex: only_num
+    }
+  },
+  'numeric-replace': {
+    'rules': {
+      regexReplace: only_num_replace
+    }
+  },
+  'address-autocomplete': {
+    'rules': {
+      addressAutocomplete: true
+    }
+  },
+  'tel-mask': {
+    'rules': {
+      telMask: true
+    }
   }
-});
-function handleFormSubmit(event) {
-  event.preventDefault();
-  const form = event.target;
-  const autocompleteField = form.querySelector('input[name="property_address"]');
-  const fullNameField = form.querySelector('input[name="full_name"]');
-  const emailField = form.querySelector('input[name="email"]');
-  const phoneField = form.querySelector('input[name="phone"]');
-  const formData = {
-    property_address: autocompleteField.value,
-    name: fullNameField.value,
-    email: emailField.value,
-    phone: phoneField.value
-  };
-  const utmFields = ["utm_source", "utm_campaign", "utm_medium", "utm_term", "utm_content"];
-  utmFields.forEach(field => {
-    const value = form.querySelector(`input[name="${field}"]`).value;
-    if (value) {
-      formData[field] = value;
+};
+const validationMethods = {
+  "addressAutocomplete": function (_, autocompleteField) {
+    if (!autocompleteField.autocompleteInstance) {
+      return true;
     }
-  });
-  window.dataLayer.push({
-    event: "dh-lead",
-    form_data: formData
-  });
-  console.log("Submitting to WordPress endpoint");
-  console.log("Form data:", formData);
-  fetch("/wp-json/custom/v1/submit-form", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded"
-    },
-    body: new URLSearchParams(formData).toString()
-  }).then(response => {
-    if (!response.ok) {
-      throw new Error("Network response was not ok " + response.statusText);
+    const place = autocompleteField.autocompleteInstance.getPlace();
+    if (!place || !place.geometry) {
+      autocompleteField.dataset.error = "Please re-enter and select your address from the dropdown";
+      return false;
     }
-    return response.json();
-  }).then(data => {
-    console.log("Response from WordPress endpoint:", data);
-    const city = ""; // Extract this from the form or another source
-    const stateLong = ""; // Extract this from the form or another source
-    const zipcode = ""; // Extract this from the form or another source
-    window.location.href = `/step-2?phone=${phoneField.value}&email=${emailField.value}&propaddress=${autocompleteField.value}&propcity=${city}&propstate=${stateLong}&propzip=${zipcode}&propcountry=USA`;
-  }).catch(error => {
-    console.error("Error sending data to webhook:", error);
-  });
-}
-
-/***/ }),
-
-/***/ "./src/lead-form/modules/gsapAnimations.js":
-/*!*************************************************!*\
-  !*** ./src/lead-form/modules/gsapAnimations.js ***!
-  \*************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   handleInvalidAddress: () => (/* binding */ handleInvalidAddress),
-/* harmony export */   hideInitialFields: () => (/* binding */ hideInitialFields),
-/* harmony export */   resetBorderColor: () => (/* binding */ resetBorderColor),
-/* harmony export */   showAdditionalFields: () => (/* binding */ showAdditionalFields)
-/* harmony export */ });
-// Hide initial fields
-function hideInitialFields(fields) {
-  fields.forEach(field => {
-    const fieldContainer = field.closest("div");
-    gsap.set(fieldContainer, {
-      display: "none",
-      opacity: 0
-    });
-  });
-}
-
-// Show additional fields with animation
-function showAdditionalFields(form, fields, formBtnNext) {
-  const initialHeight = form.offsetHeight;
-
-  // Temporarily hide the formBtnNext to calculate the correct new height
-  gsap.set(formBtnNext, {
-    display: "none"
-  });
-  fields.forEach(field => {
-    const fieldContainer = field.closest("div");
-    gsap.set(fieldContainer, {
-      display: "grid",
-      opacity: 0
-    });
-  });
-
-  // Calculate the new height after displaying the additional fields
-  const newHeight = form.scrollHeight;
-  const tl = gsap.timeline();
-  tl.to(form, {
-    height: newHeight,
-    duration: 0.5,
-    ease: "power2.out"
-  }).to(fields.map(field => field.closest("div")), {
-    opacity: 1,
-    duration: 0.5,
-    stagger: 0.2,
-    ease: "power2.out"
-  }, "-=0.3").to(form, {
-    height: "auto",
-    // Set the height back to auto after the animation
-    duration: 0
-  });
-  gsap.set(formBtnNext, {
-    display: "none"
-  }); // Ensure the formBtnNext remains hidden
-}
-
-// Handle invalid address
-function handleInvalidAddress(autocompleteField) {
-  autocompleteField.classList.add("invalid");
-  autocompleteField.placeholder = "Invalid Property Address";
-  gsap.to(autocompleteField, {
-    borderColor: "red",
-    duration: 0.5
-  });
-}
-
-// Reset border color
-function resetBorderColor(autocompleteField) {
-  gsap.to(autocompleteField, {
-    borderColor: "",
-    duration: 0.5
-  });
-}
-
-/***/ }),
-
-/***/ "./src/lead-form/modules/initAutocomplete.js":
-/*!***************************************************!*\
-  !*** ./src/lead-form/modules/initAutocomplete.js ***!
-  \***************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   initAutocomplete: () => (/* binding */ initAutocomplete)
-/* harmony export */ });
-/* harmony import */ var _formHandlers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./formHandlers */ "./src/lead-form/modules/formHandlers.js");
-/* harmony import */ var _phoneFormat__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./phoneFormat */ "./src/lead-form/modules/phoneFormat.js");
-/* harmony import */ var _gsapAnimations__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./gsapAnimations */ "./src/lead-form/modules/gsapAnimations.js");
-
-
-
-
-// Ensure initAutocomplete is globally accessible
-function initAutocomplete() {
-  const form = document.getElementById("dh-lead-form");
-  if (!form) {
-    console.error("Custom form not found.");
-    return;
-  }
-  const autocompleteField = form.querySelector('input[name="property_address"]');
-  const fullNameField = form.querySelector('input[name="full_name"]');
-  const emailField = form.querySelector('input[name="email"]');
-  const phoneField = form.querySelector('input[name="phone"]');
-  const formBtnNext = form.querySelector("#form-btn-next");
-  const formSubmitBtn = form.querySelector('button[type="submit"]');
-  if (!autocompleteField || !fullNameField || !emailField || !phoneField || !formBtnNext || !formSubmitBtn) {
-    console.error("Required fields not found, skipping form.");
-    return;
-  }
-
-  // Add phone number format handlers
-  phoneField.addEventListener("keydown", _phoneFormat__WEBPACK_IMPORTED_MODULE_1__.enforceFormat);
-  phoneField.addEventListener("keyup", _phoneFormat__WEBPACK_IMPORTED_MODULE_1__.formatToPhone);
-
-  // Hide additional fields initially
-  (0,_gsapAnimations__WEBPACK_IMPORTED_MODULE_2__.hideInitialFields)([fullNameField, emailField, phoneField, formSubmitBtn]);
-  let isAddressValid = false;
-
-  // Reset address validity on key strokes
-  autocompleteField.addEventListener("input", function () {
-    isAddressValid = false;
-    autocompleteField.setCustomValidity(""); // Reset custom validity message
-  });
-
-  // Prevent form submission on "Enter" keypress until validation passes
-  form.addEventListener("keypress", function (event) {
-    if (event.key === "Enter" && !autocompleteField.value) {
-      event.preventDefault();
-    }
-  });
-  const autocomplete = new google.maps.places.Autocomplete(autocompleteField, {
-    types: ["address"],
-    componentRestrictions: {
-      country: "us"
-    }
-  });
-  autocomplete.addListener("place_changed", function () {
-    const place = autocomplete.getPlace();
-    if (!place.geometry) {
-      console.error("No geometry found for the place");
-      (0,_gsapAnimations__WEBPACK_IMPORTED_MODULE_2__.handleInvalidAddress)(autocompleteField);
-      isAddressValid = false;
-      return;
-    }
-    let streetAddress = "",
-      city = "",
-      stateShort = "",
-      stateLong = "",
-      zipcode = "",
-      country = "";
+    let streetAddress = "";
+    let city = "";
+    let stateShort = "";
+    let stateLong = "";
+    let zipcode = "";
     let hasStreetNumber = false;
     for (const component of place.address_components) {
       const componentType = component.types[0];
@@ -247,178 +69,1174 @@ function initAutocomplete() {
         case "postal_code":
           zipcode = component.long_name;
           break;
-        case "country":
-          if (component.short_name === "US") {
-            country = "USA";
-          }
-          break;
       }
     }
     if (!hasStreetNumber) {
-      console.error("Selected place does not have a street number");
-      (0,_gsapAnimations__WEBPACK_IMPORTED_MODULE_2__.handleInvalidAddress)(autocompleteField);
-      isAddressValid = false;
-      return;
+      autocompleteField.dataset.error = "Address must include a street number";
+      return false;
     }
+    autocompleteField.dataset.error = '';
+    autocompleteField.dataset.street = streetAddress;
+    autocompleteField.dataset.city = city;
+    autocompleteField.dataset.state = stateLong;
+    autocompleteField.dataset.zipcode = zipcode;
     autocompleteField.value = `${streetAddress}, ${city}, ${stateShort}, ${zipcode}`;
-    if (autocompleteField.value) {
-      autocompleteField.classList.remove("invalid");
-      autocompleteField.placeholder = "Type Your Property Address";
-      (0,_gsapAnimations__WEBPACK_IMPORTED_MODULE_2__.resetBorderColor)(autocompleteField);
-      isAddressValid = true;
-      autocompleteField.setCustomValidity(""); // Clear any previous custom validity message
-    }
-  });
-  formBtnNext.addEventListener("click", function (event) {
-    event.preventDefault();
-    if (!isAddressValid || !autocompleteField.value) {
-      (0,_gsapAnimations__WEBPACK_IMPORTED_MODULE_2__.handleInvalidAddress)(autocompleteField);
-      autocompleteField.setCustomValidity("Please use autocomplete to enter a complete property address."); // Set custom validity message
-      autocompleteField.reportValidity(); // Trigger native validation UI
-      return;
-    }
-    autocompleteField.classList.remove("invalid");
-    autocompleteField.placeholder = "Type Your Property Address";
-    (0,_gsapAnimations__WEBPACK_IMPORTED_MODULE_2__.resetBorderColor)(autocompleteField);
-    (0,_gsapAnimations__WEBPACK_IMPORTED_MODULE_2__.showAdditionalFields)(form, [fullNameField, emailField, phoneField, formSubmitBtn], formBtnNext);
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-      event: "form_first_click",
-      form_id: form.id
-    });
-  });
-  form.addEventListener("submit", _formHandlers__WEBPACK_IMPORTED_MODULE_0__.handleFormSubmit);
-}
-
-// Ensure initAutocomplete is globally accessible
-window.initAutocomplete = initAutocomplete;
-
-/***/ }),
-
-/***/ "./src/lead-form/modules/phoneFormat.js":
-/*!**********************************************!*\
-  !*** ./src/lead-form/modules/phoneFormat.js ***!
-  \**********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   enforceFormat: () => (/* binding */ enforceFormat),
-/* harmony export */   formatToPhone: () => (/* binding */ formatToPhone),
-/* harmony export */   isModifierKey: () => (/* binding */ isModifierKey),
-/* harmony export */   isNumericInput: () => (/* binding */ isNumericInput)
-/* harmony export */ });
-// Phone number formatting and validation handlers
-const isNumericInput = event => {
-  const key = event.keyCode;
-  return key >= 48 && key <= 57 ||
-  // Allow number line
-  key >= 96 && key <= 105 // Allow number pad
-  ;
-};
-const isModifierKey = event => {
-  const key = event.keyCode;
-  return event.shiftKey === true || key === 35 || key === 36 ||
-  // Allow Shift, Home, End
-  key === 8 || key === 9 || key === 13 || key === 46 ||
-  // Allow Backspace, Tab, Enter, Delete
-  key > 36 && key < 41 ||
-  // Allow left, up, right, down
-  (event.ctrlKey === true || event.metaKey === true) && (key === 65 || key === 67 || key === 86 || key === 88 || key === 90) // Allow Ctrl/Command + A,C,V,X,Z
-  ;
-};
-const enforceFormat = event => {
-  // Input must be of a valid number format or a modifier key, and not longer than ten digits
-  if (!isNumericInput(event) && !isModifierKey(event)) {
-    event.preventDefault();
+    return true;
+  },
+  "telMask": function (_, input) {
+    return !input.required || input.isFilled();
   }
 };
-const formatToPhone = event => {
-  if (isModifierKey(event)) {
+function validate(form, newOpts = {}) {
+  let defaultOpts = {
+    methodsOnInput: ['regexReplace', 'maxlength'],
+    submitFunction: null,
+    highlightFunction: null,
+    unhighlightFunction: null,
+    checkOnInput: false,
+    checkOnInputAfterSubmit: false,
+    checkOnFocusOut: true,
+    disableButton: false,
+    errorClass: 'is-error',
+    dontValidateInputs: 'input:not([type="hidden"])[name], .output_value, select, textarea',
+    inputContainerSelector: '.input',
+    formErrorBlock: '',
+    addInputErrors: true,
+    trackErrors: false,
+    validationRules: typeof validationRules !== 'undefined' ? validationRules : {},
+    validationErrors: typeof validationErrors !== 'undefined' ? validationErrors : {},
+    methods: {
+      "regex": function (value, element, regexp) {
+        return value == '' || new RegExp(regexp).test(value);
+      },
+      "required": function (value, input) {
+        if (input.getAttribute('type') === 'checkbox' || input.getAttribute('type') === 'radio') {
+          let elseInputs = Array.from(form.querySelectorAll(`[name="${input.getAttribute('name')}"]`));
+          let hasChecked = !!elseInputs.find(item => item.checked);
+          if (hasChecked) {
+            elseInputs.forEach(function (elseInput) {
+              if (typeof elseInput.removeError === 'function') {
+                elseInput.removeError();
+              }
+            });
+          }
+          return hasChecked;
+        } else {
+          return !!value.trim();
+        }
+      },
+      "regexReplace": function (value, element, regexp) {
+        element.value = element.value.replace(new RegExp(regexp), "");
+        return true;
+      },
+      "password_repeat": function (value, element, regexp) {
+        let password = element.closest('form').querySelector('[data-validation="password"]');
+        return !element.hasAttribute('required') && !value || value === password.value;
+      },
+      "tel_mask": function (value, element, regexp) {
+        if (typeof element['checkValidCallback'] !== 'undefined') {
+          element.checkValidCallback();
+        }
+        return typeof element['telMask'] !== 'undefined' ? element['telMask'].isValidNumber() || value === '' : true;
+      },
+      "minlength": function (value, element, passedValue) {
+        let min = passedValue || +element.getAttribute("minlength");
+        if (!min || !value) return true;
+        return value.length >= min;
+      },
+      "maxlength": function (value, element, regexp) {
+        let max = +element.getAttribute("maxlength");
+        if (!max) return true;
+        if (element.value.length > max) {
+          element.value = element.value.substr(0, max);
+        }
+        return true;
+      }
+    }
+  };
+  let opts = {
+    ...defaultOpts,
+    ...newOpts
+  };
+  if (typeof validationMethods === 'object') {
+    opts["methods"] = {
+      ...opts["methods"],
+      ...validationMethods
+    };
+  }
+  if (typeof form === 'string') form = document.querySelector(form);
+  function selectAll(selector, container = false) {
+    return Array.from(!container ? document.querySelectorAll(selector) : container.querySelectorAll(selector));
+  }
+  function printf(string, vars = [], addToEnd = true, char = '&') {
+    vars.forEach(function (thisVar, index) {
+      let r = new RegExp(char + (index + 1) + '(?![0-9])', 'g');
+      if (r.test(string)) {
+        string = string.replace(r, thisVar);
+      } else if (addToEnd) {
+        string += ' ' + thisVar;
+      }
+    });
+    return string;
+  }
+  function getMethodError(input, methodName, defaultText, variable = []) {
+    let dataValidation = input.getAttribute('data-validation');
+    let errorMessage = printf(defaultText, variable);
+    if (opts.validationErrors[methodName]) {
+      errorMessage = printf(opts.validationErrors[methodName], variable);
+    }
+    if (opts.validationErrors[dataValidation] && opts.validationErrors[dataValidation][methodName]) {
+      errorMessage = printf(opts.validationErrors[dataValidation][methodName], variable);
+    }
+    return errorMessage;
+  }
+  function formSubmitListener(e) {
+    e.preventDefault();
+    _this.validate();
+    _this.formSubmitted = true;
+  }
+  function inputInputListener(e) {
+    this['had_input'] = true;
+    if (!opts.checkOnInput && !opts.checkOnInputAfterSubmit) {
+      return;
+    }
+    if (opts.disableButton) {
+      _this.checkDisableButton();
+    }
+    if (opts.methodsOnInput.length) {
+      _this.valid(this, opts.methodsOnInput);
+      return;
+    }
+    if (opts.checkOnFocusOut && input['had_focusout']) {
+      _this.valid(this);
+      return;
+    }
+    if (opts.checkOnInput) {
+      _this.valid(this);
+      return;
+    }
+    if (opts.checkOnInputAfterSubmit && _this.formSubmitted) {
+      _this.valid(this);
+    }
+    let inputsSameName = Array.from(form.querySelectorAll(`[name="${this.getAttribute('name')}"]`));
+    if (inputsSameName.length > 1) {
+      let isTypesSame = !inputsSameName.find(item => item.getAttribute('type') !== inputsSameName[0].getAttribute('type'));
+      let hasRequired = inputsSameName.find(item => typeof item.getAttribute('required') !== 'undefined');
+      if (!isTypesSame && hasRequired) {
+        if (this.getAttribute('type') !== 'checkbox' && this.getAttribute('type') !== 'radio') {
+          let diffInputs = inputsSameName.filter(item => item.getAttribute('type') !== this.getAttribute('type'));
+          if (diffInputs.length) {
+            if (this.value.trim()) {
+              diffInputs.forEach(item => item.isValid());
+            }
+          }
+        }
+      }
+    }
+  }
+  function inputFocusListener(e) {
+    let inputsSameName = Array.from(form.querySelectorAll(`[name="${this.getAttribute('name')}"]`));
+    if (opts.disableButton) {
+      _this.checkDisableButton();
+    }
+    if (inputsSameName.length > 1) {
+      let isTypesSame = !inputsSameName.find(item => item.getAttribute('type') !== inputsSameName[0].getAttribute('type'));
+      let hasRequired = inputsSameName.find(item => typeof item.getAttribute('required') !== 'undefined');
+      if (!isTypesSame && hasRequired) {
+        if (this.getAttribute('type') !== 'checkbox' && this.getAttribute('type') !== 'radio') {
+          let diffInputs = inputsSameName.filter(item => item.getAttribute('type') !== this.getAttribute('type'));
+          if (diffInputs.length) {
+            diffInputs.forEach(item => item.removeRequired());
+            diffInputs.forEach(item => item.checked = false);
+            diffInputs.forEach(item => item.isValid());
+          }
+          this.setRequired();
+        }
+      }
+    }
+  }
+  function inputFocusoutListener(e) {
+    if (opts.disableButton) {
+      _this.checkDisableButton();
+    }
+    if (!opts.checkOnInput && opts.checkOnFocusOut) {
+      this['had_focusout'] = true;
+      if (!this['had_focusout'] || !this['had_input']) return;
+      _this.valid(this);
+    }
+  }
+  function inputChangeListener(e) {
+    if (opts.disableButton) {
+      _this.checkDisableButton();
+    }
+    if (this.getAttribute('type') === 'checkbox' || this.getAttribute('type') === 'radio') {
+      this.isValid();
+    }
+    let inputsSameName = Array.from(form.querySelectorAll(`[name="${this.getAttribute('name')}"]`));
+    if (inputsSameName.length > 1) {
+      let isTypesSame = !inputsSameName.find(item => item.getAttribute('type') !== inputsSameName[0].getAttribute('type'));
+      let hasRequired = inputsSameName.find(item => typeof item.getAttribute('required') !== 'undefined');
+      if (!isTypesSame && hasRequired) {
+        if (this.getAttribute('type') === 'checkbox' || this.getAttribute('type') === 'radio') {
+          let diffInputs = inputsSameName.filter(item => item.getAttribute('type') !== this.getAttribute('type'));
+          let thisInputs = inputsSameName.filter(item => item.getAttribute('type') === this.getAttribute('type'));
+          let oneChecked = thisInputs.find(item => item.checked);
+          if (diffInputs.length) {
+            if (oneChecked) {
+              diffInputs.forEach(item => item.removeRequired());
+              diffInputs.forEach(item => item.isValid());
+            } else {
+              diffInputs.forEach(item => item.setRequired());
+            }
+          }
+        }
+      }
+    }
+  }
+  let _this = {
+    isValid: true,
+    allInputs: selectAll(opts.dontValidateInputs, form),
+    formSubmitted: false,
+    init: function () {
+      _this.allInputs = selectAll(opts.dontValidateInputs, form);
+      form.setAttribute('novalidate', 'novalidate');
+      form.setAttribute('data-js-validation', 'novalidate');
+      form.addEventListener('submit', formSubmitListener);
+      form.valid = function () {
+        let addErrors = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+        return _this.validate(false, addErrors);
+      };
+      _this.allInputs.map(function (input) {
+        let thisInputMethods = [];
+        let dataValidation = input.getAttribute('data-validation');
+        if (input.hasAttribute('required')) {
+          thisInputMethods.push({
+            callback: opts.methods['required'],
+            errorMessage: getMethodError(input, 'required', 'This field is required')
+          });
+        }
+        if (input.hasAttribute('minlength')) {
+          thisInputMethods.push({
+            callback: opts.methods['minlength'],
+            errorMessage: getMethodError(input, 'minlength', 'Min length is &1 symbols', [input.getAttribute('minlength')])
+          });
+        }
+        if (input.hasAttribute('maxlength')) {
+          thisInputMethods.push({
+            callback: opts.methods['maxlength'],
+            errorMessage: getMethodError(input, 'maxlength', 'Max length is &1 symbols', [input.getAttribute('maxlength')])
+          });
+        }
+
+        // if (input.getAttribute('type') === 'email') {
+        //   thisInputMethods.push({
+        //     callback: opts.methods['regex'],
+        //     passedValue: email_reg,
+        //     errorMessage: opts.validationErrors['email']['regex'] || opts.validationErrors['invalid'] || 'This field is invalid'
+        //   });
+        // }
+        if (dataValidation) {
+          let thisValidation = opts.validationRules[input.getAttribute('data-validation')];
+          if (thisValidation) {
+            thisValidation = thisValidation['rules'];
+          }
+          if (thisValidation) {
+            Object.keys(thisValidation).forEach(methodName => {
+              let existingMethod = false;
+              let thisValidationValue = thisValidation[methodName];
+              if (opts.methods[methodName]) {
+                existingMethod = {
+                  callback: opts.methods[methodName],
+                  passedValue: thisValidationValue,
+                  errorMessage: getMethodError(input, methodName, opts.validationErrors['invalid'] || 'This field is invalid')
+                };
+              }
+              if (existingMethod) thisInputMethods.push(existingMethod);
+            });
+          }
+        }
+        function isInputRequired() {
+          let removeIt = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+          let thisInputActualMethods = input['validationMethods'];
+          let hasRequired = false;
+          thisInputActualMethods.map(function (method) {
+            if (method.callback.name === 'required') {
+              hasRequired = true;
+              if (removeIt) thisInputActualMethods.splice(thisInputActualMethods.indexOf(method), 1);
+            }
+          });
+          return hasRequired;
+        }
+        function setRequired() {
+          let thisInputActualMethods = input['validationMethods'];
+          if (isInputRequired()) return;
+          thisInputActualMethods.push({
+            callback: opts.methods['required'],
+            errorMessage: getMethodError(input, 'required', 'This field is required')
+          });
+          input['validationMethods'] = thisInputMethods;
+        }
+        function removeRequired() {
+          isInputRequired(true);
+        }
+        function setError(message) {
+          _this.highlight(input);
+          _this.errorPlacement(message, input);
+        }
+        function removeError() {
+          _this.unhighlight(input);
+          _this.errorRemove(input);
+        }
+        input['setError'] = setError;
+        input['removeError'] = removeError;
+        input['setRequired'] = setRequired;
+        input['removeRequired'] = removeRequired;
+        input['isRequired'] = isInputRequired;
+        input['validationMethods'] = thisInputMethods;
+        input['had_input'] = false;
+        input['had_focusout'] = false;
+        input['isValid'] = function (addError = true) {
+          return _this.valid(input, addError);
+        };
+        input.addEventListener('input', inputInputListener);
+        input.addEventListener('change', inputChangeListener);
+        input.addEventListener('focus', inputFocusListener);
+        input.addEventListener('focusout', inputFocusoutListener);
+      });
+      if (opts['rules']) {
+        Object.keys(opts['rules']).forEach(function (rule) {
+          let input = document.querySelector('[name="' + rule + '"]');
+          let thisRuleValue = opts['rules'][rule];
+          let thisInputMethods = input['validationMethods'] || [];
+          if (!input) return;
+          if (thisRuleValue['laravelRequired']) thisRuleValue = 'required';
+          let thisRuleMessage = getMethodError(input, thisRuleValue, opts.validationErrors['invalid'] || 'This field is invalid');
+          if (opts['messages'] && opts['messages'][rule] && (opts['messages'][rule][thisRuleValue] || opts['messages'][rule]['laravelRequired'])) thisRuleMessage = opts['messages'][rule][thisRuleValue] || opts['messages'][rule]['laravelRequired'];
+          if (opts.methods[thisRuleValue]) {
+            thisInputMethods.push({
+              callback: opts.methods[thisRuleValue],
+              errorMessage: thisRuleMessage
+            });
+            input['validationMethods'] = thisInputMethods;
+          }
+        });
+      }
+      if (opts.disableButton) {
+        _this.checkDisableButton();
+      }
+      _this.updateDefaultFormData();
+    },
+    destroy: function () {
+      form.removeAttribute('novalidate', 'novalidate');
+      form.removeAttribute('data-js-validation', 'novalidate');
+      form.removeEventListener('submit', formSubmitListener);
+      form.valid = null;
+      _this.allInputs.map(function (input) {
+        input['setError'] = null;
+        input['removeError'] = null;
+        input['setRequired'] = null;
+        input['removeRequired'] = null;
+        input['isRequired'] = null;
+        input['validationMethods'] = null;
+        input['had_input'] = false;
+        input['had_focusout'] = false;
+        input['isValid'] = null;
+        input.removeEventListener('input', inputInputListener);
+        input.removeEventListener('change', inputChangeListener);
+        input.removeEventListener('focus', inputFocusListener);
+        input.removeEventListener('focusout', inputFocusoutListener);
+      });
+    },
+    valid: function (input, addError = true) {
+      if (input['dont-check']) {
+        return true;
+      }
+      let thisMethods = input['validationMethods'];
+      if (!thisMethods) return true;
+      let isInputValid = true;
+      thisMethods.forEach(function (thisMethod) {
+        if (!isInputValid) return;
+        let isThisValid = thisMethod['callback'](input.value, input, thisMethod['passedValue']);
+        if (!isThisValid) {
+          if (addError) {
+            _this.errorPlacement(thisMethod['errorMessage'], input);
+            _this.highlight(input);
+            if (opts.trackErrors && typeof window.dataLayer !== 'undefined') {
+              window.dataLayer.push({
+                event: "form_error",
+                form_id: form.id,
+                form_name: form.name,
+                error_field_label: input.closest(opts.inputContainerSelector) && input.closest(opts.inputContainerSelector).querySelector('label') ? input.closest(opts.inputContainerSelector).querySelector('label') : input.placeholder,
+                error_message: thisMethod['errorMessage']
+              });
+            }
+          }
+          _this.isValid = isInputValid = input['validity']['valid'] = false;
+        }
+      });
+      if (isInputValid) {
+        _this.errorRemove(input);
+        _this.unhighlight(input);
+        input['validity']['valid'] = true;
+      }
+      return isInputValid;
+    },
+    validate: function () {
+      let submit = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+      let addError = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+      let invalidInputs = [];
+      _this.isValid = true;
+      _this.allInputs.map(function (input) {
+        if (!_this.valid(input, addError)) {
+          _this.isValid = false;
+          invalidInputs.push(input);
+        }
+      });
+      if (_this.isValid) {
+        form.classList.remove('has-error');
+        if (submit) {
+          _this.submitHandler();
+        }
+      } else {
+        form.classList.add('has-error');
+        invalidInputs.forEach(function (invalidInput) {
+          invalidInput.setCustomValidity("Please fill this field correctly");
+          invalidInput.reportValidity();
+        });
+      }
+      return _this.isValid;
+    },
+    highlight: function (element) {
+      if (typeof opts.highlightFunction === 'function') {
+        opts.highlightFunction(form, element);
+        return;
+      }
+      let container;
+      if (typeof opts.inputContainerSelector === 'object') {
+        opts.inputContainerSelector.forEach(function (item) {
+          if (element.closest(item)) {
+            container = element.closest(item);
+          }
+        });
+      } else {
+        container = element.closest(opts.inputContainerSelector);
+      }
+      if (container) container.classList.add(opts.errorClass);
+    },
+    unhighlight: function (element) {
+      if (typeof opts.unhighlightFunction === 'function') {
+        opts.unhighlightFunction(form, element);
+        return;
+      }
+      let container;
+      if (typeof opts.inputContainerSelector === 'object') {
+        opts.inputContainerSelector.forEach(function (item) {
+          if (element.closest(item)) {
+            container = element.closest(item);
+          }
+        });
+      } else {
+        container = element.closest(opts.inputContainerSelector);
+      }
+      if (container) container.classList.remove(opts.errorClass);
+    },
+    updateDefaultFormData: function () {
+      _this.defaultFormData = new FormData(form);
+    },
+    checkDisableButton: function () {
+      let currentFormData = new FormData(form);
+      let formHasChanges = false;
+      let formIsValid = form.valid(false);
+      if (typeof _this.defaultFormData !== 'undefined') {
+        for (let [key, value] of _this.defaultFormData.entries()) {
+          if (currentFormData.get(key) !== value) {
+            formHasChanges = true;
+          }
+        }
+      }
+      if (formIsValid && formHasChanges) {
+        form.querySelector('[type="submit"]').removeAttribute('disabled');
+      } else {
+        form.querySelector('[type="submit"]').setAttribute('disabled', 'disabled');
+      }
+    },
+    errorPlacement: function (error, element) {
+      if (!error) return;
+      let container;
+      if (typeof opts.inputContainerSelector === 'object') {
+        opts.inputContainerSelector.forEach(function (item) {
+          if (element.closest(item)) {
+            container = element.closest(item);
+          }
+        });
+      } else {
+        container = element.closest(opts.inputContainerSelector);
+      }
+      let formErrorBlock = opts.formErrorBlock ? form.querySelector(opts.formErrorBlock) : false;
+      if (formErrorBlock) {
+        if (!formErrorBlock.querySelector(`[data-name="${element.getAttribute('name')}"]`)) {
+          formErrorBlock.innerHTML += `<p data-name="${element.getAttribute('name')}">${error}</p>`;
+        }
+      }
+      if (!container) {
+        console.warn('BLACKBOOK Validate: no container for: ', element, opts.inputContainerSelector);
+        return;
+      }
+      if (opts.addInputErrors) {
+        let errorEl = container.querySelector('.input__message');
+        if (!errorEl) {
+          errorEl = document.createElement('div');
+          errorEl.classList.add('input__message');
+          container.append(errorEl);
+        }
+        errorEl.innerHTML = `<p>${error}</p>`;
+      }
+    },
+    errorRemove: function (element) {
+      let container;
+      if (typeof opts.inputContainerSelector === 'object') {
+        opts.inputContainerSelector.forEach(function (item) {
+          if (element.closest(item)) {
+            container = element.closest(item);
+          }
+        });
+      } else {
+        container = element.closest(opts.inputContainerSelector);
+      }
+      let formErrorBlock = opts.formErrorBlock ? form.querySelector(opts.formErrorBlock) : false;
+      if (formErrorBlock) {
+        if (formErrorBlock.querySelector(`[data-name="${element.getAttribute('name')}"]`)) {
+          formErrorBlock.querySelector(`[data-name="${element.getAttribute('name')}"]`).remove();
+        }
+      }
+      if (opts.addInputErrors) {
+        if (!container) {
+          console.warn('BLACKBOOK Validate: no container for: ', element, opts.inputContainerSelector);
+          return;
+        }
+        container = container.querySelector('.input__message');
+        if (!container) return;
+        container.innerHTML = '';
+      }
+    },
+    submitHandler: function () {
+      if (typeof opts.submitFunction === 'function') {
+        opts.submitFunction(form);
+      } else {
+        form.submit();
+      }
+    }
+  };
+  if (form.hasAttribute('data-js-validation')) {
+    _this.destroy();
+    _this.init();
+  } else {
+    _this.init();
+  }
+  form.validateMethods = _this;
+  return _this;
+}
+function telInputMask(input, newOpts = {}) {
+  let defaultOpts = {
+    chars: {
+      number: 'x',
+      letter: 'a'
+    },
+    placeholders: {
+      number: '_',
+      letter: 'x'
+    },
+    hiddenInput: false,
+    mask: '+38 0xx xxx-xx-xx',
+    clearOnBlur: true,
+    showOnFocus: true,
+    onFilled: (unmaskedValue, maskedValue) => {}
+  };
+  let opts = {
+    ...defaultOpts,
+    ...newOpts
+  };
+  if (!opts.mask) {
     return;
   }
-  const input = event.target.value.replace(/\D/g, "").substring(0, 10); // First ten digits of input only
-  const areaCode = input.substring(0, 3);
-  const middle = input.substring(3, 6);
-  const last = input.substring(6, 10);
-  if (input.length > 6) {
-    event.target.value = `(${areaCode}) ${middle} - ${last}`;
-  } else if (input.length > 3) {
-    event.target.value = `(${areaCode}) ${middle}`;
-  } else if (input.length > 0) {
-    event.target.value = `(${areaCode}`;
+  let maskArray = opts.mask.split('');
+  let firstFillableChar = 0;
+  maskArray.find((item, index) => {
+    let isFillable = isMaskCharFillable(item).isFillable;
+    if (isFillable) {
+      firstFillableChar = index;
+    }
+    return isFillable;
+  });
+  if (opts.hiddenInput) {
+    let hiddenInput = document.createElement('input');
+    hiddenInput.type = 'hidden';
+    hiddenInput.name = input.name;
+    input.name = input.name + '_masked';
+    input.hiddenInput = hiddenInput;
+    input.insertAdjacentElement('afterend', hiddenInput);
+    hiddenInput.value = getUnmaskedValue(input.value);
+    if (opts.hiddenInput.mask) {
+      onInput.call(hiddenInput, opts.hiddenInput.mask);
+    }
   }
-};
-
-/***/ })
-
-/******/ 	});
-/************************************************************************/
-/******/ 	// The module cache
-/******/ 	var __webpack_module_cache__ = {};
-/******/ 	
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/ 		// Check if module is in cache
-/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
-/******/ 		if (cachedModule !== undefined) {
-/******/ 			return cachedModule.exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = __webpack_module_cache__[moduleId] = {
-/******/ 			// no module.id needed
-/******/ 			// no module.loaded needed
-/******/ 			exports: {}
-/******/ 		};
-/******/ 	
-/******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
-/******/ 	
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/ 	
-/************************************************************************/
-/******/ 	/* webpack/runtime/define property getters */
-/******/ 	(() => {
-/******/ 		// define getter functions for harmony exports
-/******/ 		__webpack_require__.d = (exports, definition) => {
-/******/ 			for(var key in definition) {
-/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
-/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
-/******/ 				}
-/******/ 			}
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
-/******/ 	(() => {
-/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/make namespace object */
-/******/ 	(() => {
-/******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = (exports) => {
-/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 			}
-/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/************************************************************************/
-var __webpack_exports__ = {};
-/*!*******************************!*\
-  !*** ./src/lead-form/view.js ***!
-  \*******************************/
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _modules_initAutocomplete__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/initAutocomplete */ "./src/lead-form/modules/initAutocomplete.js");
-
-window.initAutocomplete = _modules_initAutocomplete__WEBPACK_IMPORTED_MODULE_0__.initAutocomplete;
+  function getUnmaskedValue(maskedString, mask = opts.mask) {
+    let result = '';
+    let maskIndex = 0;
+    let maskedIndex = 0;
+    maskedString = maskedString.replaceAll(opts.placeholders.number, '').replaceAll(opts.placeholders.letter, '').replaceAll(' ', '');
+    while (maskIndex < mask.length && maskedIndex < maskedString.length) {
+      if (mask[maskIndex] === 'x') {
+        if (/\d/.test(maskedString[maskedIndex])) {
+          result += maskedString[maskedIndex];
+        }
+        maskedIndex++;
+      } else if (mask[maskIndex] === 'a') {
+        if (/[A-Za-zА-Яа-яІіЇїЄєҐґ]/.test(maskedString[maskedIndex])) {
+          result += maskedString[maskedIndex];
+        }
+        maskedIndex++;
+      } else {
+        if (mask[maskIndex] === maskedString[maskedIndex]) {
+          maskedIndex++;
+        }
+      }
+      maskIndex++;
+    }
+    return result;
+  }
+  function isCharFillable(char) {
+    let returnArray = {};
+    returnArray.number = /\d/.test(char);
+    returnArray.letter = /[A-Za-zА-Яа-яІіЇїЄєҐґ]/.test(char);
+    returnArray.isFillable = returnArray.number || returnArray.letter;
+    return returnArray;
+  }
+  function isMaskCharFillable(char) {
+    let returnArray = {};
+    returnArray.number = char === opts.chars.number;
+    returnArray.letter = char === opts.chars.letter;
+    returnArray.isFillable = returnArray.number || returnArray.letter;
+    return returnArray;
+  }
+  function onInput(mask = opts.mask) {
+    let thisValue = this.type !== 'hidden' ? getUnmaskedValue(this.value, mask).split('') : this.value.split('');
+    let finalValue = '';
+    let count = 0;
+    let thisMaskArray = this.type !== 'hidden' ? maskArray : mask.split('');
+    thisValue.forEach(function (valueChar, index) {
+      let fillableChar = isCharFillable(valueChar);
+      if (!fillableChar.isFillable) {
+        return;
+      }
+      let fillableMaskChar;
+      while (count < thisMaskArray.length) {
+        fillableMaskChar = isMaskCharFillable(thisMaskArray[count]);
+        if (fillableMaskChar.isFillable) {
+          break;
+        }
+        finalValue += thisMaskArray[count];
+        count++;
+      }
+      if (fillableMaskChar.number && fillableChar.number || fillableMaskChar.letter && fillableChar.letter) {
+        finalValue += valueChar;
+      }
+      count++;
+    });
+    let finalValueLength = finalValue.length;
+    for (let i = finalValue === '' ? 0 : finalValue.length; i < mask.length; i++) {
+      if (mask[i] === opts.chars.number) {
+        finalValue += opts.placeholders ? opts.placeholders.number : '';
+      } else if (mask[i] === opts.chars.letter) {
+        finalValue += opts.placeholders ? opts.placeholders.letter : '';
+      } else {
+        finalValue += mask[i];
+      }
+    }
+    this.value = finalValue;
+    if (this.type !== 'hidden') {
+      if (finalValueLength) {
+        this.setSelectionRange(finalValueLength, finalValueLength);
+      } else {
+        this.setSelectionRange(firstFillableChar, firstFillableChar);
+      }
+      if (this.hiddenInput) {
+        this.hiddenInput.value = getUnmaskedValue(this.value);
+        if (opts.hiddenInput.mask) {
+          onInput.call(this.hiddenInput, opts.hiddenInput.mask);
+        }
+      }
+    }
+    if (this.value.replaceAll(opts.placeholders.number, '').replaceAll(opts.placeholders.letter, '').length === mask.length) {
+      let unmaskedValue = getUnmaskedValue(this.value);
+      opts.onFilled(unmaskedValue, this.value);
+    }
+  }
+  input.getUnmaskedValue = () => {
+    return getUnmaskedValue(input.value);
+  };
+  input.isFilled = () => {
+    return input.value.replaceAll(opts.placeholders.number, '').replaceAll(opts.placeholders.letter, '').length === opts.mask.length;
+  };
+  input.addEventListener('input', function () {
+    onInput.call(this);
+  });
+  if (opts.showOnFocus) {
+    input.addEventListener('focus', function () {
+      onInput.call(this);
+    });
+  }
+  if (opts.clearOnBlur) {
+    input.addEventListener('blur', function () {
+      if (!getUnmaskedValue(this.value)) {
+        this.value = '';
+      }
+    });
+  }
+}
+function inputSelect() {
+  dropdown({
+    globalContainer: '',
+    containerClass: 'input--select',
+    btnSelector: '.output_text',
+    closeBtnClass: '',
+    dropdownSelector: '.input__dropdown',
+    effect: 'slide',
+    timing: 200
+  });
+  function selectItem(e) {
+    let option = e.target.closest('li');
+    let container = option.closest('.input--select');
+    let text = option.textContent.trim();
+    let value = option.dataset.value;
+    let outText = container.querySelector('.output_text');
+    let outValue = container.querySelector('.output_value');
+    if (outText) {
+      outText.value = text || outText.placeholder;
+    }
+    if (outValue) {
+      outValue.value = value;
+      if (typeof outValue.isValid === 'function') {
+        outValue.isValid();
+      }
+    }
+    option.classList.add('is-selected');
+    Array.from(option.parentElement.children).forEach(function (item) {
+      if (item != option) {
+        item.classList.remove('is-selected');
+      }
+    });
+    if (!container.classList.contains('has-checkbox')) {
+      trigger('close-dropdown');
+    }
+  }
+  dynamicListener('click', '.input--select li', selectItem);
+  document.querySelectorAll('.input--select [data-value].is-selected').forEach(function (item) {
+    selectItem({
+      target: item
+    });
+  });
+}
+function animateHeight(element, duration, startHeight, targetHeight, onComplete) {
+  let elStyles = window.getComputedStyle(element);
+  let paddingTop = elStyles.paddingTop.replace('px', '');
+  let paddingBottom = elStyles.paddingBottom.replace('px', '');
+  if (!startHeight) {
+    startHeight = element.clientHeight;
+  }
+  let currentHeight = startHeight;
+  element.style.transition = '';
+  if (targetHeight) {
+    if (paddingTop) {
+      startHeight -= paddingTop;
+      element.style.paddingTop = '0';
+      setTimeout(function () {
+        element.style.transition = `padding ${duration}ms linear`;
+        element.style.paddingTop = paddingTop + 'px';
+      }, 10);
+    }
+    if (paddingBottom) {
+      startHeight -= paddingBottom;
+      element.style.paddingBottom = '0px';
+      setTimeout(function () {
+        element.style.transition = `padding ${duration}ms linear`;
+        element.style.paddingBottom = paddingBottom + 'px';
+      }, 10);
+    }
+    currentHeight = startHeight;
+  } else {
+    if (paddingTop) {
+      element.style.transition = `padding ${duration}ms linear`;
+      element.style.paddingTop = '0px';
+    }
+    if (paddingBottom) {
+      element.style.transition = `padding ${duration}ms linear`;
+      element.style.paddingBottom = '0px';
+    }
+  }
+  if (startHeight / targetHeight !== Infinity) {
+    duration = duration - duration * (startHeight / targetHeight);
+  }
+  if (element.animation && element.animation.stop) {
+    element.animation.stop();
+  }
+  function updateHeight() {
+    const elapsedTime = performance.now() - startTime;
+    const progress = Math.min(1, elapsedTime / duration);
+    currentHeight = startHeight + progress * (targetHeight - startHeight);
+    element.style.height = currentHeight.toFixed(2) + 'px';
+    if (progress < 1) {
+      element.animation.raf = requestAnimationFrame(updateHeight);
+    } else {
+      element.style.height = '';
+      element.style.paddingTop = '';
+      element.style.paddingBottom = '';
+      element.style.overflow = '';
+      element.style.transition = '';
+      element.animation = false;
+      if (!targetHeight) {
+        element.style.display = 'none';
+      }
+      if (onComplete) {
+        onComplete();
+      }
+    }
+  }
+  function stopAnimation() {
+    cancelAnimationFrame(element.animation.raf);
+  }
+  const startTime = performance.now();
+  element.animation = {
+    raf: 0,
+    type: targetHeight > startHeight ? 'slideDown' : 'slideUp',
+    stop: stopAnimation
+  };
+  updateHeight();
+}
+function slideDown(element, duration, display = 'block', onComplete) {
+  let startHeight = element.clientHeight;
+  element.style.display = display;
+  element.style.height = 'unset';
+  const targetHeight = element.clientHeight;
+  element.style.height = '0px';
+  element.style.overflow = 'hidden';
+  animateHeight(element, duration, startHeight, targetHeight, onComplete);
+}
+function slideUp(element, duration, onComplete) {
+  const targetHeight = 0;
+  element.style.overflow = 'hidden';
+  animateHeight(element, duration, false, targetHeight, onComplete);
+}
+function animateOpacity(element, duration, display = 'block', targetOpacity, onComplete) {
+  const elStyles = window.getComputedStyle(element);
+  const startOpacity = elStyles.display === 'none' ? 0 : parseFloat(elStyles.opacity);
+  let currentOpacity = startOpacity;
+  if (startOpacity !== 1) {
+    duration = duration - duration * startOpacity;
+  }
+  if (targetOpacity) {
+    element.style.opacity = startOpacity;
+    element.style.display = display;
+  }
+  if (element.animation && element.animation.stop) {
+    element.animation.stop();
+  }
+  function updateOpacity() {
+    const elapsedTime = performance.now() - startTime;
+    const progress = Math.min(1, elapsedTime / duration);
+    currentOpacity = startOpacity + progress * (targetOpacity - startOpacity);
+    element.style.opacity = currentOpacity.toFixed(2);
+    if (progress < 1) {
+      element.animation.raf = requestAnimationFrame(updateOpacity);
+    } else {
+      element.style.opacity = '';
+      element.animation = false;
+      if (!targetOpacity) {
+        element.style.display = 'none';
+      }
+      if (onComplete) {
+        onComplete();
+      }
+    }
+  }
+  function stopAnimation() {
+    cancelAnimationFrame(element.animation.raf);
+  }
+  const startTime = performance.now();
+  element.animation = {
+    raf: 0,
+    type: targetOpacity ? 'fadeIn' : 'fadeOut',
+    stop: stopAnimation
+  };
+  updateOpacity();
+}
+function fadeIn(el, timeout, display = 'block', afterFunc = false) {
+  animateOpacity(el, timeout, display, 1, afterFunc);
+}
+function fadeOut(el, timeout, afterFunc = false) {
+  animateOpacity(el, timeout, '', 0, afterFunc);
+}
+function dynamicListener(events, selector, handler, context) {
+  events.split(' ').forEach(function (event) {
+    (document || context).addEventListener(event, function (e) {
+      if (e.target.matches(selector) || e.target.closest(selector)) {
+        handler.call(e.target.closest(selector), e);
+      }
+    });
+  });
+}
+function trigger(el, eventName, params = {}) {
+  let thisEl = el;
+  let thisEventName = eventName;
+  let thisParams = params;
+  if (typeof el === 'string') {
+    thisEventName = el;
+    thisEl = document;
+    if (typeof eventName === 'object') {
+      thisParams = eventName;
+    }
+  }
+  let newEvent = new CustomEvent(thisEventName, {
+    bubbles: true,
+    detail: thisParams
+  });
+  thisEl.dispatchEvent(newEvent);
+}
+function dropdown(options) {
+  let opts = {
+    globalContainer: '',
+    containerClass: 'header__lang',
+    btnSelector: '.header__lang-btn',
+    closeBtnClass: '',
+    dropdownSelector: '.header__lang-dropdown',
+    timing: 300,
+    effect: 'slide',
+    closeOnClick: true,
+    closeOnClickOutside: true
+  };
+  let timing = 300;
+  opts = {
+    ...opts,
+    ...options
+  };
+  let openTimeout = false;
+  function open(e) {
+    e.preventDefault();
+    let container = e.target.closest('.' + opts.containerClass);
+    let thisDropdown = container.querySelector(opts.dropdownSelector);
+    if (openTimeout) {
+      return;
+    }
+    setTimeout(function () {
+      openTimeout = false;
+    }, 200);
+    openTimeout = true;
+    if (container.classList.contains('is-open')) {
+      close();
+      return;
+    }
+    if (e.type === 'focusin') {
+      container.classList.add('focusin');
+    }
+    if (e.type !== 'focusin') {
+      container.classList.remove('focusin');
+    }
+    close(container);
+    container.classList.add('is-open');
+    container.style.zIndex = '4';
+    if (opts.effect === 'fade') {
+      fadeIn(thisDropdown, timing);
+    } else if (opts.effect === 'slide') {
+      slideDown(thisDropdown, timing);
+    } else {
+      console.error('Dropdown plugin: There is no effect called "' + opts.effect + '". Effects: "slide", "fade".');
+    }
+  }
+  function close(dontClose) {
+    let dropdownsToClose = document.querySelectorAll('.' + opts.containerClass);
+    if (dontClose) {
+      dropdownsToClose = Array.from(dropdownsToClose).filter(item => item !== dontClose);
+    }
+    if (!dropdownsToClose.length) {
+      return;
+    }
+    dropdownsToClose.forEach(function (dropdownToClose) {
+      if (!dropdownToClose.classList.contains('is-open')) {
+        return;
+      }
+      dropdownToClose.classList.remove('is-open');
+      dropdownToClose.querySelectorAll('li').forEach(item => item.classList.remove('hover'));
+      dropdownToClose.style.zIndex = '';
+      if (opts.effect === 'fade') {
+        fadeOut(dropdownToClose.querySelector(opts.dropdownSelector), timing);
+      } else if (opts.effect === 'slide') {
+        slideUp(dropdownToClose.querySelector(opts.dropdownSelector), timing);
+      } else {
+        console.error('Dropdown plugin: There is no effect called "' + opts.effect + '". Effects: "slide", "fade".');
+      }
+    });
+  }
+  if (opts.closeOnClickOutside) {
+    document.addEventListener('click', function (e) {
+      let thisEl = e.target;
+      if (opts.closeBtnClass ? thisEl.classList.contains(opts.closeBtnClass) : false) {
+        close();
+      }
+      if (!thisEl.classList.contains(opts.containerClass) && !thisEl.closest('.' + opts.containerClass)) {
+        close();
+      }
+    });
+  }
+  dynamicListener('click', opts.globalContainer + ' .' + opts.containerClass + ' ' + opts.btnSelector, open);
+  dynamicListener('focusin', opts.globalContainer + ' .' + opts.containerClass + ' ' + opts.btnSelector, open);
+  dynamicListener('focusout', opts.globalContainer + ' .' + opts.containerClass + ' ' + opts.btnSelector, function (e) {
+    e.target.closest('.' + opts.containerClass).classList.remove('focusin');
+    close(e.target.closest('.' + opts.containerClass));
+  });
+  document.addEventListener('close-dropdown', close);
+  if (opts.timing !== false) {
+    timing = opts.timing;
+  }
+  if (opts.containerClass === 'select') {
+    timing = 0;
+  }
+  if (opts.closeOnClick) {
+    dynamicListener('click', opts.globalContainer + ' .' + opts.containerClass + ' ' + opts.dropdownSelector, function (e) {
+      if (!e.target.closest('.' + opts.containerClass).classList.contains('checkbox')) {
+        close();
+      }
+    });
+  }
+}
+function leadFormCallback() {
+  let leadForm = document.getElementById('dh-lead-form');
+  if (!leadForm) {
+    return;
+  }
+  let phoneInput = leadForm.querySelector('[data-validation="tel-mask"]');
+  function populateUtms(formData) {
+    let utms = {
+      'utm_source': 'get',
+      'utm_keyword': 'get',
+      'utm_term': 'get',
+      'utm_device': 'get',
+      'utm_gclid': 'get',
+      'utm_campaign': 'get',
+      'utm_medium': 'get',
+      'utm_content': 'get',
+      'fbclid': 'get',
+      'gclid': 'get',
+      'page_url': () => {
+        return document.location.href;
+      },
+      'lead_source': () => {
+        return '??';
+      },
+      'timestamp': () => {
+        return new Date().getTime();
+      },
+      'client_id': () => {
+        return '??';
+      },
+      'session_id': () => {
+        return '??';
+      },
+      'form_name': leadForm.name
+    };
+    let getParams = new URLSearchParams(window.location.search);
+    Object.keys(utms).forEach(function (utmName) {
+      if (utms[utmName] === 'get') {
+        if (getParams.get(utmName)) {
+          formData.set(utmName, getParams.get(utmName));
+        }
+      } else if (typeof utms[utmName] === 'function') {
+        formData.set(utmName, utms[utmName]());
+      } else {
+        formData.set(utmName, utms[utmName]);
+      }
+    });
+    return formData;
+  }
+  function sendAjax() {
+    let formData = populateUtms(new FormData(leadForm));
+    let formBtn = leadForm.querySelector('[type="submit"]');
+    let xhr = new XMLHttpRequest();
+    if (formBtn) {
+      formBtn.setAttribute('disabled', 'disabled');
+    }
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: "lead_step_1",
+      formName: leadForm.name,
+      fullName: formData.get('fullName'),
+      street: formData.get('street'),
+      city: formData.get('city'),
+      state: formData.get('state'),
+      country: "US",
+      zipcode: formData.get('zipcode'),
+      email: formData.get('email'),
+      phone: formData.get('phone')
+    });
+    xhr.open(leadForm.method, leadForm.action);
+    xhr.send(formData);
+    xhr.onload = function () {
+      if (xhr.status === 200) {
+        document.location.href = leadForm.dataset.redirect;
+      }
+    };
+  }
+  function initAddress() {
+    let addressInput = leadForm.querySelector('[data-validation="address-autocomplete"]');
+    let addressInputBtn = leadForm.querySelector('.lead-form__address-btn');
+    let nextStep = leadForm.querySelector('.lead-form__fields');
+    let autocomplete = new google.maps.places.Autocomplete(addressInput, {
+      types: ["address"],
+      componentRestrictions: {
+        country: "us"
+      }
+    });
+    let inputStreet = leadForm.querySelector('[name="street"]');
+    let inputCity = leadForm.querySelector('[name="city"]');
+    let inputState = leadForm.querySelector('[name="state"]');
+    let inputZipcode = leadForm.querySelector('[name="zipcode"]');
+    addressInput.autocompleteInstance = autocomplete;
+    autocomplete.addListener("place_changed", function () {
+      if (addressInput.isValid()) {
+        inputStreet.value = addressInput.dataset.street;
+        inputCity.value = addressInput.dataset.city;
+        inputState.value = addressInput.dataset.state;
+        inputZipcode.value = addressInput.dataset.zipcode;
+      }
+    });
+    addressInputBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      if (addressInput.isValid()) {
+        slideDown(nextStep, 300);
+        leadForm.classList.remove('address-error');
+        if (window.innerWidth >= 1024) {
+          fadeOut(addressInputBtn, 200);
+        } else {
+          slideUp(addressInputBtn, 200);
+        }
+      } else {
+        leadForm.classList.add('address-error');
+      }
+    });
+  }
+  telInputMask(phoneInput, {
+    mask: '(xxx) xxx - xxxx',
+    hiddenInput: true
+  });
+  validate(leadForm, {
+    submitFunction: sendAjax,
+    trackErrors: true
+  });
+  initAddress();
+  inputSelect();
+}
+window.leadFormCallback = leadFormCallback;
 document.addEventListener("DOMContentLoaded", function () {
-  console.log('lead loaded');
-  loadScript(`https://maps.googleapis.com/maps/api/js?key=${formConfig.googleMapsApiKey}&libraries=places&callback=initAutocomplete`, _modules_initAutocomplete__WEBPACK_IMPORTED_MODULE_0__.initAutocomplete);
+  loadScript(`https://maps.googleapis.com/maps/api/js?key=${formConfig.googleMapsApiKey}&libraries=places&callback=leadFormCallback`, leadFormCallback);
 });
 /******/ })()
 ;
