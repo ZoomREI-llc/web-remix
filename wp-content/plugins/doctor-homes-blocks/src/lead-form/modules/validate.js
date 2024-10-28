@@ -34,6 +34,12 @@ const validationMethods = {
 		if(!autocompleteField.autocompleteInstance){
 			return true;
 		}
+		console.log('sdfsdf', autocompleteField.value.trim())
+		if(!autocompleteField.value.trim()){
+			autocompleteField.setCustomValidity("Please re-enter and select your address from the dropdown");
+			autocompleteField.reportValidity();
+			return false;
+		}
 		const place = autocompleteField.autocompleteInstance.getPlace();
 		if (!place || !place.geometry) {
 			autocompleteField.setCustomValidity("Address must include a street number");
@@ -284,7 +290,9 @@ export function validate(form, newOpts = {}) {
 		if (!opts.checkOnInput && opts.checkOnFocusOut) {
 			this['had_focusout'] = true;
 			if (!this['had_focusout'] || !this['had_input']) return;
-			_this.valid(this);
+			setTimeout(function () {
+				_this.valid(this);
+			}, 10)
 		}
 	}
 	function inputChangeListener(e) {

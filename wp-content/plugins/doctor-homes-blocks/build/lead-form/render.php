@@ -10,7 +10,7 @@ $arrow_icon_url = wp_get_attachment_url($arrow_icon_id);
     <input type="hidden" name="zipcode" value="" autocomplete="off">
     
     <div class="lead-form__address address-wrapper input">
-        <input type="text" name="propertyAddress" data-validation="address-autocomplete" autocomplete="off" placeholder="Enter your property address" required>
+        <input type="text" name="propertyAddress" data-validation="address-autocomplete" autocomplete="off" placeholder="Enter your property address">
         <button type="button" class="lead-form__address-btn">
             Get My Offer
             <img class="form-btn-arrow" src="<?php echo esc_url($arrow_icon_url); ?>" alt="Arrow Icon">
