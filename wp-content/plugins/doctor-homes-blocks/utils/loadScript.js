@@ -11,13 +11,10 @@ function loadScript(src, callback = ()=>{}) {
   if(typeof src === 'string'){
     src = [src];
   }
-  console.log("1. Appending script:", src);
   let loadedScripts = 0;
   let shouldLoad = src.filter(item => !window.loadedScripts.includes(item));
   let shouldLoadCount = shouldLoad.length
   let hasCallbackInURL = false
-
-  console.log("2. Not loaded before:", shouldLoad);
 
   if(!shouldLoadCount){
     let notFullyLoaded = src.filter(item => !window.fullyLoadedScripts.includes(item));
@@ -49,8 +46,6 @@ function loadScript(src, callback = ()=>{}) {
       loadedScripts++
 
       if(loadedScripts === shouldLoadCount) {
-        console.log("3. Scripts loaded.", shouldLoad);
-
         window.fullyLoadedScripts = Array.from(new Set([...window.fullyLoadedScripts, ...shouldLoad]));
 
         if(!hasCallbackInURL) {
