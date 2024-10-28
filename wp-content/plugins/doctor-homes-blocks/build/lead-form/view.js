@@ -568,7 +568,8 @@ const validationMethods = {
     }
     const place = autocompleteField.autocompleteInstance.getPlace();
     if (!place || !place.geometry) {
-      autocompleteField.dataset.error = "Please re-enter and select your address from the dropdown";
+      autocompleteField.setCustomValidity("Address must include a street number");
+      autocompleteField.reportValidity();
       return false;
     }
     let streetAddress = "";
@@ -600,7 +601,8 @@ const validationMethods = {
       }
     }
     if (!hasStreetNumber) {
-      autocompleteField.dataset.error = "Address must include a street number";
+      autocompleteField.setCustomValidity("Address must include a street number");
+      autocompleteField.reportValidity();
       return false;
     }
     autocompleteField.dataset.error = '';
@@ -1026,7 +1028,7 @@ function validate(form, newOpts = {}) {
         }
       } else {
         form.classList.add('has-error');
-        invalidInputs.forEach(function (invalidInput) {
+        invalidInputs.reverse().forEach(function (invalidInput) {
           invalidInput.setCustomValidity("Please fill this field correctly");
           invalidInput.reportValidity();
         });
