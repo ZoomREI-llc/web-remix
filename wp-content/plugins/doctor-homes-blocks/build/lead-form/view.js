@@ -566,7 +566,6 @@ const validationMethods = {
     if (!autocompleteField.autocompleteInstance) {
       return true;
     }
-    console.log('sdfsdf', autocompleteField.value.trim());
     if (!autocompleteField.value.trim()) {
       autocompleteField.setCustomValidity("Please re-enter and select your address from the dropdown");
       autocompleteField.reportValidity();
