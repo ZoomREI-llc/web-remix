@@ -1,5 +1,10 @@
 <?php
-doctor_homes_get_header(); ?>
+$the_content = [
+    do_shortcode("[doctor_homes_blog]")
+];
+
+doctor_homes_get_header();
+?>
 
 <main id="main" class="site-main" role="main">
     <?php
@@ -9,8 +14,8 @@ doctor_homes_get_header(); ?>
         error_log('single.php - End rendering post ID: ' . get_the_ID());
     endwhile; // End of the loop.
     ?>
-    
-    <?php echo do_shortcode('[doctor_homes_blog]'); ?>
+
+    <?= implode(' ', $the_content) ?>
 </main>
 
 <?php
