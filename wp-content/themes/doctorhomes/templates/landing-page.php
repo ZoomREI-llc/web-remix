@@ -24,6 +24,12 @@ if ($hostname === 'doctorhomes.com') {
     $gtm_preview = 'env-32'; // Staging GTM environment ID
     $gtm_cookies_win = 'x';
 }
+
+ob_start();
+while (have_posts()) : the_post();
+    the_content();
+endwhile;
+$the_content = ob_get_clean();
 ?>
 
 <!DOCTYPE html>
@@ -87,13 +93,7 @@ if ($hostname === 'doctorhomes.com') {
     <?php wp_body_open(); ?>
     <main id="main" class="site-main" role="main">
         <div class="page-container">
-            <?php
-            // Start the loop
-            while (have_posts()) : the_post();
-                // Display the content
-                the_content();
-            endwhile; // End of the loop
-            ?>
+            <?= $the_content ?>
         </div>
     </main>
 
