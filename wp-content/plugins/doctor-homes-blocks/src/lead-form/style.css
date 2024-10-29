@@ -252,9 +252,11 @@ input[type="hidden"] {
 		margin: 0 -10px;
 		width: calc(100% + 20px);
 		flex-direction: row;
+		align-items: flex-start;
 	}
 	.lead-form__fields-row > * {
 		margin: 0 10px 20px;
+		align-self: start;
 	}
 	.input.is-error {
 		padding-bottom: 20px;

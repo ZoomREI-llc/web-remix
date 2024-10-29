@@ -567,13 +567,15 @@ const validationMethods = {
       return true;
     }
     if (!autocompleteField.value.trim()) {
-      autocompleteField.setCustomValidity("Please re-enter and select your address from the dropdown");
+      autocompleteField.dataset.validity = "Please re-enter and select your address from the dropdown";
+      autocompleteField.setCustomValidity(autocompleteField.dataset.validity);
       autocompleteField.reportValidity();
       return false;
     }
     const place = autocompleteField.autocompleteInstance.getPlace();
     if (!place || !place.geometry) {
-      autocompleteField.setCustomValidity("Address must include a street number");
+      autocompleteField.dataset.validity = "Address must include a street number";
+      autocompleteField.setCustomValidity(autocompleteField.dataset.validity);
       autocompleteField.reportValidity();
       return false;
     }
@@ -606,10 +608,13 @@ const validationMethods = {
       }
     }
     if (!hasStreetNumber) {
-      autocompleteField.setCustomValidity("Address must include a street number");
+      autocompleteField.dataset.validity = "Address must include a street number";
+      autocompleteField.setCustomValidity(autocompleteField.dataset.validity);
       autocompleteField.reportValidity();
       return false;
     }
+    autocompleteField.dataset.validity = '';
+    autocompleteField.setCustomValidity('');
     autocompleteField.dataset.error = '';
     autocompleteField.dataset.street = streetAddress;
     autocompleteField.dataset.city = city;
@@ -732,6 +737,8 @@ function validate(form, newOpts = {}) {
   }
   function inputInputListener(e) {
     this['had_input'] = true;
+    this.dataset.validity = '';
+    this.setCustomValidity("");
     if (!opts.checkOnInput && !opts.checkOnInputAfterSubmit) {
       return;
     }
@@ -771,6 +778,7 @@ function validate(form, newOpts = {}) {
   }
   function inputFocusListener(e) {
     let inputsSameName = Array.from(form.querySelectorAll(`[name="${this.getAttribute('name')}"]`));
+    return;
     if (opts.disableButton) {
       _this.checkDisableButton();
     }
@@ -794,12 +802,14 @@ function validate(form, newOpts = {}) {
     if (opts.disableButton) {
       _this.checkDisableButton();
     }
+    let thisInput = this;
     if (!opts.checkOnInput && opts.checkOnFocusOut) {
-      this['had_focusout'] = true;
-      if (!this['had_focusout'] || !this['had_input']) return;
-      setTimeout(function () {
-        _this.valid(this);
-      }, 10);
+      thisInput['had_focusout'] = true;
+      if (!thisInput['had_focusout'] || !thisInput['had_input'] && !_this.formSubmitted) return;
+      clearTimeout(_this.focusoutTimeout);
+      _this.focusoutTimeout = setTimeout(function () {
+        _this.valid(thisInput);
+      }, 300);
     }
   }
   function inputChangeListener(e) {
@@ -989,7 +999,11 @@ function validate(form, newOpts = {}) {
         return true;
       }
       let thisMethods = input['validationMethods'];
-      if (!thisMethods) return true;
+      if (!thisMethods) {
+        _this.errorRemove(input);
+        _this.unhighlight(input);
+        return true;
+      }
       let isInputValid = true;
       thisMethods.forEach(function (thisMethod) {
         if (!isInputValid) return;
@@ -1026,6 +1040,8 @@ function validate(form, newOpts = {}) {
         if (!_this.valid(input, addError)) {
           _this.isValid = false;
           invalidInputs.push(input);
+        } else {
+          input.dataset.validity = '';
         }
       });
       if (_this.isValid) {
@@ -1034,11 +1050,13 @@ function validate(form, newOpts = {}) {
           _this.submitHandler();
         }
       } else {
+        let firstInvalidInput = invalidInputs[0];
         form.classList.add('has-error');
-        invalidInputs.reverse().forEach(function (invalidInput) {
-          invalidInput.setCustomValidity("Please fill this field correctly");
-          invalidInput.reportValidity();
-        });
+        if (!firstInvalidInput.dataset.validity) {
+          firstInvalidInput.dataset.validity = "Please fill this field correctly";
+          firstInvalidInput.setCustomValidity(firstInvalidInput.dataset.validity);
+          firstInvalidInput.reportValidity();
+        }
       }
       return _this.isValid;
     },

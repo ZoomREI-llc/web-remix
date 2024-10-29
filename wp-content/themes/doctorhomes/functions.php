@@ -338,7 +338,7 @@ function handle_form_submission(WP_REST_Request $request)
     ));
 
     if (is_wp_error($response)) {
-        return new WP_REST_Response('Error sending data to webhook', 500);
+        return new WP_REST_Response($response->get_error_message(), $response->get_error_code());
     }
 
     return new WP_REST_Response('Form submitted successfully', 200);
