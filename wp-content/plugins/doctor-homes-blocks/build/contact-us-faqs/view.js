@@ -6,6 +6,7 @@ var __webpack_exports__ = {};
 // import gsap from "gsap";
 
 function contactUsFaqsCallback() {
+  console.log('contactUsFaqsCallback contactUsFaqsCallback');
   const faqs = document.querySelectorAll(".faq-item");
   faqs.forEach(faq => {
     const question = faq.querySelector(".faq-question");
