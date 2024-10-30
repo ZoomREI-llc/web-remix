@@ -77,29 +77,6 @@ function faqsCallback() {
       }
     });
   });
-
-  // Open the first FAQ by default
-  if (faqs.length > 0) {
-    const firstFaq = faqs[0];
-    const firstQuestion = firstFaq.querySelector(".ao-faqs__question");
-    const firstAnswer = firstFaq.querySelector(".ao-faqs__answer");
-    const firstIndicator = firstFaq.querySelector(".ao-faq-indicator");
-    firstAnswer.style.height = "auto";
-    const fullHeight = firstAnswer.scrollHeight + 48; // Add padding top and bottom
-    gsap.to(firstAnswer, {
-      height: fullHeight,
-      opacity: 1,
-      paddingTop: "1.5rem",
-      paddingBottom: "1.5rem",
-      duration: 0.5,
-      onComplete: () => {
-        firstAnswer.style.height = "auto";
-      }
-    });
-    firstIndicator.innerHTML = "-";
-    firstQuestion.style.fontWeight = "600";
-    firstQuestion.style.outlineColor = "#3c4b5f";
-  }
 }
 document.addEventListener("DOMContentLoaded", () => {
   loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js', faqsCallback);
