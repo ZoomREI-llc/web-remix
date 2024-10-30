@@ -59,8 +59,8 @@
                     <p class="contact-item"><img src="<?php echo wp_get_attachment_url(434); ?>" alt="Email Icon" class="contact-icon">contact@doctorhomes.com</p>
                 </a>
                 <div class="social-icons">
-                    <a href="https://www.facebook.com/profile.php?id=61560354478802/" target="_blank"><img src="<?php echo get_template_directory_uri() . '/src/assets/social-facebook.svg'; ?>" alt="Facebook Icon" class="social-icon"></a>
-                    <a href="https://www.instagram.com/doctorhomesoffical/" target="_blank"><img src="<?php echo get_template_directory_uri() . '/src/assets/social-instagram.svg'; ?>" alt="Instagram Icon" class="social-icon"></a>
+                    <a href="https://www.facebook.com/thedoctorhomes/" target="_blank"><img src="<?php echo get_template_directory_uri() . '/src/assets/social-facebook.svg'; ?>" alt="Facebook Icon" class="social-icon"></a>
+                    <a href="https://www.instagram.com/doctorhomes_/" target="_blank"><img src="<?php echo get_template_directory_uri() . '/src/assets/social-instagram.svg'; ?>" alt="Instagram Icon" class="social-icon"></a>
                     <a href="https://www.youtube.com/@TheDoctorHomes/" target="_blank"><img src="<?php echo get_template_directory_uri() . '/src/assets/social-youtube.svg'; ?>" alt="YouTube Icon" class="social-icon"></a>
                     <a href="https://www.tiktok.com/@thedoctorhomes/" target="_blank"><img src="<?php echo get_template_directory_uri() . '/src/assets/social-tiktok.svg'; ?>" alt="Tiktok Icon" class="social-icon"></a>
                     <a href="https://x.com/thedoctorhomes/" target="_blank"><img src="<?php echo get_template_directory_uri() . '/src/assets/social-x.svg'; ?>" alt="X Icon" class="social-icon"></a>
