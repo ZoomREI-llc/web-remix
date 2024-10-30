@@ -147,3 +147,8 @@ margin: 0 auto;
 	font-size: 26px;
 }
 }
+@media (max-width: 1023px) {
+	.cw-faqs {
+		padding-bottom: 30px;
+	}
+}

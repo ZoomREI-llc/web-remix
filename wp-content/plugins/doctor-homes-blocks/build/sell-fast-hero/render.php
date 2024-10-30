@@ -1,6 +1,6 @@
 <?php
 // dynamically rendering images and SVGs
-$background_image_url = plugins_url('src/how-it-works-hero/assets/bg.webp', dirname(__FILE__, 2));
+$background_image_url = plugins_url('src/sell-fast-hero/assets/bg.webp', dirname(__FILE__, 2));
 
 $google_icon_id = 431;
 $google_icon_url = wp_get_attachment_url($google_icon_id);

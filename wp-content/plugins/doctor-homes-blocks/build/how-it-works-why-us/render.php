@@ -3,10 +3,10 @@ $title = $attributes['title'] ?? '';
 $reasons = $attributes['reasons'] ?? [];
 ?>
 <section class="why-choose-us">
-    <div class="why-choose-us__header">
-        <h2><?php echo esc_html($title); ?></h2>
-    </div>
     <div class="why-choose-us__list">
+        <div class="why-choose-us__header">
+            <h2><?php echo esc_html($title); ?></h2>
+        </div>
         <?php foreach ($reasons as $reason) : ?>
             <div class="why-choose-us__item">
                 <div class="why-choose-us__item--content">

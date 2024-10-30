@@ -40,7 +40,7 @@ function s2FormCallback() {
       gsap.set(el, {
         display: display,
         opacity: 0,
-        x: 100
+        x: 0
       });
       gsap.to(el, {
         opacity: 1,
@@ -52,7 +52,7 @@ function s2FormCallback() {
     function fadeOut(el, duration, afterFunc = false) {
       gsap.to(el, {
         opacity: 0,
-        x: -100,
+        x: 0,
         duration: duration / 1000,
         onComplete: function () {
           gsap.set(el, {

@@ -25,6 +25,7 @@
 @media (min-width: 1024px) {
 	.benefits h2 {
 		font-size: 3rem;
+		line-height: normal;
 	}
 }
 

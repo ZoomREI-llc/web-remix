@@ -3,7 +3,7 @@ $ok_icon_Url = plugins_url('src/cw-service/assets/icon-ok--new.svg', dirname(__F
 $not_icon_Url = plugins_url('src/cw-service/assets/icon-not--new.svg', dirname(__FILE__, 2));
 $star_icon_url = plugins_url('src/cw-service/assets/star.svg', dirname(__FILE__, 2));
 $arrow_icon_url = plugins_url('src/cw-service/assets/cta-arrow.svg', dirname(__FILE__, 2));
-$logo_url = plugins_url('src/cw-service/assets/logo.webp', dirname(__FILE__, 2));
+$logo_url = plugins_url('src/cw-service/assets/logo.svg', dirname(__FILE__, 2));
 ?>
 
 <section id='compare' class="cw-service">

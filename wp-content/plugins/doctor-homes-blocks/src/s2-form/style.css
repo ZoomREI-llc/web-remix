@@ -48,7 +48,7 @@
 	text-align: center;
 }
 .s2-form__video {
-	margin-bottom: 10px;
+	margin-bottom: 32px;
 }
 
 
@@ -243,7 +243,7 @@
 .s2-form__form {
 	background: #fff;
 	padding: 0 16px 20px;
-	margin-bottom: 64px;
+	margin-bottom: 96px;
 }
 
 .s2-form__form .s2-form__title-custom:not(:first-child)::before {
@@ -276,7 +276,7 @@
 .s2-form__form .gform-theme--foundation .gform_footer, .s2-form__form .gform-theme--foundation .gform_page_footer {
 	position: absolute;
 	left: 50%;
-	bottom: -10px;
+	bottom: -32px;
 	transform: translate(-50%, 100%);
 }
 
@@ -332,7 +332,7 @@
 		font-size: 48px;
 		line-height: 87%;
 		font-weight: 700;
-		color: #2B3849;
+		color: #3c4b5f;
 	}
 
 	.s2-form__title.big + .s2-form__subtitle > * {
