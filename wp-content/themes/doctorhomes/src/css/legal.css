@@ -23,7 +23,7 @@
 
 .legal-content h2 {
   font-size: 2.25rem;
-  line-height: 2.5rem;
+  line-height: normal;
   color: var(--primaryBlue2);
 }
 
@@ -35,6 +35,7 @@
 
   .legal-content h2 {
     font-size: 3rem;
+    line-height: normal;
     color: var(--primaryBlue2);
   }
 }

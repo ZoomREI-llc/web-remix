@@ -34,12 +34,12 @@ function s2FormCallback() {
 		}
 
 		function fadeIn(el, duration, display = 'block', afterFunc = false) {
-			gsap.set(el, { display: display, opacity: 0, x: 100 });
+			gsap.set(el, { display: display, opacity: 0, x: 0 });
 			gsap.to(el, { opacity: 1, x: 0, duration: duration / 1000, onComplete: afterFunc });
 		}
 
 		function fadeOut(el, duration, afterFunc = false) {
-			gsap.to(el, { opacity: 0, x: -100, duration: duration / 1000, onComplete: function () {
+			gsap.to(el, { opacity: 0, x: 0, duration: duration / 1000, onComplete: function () {
 					gsap.set(el, { display: 'none' });
 					if (afterFunc) afterFunc();
 				} });

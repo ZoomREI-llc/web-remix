@@ -100,7 +100,7 @@
 		margin: 0;
 	}
 
-	.sf-hero__content p {
+	.sf-hero__content > p {
 		max-width: 35rem;
 		font-size: 1.375rem;
 		line-height: 1.875rem;
@@ -114,8 +114,6 @@
 	align-items: center;
 	gap: 0.625rem;
 	width: 100%;
-	opacity: 0;
-	transition: opacity 0.3s ease; /* Smooth transition for better UX */
 }
 
 @media (min-width: 1024px) {

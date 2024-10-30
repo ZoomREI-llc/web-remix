@@ -328,3 +328,28 @@
 .cw-hero__reviews-stars-wrapper {
 	display: flex;
 }
+
+@media (max-width: 1023px) {
+	.cw-meet-doctorhomes__cta {
+		padding: 14px 33px;
+		width: 100%;
+	}
+
+	.cw-meet-doctorhomes__cta img {
+		width: 19px;
+	}
+
+	.cw-hero__reviews-text p {
+		font-size: 14px;
+	}
+
+
+
+	/* style-index.css | https://zoomrei.dev:8444/wp-content/plugins/doctor-homes-blocks/build/cw-sell-today/style-index.css?ver=0.1.0 */
+
+	.cw-sell-today-wrapper .cw-hero__reviews {
+		/* justify-content: flex-start; */
+		justify-content: center;
+	}
+
+}

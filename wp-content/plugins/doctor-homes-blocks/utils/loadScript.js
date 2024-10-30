@@ -11,12 +11,17 @@ function loadScript(src, callback = ()=>{}) {
   if(typeof src === 'string'){
     src = [src];
   }
-  let loadedScripts = 0;
   let shouldLoad = src.filter(item => !window.loadedScripts.includes(item.replace(/&callback=[^&]*/, '')));
-  let shouldLoadCount = shouldLoad.length
   let hasCallbackInURL = false
 
-  if(!shouldLoadCount){
+  let allScriptsLoaded = src.every(script => window.fullyLoadedScripts.includes(script.replace(/&callback=[^&]*/, '')));
+
+  if (allScriptsLoaded) {
+    setTimeout(function () {
+      callback();
+    }, 10)
+    return;
+  } else {
     let notFullyLoaded = src.map(item=>item.replace(/&callback=[^&]*/, '')).filter(item => !window.fullyLoadedScripts.includes(item));
 
     if(!notFullyLoaded.length){
@@ -27,8 +32,6 @@ function loadScript(src, callback = ()=>{}) {
         callback: callback
       })
     }
-
-    return;
   }
 
   window.loadedScripts = Array.from(new Set([...window.loadedScripts, ...shouldLoad.map(item=>item.replace(/&callback=[^&]*/, ''))]));
@@ -43,23 +46,24 @@ function loadScript(src, callback = ()=>{}) {
     script.async = true;
     script.defer = true;
     script.onload = function() {
-      loadedScripts++
+      window.fullyLoadedScripts.push(scriptSrc.replace(/&callback=[^&]*/, ''))
 
-      if(loadedScripts === shouldLoadCount) {
-        window.fullyLoadedScripts = Array.from(new Set([...window.fullyLoadedScripts, ...shouldLoad.map(item=>item.replace(/&callback=[^&]*/, ''))]));
+      if(window.loadingQueue.length){
+        let removeFromQueue = []
 
-        if(!hasCallbackInURL) {
-          callback(false) // false - not loaded before
-        }
-        if(window.loadingQueue.length){
-          window.loadingQueue.forEach((item, index) => {
-            const allScriptsLoaded = item.scripts.every(script => window.fullyLoadedScripts.includes(script.replace(/&callback=[^&]*/, '')));
+        window.loadingQueue.forEach((item, index) => {
+          let thisAllScriptsLoaded = item.scripts.every(script => window.fullyLoadedScripts.includes(script.replace(/&callback=[^&]*/, '')));
 
-            if (allScriptsLoaded) {
+          if (thisAllScriptsLoaded) {
+            setTimeout(function () {
               item.callback(false);
-              window.loadingQueue.splice(index, 1)
-            }
-          });
+            }, 10)
+            removeFromQueue.push(index)
+          }
+        });
+
+        if(removeFromQueue.length) {
+          window.loadingQueue = window.loadingQueue.filter((_, index) => !removeFromQueue.includes(index));
         }
       }
     };

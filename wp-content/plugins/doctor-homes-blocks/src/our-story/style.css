@@ -9,6 +9,11 @@
 	.our-story {
 		padding-inline: 6.25rem;
 	}
+	.our-story h2 {
+		font-size: 3rem;
+		line-height: normal;
+		text-align: center;
+	}
 }
 
 .our-story h2 {
