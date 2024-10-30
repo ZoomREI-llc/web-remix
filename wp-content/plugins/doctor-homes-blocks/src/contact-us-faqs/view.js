@@ -1,6 +1,7 @@
 // import gsap from "gsap";
 
 function contactUsFaqsCallback() {
+	console.log('contactUsFaqsCallback contactUsFaqsCallback')
 	const faqs = document.querySelectorAll(".faq-item");
 
 	faqs.forEach((faq) => {
