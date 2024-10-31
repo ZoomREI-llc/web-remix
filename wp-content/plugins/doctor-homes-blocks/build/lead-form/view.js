@@ -1250,6 +1250,8 @@ function validate(form, newOpts = {}) {
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+(() => {
 /*!*******************************!*\
   !*** ./src/lead-form/view.js ***!
   \*******************************/
@@ -1392,6 +1394,8 @@ window.leadFormCallback = leadFormCallback;
 document.addEventListener("DOMContentLoaded", function () {
   loadScript(`https://maps.googleapis.com/maps/api/js?key=${formConfig.googleMapsApiKey}&libraries=places&callback=leadFormCallback`, leadFormCallback);
 });
+})();
+
 /******/ })()
 ;
 //# sourceMappingURL=view.js.map

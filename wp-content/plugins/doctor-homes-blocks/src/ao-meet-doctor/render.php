@@ -21,7 +21,7 @@ $star_url = plugins_url('src/ao-meet-doctor/assets/star.svg', dirname(__FILE__, 
                 </div>
                 <h3 class="ao-meet-doctor__cta-text">Ready to sell your house right now?</h3>
             </div>
-            <a class="ao-meet-doctor__cta" href="#ao-form">Get Fast Cash OFFER<img src="<?php echo esc_url($arrow_url); ?>" alt="Arrow"></a>
+            <a class="cta-btn ao-meet-doctor__cta" href="#ao-form">Get Fast Cash OFFER<img src="<?php echo esc_url($arrow_url); ?>" alt="Arrow"></a>
             <div class="ao-hero__reviews">
                 <div class="ao-hero__reviews-stars-wrapper">
                     <span class="ao-hero__star"><img src="<?php echo esc_url($star_url); ?>" alt="star"></span>

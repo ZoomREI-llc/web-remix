@@ -13,7 +13,7 @@ $arrow_icon_url = wp_get_attachment_url($arrow_icon_id);
         </div>
         <p>Whatever your circumstances, no matter the condition of your house, we're happy to buy. Contact us today, get an instant cash offer for your house, and let's get that house sold!</p>
         <a href="<?php echo get_offer_button_link(); ?>">
-            <button class="cta-button" type="button">
+            <button class="cta-btn cta-button" type="button">
                 Get My Offer
                 <!-- <img class="btn-arrow" src="<?php echo esc_url($arrow_icon_url); ?>" alt="Arrow Icon"> -->
                 <svg xmlns="http://www.w3.org/2000/svg" width="23" height="19" viewBox="0 0 23 19" fill="none">

@@ -14,3 +14,13 @@
 		font-size: 1rem;
 	}
 }
+
+.lc-number-one p {
+	font-size: 0.75rem;
+}
+
+@media (min-width: 1024px) {
+	.lc-number-one p {
+		font-size: 1.125rem;
+	}
+}

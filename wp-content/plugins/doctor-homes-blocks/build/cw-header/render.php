@@ -20,8 +20,8 @@ $phoneNumber = isset($attributes['phoneNumber']) ? esc_html($attributes['phoneNu
         </div>
         <a class="call-btn" href="tel:<?php echo $phoneNumber; ?>">
             <div class="cw-header__phone-number">
-                <span class="cw-header__phone-number--icon"><img src="<?php echo $telephoneUrl; ?>" alt=""></span>
-                <span class="cw-header__phone-number--text">Call Us On </span>
+                <span class="cw-header__phone-number--icon"><img src="<?php echo $telephoneUrl; ?>" alt="Phone Icon"></span>
+                <span class="cw-header__phone-number--text">Call Us </span>
                 <span class="cw-header__phone-number--number"><?php echo $phoneNumber; ?></span>
             </div>
         </a>

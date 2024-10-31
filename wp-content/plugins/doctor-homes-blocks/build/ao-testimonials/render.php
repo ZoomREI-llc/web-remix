@@ -148,5 +148,5 @@ $verified_check_url = plugins_url('src/ao-testimonials/assets/verified-check-cir
         </div>
     </div>
     <div class="ao-testimonials__veil"></div>
-    <button class="ao-testimonials__load-more">See More Reviews</button>
+    <button class="cta-btn ao-testimonials__load-more">See More Reviews</button>
 </section>

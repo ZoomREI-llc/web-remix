@@ -150,7 +150,7 @@ $verified_check_url = plugins_url('src/lc-testimonials/assets/verified-check-cir
             </div>
         </div>
         <div class="lc-testimonials__veil"></div>
-        <button class="lc-testimonials__load-more">Load More Reviews</button>
+        <button class="cta-btn lc-testimonials__load-more">Load More Reviews</button>
         <div class="carousel-dots">
             <span class="dot"></span>
             <span class="dot"></span>
