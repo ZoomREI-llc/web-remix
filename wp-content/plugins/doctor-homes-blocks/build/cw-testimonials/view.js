@@ -1,4 +1,5 @@
 /******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
 /*!*************************************!*\
   !*** ./src/cw-testimonials/view.js ***!
   \*************************************/
@@ -65,6 +66,8 @@ function cwTestimonialsCallback() {
       x: snapX
     }
   });
+  carouselWrapper.querySelector('._carousel-container').style.touchAction = 'pan-y';
+  carouselWrapper.querySelectorAll('._carousel-container *').forEach(item => item.style.touchAction = '');
   resize();
   window.addEventListener("resize", resize);
   prevButton.addEventListener("click", function () {

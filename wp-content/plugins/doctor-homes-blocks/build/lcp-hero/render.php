@@ -3,7 +3,8 @@
 
 $selectedMarket = isset($attributes['selectedMarket']) ? esc_html($attributes['selectedMarket']) : 'Saint Louis';
 $background_image_url = plugins_url('src/lcp-hero/assets/hero-background.webp', dirname(__FILE__, 2));
-$testimonee_url = plugins_url('src/lcp-hero/assets/hero-testimoniels.webp', dirname(__FILE__, 2));
+$testimonial_image_id = 455;
+$testimonee_url = wp_get_attachment_url($testimonial_image_id);
 $star_icon_url = plugins_url('src/lcp-hero/assets/star.svg', dirname(__FILE__, 2));
 $checkmark_icon_url = plugins_url('src/lcp-hero/assets/check-circle.svg', dirname(__FILE__, 2));
 ?>

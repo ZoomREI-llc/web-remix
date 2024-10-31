@@ -567,6 +567,9 @@ const validationMethods = {
       return true;
     }
     if (!autocompleteField.value.trim()) {
+      if (autocompleteField.closest('.is-error')) {
+        return;
+      }
       autocompleteField.dataset.validity = "Please re-enter and select your address from the dropdown";
       autocompleteField.setCustomValidity(autocompleteField.dataset.validity);
       autocompleteField.reportValidity();
@@ -574,6 +577,9 @@ const validationMethods = {
     }
     const place = autocompleteField.autocompleteInstance.getPlace();
     if (!place || !place.geometry) {
+      if (autocompleteField.closest('.is-error')) {
+        return;
+      }
       autocompleteField.dataset.validity = "Address must include a street number";
       autocompleteField.setCustomValidity(autocompleteField.dataset.validity);
       autocompleteField.reportValidity();
@@ -608,6 +614,9 @@ const validationMethods = {
       }
     }
     if (!hasStreetNumber) {
+      if (autocompleteField.closest('.is-error')) {
+        return;
+      }
       autocompleteField.dataset.validity = "Address must include a street number";
       autocompleteField.setCustomValidity(autocompleteField.dataset.validity);
       autocompleteField.reportValidity();
@@ -778,7 +787,6 @@ function validate(form, newOpts = {}) {
   }
   function inputFocusListener(e) {
     let inputsSameName = Array.from(form.querySelectorAll(`[name="${this.getAttribute('name')}"]`));
-    return;
     if (opts.disableButton) {
       _this.checkDisableButton();
     }
@@ -1250,8 +1258,6 @@ function validate(form, newOpts = {}) {
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
-(() => {
 /*!*******************************!*\
   !*** ./src/lead-form/view.js ***!
   \*******************************/
@@ -1366,6 +1372,7 @@ function leadFormCallback() {
     });
     addressInputBtn.addEventListener('click', function (e) {
       e.preventDefault();
+      addressInput.closest('.input').classList.remove('is-error');
       if (addressInput.isValid()) {
         (0,_modules_helpers__WEBPACK_IMPORTED_MODULE_0__.slideDown)(nextStep, 300);
         leadForm.classList.remove('address-error');
@@ -1394,8 +1401,6 @@ window.leadFormCallback = leadFormCallback;
 document.addEventListener("DOMContentLoaded", function () {
   loadScript(`https://maps.googleapis.com/maps/api/js?key=${formConfig.googleMapsApiKey}&libraries=places&callback=leadFormCallback`, leadFormCallback);
 });
-})();
-
 /******/ })()
 ;
 //# sourceMappingURL=view.js.map

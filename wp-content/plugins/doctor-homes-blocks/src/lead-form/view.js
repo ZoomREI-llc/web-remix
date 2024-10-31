@@ -110,6 +110,9 @@ function leadFormCallback() {
         });
         addressInputBtn.addEventListener('click', function (e) {
             e.preventDefault()
+
+            addressInput.closest('.input').classList.remove('is-error')
+
             if(addressInput.isValid()){
                 slideDown(nextStep, 300)
                 leadForm.classList.remove('address-error')

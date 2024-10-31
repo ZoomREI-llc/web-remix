@@ -2,7 +2,8 @@
 
 $nataly_lebedev_url = plugins_url('src/lc-testimonials/assets/nataly-lebedev.webp', dirname(__FILE__, 2));
 $darren_pilch_url = plugins_url('src/lc-testimonials/assets/darren-pilch.webp', dirname(__FILE__, 2));
-$liv_skyler_url = plugins_url('src/lc-testimonials/assets/liv-skyler.webp', dirname(__FILE__, 2));
+$testimonial_image_id = 455;
+$liv_skyler_url = wp_get_attachment_url($testimonial_image_id);
 $shaked_elnatan_url = plugins_url('src/lc-testimonials/assets/shaked-elnatan.webp', dirname(__FILE__, 2));
 $leigh_williams_url = plugins_url('src/lc-testimonials/assets/leigh-williams.webp', dirname(__FILE__, 2));
 $gregory_marks_url = plugins_url('src/lc-testimonials/assets/gregory-marks.webp', dirname(__FILE__, 2));

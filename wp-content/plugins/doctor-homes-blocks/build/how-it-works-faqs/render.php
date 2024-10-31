@@ -41,5 +41,5 @@ $polygon_icon_url = wp_get_attachment_url($polygon_icon_id);
             </div>
         <?php endforeach; ?>
     </div>
-    <a href="#">More FAQs >></a>
+    <a href="<?php echo esc_url(home_url('/faqs')); ?>">More FAQs >></a>
 </section>

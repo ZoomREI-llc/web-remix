@@ -24,6 +24,9 @@ $phoneNumber = isset($attributes['phoneNumber']) ? esc_html($attributes['phoneNu
                 <span class="cw-header__phone-number--text">Call Us </span>
                 <span class="cw-header__phone-number--number"><?php echo $phoneNumber; ?></span>
             </div>
+            <div class="contact-phone">
+                <img src="<?php echo wp_get_attachment_url(437); ?>" alt="Phone Icon" class="phone-icon">
+            </div>
         </a>
     </div>
 </header>
