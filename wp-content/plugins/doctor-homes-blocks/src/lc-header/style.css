@@ -64,6 +64,9 @@
 	.lc-header__phone--icon img {
 		max-width: none;
 	}
+	.lc-header .contact-phone{
+		display: none !important;
+	}
 }
 
 .lc-header__phone-number--number {
