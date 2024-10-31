@@ -76,7 +76,7 @@
 .s2-form__form .gfield {
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
+	justify-content: flex-start;
 }
 .s2-form__form .ginput_container select,
 .s2-form__form .ginput_container input,
@@ -293,12 +293,14 @@
 	position: relative;
 }
 .s2-form__form .ginput_container .error-message-container {
-	font-size: 10px;
-	color: #f00;
-	position: absolute;
-	left: 0;
-	bottom: -5px;
-	transform: translateY(100%);
+	display: block;
+	background-color: #feebe7;
+	border: 1px solid #c02b0a;
+	border-radius: .25rem;
+	color: #c02b0a;
+	font-size: .75rem;
+	margin-top: .5rem;
+	padding: .5rem;
 }
 
 

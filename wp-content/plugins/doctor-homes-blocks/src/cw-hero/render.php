@@ -2,7 +2,8 @@
 // $formId = isset($attributes['formId']) ? esc_html($attributes['formId']) : '1';
 
 $background_image_url = plugins_url('src/cw-hero/assets/life-changes-hero-background.webp', dirname(__FILE__, 2));
-$testimonee_url = plugins_url('src/cw-hero/assets/hero-testimoniels.webp', dirname(__FILE__, 2));
+$testimonial_image_id = 455;
+$testimonee_url = wp_get_attachment_url($testimonial_image_id);
 $star_icon_url = plugins_url('src/cw-hero/assets/star.svg', dirname(__FILE__, 2));
 $checkmark_icon_url = plugins_url('src/cw-hero/assets/check-circle.svg', dirname(__FILE__, 2));
 ?>

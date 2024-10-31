@@ -63,7 +63,7 @@
 			</div>
 			<?php foreach ($category['items'] as $faq) : ?>
 				<div class="faq-accordions-accordion">
-					<div class="faq-accordions-question faq-question">
+					<div class="faq-question faq-accordions-question">
 						<span><?php echo esc_html($faq['question']); ?></span>
 						<div class="faq-accordions-question__img">
 							<img src="<?php echo esc_url($accordion_arrow_icon_url); ?>" alt="">

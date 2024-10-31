@@ -35,6 +35,9 @@ const validationMethods = {
 			return true;
 		}
 		if(!autocompleteField.value.trim()){
+			if(autocompleteField.closest('.is-error')){
+				return;
+			}
 			autocompleteField.dataset.validity = "Please re-enter and select your address from the dropdown"
 			autocompleteField.setCustomValidity(autocompleteField.dataset.validity);
 			autocompleteField.reportValidity();
@@ -42,6 +45,9 @@ const validationMethods = {
 		}
 		const place = autocompleteField.autocompleteInstance.getPlace();
 		if (!place || !place.geometry) {
+			if(autocompleteField.closest('.is-error')){
+				return;
+			}
 			autocompleteField.dataset.validity = "Address must include a street number"
 			autocompleteField.setCustomValidity(autocompleteField.dataset.validity);
 			autocompleteField.reportValidity();
@@ -80,6 +86,9 @@ const validationMethods = {
 		}
 
 		if (!hasStreetNumber) {
+			if(autocompleteField.closest('.is-error')){
+				return;
+			}
 			autocompleteField.dataset.validity = "Address must include a street number"
 			autocompleteField.setCustomValidity(autocompleteField.dataset.validity);
 			autocompleteField.reportValidity();
@@ -269,7 +278,6 @@ export function validate(form, newOpts = {}) {
 	}
 	function inputFocusListener(e) {
 		let inputsSameName = Array.from(form.querySelectorAll(`[name="${this.getAttribute('name')}"]`))
-		return;
 		if(opts.disableButton){
 			_this.checkDisableButton()
 		}

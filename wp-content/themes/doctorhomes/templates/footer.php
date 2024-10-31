@@ -52,7 +52,7 @@
             </div>
             <div class="footer-contact">
                 <span class="footer-title">Contact Us</span>
-                <a href="tel:(234) DR HOMES">
+                <a class="call-btn" href="tel:(234) DR HOMES">
                     <p class="contact-item"><img src="<?php echo wp_get_attachment_url(438); ?>" alt="Phone Icon" class="contact-icon">(234) DR-HOMES</p>
                 </a>
                 <a href="mailto:contact@doctorhomes.com">

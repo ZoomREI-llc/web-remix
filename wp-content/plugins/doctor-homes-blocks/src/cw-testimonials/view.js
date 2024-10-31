@@ -73,6 +73,9 @@ function cwTestimonialsCallback() {
 		},
 	});
 
+	carouselWrapper.querySelector('._carousel-container').style.touchAction = 'pan-y'
+	carouselWrapper.querySelectorAll('._carousel-container *').forEach(item=>item.style.touchAction = '')
+
 	resize();
 
 	window.addEventListener("resize", resize);

@@ -6,7 +6,8 @@ $pay_all_url = plugins_url('src/cw-why-choose-us/assets/why-choose-foto--3.webp'
 
 $testimonee_1_url = plugins_url('src/cw-why-choose-us/assets/why-choose-testimoniels-foto--1.webp', dirname(__FILE__, 2));
 $testimonee_2_url = plugins_url('src/cw-why-choose-us/assets/why-choose-testimoniels-foto--2.webp', dirname(__FILE__, 2));
-$testimonee_3_url = plugins_url('src/cw-why-choose-us/assets/why-choose-testimoniels-foto--3.webp', dirname(__FILE__, 2));
+$testimonial_image_id = 455;
+$testimonee_3_url = wp_get_attachment_url($testimonial_image_id);
 
 $star_icon_url = plugins_url('src/cw-why-choose-us/assets/star.svg', dirname(__FILE__, 2));
 $arrow_icon_url = plugins_url('src/cw-why-choose-us/assets/cta-arrow.svg', dirname(__FILE__, 2));

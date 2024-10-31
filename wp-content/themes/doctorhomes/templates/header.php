@@ -102,7 +102,7 @@ if ($hostname === 'doctorhomes.com') {
                 ?>
             </nav>
             <div class="contact-actions">
-                <a href="tel:234-374-6637" class="contact-phone">
+                <a href="tel:234-374-6637" class="call-btn contact-phone">
                     <img src="<?php echo wp_get_attachment_url(437); ?>" alt="Phone Icon" class="phone-icon">
                     <span>Call us on: (234) DR-HOMES</span>
                 </a>

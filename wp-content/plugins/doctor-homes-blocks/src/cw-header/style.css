@@ -158,3 +158,24 @@
 		margin-top: 0px;
 	}
 }
+
+.contact-phone {
+	position: fixed;
+	right: 1rem;
+	bottom: 20vh;
+	z-index: 99;
+	background-color: white;
+	border-radius: 50%;
+	padding: 0.125rem;
+}
+
+.contact-phone img {
+	width: 3rem;
+	height: auto;
+}
+
+@media (min-width: 1024px) {
+	.contact-phone {
+		display: none !important;
+	}
+}
