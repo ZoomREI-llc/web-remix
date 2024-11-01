@@ -42,7 +42,7 @@ $checkmark_icon_url = plugins_url('src/lc-hero/assets/check-circle.svg', dirname
             </ul>
         </div>
         <div id="lc-form" class="lc-hero__form">
-            <?php echo $content; ?>
+            <?php echo do_shortcode('[doctor_homes_lead-form]'); ?>
         </div>
     </div>
 </section>

@@ -28,5 +28,5 @@ $background_image_url = wp_get_attachment_url($background_image_id);
         <span class="dh-banner-form__doctor-homes">Doctor Homes</span>
     </h3>
 
-    <?php echo do_shortcode('[doctor_homes_lead-form]'); ?>
+    <?php echo do_shortcode('[doctor_homes_lead-form-multistep]'); ?>
 </section>

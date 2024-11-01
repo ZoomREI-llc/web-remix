@@ -229,5 +229,5 @@ function initAutocomplete() {
 window.initAutocomplete = initAutocomplete;
 
 document.addEventListener("DOMContentLoaded", function () {
-	loadScript(`https://maps.googleapis.com/maps/api/js?key=${formConfig.googleMapsApiKey}&libraries=places&callback=initAutocomplete`, initAutocomplete);
+	loadScript(`https://maps.googleapis.com/maps/api/js?key=${formConfig.googleMapsApiKey}&libraries=places`, initAutocomplete);
 });
