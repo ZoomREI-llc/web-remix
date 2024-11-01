@@ -22,6 +22,9 @@
 		/* padding: 1.125rem 1rem; */
 		flex-direction: row;
 	}
+	.ao-header .contact-phone {
+		display: none !important;
+	}
 }
 
 .ao-header__logo {

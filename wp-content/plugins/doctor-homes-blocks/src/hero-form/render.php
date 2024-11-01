@@ -79,7 +79,13 @@
             </div>
         </div>
         <div id="cw-form" class="dh-hero-form__form">
-            <?php echo do_shortcode('[doctor_homes_lead-form]'); ?>
+            <div class="dh-hero-form__title">
+                <span>Get Your Offer In Record Time</span>
+            </div>
+            <div class="dh-hero-form__subtitle">
+                <span>Fill out the form. We’ll contact you ASAP.</span>
+            </div>
+            <?php echo $content; ?>
         </div>
     </div>
 </section>

@@ -22,12 +22,14 @@ function doctor_homes_blocks_doctor_homes_blocks_block_init()
 {
 	$blocks = [
 		'hero',
+		'hero-form',
 		'sell-fast-hero',
 		'how-it-works-hero',
 		'about-us-hero',
 		'our-story',
 		'our-mission',
 		'lead-form',
+		'lead-form-multistep',
 		'contact-form',
 		'banner-form',
 		'media',

@@ -144,31 +144,6 @@ form button {
 	padding: .5rem;
 }
 
-
-.lead-form__title {
-	font-weight: 700;
-	font-size: 18px;
-	line-height: 120%;
-	text-transform: capitalize;
-	color: #3C4B5F;
-	text-align: center;
-	margin-bottom: 8px;
-}
-
-.lead-form__subtitle {
-	font-size: 14px;
-	line-height: 140%;
-	color: #3c3c3c;
-	text-align: center;
-	margin-bottom: 20px;
-}
-
-.lead-form {
-	padding: 13px 17px;
-	background: #fff;
-	border-radius: 5px;
-}
-
 .input.input--squared > label {
 	font-weight: 700 !important;
 	font-size: 12px !important;
@@ -255,19 +230,6 @@ form button {
 	.lead-form__fields-row > * {
 		margin: 0 10px 20px;
 		align-self: start;
-	}
-
-
-	.lead-form {
-		padding: 35px;
-	}
-
-	.lead-form__title {
-		font-size: 26px;
-	}
-
-	.lead-form__subtitle {
-		font-size: 18px;
 	}
 
 	.input.input--squared > label {

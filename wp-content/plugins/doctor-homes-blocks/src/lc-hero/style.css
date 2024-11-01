@@ -357,3 +357,31 @@
 	opacity: 1 !important;
 	/* cursor: not-allowed !important; */
 }
+
+
+.lc-hero-wrapper .input.input--squared > label {
+	font-size: 16px !important;
+	text-transform: none;
+	font-weight: 600 !important;
+}
+.lc-hero-wrapper .input.input--squared > input {
+	background: #fff;
+	border-color: #afbfcc;
+	border-radius: 10px;
+	font-size: 1rem !important;
+	padding: 11px 1.125rem !important;
+}
+
+.lc-hero-wrapper .lead-form__disclaimer {
+	opacity: 1;
+}
+
+.lc-hero-wrapper .lead-form__disclaimer > * {
+	font-size: 16px;
+}
+
+.lc-hero-wrapper .lead-form__disclaimer::before {
+	height: 13px;
+	width: 11px;
+}
+

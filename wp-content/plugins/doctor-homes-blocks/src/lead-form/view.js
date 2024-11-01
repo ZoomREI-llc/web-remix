@@ -88,7 +88,7 @@ function leadFormCallback() {
     }
     function initAddress() {
         let addressInput = leadForm.querySelector('[data-validation="address-autocomplete"]')
-        let addressInputBtn = leadForm.querySelector('.lead-form__address-btn')
+        let addressInputBtn = leadForm.querySelector('[type="submit"]')
         let nextStep = leadForm.querySelector('.lead-form__fields')
         let autocomplete = new google.maps.places.Autocomplete(addressInput, {
             types: ["address"],
@@ -110,21 +110,7 @@ function leadFormCallback() {
         });
         if(addressInputBtn) {
             addressInputBtn.addEventListener('click', function (e) {
-                e.preventDefault()
-
                 addressInput.closest('.input').classList.remove('is-error')
-
-                if (addressInput.isValid()) {
-                    slideDown(nextStep, 300)
-                    leadForm.classList.remove('address-error')
-                    if (window.innerWidth >= 1024) {
-                        fadeOut(addressInputBtn, 200)
-                    } else {
-                        slideUp(addressInputBtn, 200)
-                    }
-                } else {
-                    leadForm.classList.add('address-error')
-                }
             })
         }
     }
