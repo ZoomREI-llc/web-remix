@@ -11,7 +11,6 @@ import {
 
 import "./editor.css";
 
-const ALLOWED_BLOCKS = ["gravityforms/form"];
 
 // The edit function, which renders the block in the Gutenberg editor
 export default function Edit({ attributes, setAttributes }) {
@@ -42,7 +41,7 @@ export default function Edit({ attributes, setAttributes }) {
 			</InspectorControls>
 			<div>
 				<h3>{__("LCP Hero", "doctor-homes-blocks")}</h3>
-				<InnerBlocks allowedBlocks={ALLOWED_BLOCKS} />
+				<InnerBlocks />
 			</div>
 		</div>
 	);

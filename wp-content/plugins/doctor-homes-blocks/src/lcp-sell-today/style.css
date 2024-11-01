@@ -258,7 +258,7 @@ left: 65%;
 	color: #DFA01F;
 	/* margin-bottom: 0.8rem; */
 }
-.lcp-sell-today-wrapper .cw-hero__titles p {
+.lcp-sell-today-wrapper .cw-hero__titles > p {
 	line-height: 1.4;
 	font-size: 16px;
 	margin: 0;
@@ -273,7 +273,7 @@ left: 65%;
 	.lcp-sell-today-wrapper .cw-hero__titles h1 {
 		font-size: 45px;
 	}
-	.lcp-sell-today-wrapper .cw-hero__titles p {
+	.lcp-sell-today-wrapper .cw-hero__titles > p {
 		margin-top: 18px;
 	}
 	/* .lcp-sell-today-wrapper .cw-hero__subtitle{font-size: 0.9rem;} */

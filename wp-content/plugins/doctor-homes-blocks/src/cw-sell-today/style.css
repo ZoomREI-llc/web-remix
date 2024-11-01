@@ -257,7 +257,7 @@
 	color: #DFA01F;
 	/* margin-bottom: 0.8rem; */
 }
-.cw-sell-today-wrapper .cw-hero__titles p {
+.cw-sell-today-wrapper .cw-hero__titles > p {
 	line-height: 1.4;
 	font-size: 16px;
 	margin: 0;
@@ -272,7 +272,7 @@
 	.cw-sell-today-wrapper .cw-hero__titles h1 {
 		font-size: 45px;
 	}
-	.cw-sell-today-wrapper .cw-hero__titles p {
+	.cw-sell-today-wrapper .cw-hero__titles > p {
 		margin-top: 18px;
 	}
 	/* .cw-sell-today-wrapper .cw-hero__subtitle{font-size: 0.9rem;} */

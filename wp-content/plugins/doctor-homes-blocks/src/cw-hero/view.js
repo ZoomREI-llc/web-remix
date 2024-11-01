@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
 	const wrapperToMoveElement = document.querySelector(".cw-hero__titles h1");
 	const wrapperStartPosElement = document.querySelector(".cw-hero");
-	const moveElement = document.querySelector(".cw-hero__form");
+	const moveElement = document.querySelector(".cw-hero-form__form");
 
 	function moveBlock() {
 		if (window.innerWidth < 1024) {
