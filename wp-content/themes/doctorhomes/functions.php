@@ -17,7 +17,9 @@ function doctor_homes_enqueue_assets()
         wp_enqueue_script('doctor-homes-menu', get_template_directory_uri() . '/src/js/menu.js', array(), null, true);
         wp_enqueue_script('doctor-homes-mobile-menu', get_template_directory_uri() . '/src/js/mobile-menu.js', array(), null, true);
     }
-    
+
+    wp_enqueue_script('lead-souce', get_template_directory_uri() . '/src/js/lead-source.js', array(), null, true);
+    wp_enqueue_script('utm-persister', get_template_directory_uri() . '/src/js/utm-persister.js', array(), null, true);
     wp_enqueue_script('gf-full-address', get_template_directory_uri() . '/src/js/full-address-field.js', array(), null, true);
     wp_enqueue_script('doctor-homes-events-handler', get_template_directory_uri() . '/src/js/events-handler.js', array(), null, true);
 
