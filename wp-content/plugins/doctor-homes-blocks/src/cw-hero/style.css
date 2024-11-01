@@ -184,7 +184,7 @@
 	font-size: 18px;
 	display: block;
 }
-.cw-hero__titles p {
+.cw-hero__titles > p {
 	line-height: 1.4;
 	margin: 0;
 	font-size: 14px;
@@ -196,7 +196,7 @@
 		gap: 1.5rem;
 	}
 
-	.cw-hero__titles p {
+	.cw-hero__titles > p {
 		/* font-size: 1.125rem; */
 		font-size: 18px;
 	}

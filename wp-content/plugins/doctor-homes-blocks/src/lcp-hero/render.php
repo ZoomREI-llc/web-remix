@@ -70,8 +70,14 @@ $checkmark_icon_url = plugins_url('src/lcp-hero/assets/check-circle.svg', dirnam
                 </ul>
             </div>
         </div>
-        <div id="lcp-form" class="lcp-hero__form">
-            <?php echo do_shortcode('[doctor_homes_lead-form]'); ?>
+        <div id="lcp-form" class="lcp-hero-form__form">
+            <div class="lcp-hero-form__title">
+                <span>Get Your Offer In Record Time</span>
+            </div>
+            <div class="lcp-hero-form__subtitle">
+                <span>Fill out the form. We’ll contact you ASAP.</span>
+            </div>
+            <?php echo $content; ?>
         </div>
     </div>
 </section>
