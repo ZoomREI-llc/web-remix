@@ -10,11 +10,14 @@ $phoneNumber = isset($attributes['phoneNumber']) ? esc_html($attributes['phoneNu
         <div class="ao-header__logo">
             <img src="<?php echo $logoUrl; ?>" alt="Logo" />
         </div>
-        <a href="call-btn" href="tel:<?php echo $phoneNumber; ?>">
+        <a class="call-btn" href="tel:<?php echo $phoneNumber; ?>">
             <div class="ao-header__phone-number">
                 <span class="ao-header__phone--icon"><img src="<?php echo $telephoneUrl; ?>" alt="Phone Icon"></span>
                 <span class="ao-header__phone--text">Call Us</span>
                 <span class="ao-header__phone-number--number"><?php echo $phoneNumber; ?></span>
+            </div>
+            <div class="contact-phone">
+                <img src="<?php echo wp_get_attachment_url(437); ?>" alt="Phone Icon" class="phone-icon">
             </div>
         </a>
     </div>

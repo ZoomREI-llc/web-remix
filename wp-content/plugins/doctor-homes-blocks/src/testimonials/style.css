@@ -47,6 +47,13 @@
 	position: relative;
 	width: 100%;
 	padding: 6.5rem 0 1rem 0;
+	display: flex;
+	gap: 3rem;
+	overflow-x: auto;
+	scroll-snap-type: x mandatory;
+	scroll-behavior: smooth;
+	scrollbar-width: none;
+	justify-content: flex-start;
 }
 
 @media (min-width: 1024px) {
@@ -55,12 +62,6 @@
 		grid-row: span 2;
 		padding: 5.8rem 0 1.5rem 0;
 	}
-}
-
-.testimonial-carousel {
-	display: flex;
-	position: relative;
-	gap: 3rem;
 }
 
 .testimonial {
@@ -204,7 +205,54 @@
 }
 
 @media (min-width: 1024px) {
-	.carousel-navigation--dots {
-		display: none;
+	.carousel-navigation--dots,
+	.testimonial-carousel .carousel-dots,
+	.testimonial-carousel .carousel-navigation {
+		display: none !important;
+	}
+}
+
+
+.testimonial-carousel {
+	width: 100%;
+}
+
+.testimonial-carousel .carousel-navigation {
+	gap: 12px;
+	justify-content: center;
+	margin-top: 32px;
+	flex-direction: row;
+}
+
+.testimonial-carousel .carousel-dots {
+	margin-top: 16px;
+	display: flex;
+	justify-content: center;
+	gap: 12px;
+}
+
+.testimonial-carousel .dot {
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: #B2B2B4;
+}
+
+.testimonial-carousel .dot.active {
+	background: #000;
+}
+
+@media (min-width: 1024px) {
+	.testimonial-carousel-wrapper {
+		display: flex;
+		flex-direction: row;
+		align-items: unset;
+	}
+	.carousel-navigation {
+		flex-direction: row;
+		gap: 12px;
+		margin-top: auto;
+		margin-bottom: 80px;
+		width: 100%;
 	}
 }

@@ -45,9 +45,19 @@ $testimonials = [
         <h2>What People Are Saying</h2>
         <p>Fast sales, helpful & professional, zero hassle.
             96% of sellers love our service – here’s what our clients have to say.</p>
+
+        <div class="carousel-dots">
+            <?php foreach ($testimonials as $index => $testimonial) : ?>
+                <span class="dot" data-index="<?php echo $index; ?>"></span>
+            <?php endforeach; ?>
+        </div>
+        <div class="carousel-navigation">
+            <button class="carousel-prev" disabled><img src="<?php echo esc_url($arrow_icon_url); ?>" alt="previous"></button>
+            <button class="carousel-next"><img src="<?php echo esc_url($arrow_icon_url); ?>" alt="next"></button>
+        </div>
     </div>
-    <div class="carousel-container">
-        <div class="testimonial-carousel">
+    <div class="testimonial-carousel">
+        <div class="carousel-container">
             <?php foreach ($testimonials as $index => $testimonial) : ?>
                 <div class="testimonial">
                     <div class="testimonial-image-wrapper">
@@ -55,24 +65,24 @@ $testimonials = [
                             <img src="<?php echo esc_url($testimonial['image']); ?>" alt="<?php echo esc_attr($testimonial['name']); ?>" class="testimonial__image">
                         </div>
                     </div>
-                    <span class="testimonial-name"><?php echo esc_html($testimonial['name']); ?></span>
-                    <div class="testimonial-rating">
-                        <?php for ($i = 0; $i < $testimonial['rating']; $i++) : ?>
-                            <img src="<?php echo esc_url($star_icon_url); ?>" alt="star" class="testimonial__star">
-                        <?php endfor; ?>
+                    <div class="carousel-item__content">
+                        <span class="testimonial-name"><?php echo esc_html($testimonial['name']); ?></span>
+                        <div class="testimonial-rating">
+                            <?php for ($i = 0; $i < $testimonial['rating']; $i++) : ?>
+                                <img src="<?php echo esc_url($star_icon_url); ?>" alt="star" class="testimonial__star">
+                            <?php endfor; ?>
+                        </div>
+                        <p class="testimonial__text"><?php echo esc_html($testimonial['text']); ?></p>
                     </div>
-                    <p class="testimonial__text"><?php echo esc_html($testimonial['text']); ?></p>
                 </div>
             <?php endforeach; ?>
         </div>
-    </div>
-    <div class="carousel-navigation">
-        <div class="carousel-navigation--dots">
+        <div class="carousel-dots">
             <?php foreach ($testimonials as $index => $testimonial) : ?>
-                <span class="carousel-dot" data-index="<?php echo $index; ?>"></span>
+                <span class="dot" data-index="<?php echo $index; ?>"></span>
             <?php endforeach; ?>
         </div>
-        <div class="carousel-navigation--arrows">
+        <div class="carousel-navigation">
             <button class="carousel-prev" disabled><img src="<?php echo esc_url($arrow_icon_url); ?>" alt="previous"></button>
             <button class="carousel-next"><img src="<?php echo esc_url($arrow_icon_url); ?>" alt="next"></button>
         </div>

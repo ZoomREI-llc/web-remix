@@ -15,6 +15,11 @@
     "editorStyle": "file:./index.css",
     "render": "file:./render.php",
     "viewScript": "file:./view.js",
-    "attributes": {},
+    "attributes": {
+        "btnText": {
+            "type": "string",
+            "default": "Get My Offer"
+        }
+    },
     "style": "file:./style-index.css"
 }

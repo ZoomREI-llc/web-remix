@@ -1349,7 +1349,7 @@ function leadFormCallback() {
   }
   function initAddress() {
     let addressInput = leadForm.querySelector('[data-validation="address-autocomplete"]');
-    let addressInputBtn = leadForm.querySelector('.lead-form__address-btn');
+    let addressInputBtn = leadForm.querySelector('[type="submit"]');
     let nextStep = leadForm.querySelector('.lead-form__fields');
     let autocomplete = new google.maps.places.Autocomplete(addressInput, {
       types: ["address"],
@@ -1372,19 +1372,7 @@ function leadFormCallback() {
     });
     if (addressInputBtn) {
       addressInputBtn.addEventListener('click', function (e) {
-        e.preventDefault();
         addressInput.closest('.input').classList.remove('is-error');
-        if (addressInput.isValid()) {
-          (0,_modules_helpers__WEBPACK_IMPORTED_MODULE_0__.slideDown)(nextStep, 300);
-          leadForm.classList.remove('address-error');
-          if (window.innerWidth >= 1024) {
-            (0,_modules_helpers__WEBPACK_IMPORTED_MODULE_0__.fadeOut)(addressInputBtn, 200);
-          } else {
-            (0,_modules_helpers__WEBPACK_IMPORTED_MODULE_0__.slideUp)(addressInputBtn, 200);
-          }
-        } else {
-          leadForm.classList.add('address-error');
-        }
       });
     }
   }

@@ -20,7 +20,7 @@ $phoneNumber = isset($attributes['phoneNumber']) ? esc_html($attributes['phoneNu
         <div class="lc-header__logo">
             <img src="<?php echo $logoUrl; ?>" alt="Logo" />
         </div>
-        <a href="call-btn" href="tel:<?php echo $phoneNumber; ?>">
+        <a class="call-btn" href="tel:<?php echo $phoneNumber; ?>">
             <div class="lc-header__phone-number">
                 <span class="lc-header__phone--icon"><img src="<?php echo $telephoneUrl; ?>" alt="Phone Icon"></span>
                 <span class="lc-header__phone--text">Call Us</span>

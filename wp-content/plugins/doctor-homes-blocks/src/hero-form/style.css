@@ -334,8 +334,38 @@
 .dh-hero-form__form {
 	flex: 0 0 45%;
 	z-index: 1;
+	padding: 13px 17px;
+	background: #fff;
+	border-radius: 5px;
+}
+.dh-hero-form__title {
+	font-weight: 700;
+	font-size: 18px;
+	line-height: 120%;
+	text-transform: capitalize;
+	color: #3C4B5F;
+	text-align: center;
+	margin-bottom: 8px;
 }
 
+.dh-hero-form__subtitle {
+	font-size: 14px;
+	line-height: 140%;
+	color: #3c3c3c;
+	text-align: center;
+	margin-bottom: 20px;
+}
+@media (min-width: 1024px) {
+	.dh-hero-form__form {
+		padding: 35px;
+	}
+	.dh-hero-form__title {
+		font-size: 26px;
+	}
+	.dh-hero-form__subtitle {
+		font-size: 18px;
+	}
+}
 .dh-hero-form .gfield--type-address {
 	display: none !important;
 }
