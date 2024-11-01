@@ -1,8 +1,6 @@
 <?php
 define('GOOGLE_MAPS_API_KEY', 'AIzaSyCwwLF50kEF6wS1rTEqTDPfTXcSlF9REuI');
 define('CRM_WEBHOOK_URL', 'https://workflow-automation.podio.com/catch/2kt203ir6i3uk64');
-define( 'WP_ROCKET_EMAIL', 'dev@zoomrei.com' );
-define( 'WP_ROCKET_KEY', 'c28d53dd');
 
 // Enqueue Scripts and Styles
 function doctor_homes_enqueue_assets()
