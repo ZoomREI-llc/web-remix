@@ -108,23 +108,25 @@ function leadFormCallback() {
                 inputZipcode.value = addressInput.dataset.zipcode
             }
         });
-        addressInputBtn.addEventListener('click', function (e) {
-            e.preventDefault()
+        if(addressInputBtn) {
+            addressInputBtn.addEventListener('click', function (e) {
+                e.preventDefault()
 
-            addressInput.closest('.input').classList.remove('is-error')
+                addressInput.closest('.input').classList.remove('is-error')
 
-            if(addressInput.isValid()){
-                slideDown(nextStep, 300)
-                leadForm.classList.remove('address-error')
-                if(window.innerWidth >= 1024) {
-                    fadeOut(addressInputBtn, 200)
+                if (addressInput.isValid()) {
+                    slideDown(nextStep, 300)
+                    leadForm.classList.remove('address-error')
+                    if (window.innerWidth >= 1024) {
+                        fadeOut(addressInputBtn, 200)
+                    } else {
+                        slideUp(addressInputBtn, 200)
+                    }
                 } else {
-                    slideUp(addressInputBtn, 200)
+                    leadForm.classList.add('address-error')
                 }
-            } else {
-                leadForm.classList.add('address-error')
-            }
-        })
+            })
+        }
     }
 
     telInputMask(phoneInput, {
@@ -141,5 +143,5 @@ function leadFormCallback() {
 
 window.leadFormCallback = leadFormCallback
 document.addEventListener("DOMContentLoaded", function () {
-    loadScript(`https://maps.googleapis.com/maps/api/js?key=${formConfig.googleMapsApiKey}&libraries=places&callback=leadFormCallback`, leadFormCallback);
+    loadScript(`https://maps.googleapis.com/maps/api/js?key=${formConfig.googleMapsApiKey}&libraries=places`, leadFormCallback);
 });

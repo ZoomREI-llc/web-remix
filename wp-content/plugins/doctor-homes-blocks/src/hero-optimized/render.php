@@ -46,7 +46,7 @@ $a_plus_icon_url = wp_get_attachment_url($a_plus_icon_id);
             <h1>Sell Your Home To Doctor Homes</h1>
             <h2>Sell Your House Fast For Cash In Any Condition.</h2>
         </div>
-        <?php echo do_shortcode('[doctor_homes_lead-form]'); ?>
+        <?php echo do_shortcode('[doctor_homes_lead-form-multistep]'); ?>
         <!-- [gravityform id="1" title="false"] -->
         <div class="dh-hero__trust-icons">
             <img class="dh-hero__trust-icon" src="<?php echo esc_url($google_icon_url); ?>" alt="">

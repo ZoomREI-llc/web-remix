@@ -70,7 +70,7 @@ $checkmark_icon_url = plugins_url('src/cw-hero/assets/check-circle.svg', dirname
             </div>
         </div>
         <div id="cw-form" class="cw-hero__form">
-            <?php echo $content; ?>
+            <?php echo do_shortcode('[doctor_homes_lead-form]'); ?>
         </div>
     </div>
 </section>

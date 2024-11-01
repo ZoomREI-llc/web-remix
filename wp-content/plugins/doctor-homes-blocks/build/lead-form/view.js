@@ -1370,21 +1370,23 @@ function leadFormCallback() {
         inputZipcode.value = addressInput.dataset.zipcode;
       }
     });
-    addressInputBtn.addEventListener('click', function (e) {
-      e.preventDefault();
-      addressInput.closest('.input').classList.remove('is-error');
-      if (addressInput.isValid()) {
-        (0,_modules_helpers__WEBPACK_IMPORTED_MODULE_0__.slideDown)(nextStep, 300);
-        leadForm.classList.remove('address-error');
-        if (window.innerWidth >= 1024) {
-          (0,_modules_helpers__WEBPACK_IMPORTED_MODULE_0__.fadeOut)(addressInputBtn, 200);
+    if (addressInputBtn) {
+      addressInputBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        addressInput.closest('.input').classList.remove('is-error');
+        if (addressInput.isValid()) {
+          (0,_modules_helpers__WEBPACK_IMPORTED_MODULE_0__.slideDown)(nextStep, 300);
+          leadForm.classList.remove('address-error');
+          if (window.innerWidth >= 1024) {
+            (0,_modules_helpers__WEBPACK_IMPORTED_MODULE_0__.fadeOut)(addressInputBtn, 200);
+          } else {
+            (0,_modules_helpers__WEBPACK_IMPORTED_MODULE_0__.slideUp)(addressInputBtn, 200);
+          }
         } else {
-          (0,_modules_helpers__WEBPACK_IMPORTED_MODULE_0__.slideUp)(addressInputBtn, 200);
+          leadForm.classList.add('address-error');
         }
-      } else {
-        leadForm.classList.add('address-error');
-      }
-    });
+      });
+    }
   }
   (0,_modules_telInputMask__WEBPACK_IMPORTED_MODULE_2__.telInputMask)(phoneInput, {
     mask: '(xxx) xxx - xxxx',
@@ -1399,7 +1401,7 @@ function leadFormCallback() {
 }
 window.leadFormCallback = leadFormCallback;
 document.addEventListener("DOMContentLoaded", function () {
-  loadScript(`https://maps.googleapis.com/maps/api/js?key=${formConfig.googleMapsApiKey}&libraries=places&callback=leadFormCallback`, leadFormCallback);
+  loadScript(`https://maps.googleapis.com/maps/api/js?key=${formConfig.googleMapsApiKey}&libraries=places`, leadFormCallback);
 });
 /******/ })()
 ;

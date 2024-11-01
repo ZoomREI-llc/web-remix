@@ -28,20 +28,6 @@ form button {
 	border-radius: 100vmax;
 }
 
-form input {
-	color: black;
-	border: 2px solid var(--primaryBlue1);
-	padding: 1rem 2rem;
-}
-
-#dh-lead-form input::placeholder {
-	color: rgba(100, 101, 106, 0.5) !important;
-	opacity: 1 !important;
-}
-
-#dh-lead-form input:focus {
-	border: 2px solid var(--primaryBlue2);
-}
 
 form button {
 	display: flex;
@@ -55,12 +41,6 @@ form button {
 	width: max-content;
 	justify-self: center;
 	transition: all 0.2s ease;
-}
-
-#dh-lead-form button:hover,
-#dh-lead-form button:focus,
-#dh-lead-form button:active {
-	background-color: var(--primaryBlue2);
 }
 
 @media (min-width: 1024px) {
@@ -81,74 +61,6 @@ form button {
 	display: flex;
 	width: 1.25rem;
 	height: auto;
-}
-
-.address-wrapper {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	width: 100%;
-	gap: 0.625rem;
-}
-
-.address-wrapper .input__message{
-	display: none;
-}
-
-@media (min-width: 1024px) {
-	.address-wrapper {
-		flex-direction: row;
-		justify-content: space-between;
-		padding: 0.625rem 0.625rem 0.625rem 1.5rem !important;
-		background-color: white;
-		border-radius: 100vmax;
-		gap: 1rem;
-		border: 1px solid var(--primaryBlue1);
-		align-items: normal;
-	}
-
-	.address-wrapper.is-error {
-		border: 2px solid red !important;
-	}
-}
-
-/* input[name="property_address"] {
-	margin-bottom: 0.625rem;
-} */
-
-@media (min-width: 1024px) {
-	input[name="property_address"] {
-		margin-bottom: 0;
-		background-color: transparent;
-		border: none;
-		width: max-content;
-		flex-grow: 1;
-		padding: 0.5rem;
-		border-radius: 0;
-	}
-}
-
-.hidden-fields {
-	grid-template-columns: 1fr;
-	gap: 0.625rem;
-	justify-content: center;
-	align-content: center;
-	width: 100%;
-}
-
-@media (min-width: 1024px) {
-	.hidden-fields {
-		grid-template-columns: 1fr 1fr;
-	}
-
-	#dh-lead-form .form-submit {
-		grid-row: 3;
-	}
-}
-
-input[type="hidden"] {
-	display: none;
 }
 
 
@@ -217,35 +129,121 @@ input[type="hidden"] {
 	transition: padding-bottom .3s ease-in-out;
 }
 
-.input.is-error {
-	padding-bottom: 30px;
-}
-.input.is-error input {
-	border-color: #c02b0a;
-}
-.input.is-error .input__message {
-	opacity: 1;
-}
 
-.input__message {
-	position: absolute;
-	left: 0;
-	right: 0;
-	transform: translateY(100%);
-	opacity: 0;
-	transition: opacity .2s ease-in-out .2s;
-	bottom: 26px;
+.input.is-error input {
+	border-color: #c02b0a !important;
 }
 
 .input__message > * {
 	background-color: #feebe7;
 	border: 1px solid #c02b0a;
-	border-radius: 20px;
+	border-radius: .25rem;
 	color: #c02b0a;
 	font-size: .75rem;
-	padding: .5rem 19px;
-	text-align: left;
+	margin-top: .5rem;
+	padding: .5rem;
 }
+
+
+.lead-form__title {
+	font-weight: 700;
+	font-size: 18px;
+	line-height: 120%;
+	text-transform: capitalize;
+	color: #3C4B5F;
+	text-align: center;
+	margin-bottom: 8px;
+}
+
+.lead-form__subtitle {
+	font-size: 14px;
+	line-height: 140%;
+	color: #3c3c3c;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.lead-form {
+	padding: 13px 17px;
+	background: #fff;
+	border-radius: 5px;
+}
+
+.input.input--squared > label {
+	font-weight: 700 !important;
+	font-size: 12px !important;
+	line-height: 74%;
+	text-transform: uppercase;
+	color: #000;
+	margin-bottom: 10px;
+	display: block;
+}
+
+.input.input--squared > input {
+	border: 1px solid #afbfcc;
+	border-radius: 3px;
+	padding: 10px 15px;
+	font-size: 14px;
+	background: #f1f6fa;
+	line-height: normal;
+	color: #000;
+}
+
+.lead-form > .input:not(:last-child) {
+	margin-bottom: 15px;
+}
+
+.lead-form {
+	width: 100%;
+}
+
+.lead-form__disclaimer {
+	color: #000D17;
+	opacity: .6;
+	text-align: center;
+	margin-top: 18px;
+}
+
+.lead-form__disclaimer::before {
+	content: '';
+	display: inline-block;
+	background-image: url('data:image/svg+xml,%3Csvg width="8" height="11" viewBox="0 0 8 11" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M7.00663 4.6459H6.59326H6.59316V3.23091C6.59314 1.73372 5.33979 0.515625 3.79919 0.515625C2.25868 0.515625 1.00529 1.73372 1.00529 3.23093V4.64592H0.59184C0.265002 4.64592 0 4.90342 0 5.22108V5.57097V9.56274V9.91262C0 10.2303 0.264981 10.4878 0.59184 10.4878H3.79921H7.00663C7.33347 10.4878 7.59843 10.2303 7.59843 9.91262V9.56274V5.57097V5.22108C7.59843 4.9034 7.33347 4.6459 7.00663 4.6459ZM4.42915 8.76587H3.1693L3.39478 7.72169C3.18391 7.59128 3.04306 7.36356 3.04306 7.10265C3.04306 6.69682 3.38163 6.36782 3.79921 6.36782C4.21682 6.36782 4.55533 6.69682 4.55533 7.10265C4.55533 7.36356 4.41452 7.59128 4.20367 7.72165L4.42915 8.76587ZM5.59624 4.6459H3.79921H2.0023H2.00219V3.23091C2.00219 2.26784 2.80828 1.48446 3.79921 1.48446C4.79018 1.48446 5.59624 2.26786 5.59624 3.23091V4.6459Z" fill="%23000D17"/%3E%3C/svg%3E%0A');
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 8px;
+	height: 10px;
+}
+
+.lead-form__disclaimer > * {
+	display: inline;
+	font-size: 14px;
+	line-height: 114%;
+	text-transform: capitalize;
+}
+
+.lead-form__disclaimer::before {
+	margin-right: 4px;
+}
+
+.lead-form__fields-btn {
+	margin-top: 22px;
+}
+
+
+.lead-form button {
+	font-size: 18px;
+	padding: 16px 48px;
+}
+.form-submit img {
+	display: none;
+}
+.input.input--squared input::placeholder {
+	color: #333 !important;
+	opacity: 0.5 !important;
+}
+
+
 
 @media (min-width: 1024px) {
 	.lead-form__fields-row {
@@ -258,17 +256,48 @@ input[type="hidden"] {
 		margin: 0 10px 20px;
 		align-self: start;
 	}
-	.input.is-error {
-		padding-bottom: 20px;
+
+
+	.lead-form {
+		padding: 35px;
 	}
-	.input__message {
-		bottom: 16px;
+
+	.lead-form__title {
+		font-size: 26px;
 	}
-	.lead-form__address input {
-		border: none !important;
-		padding: 0;
-		outline: none !important;
-		border-radius: 0 !important;
-		min-height: 46px;
+
+	.lead-form__subtitle {
+		font-size: 18px;
 	}
+
+	.input.input--squared > label {
+		font-size: 14px !important;
+		line-height: 120%;
+		margin-bottom: 7px;
+	}
+
+	.input.input--squared > input {
+		font-size: 16px;
+		padding: 15px 18px;
+	}
+
+	.lead-form > .input:not(:last-child) {
+		margin-bottom: 10px;
+	}
+
+	.lead-form button {
+		font-size: 20px;
+		padding: 18px 48px;
+		width: 100%;
+		text-transform: uppercase;
+	}
+
+	.form-submit img {
+		display: block;
+	}
+
+	.lead-form__disclaimer {
+		margin-top: 15px;
+	}
+
 }
