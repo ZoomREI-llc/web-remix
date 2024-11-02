@@ -44,7 +44,6 @@ function lcVirtueCarouselCallback() {
       const targetPosition = targetSlide.offsetLeft - (track.parentElement.getBoundingClientRect().width - slideWidth) / 2;
       isScrolling = true; // Set flag to prevent scroll-triggered updates
 
-      console.log('moveToSlide', targetIndex);
       if (targetIndex === 0) {
         prevBtns.forEach(function (prevBtn) {
           prevBtn.disabled = true;
@@ -77,7 +76,6 @@ function lcVirtueCarouselCallback() {
       });
       updateDots(currentSlideIndex, targetIndex);
       currentSlideIndex = targetIndex;
-      console.log(currentSlideIndex);
       slides.forEach(item => item.classList.remove('active'));
       targetSlide.classList.add('active');
     };
