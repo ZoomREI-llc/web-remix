@@ -1,6 +1,6 @@
 .dh-hero-form-wrapper {
 	position: relative;
-	background-image: var(--background-image);
+	background-image: var(--background-image-small);
 	background-size: cover;
 	background-position: 0% center;
 	overflow: hidden;
@@ -9,6 +9,19 @@
 	display: flex;
 	justify-content: center;
 }
+
+@media (min-width: 768px) {
+	.dh-hero-form-wrapper {
+		background-image: var(--background-image-medium);
+	}
+}
+
+@media (min-width: 1024px) {
+	.dh-hero-form-wrapper {
+		background-image: var(--background-image-large);
+	}
+}
+
 .dh-hero-form-wrapper .cw-fresh-start__testimonee {
 	width: 50px;
 	height: 50px;
@@ -185,7 +198,7 @@
 	font-size: 18px;
 	display: block;
 }
-.dh-hero-form__titles>p {
+.dh-hero-form__titles > p {
 	line-height: 1.4;
 	margin: 0;
 	font-size: 14px;
@@ -197,7 +210,7 @@
 		gap: 1.5rem;
 	}
 
-	.dh-hero-form__titles>p {
+	.dh-hero-form__titles > p {
 		font-size: 18px;
 	}
 
@@ -343,7 +356,7 @@
 	font-size: 18px;
 	line-height: 120%;
 	text-transform: capitalize;
-	color: #3C4B5F;
+	color: #3c4b5f;
 	text-align: center;
 	margin-bottom: 8px;
 }
@@ -369,10 +382,6 @@
 .dh-hero-form .gfield--type-address {
 	display: none !important;
 }
-
-
-
-
 
 .dh-hero-form {
 	padding: 20px 0 25px;
@@ -468,12 +477,11 @@
 	height: 15px;
 	width: 15px;
 }
-.dh-hero__logos{
+.dh-hero__logos {
 	display: none;
 }
 
 @media (min-width: 1023px) {
-
 	.dh-hero-form__reviews {
 		flex-direction: revert;
 		justify-content: flex-start;
@@ -584,7 +592,6 @@
 		border-radius: 33px;
 		margin-top: 10px;
 	}
-
 }
 @media (max-width: 1024px) {
 	.dh-hero-form__star {
@@ -612,4 +619,3 @@
 .dh-hero-form__form {
 	flex: 0 0 45%;
 }
-
