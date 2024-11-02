@@ -40,40 +40,44 @@
     ];
 ?>
 
-<section class="lcp-testimonials-wrapper">
-    <div class="lcp-testimonials__text">
+<section class="testimonial-carousel-wrapper">
+    <div class="testimonial-carousel-text">
         <h2>See What Our Customers Are Saying</h2>
         <p></p>
+        <div class="carousel-navigation">
+            <button class="carousel-prev" disabled><img src="<?php echo esc_url($arrow_icon_url); ?>" alt="previous"></button>
+            <button class="carousel-next"><img src="<?php echo esc_url($arrow_icon_url); ?>" alt="next"></button>
+        </div>
     </div>
-    <div class="lcp-testimonials__container">
-        <div class="lcp-testimonials-carousel">
+    <div class="testimonial-carousel">
+        <div class="carousel-container">
             <?php foreach ($testimonials as $index => $testimonial) : ?>
-                <div class="lcp-testimonials__item">
-                    <div class="sf-testimonial-image-wrapper">
-                        <div class="sf-testimonial-image-border">
-                            <img src="<?php echo esc_url($testimonial['image']); ?>" alt="<?php echo esc_attr($testimonial['name']); ?>" class="lcp-testimonials__item__image">
+                <div class="testimonial">
+                    <div class="testimonial-image-wrapper">
+                        <div class="testimonial-image-border">
+                            <img src="<?php echo esc_url($testimonial['image']); ?>" alt="<?php echo esc_attr($testimonial['name']); ?>" class="testimonial__image">
                         </div>
                     </div>
-                    <span class="lcp-testimonials__item-name"><?php echo esc_html($testimonial['name']); ?></span>
-                    <div class="lcp-testimonials__item-rating">
-                        <?php for ($i = 0; $i < $testimonial['rating']; $i++) : ?>
-                            <img src="<?php echo esc_url($star_icon_url); ?>" alt="star" class="lcp-testimonials__item__star">
-                        <?php endfor; ?>
+                    <div class="carousel-item__content">
+                        <span class="testimonial-name"><?php echo esc_html($testimonial['name']); ?></span>
+                        <div class="testimonial-rating">
+                            <?php for ($i = 0; $i < $testimonial['rating']; $i++) : ?>
+                                <img src="<?php echo esc_url($star_icon_url); ?>" alt="star" class="testimonial__star">
+                            <?php endfor; ?>
+                        </div>
+                        <p class="testimonial__text"><?php echo esc_html($testimonial['text']); ?></p>
                     </div>
-                    <p class="lcp-testimonials__item__text"><?php echo esc_html($testimonial['text']); ?></p>
                 </div>
             <?php endforeach; ?>
         </div>
-    </div>
-    <div class="lcp-testimonials__navigation">
-        <div class="lcp-testimonials__navigation--dots">
+        <div class="carousel-dots">
             <?php foreach ($testimonials as $index => $testimonial) : ?>
-                <span class="lcp-testimonials__dot" data-index="<?php echo $index; ?>"></span>
+                <span class="dot" data-index="<?php echo $index; ?>"></span>
             <?php endforeach; ?>
         </div>
-        <div class="lcp-testimonials__navigation--arrows">
-            <button class="lcp-testimonials__prev" disabled><img src="<?php echo esc_url($arrow_icon_url); ?>" alt="previous"></button>
-            <button class="lcp-testimonials__next"><img src="<?php echo esc_url($arrow_icon_url); ?>" alt="next"></button>
+        <div class="carousel-navigation">
+            <button class="carousel-prev" disabled><img src="<?php echo esc_url($arrow_icon_url); ?>" alt="previous"></button>
+            <button class="carousel-next"><img src="<?php echo esc_url($arrow_icon_url); ?>" alt="next"></button>
         </div>
     </div>
 </section>

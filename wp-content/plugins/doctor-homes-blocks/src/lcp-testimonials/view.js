@@ -1,137 +1,158 @@
 // import gsap from "gsap";
+// import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+//
 
-function lcpTestimonialsCallback() {
-	const carouselContainer = document.querySelector(".lcp-testimonials__container");
-	const carousel = document.querySelector(".lcp-testimonials-carousel");
-	const testimonials = carousel.querySelectorAll(".lcp-testimonials__item");
-	const prevButton = document.querySelector(".lcp-testimonials__prev");
-	const nextButton = document.querySelector(".lcp-testimonials__next");
-	const dots = document.querySelectorAll(".lcp-testimonials__dot");
+function lcpVirtueCarouselCallback() {
+	gsap.registerPlugin(ScrollToPlugin);
 
-	let currentIndex = 0;
-	let isDragging = false;
-	let startX;
-	let currentX;
+	// Function to handle the carousel logic for smaller screens
+	const initializeCarousel = () => {
+		const track = document.querySelector(".carousel-container");
+		const slides = Array.from(track.children);
+		const dotsNavs = document.querySelectorAll(".carousel-dots");
+		const prevBtns = document.querySelectorAll(".carousel-prev");
+		const nextBtns = document.querySelectorAll(".carousel-next");
 
-	function updateCarousel() {
-		testimonials.forEach((testimonial, index) => {
-			testimonial.classList.remove("active");
-			if (index === currentIndex) {
-				testimonial.classList.add("active");
-			}
-		});
+		let currentSlideIndex = 0;
+		let slideInterval;
+		let isScrolling = false; // Flag to prevent double-triggering
+		const slideGap = 32; // Adjust if there's any gap between slides
+		const slideDuration = 3000; // Duration for auto-slide
 
-		dots.forEach((dot, index) => {
-			dot.classList.remove("active");
-			if (index === currentIndex) {
-				dot.classList.add("active");
-			}
-		});
+		track.scrollTo(0, 0)
+		// Function to manually calculate slide positions and handle resize
+		const setSlidePositions = () => {
+			updateDots(-1, currentSlideIndex); // Initialize dots correctly
+		};
 
-		const carouselWidth = carouselContainer.clientWidth;
-		const testimonialWidth = testimonials[currentIndex].clientWidth;
-		const gap = 48; // Adjust this value based on your desired gap between slides
+		slides[0].classList.add('active')
+		const updateDots = (currentIndex, targetIndex) => {
+			dotsNavs.forEach(function (dotsNav) {
+				let dots = Array.from(dotsNav.children);
 
-		let offset = 0;
-
-		if (window.innerWidth >= 1024) {
-			// Calculate the offset for desktop
-			const containerWidth = carouselContainer.clientWidth;
-			const numVisibleItems = Math.floor(
-				containerWidth / (testimonialWidth + gap),
-			);
-			const visibleItemsWidth =
-				numVisibleItems * testimonialWidth + (numVisibleItems - 1) * gap;
-			offset = (containerWidth - visibleItemsWidth) / 2;
-		}
-
-		// For mobile, keep offset 0 as we want the first item to start at the very beginning
-		if (currentIndex === 0) {
-			offset = 0;
-		}
-
-		const translateX = -(currentIndex * (testimonialWidth + gap)) + offset;
-
-		gsap.to(carousel, {
-			x: translateX,
-			duration: 1,
-			ease: "easeInOutExpo",
-		});
-
-		// Disable prev/next buttons at boundaries
-		prevButton.disabled = currentIndex === 0;
-		nextButton.disabled = currentIndex === testimonials.length - 1;
-	}
-
-	function handleTouchStart(event) {
-		isDragging = true;
-		startX = event.touches[0].clientX;
-		currentX = startX;
-	}
-
-	function handleTouchMove(event) {
-		if (!isDragging) {
-			return;
-		}
-
-		event.preventDefault();
-		currentX = event.touches[0].clientX;
-	}
-
-	function handleTouchEnd(event) {
-		if (!isDragging) {
-			return;
-		}
-
-		isDragging = false;
-		const distance = currentX - startX;
-		const threshold = 50; // Adjust this value to set the swipe threshold
-
-		if (Math.abs(distance) >= threshold) {
-			if (distance > 0) {
-				// Swipe right
-				if (currentIndex > 0) {
-					currentIndex--;
+				if (dots[targetIndex]) {
+					dots[currentIndex]?.classList.remove("active");
+					dots[targetIndex].classList.add("active");
 				}
+			})
+		};
+
+		const moveToSlide = (targetIndex) => {
+			const slideWidth = slides[0].getBoundingClientRect().width;
+			const targetSlide = slides[targetIndex];
+			const targetPosition =
+				targetSlide.offsetLeft -
+				(track.parentElement.getBoundingClientRect().width - slideWidth) / 2;
+
+			isScrolling = true; // Set flag to prevent scroll-triggered updates
+
+			if(targetIndex === 0){
+				prevBtns.forEach(function (prevBtn) {
+					prevBtn.disabled = true
+				})
 			} else {
-				// Swipe left
-				if (currentIndex < testimonials.length - 1) {
-					currentIndex++;
-				}
+				prevBtns.forEach(function (prevBtn) {
+					prevBtn.disabled = false
+				})
 			}
-			updateCarousel();
-		}
-	}
+			if(targetIndex < slides.length - 1){
+				nextBtns.forEach(function (nextBtn) {
+					nextBtn.disabled = false
+				})
+			} else {
+				nextBtns.forEach(function (nextBtn) {
+					nextBtn.disabled = true
+				})
+			}
+			gsap.to(track, {
+				scrollTo: { x: targetPosition },
+				duration: 0.6,
+				ease: "power2.inOut",
+				onComplete: () => {
+					setTimeout(function () {
+						isScrolling = false; // Reset flag after animation completes
+					}, 50)
+				},
+			});
+			updateDots(currentSlideIndex, targetIndex);
+			currentSlideIndex = targetIndex;
+			slides.forEach(item=>item.classList.remove('active'))
+			targetSlide.classList.add('active')
+		};
 
 
-	carousel.addEventListener("touchstart", handleTouchStart);
-	carousel.addEventListener("touchmove", handleTouchMove);
-	carousel.addEventListener("touchend", handleTouchEnd);
+		// Event listener for dot navigation
 
-	prevButton.addEventListener("click", () => {
-		if (currentIndex > 0) {
-			currentIndex--;
-			updateCarousel();
-		}
-	});
+		dotsNavs.forEach(function (dotsNav) {
+			dotsNav.addEventListener("click", (e) => {
+				const targetDot = e.target.closest("span");
+				if (!targetDot) return;
 
-	nextButton.addEventListener("click", () => {
-		if (currentIndex < testimonials.length - 1) {
-			currentIndex++;
-			updateCarousel();
-		}
-	});
+				let dots = Array.from(dotsNav.children);
 
-	dots.forEach((dot) => {
-		dot.addEventListener("click", () => {
-			currentIndex = parseInt(dot.dataset.index, 10);
-			updateCarousel();
+				const targetIndex = dots.findIndex((dot) => dot === targetDot);
+				moveToSlide(targetIndex);
+			});
+		})
+		prevBtns.forEach(function (prevBtn) {
+			prevBtn.addEventListener("click", (e) => {
+				if(currentSlideIndex - 1 >= 0) {
+					moveToSlide(currentSlideIndex - 1);
+				}
+			});
+		})
+		nextBtns.forEach(function (nextBtn) {
+			nextBtn.addEventListener("click", (e) => {
+				if (currentSlideIndex + 1 < slides.length) {
+					moveToSlide(currentSlideIndex + 1);
+				}
+			});
+		})
+
+		// Sync dots based on scroll position
+		track.addEventListener("touchend", () => {
+			moveToSlide(currentSlideIndex)
+		})
+		track.addEventListener("scroll", () => {
+			if (isScrolling) return; // Prevents handling the event during slide transition
+
+			const slideWidth = slides[0].offsetWidth;
+			const scrolledIndex = Math.round(track.scrollLeft / slideWidth);
+			if (
+				scrolledIndex !== currentSlideIndex &&
+				scrolledIndex < slides.length
+			) {
+				updateDots(currentSlideIndex, scrolledIndex);
+				currentSlideIndex = scrolledIndex;
+				// Reset and restart auto-slide on manual scroll
+			}
 		});
-	});
 
-	updateCarousel(); // Initial call to set up the carousel
+		// Set the initial active dot
+		updateDots(-1, 0);
+
+		// Set up slide positions on load and resize
+		setSlidePositions();
+		window.addEventListener("resize", setSlidePositions);
+	};
+
+	// Initialize the carousel logic on page load
+	initializeCarousel();
+
+	// Re-check and reinitialize the carousel logic on window resize
+	window.addEventListener("resize", () => {
+		// Remove any previously added event listeners to avoid duplication
+		const track = document.querySelector(".carousel-track");
+		track.removeAttribute("style"); // Reset inline styles added previously
+
+		// Reinitialize if the condition is met
+		initializeCarousel();
+	});
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-	loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js', lcpTestimonialsCallback)
+	loadScript([
+		'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js',
+		'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js'
+	], lcpVirtueCarouselCallback)
 });

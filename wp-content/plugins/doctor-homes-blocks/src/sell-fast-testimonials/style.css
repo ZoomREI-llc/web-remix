@@ -1,4 +1,4 @@
-.sf-testimonial-carousel-wrapper {
+.testimonial-carousel-wrapper {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -12,7 +12,7 @@
 }
 
 @media (min-width: 1024px) {
-	.sf-testimonial-carousel-wrapper {
+	.testimonial-carousel-wrapper {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
 		padding-inline: 6.25rem;
@@ -27,6 +27,9 @@
 	gap: 1rem;
 	text-align: center;
 }
+.testimonial-carousel-text .carousel-navigation{
+	display: none;
+}
 
 @media (min-width: 1024px) {
 	.testimonial-carousel-text {
@@ -34,6 +37,9 @@
 		grid-column: 1 / 2;
 		max-width: 30.5rem;
 		text-align: left;
+	}
+	.testimonial-carousel-text .carousel-navigation{
+		display: flex;
 	}
 }
 
@@ -50,6 +56,13 @@
 	position: relative;
 	width: 100%;
 	padding: 6.5rem 0 1rem 0;
+	display: flex;
+	gap: 3rem;
+	overflow-x: auto;
+	scroll-snap-type: x mandatory;
+	scroll-behavior: smooth;
+	scrollbar-width: none;
+	justify-content: flex-start;
 }
 
 @media (min-width: 1024px) {
@@ -90,7 +103,7 @@
 	color: white;
 }
 
-.sf-testimonial-image-wrapper {
+.testimonial-image-wrapper {
 	position: absolute;
 	top: -25%;
 	left: 50%;
@@ -103,7 +116,7 @@
 	height: 12rem;
 }
 
-.sf-testimonial-image-border {
+.testimonial-image-border {
 	position: relative;
 	border-radius: 50%;
 	padding: 0.5rem;
@@ -207,7 +220,54 @@
 }
 
 @media (min-width: 1024px) {
-	.carousel-navigation--dots {
-		display: none;
+	.carousel-navigation--dots,
+	.testimonial-carousel .carousel-dots,
+	.testimonial-carousel .carousel-navigation {
+		display: none !important;
+	}
+}
+
+
+.testimonial-carousel {
+	width: 100%;
+}
+
+.testimonial-carousel .carousel-navigation {
+	gap: 12px;
+	justify-content: center;
+	margin-top: 32px;
+	flex-direction: row;
+}
+
+.testimonial-carousel .carousel-dots {
+	margin-top: 16px;
+	display: flex;
+	justify-content: center;
+	gap: 12px;
+}
+
+.testimonial-carousel .dot {
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: #B2B2B4;
+}
+
+.testimonial-carousel .dot.active {
+	background: #000;
+}
+
+@media (min-width: 1024px) {
+	.testimonial-carousel-wrapper {
+		display: flex;
+		flex-direction: row;
+		align-items: unset;
+	}
+	.carousel-navigation {
+		flex-direction: row;
+		gap: 12px;
+		margin-top: auto;
+		margin-bottom: 80px;
+		width: 100%;
 	}
 }
