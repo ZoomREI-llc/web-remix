@@ -10,35 +10,53 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Checkout the repository
       - name: Checkout code
         uses: actions/checkout@v3
 
+      # Setup SSH agent for secure communication
       - name: Setup SSH
         uses: webfactory/ssh-agent@v0.5.3
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
+      # Add server to known hosts to avoid authenticity prompts
       - name: Add known hosts
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.KNOWN_HOSTS }}" >> ~/.ssh/known_hosts
 
+      # Setup Node.js environment
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
           node-version: "20"
 
+      # Install dependencies and build the theme
       - name: Install dependencies and build theme
         working-directory: ./wp-content/themes/doctorhomes
         run: |
           npm install
           npm run build
 
+      # Install dependencies and build the doctor-homes-blocks plugin
+      - name: Install dependencies and build doctor-homes-blocks plugin
+        working-directory: ./wp-content/plugins/doctor-homes-blocks
+        run: |
+          npm install
+          npm run build
+
+      # Sync themes and plugins to the staging server, excluding node_modules
       - name: Sync Plugins and Themes to Staging
         run: |
-          rsync -avz --delete ./wp-content/themes/ rootadmin@${{ secrets.SERVER_IP }}:/home/rootadmin/public_html/remix.chrisbuyshomes.com/wp-content/themes
-          rsync -avz --delete ./wp-content/plugins/ rootadmin@${{ secrets.SERVER_IP }}:/home/rootadmin/public_html/remix.chrisbuyshomes.com/wp-content/plugins
+          rsync -avz --delete \
+            --exclude 'node_modules' \
+            ./wp-content/themes/ rootadmin@${{ secrets.SERVER_IP }}:/home/rootadmin/public_html/remix.chrisbuyshomes.com/wp-content/themes
+          rsync -avz --delete \
+            --exclude 'node_modules' \
+            ./wp-content/plugins/ rootadmin@${{ secrets.SERVER_IP }}:/home/rootadmin/public_html/remix.chrisbuyshomes.com/wp-content/plugins
 
+      # Run database migrations on the staging server
       - name: Run Database Migrations in Staging
         run: |
           ssh rootadmin@${{ secrets.SERVER_IP }} "wp core update-db --path=/home/rootadmin/public_html/remix.chrisbuyshomes.com"

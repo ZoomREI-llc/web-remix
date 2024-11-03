@@ -8,11 +8,16 @@ yarn-error.log*
 # Coverage directory used by tools like istanbul
 coverage
 
-# Optimized assets folder - generated on build 
-optimized-assets
+# Build folder - generated in the CI/CD process
+build/
+
 
 # Compiled binary addons (https://nodejs.org/api/addons.html)
 build/Release
+
+
+# Optimized assets folder - generated on build 
+optimized-assets/
 
 # Dependency directories
 node_modules/
