@@ -24,6 +24,9 @@
 	gap: 1rem;
 	text-align: center;
 }
+.testimonial-carousel-text .carousel-navigation{
+	display: none;
+}
 
 @media (min-width: 1024px) {
 	.testimonial-carousel-text {
@@ -31,6 +34,9 @@
 		grid-column: 1 / 2;
 		max-width: 30.5rem;
 		text-align: left;
+	}
+	.testimonial-carousel-text .carousel-navigation{
+		display: flex;
 	}
 }
 

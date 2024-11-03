@@ -45,12 +45,7 @@ $testimonials = [
         <h2>What People Are Saying</h2>
         <p>Fast sales, helpful & professional, zero hassle.
             96% of sellers love our service – here’s what our clients have to say.</p>
-
-        <div class="carousel-dots">
-            <?php foreach ($testimonials as $index => $testimonial) : ?>
-                <span class="dot" data-index="<?php echo $index; ?>"></span>
-            <?php endforeach; ?>
-        </div>
+        
         <div class="carousel-navigation">
             <button class="carousel-prev" disabled><img src="<?php echo esc_url($arrow_icon_url); ?>" alt="previous"></button>
             <button class="carousel-next"><img src="<?php echo esc_url($arrow_icon_url); ?>" alt="next"></button>
