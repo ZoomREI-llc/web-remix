@@ -14,10 +14,7 @@ function sfVirtueCarouselCallback() {
 		const nextBtns = document.querySelectorAll(".carousel-next");
 
 		let currentSlideIndex = 0;
-		let slideInterval;
 		let isScrolling = false; // Flag to prevent double-triggering
-		const slideGap = 32; // Adjust if there's any gap between slides
-		const slideDuration = 3000; // Duration for auto-slide
 
 		track.scrollTo(0, 0)
 		// Function to manually calculate slide positions and handle resize
@@ -64,12 +61,14 @@ function sfVirtueCarouselCallback() {
 					nextBtn.disabled = true
 				})
 			}
+			track.style.overflowX = 'hidden'
 			gsap.to(track, {
 				scrollTo: { x: targetPosition },
 				duration: 0.6,
 				ease: "power2.inOut",
 				onComplete: () => {
 					setTimeout(function () {
+						track.style.overflowX = 'auto'
 						isScrolling = false; // Reset flag after animation completes
 					}, 50)
 				},
@@ -109,23 +108,35 @@ function sfVirtueCarouselCallback() {
 			});
 		})
 
-		// Sync dots based on scroll position
-		track.addEventListener("touchend", () => {
-			moveToSlide(currentSlideIndex)
-		})
-		track.addEventListener("scroll", () => {
+		let waitForScrollEnd = 0
+
+		function onScroll() {
 			if (isScrolling) return; // Prevents handling the event during slide transition
 
-			const slideWidth = slides[0].offsetWidth;
-			const scrolledIndex = Math.round(track.scrollLeft / slideWidth);
-			if (
-				scrolledIndex !== currentSlideIndex &&
-				scrolledIndex < slides.length
-			) {
-				updateDots(currentSlideIndex, scrolledIndex);
-				currentSlideIndex = scrolledIndex;
-				// Reset and restart auto-slide on manual scroll
-			}
+			clearTimeout(waitForScrollEnd)
+			waitForScrollEnd = setTimeout(function () {
+				const slideWidth = slides[0].offsetWidth;
+				const scrolledIndex = Math.round(track.scrollLeft / slideWidth);
+				if (
+					scrolledIndex < slides.length
+				) {
+					updateDots(currentSlideIndex, scrolledIndex);
+					currentSlideIndex = scrolledIndex;
+					moveToSlide(currentSlideIndex)
+				}
+			}, 15)
+		}
+
+		// Sync dots based on scroll position
+		track.addEventListener("touchstart", () => {
+			isScrolling = true
+		})
+		track.addEventListener("touchend", () => {
+			isScrolling = false
+			onScroll()
+		})
+		track.addEventListener("scroll", () => {
+			onScroll()
 		});
 
 		// Set the initial active dot
