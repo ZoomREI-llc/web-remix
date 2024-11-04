@@ -107,11 +107,11 @@ function get_responsive_image($image_name, $alt = '', $class = '', $sizes_attr =
 }
 
 /**
- * Generates the URL for an image file of a specific size.
+ * Generates the URL for an image file of a specific size, with support for SVG fallback.
  *
  * @param string   $image_name The base name of the image, including subdirectories relative to the optimized-assets folder.
  * @param int|null $size       The desired image size (e.g., 2048). If null, attempts to use the largest available size.
- * @param string   $extension  The image file extension (default 'webp').
+ * @param string   $extension  The primary image file extension (default 'webp').
  * @return string              The URL to the image file.
  */
 function get_image_url($image_name, $size = null, $extension = 'webp')
@@ -127,10 +127,46 @@ function get_image_url($image_name, $size = null, $extension = 'webp')
 
     static $file_cache = []; // Cache to store file existence checks
 
-    // If size is specified, attempt to get that size
-    if ($size !== null) {
-        $size = intval($size); // Ensure size is an integer
-        $image_file = "{$image_name_sanitized}-{$size}.{$extension}";
+    // List of extensions to try, starting with the primary extension
+    $extensions_to_try = [$extension];
+
+    // Add 'svg' to the list of extensions to try if it's not the primary extension
+    if ($extension !== 'svg') {
+        $extensions_to_try[] = 'svg';
+    }
+
+    foreach ($extensions_to_try as $ext) {
+        // If size is specified, attempt to get that size
+        if ($size !== null) {
+            $size = intval($size); // Ensure size is an integer
+            $image_file = "{$image_name_sanitized}-{$size}.{$ext}";
+            $image_path = "{$base_dir}{$image_file}";
+
+            if (!isset($file_cache[$image_path])) {
+                $file_cache[$image_path] = file_exists($image_path);
+            }
+
+            if ($file_cache[$image_path]) {
+                return esc_url("{$base_url}{$image_file}");
+            }
+        }
+
+        // If size not specified or specified size not found, attempt to use the largest available size
+        foreach ($sizes as $available_size) {
+            $image_file = "{$image_name_sanitized}-{$available_size}.{$ext}";
+            $image_path = "{$base_dir}{$image_file}";
+
+            if (!isset($file_cache[$image_path])) {
+                $file_cache[$image_path] = file_exists($image_path);
+            }
+
+            if ($file_cache[$image_path]) {
+                return esc_url("{$base_url}{$image_file}");
+            }
+        }
+
+        // If no sized image is found, check for image without size suffix
+        $image_file = "{$image_name_sanitized}.{$ext}";
         $image_path = "{$base_dir}{$image_file}";
 
         if (!isset($file_cache[$image_path])) {
@@ -140,32 +176,6 @@ function get_image_url($image_name, $size = null, $extension = 'webp')
         if ($file_cache[$image_path]) {
             return esc_url("{$base_url}{$image_file}");
         }
-    }
-
-    // If size not specified or specified size not found, attempt to use the largest available size
-    foreach ($sizes as $available_size) {
-        $image_file = "{$image_name_sanitized}-{$available_size}.{$extension}";
-        $image_path = "{$base_dir}{$image_file}";
-
-        if (!isset($file_cache[$image_path])) {
-            $file_cache[$image_path] = file_exists($image_path);
-        }
-
-        if ($file_cache[$image_path]) {
-            return esc_url("{$base_url}{$image_file}");
-        }
-    }
-
-    // If no sized image is found, check for image without size suffix
-    $image_file = "{$image_name_sanitized}.{$extension}";
-    $image_path = "{$base_dir}{$image_file}";
-
-    if (!isset($file_cache[$image_path])) {
-        $file_cache[$image_path] = file_exists($image_path);
-    }
-
-    if ($file_cache[$image_path]) {
-        return esc_url("{$base_url}{$image_file}");
     }
 
     // Image not found; return empty string or a placeholder URL if desired

@@ -11,7 +11,7 @@ $reasons = $attributes['reasons'] ?? [];
             <div class="why-choose-us__item">
                 <div class="why-choose-us__item--content">
                     <div class="why-choose-us__item--image">
-                        <img src="<?php echo esc_url(wp_get_attachment_url($reason['id'])); ?>" alt="<?php echo esc_attr($reason['title']); ?>">
+                        <?php echo get_responsive_image($reason['asset'], $reason['title'],); ?>
                     </div>
                     <div class="why-choose-us__item--text">
                         <h3><?php echo esc_html($reason['title']); ?></h3>

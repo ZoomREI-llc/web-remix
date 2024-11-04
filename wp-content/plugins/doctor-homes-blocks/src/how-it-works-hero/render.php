@@ -1,7 +1,5 @@
 <?php
-// dynamically rendering images and SVGs
 $background_image_url = plugins_url('src/how-it-works-hero/assets/bg.webp', dirname(__FILE__, 2));
-
 ?>
 
 <a id="top"></a>

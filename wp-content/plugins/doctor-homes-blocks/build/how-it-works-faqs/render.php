@@ -21,9 +21,6 @@ $faqs = array(
         "answer" => "Once everything is finalized, you’ll receive your payment promptly by wireless deposit or check. This ensures you get your money without any delays or dependencies on loans or funding, making it easy to sell your house fast for cash."
     ),
 );
-
-$polygon_icon_id = 406;
-$polygon_icon_url = wp_get_attachment_url($polygon_icon_id);
 ?>
 
 <section class="faq-section">
@@ -33,7 +30,7 @@ $polygon_icon_url = wp_get_attachment_url($polygon_icon_id);
             <div class="faq-item">
                 <div class="faq-question">
                     <?php echo esc_html($faq['question']); ?>
-                    <img src="<?php echo esc_url($polygon_icon_url); ?>" alt="">
+                    <?php echo get_responsive_image('how-it-works-faqs/polygon', 'Polygon Icon'); ?>
                 </div>
                 <div class="faq-answer">
                     <?php echo wp_kses_post($faq['answer']); ?>

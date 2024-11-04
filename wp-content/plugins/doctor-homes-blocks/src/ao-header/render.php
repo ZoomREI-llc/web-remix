@@ -17,7 +17,7 @@ $phoneNumber = isset($attributes['phoneNumber']) ? esc_html($attributes['phoneNu
                 <span class="ao-header__phone-number--number"><?php echo $phoneNumber; ?></span>
             </div>
             <div class="contact-phone">
-                <img src="<?php echo wp_get_attachment_url(437); ?>" alt="Phone Icon" class="phone-icon">
+                <?php echo get_responsive_image('ao-header/phone-icon', 'phone-icon'); ?>
             </div>
         </a>
     </div>

@@ -78,13 +78,13 @@
 	background: none; /* Ensure no background color */
 }
 
-#comparison-logo {
+.comparison-logo {
 	width: 5.25rem;
 	height: auto;
 }
 
 @media (min-width: 1024px) {
-	#comparison-logo {
+	.comparison-logo {
 		width: 12.125rem;
 	}
 }

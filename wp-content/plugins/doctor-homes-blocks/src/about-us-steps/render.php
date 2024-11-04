@@ -17,7 +17,7 @@ $paid_logo_url = wp_get_attachment_url($paid_logo_id);
     <div class="how-it-works__steps">
         <div class="step">
             <div class="step__icon">
-                <img src="<?php echo esc_url($time_logo_url); ?>" alt="Clock Icon">
+                <?php echo get_responsive_image('about-us-steps/time', 'Clock Icon'); ?>
             </div>
             <div class="step__content">
                 <h3>Step 1</h3>
@@ -27,7 +27,7 @@ $paid_logo_url = wp_get_attachment_url($paid_logo_id);
         </div>
         <div class="step">
             <div class="step__icon">
-                <img src="<?php echo esc_url($document_logo_url); ?>" alt="Document Icon">
+                <?php echo get_responsive_image('about-us-steps/document', 'Document Icon'); ?>
             </div>
             <div class="step__content">
                 <h3>Step 2</h3>
@@ -37,7 +37,7 @@ $paid_logo_url = wp_get_attachment_url($paid_logo_id);
         </div>
         <div class="step">
             <div class="step__icon">
-                <img src="<?php echo esc_url($paid_logo_url); ?>" alt="Money Icon">
+                <?php echo get_responsive_image('about-us-steps/get-paid', 'Money Icon'); ?>
             </div>
             <div class="step__content">
                 <h3>Step 3</h3>

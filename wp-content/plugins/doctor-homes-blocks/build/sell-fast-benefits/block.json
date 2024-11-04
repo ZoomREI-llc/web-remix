@@ -26,25 +26,25 @@
       "type": "array",
       "default": [
         {
-          "id": 540,
+          "asset": "sell-fast-benefits/truck",
           "text": "Fast and Hassle-Free",
           "paragraph": "Need to sell quickly? Get a cash offer in minutes and sell your house as is fast. No repairs, no commissions, no waiting. With us, you can close within days, making the process quick and stress-free.",
           "uuid": "uuid-1"
         },
         {
-          "id": 537,
+          "asset": "sell-fast-benefits/home",
           "text": "Sell As-Is in Any Condition",
           "paragraph": "Need to sell quickly? Get a cash offer in minutes and sell your house as is fast. No repairs, no commissions, no waiting. With us, you can close within days, making the process quick and stress-free.",
           "uuid": "uuid-2"
         },
         {
-          "id": 538,
+          "asset": "sell-fast-benefits/money",
           "text": "No Fees or Commissions",
           "paragraph": "Save money with our no fees or commissions policy. Unlike traditional agents, we charge no hidden fees or closing costs. With our cash offers for houses, you keep more money in your pocket without any surprises.",
           "uuid": "uuid-3"
         },
         {
-          "id": 539,
+          "asset": "sell-fast-benefits/time",
           "text": "Close on Your Timeline",
           "paragraph": "With our flexible timeline, you decide the closing and moving out date. Receive cash offers for houses and get your money quickly. We work around your schedule, ensuring convenience and ease.",
           "uuid": "uuid-4"

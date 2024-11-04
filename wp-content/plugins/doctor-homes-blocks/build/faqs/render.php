@@ -33,9 +33,6 @@ $faqs = array(
         "answer" => "We understand the challenges landlords and investors face, like problematic tenants and high maintenance costs, or if your investment property isn't meeting financial expectations. We offer a fast purchase process, fair pricing, and a straightforward approach that avoids traditional real estate hurdles."
     ),
 );
-
-$polygon_icon_id = 406;
-$polygon_icon_url = wp_get_attachment_url($polygon_icon_id);
 ?>
 
 <section class="faq-section">
@@ -45,7 +42,7 @@ $polygon_icon_url = wp_get_attachment_url($polygon_icon_id);
             <div class="faq-item">
                 <div class="faq-question">
                     <?php echo esc_html($faq['question']); ?>
-                    <img src="<?php echo esc_url($polygon_icon_url); ?>" alt="">
+                    <?php echo get_responsive_image('faqs/polygon', 'Polygon Icon'); ?>
                 </div>
                 <div class="faq-answer">
                     <?php echo wp_kses_post($faq['answer']); ?>

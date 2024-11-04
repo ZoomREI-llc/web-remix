@@ -13,9 +13,6 @@ $faqs = array(
         "answer" => "Agents don’t buy your house; they list it, charge fees, and you deal with costs and showings.<br/>We’re cash buyers, directly purchasing your house or connecting you with others who do. Skip the agent hassle – get a quick offer and close on your timeline.<br/>We cover selling expenses."
     )
 );
-
-$polygon_icon_id = 406;
-$polygon_icon_url = wp_get_attachment_url($polygon_icon_id);
 ?>
 
 <section class="faq-section">
@@ -25,7 +22,7 @@ $polygon_icon_url = wp_get_attachment_url($polygon_icon_id);
             <div class="faq-item">
                 <div class="faq-question">
                     <?php echo esc_html($faq['question']); ?>
-                    <img src="<?php echo esc_url($polygon_icon_url); ?>" alt="">
+                    <?php echo get_responsive_image('contact-us-faqs/polygon', 'Polygon Icon'); ?>
                 </div>
                 <div class="faq-answer">
                     <?php echo wp_kses_post($faq['answer']); ?>
