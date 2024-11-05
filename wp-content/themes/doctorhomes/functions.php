@@ -1,8 +1,8 @@
 <?php
 define('GOOGLE_MAPS_API_KEY', 'AIzaSyCwwLF50kEF6wS1rTEqTDPfTXcSlF9REuI');
 define('CRM_WEBHOOK_URL', 'https://workflow-automation.podio.com/catch/2kt203ir6i3uk64');
-define( 'WP_ROCKET_EMAIL', 'dev@zoomrei.com' );
-define( 'WP_ROCKET_KEY', 'c28d53dd');
+define('WP_ROCKET_EMAIL', 'dev@zoomrei.com');
+define('WP_ROCKET_KEY', 'c28d53dd');
 
 // Enqueue Scripts and Styles
 function doctor_homes_enqueue_assets()
@@ -72,7 +72,7 @@ class Mobile_Walker_Nav_Menu extends Walker_Nav_Menu
 {
     public function start_el(&$output, $item, $depth = 0, $args = array(), $id = 0)
     {
-        $polygon_icon_url = wp_get_attachment_url(406);
+        $polygon_icon_url = get_template_directory_uri() . '/src/assets/menus/polygon-1.svg';
         $output .= '<li class="menu-item menu-item-' . $item->ID . '">';
         $output .= '<div class="menu-item-title"><a href="' . esc_url($item->url) . '">' . esc_html($item->title) . '</a>';
         if (in_array('menu-item-has-children', $item->classes)) {

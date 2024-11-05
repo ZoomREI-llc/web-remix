@@ -1,14 +1,3 @@
-<?php
-$time_logo_id = 451;
-$time_logo_url = wp_get_attachment_url($time_logo_id);
-
-$document_logo_id = 450;
-$document_logo_url = wp_get_attachment_url($document_logo_id);
-
-$paid_logo_id = 563;
-$paid_logo_url = wp_get_attachment_url($paid_logo_id);
-?>
-
 <section class="how-it-works">
     <div class="how-it-works__text">
         <h2>Why Choose Doctor Homes</h2>

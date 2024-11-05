@@ -83,7 +83,7 @@ if ($hostname === 'doctorhomes.com') {
     <header id="doctor-homes-header">
         <div class="header-content">
             <button id="mobile-menu-button" class="mobile-menu-button">
-                <img src="<?php echo wp_get_attachment_url(436); ?>" alt="Mobile Navigation Menu">
+                <img src="<?php echo get_template_directory_uri() . '/src/assets/menus/mobile-menu-icon.svg'; ?>" alt="Mobile Navigation Menu">
             </button>
             <div class="logo">
                 <?php
@@ -103,7 +103,7 @@ if ($hostname === 'doctorhomes.com') {
             </nav>
             <div class="contact-actions">
                 <a href="tel:234-374-6637" class="call-btn contact-phone">
-                    <img src="<?php echo wp_get_attachment_url(437); ?>" alt="Phone Icon" class="phone-icon">
+                    <img src="<?php echo get_template_directory_uri() . '/src/assets/menus/phone-icon.svg'; ?>" alt="Phone Icon" class="phone-icon">
                     <span>Call us on: (234) DR-HOMES</span>
                 </a>
                 <a href="<?php echo get_offer_button_link(); ?>" class="get-offer-button">
@@ -113,7 +113,7 @@ if ($hostname === 'doctorhomes.com') {
         </div>
         <div id="mobile-menu" class="mobile-menu">
             <button id="close-mobile-menu" class="close-mobile-menu">
-                <img src="<?php echo wp_get_attachment_url(432); ?>" alt="Close Mobile Navigation Menu">
+                <img src="<?php echo get_template_directory_uri() . '/src/assets/menus/close-mobile-menu-icon.svg'; ?>" alt="Close Mobile Navigation Menu">
             </button>
             <?php
             wp_nav_menu(array(
@@ -125,7 +125,7 @@ if ($hostname === 'doctorhomes.com') {
             ));
             ?>
             <a href="<?php echo get_offer_button_link(); ?>" class="get-offer-button">
-                Get My Offer <img src="<?php echo wp_get_attachment_url(412); ?>" alt="Get My Offer">
+                Get My Offer <img src="<?php echo get_template_directory_uri() . '/src/assets/menus/cta-arrow.svg'; ?>" alt="Get My Offer">
             </a>
         </div>
     </header>

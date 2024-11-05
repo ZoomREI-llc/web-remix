@@ -1,11 +1,3 @@
-<?php
-$forbes_logo_id = 426;
-$forbes_logo_url = wp_get_attachment_url($forbes_logo_id);
-
-$quote_icon_id = 407;
-$quote_icon_url = wp_get_attachment_url($quote_icon_id);
-?>
-
 <div class="quote-section">
     <div class="quote-section__content">
         <?php echo get_responsive_image('forbes/forbes', 'Forbes', 'quote-section__forbes-logo'); ?>

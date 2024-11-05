@@ -1,11 +1,11 @@
 <footer id="doctor-homes-footer">
     <div class="footer-content">
         <div class="footer-logo">
-            <img src="<?php echo wp_get_attachment_url(423); ?>" alt="Site Logo" class="logo-img">
+            <img src="<?php echo get_template_directory_uri() . '/src/assets/brand/doctor-homes-logo-alt.svg'; ?>" alt="Site Logo" class="logo-img">
         </div>
         <a href="#top" class="back-to-top">
             <div class="back-to-top-icon">
-                <img src="<?php echo wp_get_attachment_url(406); ?>" alt="">
+                <img src="<?php echo get_template_directory_uri() . '/src/assets/menus/polygon-1.svg'; ?>" alt="">
             </div>
             <span>Back to top</span>
         </a>
@@ -53,18 +53,18 @@
             <div class="footer-contact">
                 <span class="footer-title">Contact Us</span>
                 <a class="call-btn" href="tel:(234) DR HOMES">
-                    <p class="contact-item"><img src="<?php echo wp_get_attachment_url(438); ?>" alt="Phone Icon" class="contact-icon">(234) DR-HOMES</p>
+                    <p class="contact-item"><img src="<?php echo get_template_directory_uri() . '/src/assets/menus/phone-icon-inline.svg'; ?>" alt="Phone Icon" class="contact-icon">(234) DR-HOMES</p>
                 </a>
                 <a href="mailto:contact@doctorhomes.com">
-                    <p class="contact-item"><img src="<?php echo wp_get_attachment_url(434); ?>" alt="Email Icon" class="contact-icon">contact@doctorhomes.com</p>
+                    <p class="contact-item"><img src="<?php echo get_template_directory_uri() . '/src/assets/menus/envelope-icon-inline.svg'; ?>" alt="Email Icon" class="contact-icon">contact@doctorhomes.com</p>
                 </a>
                 <div class="social-icons">
-                    <a href="https://www.facebook.com/thedoctorhomes/" target="_blank"><img src="<?php echo get_template_directory_uri() . '/src/assets/social-facebook.svg'; ?>" alt="Facebook Icon" class="social-icon"></a>
-                    <a href="https://www.instagram.com/doctorhomes_/" target="_blank"><img src="<?php echo get_template_directory_uri() . '/src/assets/social-instagram.svg'; ?>" alt="Instagram Icon" class="social-icon"></a>
-                    <a href="https://www.youtube.com/@TheDoctorHomes/" target="_blank"><img src="<?php echo get_template_directory_uri() . '/src/assets/social-youtube.svg'; ?>" alt="YouTube Icon" class="social-icon"></a>
-                    <a href="https://www.tiktok.com/@thedoctorhomes/" target="_blank"><img src="<?php echo get_template_directory_uri() . '/src/assets/social-tiktok.svg'; ?>" alt="Tiktok Icon" class="social-icon"></a>
-                    <a href="https://x.com/thedoctorhomes/" target="_blank"><img src="<?php echo get_template_directory_uri() . '/src/assets/social-x.svg'; ?>" alt="X Icon" class="social-icon"></a>
-                    <a href="https://www.linkedin.com/company/doctorhomes/" target="_blank"><img src="<?php echo get_template_directory_uri() . '/src/assets/social-linkedin.svg'; ?>" alt="LinkedIn Icon" class="social-icon"></a>
+                    <a href="https://www.facebook.com/thedoctorhomes/" target="_blank"><img src="<?php echo get_template_directory_uri() . '/src/assets/social-icons/social-facebook.svg'; ?>" alt="Facebook Icon" class="social-icon"></a>
+                    <a href="https://www.instagram.com/doctorhomes_/" target="_blank"><img src="<?php echo get_template_directory_uri() . '/src/assets/social-icons/social-instagram.svg'; ?>" alt="Instagram Icon" class="social-icon"></a>
+                    <a href="https://www.youtube.com/@TheDoctorHomes/" target="_blank"><img src="<?php echo get_template_directory_uri() . '/src/assets/social-icons/social-youtube.svg'; ?>" alt="YouTube Icon" class="social-icon"></a>
+                    <a href="https://www.tiktok.com/@thedoctorhomes/" target="_blank"><img src="<?php echo get_template_directory_uri() . '/src/assets/social-icons/social-tiktok.svg'; ?>" alt="Tiktok Icon" class="social-icon"></a>
+                    <a href="https://x.com/thedoctorhomes/" target="_blank"><img src="<?php echo get_template_directory_uri() . '/src/assets/social-icons/social-x.svg'; ?>" alt="X Icon" class="social-icon"></a>
+                    <a href="https://www.linkedin.com/company/doctorhomes/" target="_blank"><img src="<?php echo get_template_directory_uri() . '/src/assets/social-icons/social-linkedin.svg'; ?>" alt="LinkedIn Icon" class="social-icon"></a>
                 </div>
             </div>
 
