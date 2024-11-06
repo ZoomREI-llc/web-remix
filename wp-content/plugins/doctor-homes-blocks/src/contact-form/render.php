@@ -1,20 +1,4 @@
-<?php
-$phone_icon_id = 581;
-$phone_icon_url = wp_get_attachment_url($phone_icon_id);
-
-$letter_icon_id = 580;
-$letter_icon_url = wp_get_attachment_url($letter_icon_id);
-
-$location_icon_id = 579;
-$location_icon_url = wp_get_attachment_url($location_icon_id);
-
-$tick_icon_id = 585;
-$tick_icon_url = wp_get_attachment_url($tick_icon_id);
-
-$airplane_icon_id = 584;
-$airplane_icon_url = wp_get_attachment_url($airplane_icon_id);
-?>
-<section class="dh-contact-form" style="--tick-url: url('<?php echo esc_url($tick_icon_url); ?>');">
+<section class="dh-contact-form" style="--tick-url: url('<?php echo get_image_url('contact-form/tick'); ?>');">
     <div class="contact-form__headings">
         <h1>Contact Us</h1>
         <h2>Any question or remarks? Just write us a message!</h2>
@@ -27,19 +11,19 @@ $airplane_icon_url = wp_get_attachment_url($airplane_icon_id);
             </div>
             <div class="contact-form__details-items">
                 <div class="contact-form__contact-detail">
-                    <img src="<?php echo esc_url($phone_icon_url); ?>" alt="">
+                    <?php echo get_responsive_image('contact-form/phone', 'Phone Icon'); ?>
                     <a href="tel:(234) DR-HOMES">
                         <span>(234) DR-HOMES</span>
                     </a>
                 </div>
                 <div class="contact-form__contact-detail">
-                    <img src="<?php echo esc_url($letter_icon_url); ?>" alt="">
+                    <?php echo get_responsive_image('contact-form/envelope', 'Envelope Icon'); ?>
                     <a href="mailto:contact@doctorhomes.com">
                         <span>contact@doctorhomes.com</span>
                     </a>
                 </div>
                 <div class="contact-form__contact-detail">
-                    <img src="<?php echo esc_url($location_icon_url); ?>" alt="">
+                    <?php echo get_responsive_image('contact-form/location', 'Location Icon'); ?>
                     <span>1990 N California Blvd, Ste. 46,</br>
                         Walnut Creek, CA 94596</span>
                 </div>
@@ -101,6 +85,6 @@ $airplane_icon_url = wp_get_attachment_url($airplane_icon_id);
             <h3>Thank you for submitting your inquiry.</h3>
             <p>We will get in touch with you as soon as we can.</p>
         </div>
-        <img class="contact-form__airplane" src="<?php echo esc_url($airplane_icon_url); ?>" alt="">
+        <?php echo get_responsive_image('contact-form/letter', 'Send Letter', 'contact-form__airplane'); ?>
     </div>
 </section>

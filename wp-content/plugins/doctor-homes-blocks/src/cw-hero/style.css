@@ -1,6 +1,6 @@
 .cw-hero-wrapper {
 	position: relative;
-	background-image: var(--background-image);
+	background-image: var(--background-image-small);
 	background-size: cover;
 	background-position: 0% center;
 	overflow: hidden;
@@ -10,6 +10,20 @@
 	justify-content: center;
 }
 
+<<<<<<< HEAD
+=======
+@media (min-width: 768px) {
+	.cw-hero-wrapper {
+		background-image: var(--background-image-medium);
+	}
+}
+
+@media (min-width: 1024px) {
+	.cw-hero-wrapper {
+		background-image: var(--background-image-large);
+	}
+}
+>>>>>>> feature/image-optimization
 .cw-hero-wrapper .cw-fresh-start__testimonee {
 	width: 50px;
 	height: 50px;
@@ -247,6 +261,10 @@
 		display: flex;
 		gap: 1rem;
 	}
+}
+.cw-hero__trust-icons img {
+	height: 2.1875rem;
+	object-fit: contain;
 }
 .cw-hero__content--footer {
 	display: flex;

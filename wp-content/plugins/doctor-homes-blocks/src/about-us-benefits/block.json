@@ -1,106 +1,106 @@
 {
-    "$schema": "https://schemas.wp.org/trunk/block.json",
-    "apiVersion": 3,
-    "name": "doctor-homes/about-us-benefits",
-    "version": "0.1.0",
-    "title": "About Us Benefits",
-    "category": "widgets",
-    "icon": "screenoptions",
-    "description": "Benefits block built for the About Us page.",
-    "supports": {
-        "html": false
-    },
-    "textdomain": "doctor-homes-blocks",
-    "editorScript": "file:./index.js",
-    "editorStyle": "file:./index.css",
-    "render": "file:./render.php",
-    "viewScript": "file:./view.js",
-    "attributes": {
-        "title": {
-            "type": "string",
-            "source": "html",
-            "selector": "h2",
-            "default": "We Have Helped Thousands of People to Sell Their Home Fast"
-        },
-        "benefitItems": {
-            "type": "array",
-            "default": [
-                {
-                    "id": 443,
-                    "position": "left",
-                    "text": "Fixer Upper",
-                    "uuid": "uuid-1"
-                },
-                {
-                    "id": 445,
-                    "position": "right",
-                    "text": "Job Relocation",
-                    "uuid": "uuid-2"
-                },
-                {
-                    "id": 441,
-                    "position": "left",
-                    "text": "Downsizing or Upsizing",
-                    "uuid": "uuid-3"
-                },
-                {
-                    "id": 444,
-                    "position": "right",
-                    "text": "Inherited Property",
-                    "uuid": "uuid-4"
-                },
-                {
-                    "id": 448,
-                    "position": "left",
-                    "text": "Vacant Property",
-                    "uuid": "uuid-5"
-                },
-                {
-                    "id": 446,
-                    "position": "right",
-                    "text": "Tenant Trouble",
-                    "uuid": "uuid-6"
-                },
-                {
-                    "id": 449,
-                    "position": "left",
-                    "text": "Water & Fire Damage",
-                    "uuid": "uuid-7"
-                },
-                {
-                    "id": 442,
-                    "position": "right",
-                    "text": "Financial Issues",
-                    "uuid": "uuid-8"
-                },
-                {
-                    "id": 447,
-                    "position": "left",
-                    "text": "Unexpected Life Events",
-                    "uuid": "uuid-9"
-                },
-                {
-                    "id": 440,
-                    "position": "right",
-                    "text": "Divorce",
-                    "uuid": "uuid-10"
-                }
-            ],
-            "items": {
-                "type": "object",
-                "properties": {
-                    "id": {
-                        "type": "number"
-                    },
-                    "text": {
-                        "type": "string"
-                    },
-                    "uuid": {
-                        "type": "string"
-                    }
-                }
-            }
-        }
-    },
-    "style": "file:./style-index.css"
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "doctor-homes/about-us-benefits",
+	"version": "0.1.0",
+	"title": "About Us Benefits",
+	"category": "widgets",
+	"icon": "screenoptions",
+	"description": "Benefits block built for the About Us page.",
+	"supports": {
+		"html": false
+	},
+	"textdomain": "doctor-homes-blocks",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"render": "file:./render.php",
+	"viewScript": "file:./view.js",
+	"attributes": {
+		"title": {
+			"type": "string",
+			"source": "html",
+			"selector": "h2",
+			"default": "We Have Helped Thousands of People to Sell Their Home Fast"
+		},
+		"benefitItems": {
+			"type": "array",
+			"default": [
+				{
+					"asset": "about-us-benefits/fixer-upper",
+					"position": "left",
+					"text": "Fixer Upper",
+					"uuid": "uuid-1"
+				},
+				{
+					"asset": "about-us-benefits/job-relocation",
+					"position": "right",
+					"text": "Job Relocation",
+					"uuid": "uuid-2"
+				},
+				{
+					"asset": "about-us-benefits/downsizing-upsizing",
+					"position": "left",
+					"text": "Downsizing or Upsizing",
+					"uuid": "uuid-3"
+				},
+				{
+					"asset": "about-us-benefits/inherited-property",
+					"position": "right",
+					"text": "Inherited Property",
+					"uuid": "uuid-4"
+				},
+				{
+					"asset": "about-us-benefits/vacant-property",
+					"position": "left",
+					"text": "Vacant Property",
+					"uuid": "uuid-5"
+				},
+				{
+					"asset": "about-us-benefits/tenant-trouble",
+					"position": "right",
+					"text": "Tenant Trouble",
+					"uuid": "uuid-6"
+				},
+				{
+					"asset": "about-us-benefits/water-fire-damage",
+					"position": "left",
+					"text": "Water & Fire Damage",
+					"uuid": "uuid-7"
+				},
+				{
+					"asset": "about-us-benefits/financial-issues",
+					"position": "right",
+					"text": "Financial Issues",
+					"uuid": "uuid-8"
+				},
+				{
+					"asset": "about-us-benefits/unexpected-life-events",
+					"position": "left",
+					"text": "Unexpected Life Events",
+					"uuid": "uuid-9"
+				},
+				{
+					"asset": "about-us-benefits/divorce",
+					"position": "right",
+					"text": "Divorce",
+					"uuid": "uuid-10"
+				}
+			],
+			"items": {
+				"type": "object",
+				"properties": {
+					"id": {
+						"type": "number"
+					},
+					"text": {
+						"type": "string"
+					},
+					"uuid": {
+						"type": "string"
+					}
+				}
+			}
+		}
+	},
+	"style": "file:./style-index.css"
 }

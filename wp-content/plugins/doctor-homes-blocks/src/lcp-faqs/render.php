@@ -28,8 +28,6 @@ $faqs = [
     ]
 ];
 
-$polygon_icon_url = plugins_url('src/lcp-faqs/assets/polygon-1.svg', dirname(__FILE__, 2));;
-
 ?>
 
 <section class="faq-section">
@@ -39,7 +37,7 @@ $polygon_icon_url = plugins_url('src/lcp-faqs/assets/polygon-1.svg', dirname(__F
             <div class="faq-item">
                 <div class="faq-question">
                     <?php echo esc_html($faq['question']); ?>
-                    <img src="<?php echo esc_url($polygon_icon_url); ?>" alt="">
+                    <?php echo get_responsive_image('lcp-faqs/polygon-1', 'Arrow'); ?>
                 </div>
                 <div class="faq-answer">
                     <?php echo wp_kses_post($faq['answer']); ?>

@@ -1,14 +1,3 @@
-<?php
-$dh_logo_id = 423;
-$dh_logo_url = wp_get_attachment_url($dh_logo_id);
-
-$checkmark_icon_id = 410;
-$checkmark_icon_url = wp_get_attachment_url($checkmark_icon_id);
-
-$crossmark_icon_id = 409;
-$crossmark_icon_url = wp_get_attachment_url($crossmark_icon_id);
-?>
-
 <section class="comparison">
     <div class="comparison__text">
         <h2>Why Us vs. Traditional Agent</h2>
@@ -18,7 +7,7 @@ $crossmark_icon_url = wp_get_attachment_url($crossmark_icon_id);
         <div class="comparison-row header">
             <div class="comparison-column"></div>
             <div class="comparison-column doctor-homes">
-                <img id="comparison-logo" src="<?php echo esc_url($dh_logo_url); ?>" alt="Doctor Homes">
+                <?php echo get_responsive_image('comparison/dh-logo-alt', 'Doctor Homes'); ?>
             </div>
             <div class="comparison-column">Selling with a Real Estate Agent</div>
         </div>
@@ -26,13 +15,13 @@ $crossmark_icon_url = wp_get_attachment_url($crossmark_icon_id);
             <div class="comparison-column comparison-column--first"><span>Commissions / Fees</span></div>
             <div class="comparison-column doctor-homes">
                 <div class="column__content">
-                    <img src="<?php echo esc_url($checkmark_icon_url); ?>" />
+                    <?php echo get_responsive_image('comparison/checkmark', 'Checkmark'); ?>
                     <span>None</span>
                 </div>
             </div>
             <div class="comparison-column">
                 <div class="column__content">
-                    <img src="<?php echo esc_url($crossmark_icon_url); ?>" />
+                    <?php echo get_responsive_image('comparison/crossmark', 'Crossmark'); ?>
                     <span>The seller (you) pays 6% on average</span>
                 </div>
             </div>
@@ -41,13 +30,13 @@ $crossmark_icon_url = wp_get_attachment_url($crossmark_icon_id);
             <div class="comparison-column comparison-column--first"><span>Inspections / Financing</span></div>
             <div class="comparison-column doctor-homes">
                 <div class="column__content">
-                    <img src="<?php echo esc_url($checkmark_icon_url); ?>" />
+                    <?php echo get_responsive_image('comparison/checkmark', 'Checkmark'); ?>
                     <span>None</span>
                 </div>
             </div>
             <div class="comparison-column">
                 <div class="column__content">
-                    <img src="<?php echo esc_url($crossmark_icon_url); ?>" />
+                    <?php echo get_responsive_image('comparison/crossmark', 'Crossmark'); ?>
                     <span>Yes. Around 15% of sales fall through</span>
                 </div>
             </div>
@@ -56,13 +45,13 @@ $crossmark_icon_url = wp_get_attachment_url($crossmark_icon_id);
             <div class="comparison-column comparison-column--first"><span>Repairs</span></div>
             <div class="comparison-column doctor-homes">
                 <div class="column__content">
-                    <img src="<?php echo esc_url($checkmark_icon_url); ?>" />
+                    <?php echo get_responsive_image('comparison/checkmark', 'Checkmark'); ?>
                     <span>No - We make a cash offer</span>
                 </div>
             </div>
             <div class="comparison-column">
                 <div class="column__content">
-                    <img src="<?php echo esc_url($crossmark_icon_url); ?>" />
+                    <?php echo get_responsive_image('comparison/crossmark', 'Crossmark'); ?>
                     <span>Negotiated after inspection</span>
                 </div>
             </div>
@@ -71,13 +60,13 @@ $crossmark_icon_url = wp_get_attachment_url($crossmark_icon_id);
             <div class="comparison-column comparison-column--first"><span>Average Days Until Sold</span></div>
             <div class="comparison-column doctor-homes">
                 <div class="column__content">
-                    <img src="<?php echo esc_url($checkmark_icon_url); ?>" />
+                    <?php echo get_responsive_image('comparison/checkmark', 'Checkmark'); ?>
                     <span>Immediate cash offer</span>
                 </div>
             </div>
             <div class="comparison-column">
                 <div class="column__content">
-                    <img src="<?php echo esc_url($crossmark_icon_url); ?>" />
+                    <?php echo get_responsive_image('comparison/crossmark', 'Crossmark'); ?>
                     <span>91 days on average</span>
                 </div>
             </div>
@@ -86,13 +75,13 @@ $crossmark_icon_url = wp_get_attachment_url($crossmark_icon_id);
             <div class="comparison-column comparison-column--first"><span>Closing Date</span></div>
             <div class="comparison-column doctor-homes">
                 <div class="column__content">
-                    <img src="<?php echo esc_url($checkmark_icon_url); ?>" />
+                    <?php echo get_responsive_image('comparison/checkmark', 'Checkmark'); ?>
                     <span>Whenever you choose</span>
                 </div>
             </div>
             <div class="comparison-column">
                 <div class="column__content">
-                    <img src="<?php echo esc_url($crossmark_icon_url); ?>" />
+                    <?php echo get_responsive_image('comparison/crossmark', 'Crossmark'); ?>
                     <span>On average, 30-60 days after offer</span>
                 </div>
             </div>
@@ -101,13 +90,13 @@ $crossmark_icon_url = wp_get_attachment_url($crossmark_icon_id);
             <div class="comparison-column comparison-column--first"><span>Appraisal Required</span></div>
             <div class="comparison-column doctor-homes">
                 <div class="column__content">
-                    <img src="<?php echo esc_url($checkmark_icon_url); ?>" />
+                    <?php echo get_responsive_image('comparison/checkmark', 'Checkmark'); ?>
                     <span>None - We pay for them</span>
                 </div>
             </div>
             <div class="comparison-column">
                 <div class="column__content">
-                    <img src="<?php echo esc_url($crossmark_icon_url); ?>" />
+                    <?php echo get_responsive_image('comparison/crossmark', 'Crossmark'); ?>
                     <span>Yes. Most sales are subject to an appraisal</span>
                 </div>
             </div>

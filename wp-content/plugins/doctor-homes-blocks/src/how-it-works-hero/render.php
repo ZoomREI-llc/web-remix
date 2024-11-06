@@ -1,11 +1,10 @@
-<?php
-// dynamically rendering images and SVGs
-$background_image_url = plugins_url('src/how-it-works-hero/assets/bg.webp', dirname(__FILE__, 2));
-
-?>
 
 <a id="top"></a>
-<section class="hit-hero" style="--background-image: url('<?php echo esc_url($background_image_url); ?>');">
+<section class="hit-hero" style="
+    --background-image-small: url('<?php echo get_image_url('how-it-works-hero/bg', 768); ?>');
+    --background-image-medium: url('<?php echo get_image_url('how-it-works-hero/bg', 1024); ?>');
+    --background-image-large: url('<?php echo get_image_url('how-it-works-hero/bg', 2048); ?>');
+    ">
     <div class="hit-hero__content">
         <div class="hit-hero__text">
             <div class="hit-hero__heading-wrapper">

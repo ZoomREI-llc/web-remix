@@ -109,9 +109,12 @@
 }
 
 .lc-testimonials__testimonee {
-	max-width: 5rem;
-	max-height: 5rem;
+	width: 5rem;
+	height: 5rem;
+	flex-shrink: 0;
 	border-radius: 50%;
+	object-fit: cover;
+	object-position: top;
 }
 
 .lc-testimonials__testimonial .lc-hero__star img {

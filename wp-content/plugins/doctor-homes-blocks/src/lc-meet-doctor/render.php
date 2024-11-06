@@ -1,15 +1,3 @@
-<?php
-
-$star_icon_url = plugins_url('src/lc-meet-doctor/assets/star.svg', dirname(__FILE__, 2));
-$arrow_icon_url = plugins_url('src/lc-meet-doctor/assets/cta-arrow.svg', dirname(__FILE__, 2));
-
-$person = plugins_url('src/lc-meet-doctor/assets/person.webp', dirname(__FILE__, 2));
-
-$cbs_logo_url = plugins_url('src/lc-meet-doctor/assets/cbs.svg', dirname(__FILE__, 2));
-$nbc_logo_url = plugins_url('src/lc-meet-doctor/assets/nbc.svg', dirname(__FILE__, 2));
-$forbes_logo_url = plugins_url('src/lc-meet-doctor/assets/forbes.svg', dirname(__FILE__, 2));
-$fox_logo_url = plugins_url('src/lc-meet-doctor/assets/fox.svg', dirname(__FILE__, 2));
-?>
 
 <section class="lc-meet-doctor">
     <div class="lc-meet-doctor__container">
@@ -25,14 +13,14 @@ $fox_logo_url = plugins_url('src/lc-meet-doctor/assets/fox.svg', dirname(__FILE_
                 </div>
                 <h3 class="lc-meet-doctor__cta-text">Ready to sell your house right now?</h3>
             </div>
-            <a class="cta-btn lc-meet-doctor__cta" href="#lc-form">GET MY CASH OFFER NOW <img src="<?php echo esc_url($arrow_icon_url); ?>" alt="Arrow"></a>
+            <a class="cta-btn lc-meet-doctor__cta" href="#lc-form">GET MY CASH OFFER NOW <?php echo get_responsive_image('lc-meet-doctor/cta-arrow', 'Arrow'); ?></a>
             <div class="lc-hero__reviews">
                 <div class="lc-hero__reviews-stars-wrapper">
-                    <span class="lc-hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
-                    <span class="lc-hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
-                    <span class="lc-hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
-                    <span class="lc-hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
-                    <span class="lc-hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
+                    <span class="lc-hero__star"><?php echo get_responsive_image('lc-meet-doctor/star', 'star'); ?></span>
+                    <span class="lc-hero__star"><?php echo get_responsive_image('lc-meet-doctor/star', 'star'); ?></span>
+                    <span class="lc-hero__star"><?php echo get_responsive_image('lc-meet-doctor/star', 'star'); ?></span>
+                    <span class="lc-hero__star"><?php echo get_responsive_image('lc-meet-doctor/star', 'star'); ?></span>
+                    <span class="lc-hero__star"><?php echo get_responsive_image('lc-meet-doctor/star', 'star'); ?></span>
                 </div>
                 <div class="lc-hero__reviews-text">
                     <p>Rated <strong>4.7/5</strong> | Based on <strong>100+</strong> reviews</p>
@@ -40,7 +28,7 @@ $fox_logo_url = plugins_url('src/lc-meet-doctor/assets/fox.svg', dirname(__FILE_
             </div>
         </div>
         <div class="lc-meet-doctor__img">
-            <img src="<?php echo esc_url($person); ?>" alt="Doctor Homes">
+            <?php echo get_responsive_image('lc-meet-doctor/person', 'Doctor Homes'); ?>
         </div>
     </div>
 
@@ -50,10 +38,10 @@ $fox_logo_url = plugins_url('src/lc-meet-doctor/assets/fox.svg', dirname(__FILE_
             <span class="lc-featured-in__text">AS SEEN ON:</span>
             <div class="lc-featured-in__logos-wrapper">
                 <div class="lc-featured-in__logos">
-                    <div class="lc-featured-in__logo"><img src="<?php echo esc_url($cbs_logo_url); ?>" alt="CBS"></div>
-                    <div class="lc-featured-in__logo"><img src="<?php echo esc_url($nbc_logo_url); ?>" alt="NBC"></div>
-                    <div class="lc-featured-in__logo"><img src="<?php echo esc_url($forbes_logo_url); ?>" alt="Forbes"></div>
-                    <div class="lc-featured-in__logo"><img src="<?php echo esc_url($fox_logo_url); ?>" alt="FOX"></div>
+                    <div class="lc-featured-in__logo"><?php echo get_responsive_image('lc-meet-doctor/cbs', 'CBS'); ?></div>
+                    <div class="lc-featured-in__logo"><?php echo get_responsive_image('lc-meet-doctor/nbc', 'NBC'); ?></div>
+                    <div class="lc-featured-in__logo"><?php echo get_responsive_image('lc-meet-doctor/forbes', 'Forbes'); ?></div>
+                    <div class="lc-featured-in__logo"><?php echo get_responsive_image('lc-meet-doctor/fox', 'FOX'); ?></div>
                 </div>
             </div>
         </div>
