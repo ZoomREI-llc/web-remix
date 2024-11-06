@@ -14,9 +14,7 @@ $benefit_items = $attributes['benefitItems'] ?? [];
 		<?php foreach ($benefit_items as $item) : ?>
 			<div class="benefits__item <?php echo esc_attr($item['position']); ?>">
 				<div class="benefits__item--content">
-					<?php if ($item['id']) : ?>
-						<img src="<?php echo esc_url(wp_get_attachment_url($item['id'])); ?>" alt="<?php echo esc_attr($item['text']); ?>">
-					<?php endif; ?>
+					<?php echo get_responsive_image(esc_attr($item['asset']), esc_attr($item['text'])); ?>
 					<p><?php echo esc_html($item['text']); ?></p>
 				</div>
 			</div>

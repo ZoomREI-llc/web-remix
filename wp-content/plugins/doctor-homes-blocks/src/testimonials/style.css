@@ -83,10 +83,15 @@
 	border-radius: 30px;
 	padding: 7.5rem 2rem 4.75rem 2rem;
 	width: 100%;
-	max-width: 24.25rem;
+	max-width: 100%;
 	position: relative;
 }
 
+@media (min-width: 1024px) {
+	.testimonial {
+		max-width: 24.25rem;
+	}
+}
 .testimonial.active {
 	opacity: 1;
 	/* transform: scale(1.1); */
@@ -123,6 +128,7 @@
 	height: 100%;
 	border-radius: 50%;
 	object-fit: cover;
+	object-position: top;
 }
 
 .testimonial-name {

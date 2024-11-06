@@ -1,24 +1,14 @@
-<?php
-$testimonee_url = plugins_url('src/lc-fresh-start/assets/testimonee.webp', dirname(__FILE__, 2));
-
-$star_icon_url = plugins_url('src/lc-fresh-start/assets/star.svg', dirname(__FILE__, 2));
-$check_url = plugins_url('src/lc-fresh-start/assets/check-circle.svg', dirname(__FILE__, 2));
-
-$balance_url = plugins_url('src/lc-fresh-start/assets/balance.svg', dirname(__FILE__, 2));
-$medical_url = plugins_url('src/lc-fresh-start/assets/medical.svg', dirname(__FILE__, 2));
-$old_url = plugins_url('src/lc-fresh-start/assets/old.svg', dirname(__FILE__, 2));
-$army_url = plugins_url('src/lc-fresh-start/assets/army.svg', dirname(__FILE__, 2));
-?>
 
 <section class="lc-fresh-start">
     <div class="lc-fresh-start__container">
         <div class="lc-hero__reviews">
             <div class="lc-hero__reviews-stars-wrapper">
-                <span class="lc-hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
-                <span class="lc-hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
-                <span class="lc-hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
-                <span class="lc-hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
-                <span class="lc-hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
+                <span class="lc-hero__star"><?php echo get_responsive_image('lc-cta/star', 'star'); ?></span>
+                <span class="lc-hero__star"><?php echo get_responsive_image('lc-cta/star', 'star'); ?></span>
+                <span class="lc-hero__star"><?php echo get_responsive_image('lc-cta/star', 'star'); ?></span>
+                <span class="lc-hero__star"><?php echo get_responsive_image('lc-cta/star', 'star'); ?></span>
+                <span class="lc-hero__star"><?php echo get_responsive_image('lc-cta/star', 'star'); ?></span>
+                <span class="lc-hero__star"><?php echo get_responsive_image('lc-cta/star', 'star'); ?></span>
             </div>
             <div class="lc-hero__reviews-text">
                 <p>Rated <strong>4.7/5</strong> | Based on <strong>100+</strong> reviews</p>
@@ -31,7 +21,7 @@ $army_url = plugins_url('src/lc-fresh-start/assets/army.svg', dirname(__FILE__, 
         <div class="lc-fresh-start__reasons">
             <div class="reason">
                 <div class="reason__icon">
-                    <img src="<?php echo esc_url($balance_url); ?>" alt="Divorce">
+                    <?php echo get_responsive_image('lc-fresh-start/balance', 'Divorce'); ?>
                 </div>
                 <div class="reason__content">
                     <h3>Divorce</h3>
@@ -40,8 +30,7 @@ $army_url = plugins_url('src/lc-fresh-start/assets/army.svg', dirname(__FILE__, 
             </div>
             <div class="reason">
                 <div class="reason__icon">
-                    <img src="<?php echo esc_url($medical_url); ?>" alt="Medical Expenses">
-
+                    <?php echo get_responsive_image('lc-fresh-start/medical', 'Medical Expenses'); ?>
                 </div>
                 <div class="reason__content">
                     <h3>Medical Expenses</h3>
@@ -50,7 +39,7 @@ $army_url = plugins_url('src/lc-fresh-start/assets/army.svg', dirname(__FILE__, 
             </div>
             <div class="reason">
                 <div class="reason__icon">
-                    <img src="<?php echo esc_url($old_url); ?>" alt="Senior">
+                    <?php echo get_responsive_image('lc-fresh-start/old', 'Senior'); ?>
                 </div>
                 <div class="reason__content">
                     <h3>Moving To Senior Living</h3>
@@ -59,7 +48,7 @@ $army_url = plugins_url('src/lc-fresh-start/assets/army.svg', dirname(__FILE__, 
             </div>
             <div class="reason">
                 <div class="reason__icon">
-                    <img src="<?php echo esc_url($army_url); ?>" alt="Military Deployment">
+                    <?php echo get_responsive_image('lc-fresh-start/army', 'Military Deployment'); ?>
                 </div>
                 <div class="reason__content">
                     <h3>Military Deployment</h3>
@@ -68,19 +57,19 @@ $army_url = plugins_url('src/lc-fresh-start/assets/army.svg', dirname(__FILE__, 
             </div>
         </div>
         <div class="lc-fresh-start__testimonial">
-            <img class="lc-fresh-start__testimonee" src="<?php echo esc_url($testimonee_url); ?>" alt="Leigh Williams">
+            <?php echo get_responsive_image('lc-fresh-start/testimonee', 'Leigh Williams', 'lc-fresh-start__testimonee'); ?>
             <div class="lc-fresh-start__testimonial--content">
                 <div class="lc-hero__reviews-stars-wrapper">
-                    <span class="lc-hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
-                    <span class="lc-hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
-                    <span class="lc-hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
-                    <span class="lc-hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
-                    <span class="lc-hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
+                    <span class="lc-hero__star"><?php echo get_responsive_image('lc-cta/star', 'star'); ?></span>
+                    <span class="lc-hero__star"><?php echo get_responsive_image('lc-cta/star', 'star'); ?></span>
+                    <span class="lc-hero__star"><?php echo get_responsive_image('lc-cta/star', 'star'); ?></span>
+                    <span class="lc-hero__star"><?php echo get_responsive_image('lc-cta/star', 'star'); ?></span>
+                    <span class="lc-hero__star"><?php echo get_responsive_image('lc-cta/star', 'star'); ?></span>
                 </div>
                 <blockquote>
                     <p>"The <strong>customer service experience with Doctor Homes was outstanding.</strong> From beginning to end, the process of selling my home was exemplary."</p>
                     <cite>
-                        Leigh Williams <img src="<?php echo esc_url($check_url); ?>" alt="checkmark"> <span class="verified">Verified customer</span></cite>
+                        Leigh Williams <?php echo get_responsive_image('lc-fresh-start/check-circle', 'checkmark'); ?> <span class="verified">Verified customer</span></cite>
                 </blockquote>
             </div>
         </div>

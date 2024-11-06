@@ -1,22 +1,13 @@
-<?php
-$star_icon_id = 408;
-$star_icon_url = wp_get_attachment_url($star_icon_id);
-
-$arrow_icon_id = 412;
-$arrow_icon_url = wp_get_attachment_url($arrow_icon_id);
-
-$background_image_id = 586;
-$background_image_url = wp_get_attachment_url($background_image_id);
-?>
-
-<section class="dh-banner-form" style="--background-image: url('<?php echo esc_url($background_image_url); ?>');">
+<section class="dh-banner-form" style="
+    --background-image-small: url('<?php echo get_image_url('banner-form/bg', 768); ?>');
+    --background-image-medium: url('<?php echo get_image_url('banner-form/bg', 1024); ?>');
+    --background-image-large: url('<?php echo get_image_url('banner-form/bg', 2048); ?>');
+">
     <div class="dh-hero__reviews">
         <div class="dh-hero__reviews-stars-wrapper">
-            <span class="dh-hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
-            <span class="dh-hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
-            <span class="dh-hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
-            <span class="dh-hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
-            <span class="dh-hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
+            <?php for ($i = 0; $i < 5; $i++) : ?>
+                <span class="dh-hero__star"><?php echo get_responsive_image('banner-form/star', 'Star Icon'); ?></span>
+            <?php endfor; ?>
         </div>
         <div class="dh-hero__reviews-text">
             <p>Rated <strong>4.7/5</strong> | Based on <strong>100+</strong> reviews</p>

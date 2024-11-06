@@ -1,11 +1,3 @@
-<?php
-
-$image_url = plugins_url('src/ao-meet-doctor/assets/person-buys.webp', dirname(__FILE__, 2));
-
-$arrow_url = plugins_url('src/ao-meet-doctor/assets/cta-arrow.svg', dirname(__FILE__, 2));
-$star_url = plugins_url('src/ao-meet-doctor/assets/star.svg', dirname(__FILE__, 2));
-
-?>
 
 <section class="ao-meet-doctor">
     <div class="ao-meet-doctor__container">
@@ -21,14 +13,24 @@ $star_url = plugins_url('src/ao-meet-doctor/assets/star.svg', dirname(__FILE__, 
                 </div>
                 <h3 class="ao-meet-doctor__cta-text">Ready to sell your house right now?</h3>
             </div>
-            <a class="cta-btn ao-meet-doctor__cta" href="#ao-form">Get Fast Cash OFFER<img src="<?php echo esc_url($arrow_url); ?>" alt="Arrow"></a>
+            <a class="cta-btn ao-meet-doctor__cta" href="#ao-form">Get Fast Cash OFFER <?php get_responsive_image('ao-meet-doctor/cta-arrow', 'Arrow') ?></a>
             <div class="ao-hero__reviews">
                 <div class="ao-hero__reviews-stars-wrapper">
-                    <span class="ao-hero__star"><img src="<?php echo esc_url($star_url); ?>" alt="star"></span>
-                    <span class="ao-hero__star"><img src="<?php echo esc_url($star_url); ?>" alt="star"></span>
-                    <span class="ao-hero__star"><img src="<?php echo esc_url($star_url); ?>" alt="star"></span>
-                    <span class="ao-hero__star"><img src="<?php echo esc_url($star_url); ?>" alt="star"></span>
-                    <span class="ao-hero__star"><img src="<?php echo esc_url($star_url); ?>" alt="star"></span>
+                    <span class="ao-hero__star">
+                        <?php echo get_responsive_image('ao-meet-doctor/star', 'star'); ?>
+                    </span>
+                    <span class="ao-hero__star">
+                        <?php echo get_responsive_image('ao-meet-doctor/star', 'star'); ?>
+                    </span>
+                    <span class="ao-hero__star">
+                        <?php echo get_responsive_image('ao-meet-doctor/star', 'star'); ?>
+                    </span>
+                    <span class="ao-hero__star">
+                        <?php echo get_responsive_image('ao-meet-doctor/star', 'star'); ?>
+                    </span>
+                    <span class="ao-hero__star">
+                        <?php echo get_responsive_image('ao-meet-doctor/star', 'star'); ?>
+                    </span>
                 </div>
                 <div class="ao-hero__reviews-text">
                     <p>Rated <strong>4.7/5</strong> | Based on <strong>100+</strong> reviews</p>
@@ -36,7 +38,7 @@ $star_url = plugins_url('src/ao-meet-doctor/assets/star.svg', dirname(__FILE__, 
             </div>
         </div>
         <div class="ao-meet-doctor__img">
-            <img src="<?php echo esc_url($image_url); ?>" alt="Doctor Homes">
+            <?php echo get_responsive_image('ao-meet-doctor/person-buys', 'Doctor Homes'); ?>
         </div>
     </div>
 </section>

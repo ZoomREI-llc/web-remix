@@ -11,13 +11,14 @@ coverage
 # Build folder - generated in the CI/CD process
 build/
 
-
 # Compiled binary addons (https://nodejs.org/api/addons.html)
 build/Release
 
-
 # Optimized assets folder - generated on build 
 optimized-assets/
+
+# Optimized assets manifest - dynamicalyl generated on build 
+image-manifest.json
 
 # Dependency directories
 node_modules/

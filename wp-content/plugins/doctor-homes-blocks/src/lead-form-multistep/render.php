@@ -1,19 +1,14 @@
-<?php
-$arrow_icon_id = 412;
-$arrow_icon_url = wp_get_attachment_url($arrow_icon_id);
-?>
-
 <form id="dh-lead-form-multistep" name="lead_form_v2" class="lead-form-multistep" action="/wp-json/custom/v1/submit-form" method="POST" data-redirect="/step-2">
     <input type="hidden" name="street" value="" autocomplete="off">
     <input type="hidden" name="city" value="" autocomplete="off">
     <input type="hidden" name="state" value="" autocomplete="off">
     <input type="hidden" name="zipcode" value="" autocomplete="off">
-    
+
     <div class="lead-form-multistep__address address-wrapper input">
         <input type="text" name="propertyAddress" data-validation="address-autocomplete" autocomplete="off" placeholder="Enter your property address">
         <button type="button" class="lead-form-multistep__address-btn">
             Get My Offer
-            <img class="form-btn-arrow" src="<?php echo esc_url($arrow_icon_url); ?>" alt="Arrow Icon">
+            <?php echo get_responsive_image('lead-form-multistep/cta-arrow', 'Arrow Icon', 'form-btn-arrow'); ?>
         </button>
     </div>
     <div class="lead-form-multistep__fields" style="display: none">
@@ -51,27 +46,27 @@ $arrow_icon_url = wp_get_attachment_url($arrow_icon_id);
         <div class="lead-form-multistep__fields-btn">
             <button type="submit" class="form-submit">
                 Get My Offer
-                <img class="form-btn-arrow" src="<?php echo esc_url($arrow_icon_url); ?>" alt="Arrow Icon">
+                <?php echo get_responsive_image('lead-form/cta-arrow', 'Arrow Icon', 'form-btn-arrow'); ?>
             </button>
         </div>
     </div>
 </form>
 
 <script>
-  let validationErrors = {
-    "required": "This field is required",
-    "invalid": "This field is invalid",
-    
-    "email": {
-      "regex": "The E-mail must be a valid email address.",
-      "required": "E-mail is required."
-    },
-    "name": {
-      "required": "Please enter your full name."
-    },
-    "tel-mask": {
-      "required": "Please enter your phone number.",
-      "telMask": "Phone number is invalid."
-    },
-  }
+    let validationErrors = {
+        "required": "This field is required",
+        "invalid": "This field is invalid",
+
+        "email": {
+            "regex": "The E-mail must be a valid email address.",
+            "required": "E-mail is required."
+        },
+        "name": {
+            "required": "Please enter your full name."
+        },
+        "tel-mask": {
+            "required": "Please enter your phone number.",
+            "telMask": "Phone number is invalid."
+        },
+    }
 </script>

@@ -2,17 +2,16 @@
 
 $phone_img = plugins_url('src/faq-form/assets/phone.svg', dirname(__FILE__, 2));
 
-$tick_icon_url = plugins_url('src/faq-form/assets/tick.svg', dirname(__FILE__, 2));
 
 $phoneNumber = isset($attributes['phoneNumber']) ? esc_html($attributes['phoneNumber']) : '';
 ?>
 
-<section class="faq-form" style="--tick-url: url('<?php echo esc_url($tick_icon_url); ?>');">
+<section class="faq-form" style="--tick-url: url('<?php echo get_image_url('faq-form/tick'); ?>');">
 	<div class="faq-form-title"><h2>Didn't find the answer you were looking for?</h2></div>
 	<div class="faq-form-description"><h3>Give us a call--we're happy to help!</h3></div>
 	<a href="tel:<?php echo $phoneNumber; ?>" class="faq-form-number">
 		<div class="faq-form-number__img">
-			<img src="<?php echo $phone_img; ?>" alt="">
+            <?php echo get_responsive_image('faq-form/phone', 'phone'); ?>
 		</div>
 		<div class="faq-form-number__text"><span><?php echo $phoneNumber; ?></span></div>
 	</a>

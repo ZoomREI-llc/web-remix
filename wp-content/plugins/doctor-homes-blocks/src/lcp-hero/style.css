@@ -1,6 +1,6 @@
 .lcp-hero-wrapper {
 	position: relative;
-	background-image: var(--background-image);
+	background-image: var(--background-image-small);
 	background-size: cover;
 	background-position: 0% center;
 	overflow: hidden;
@@ -9,7 +9,22 @@
 	display: flex;
 	justify-content: center;
 }
+<<<<<<< HEAD
 .lcp-hero-wrapper .lcp-fresh-start__testimonee {
+=======
+@media (min-width: 768px) {
+	.lcp-hero-wrapper {
+		background-image: var(--background-image-medium);
+	}
+}
+
+@media (min-width: 1024px) {
+	.lcp-hero-wrapper {
+		background-image: var(--background-image-large);
+	}
+}
+.lcp-hero-wrapper .cw-fresh-start__testimonee {
+>>>>>>> feature/image-optimization
 	width: 50px;
 	height: 50px;
 	overflow: hidden;
@@ -246,6 +261,11 @@
 		display: flex;
 		gap: 1rem;
 	}
+}
+
+.lcp-hero__trust-icons img {
+	height: 2.1875rem;
+	object-fit: contain;
 }
 .lcp-hero__content--footer {
 	display: flex;
