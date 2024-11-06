@@ -1,13 +1,7 @@
 <?php
 // dynamically rendering images and SVGs
-$background_image_id = 417;
-$background_image_url = wp_get_attachment_url($background_image_id);
 
-$doctor_homes_image_id = 415;
-$doctor_homes_image_url = wp_get_attachment_url($doctor_homes_image_id);
 
-$arrow_icon_id = 412;
-$arrow_icon_url = wp_get_attachment_url($arrow_icon_id);
 
 $star_icon_id = 408;
 $star_icon_url = wp_get_attachment_url($star_icon_id);
@@ -28,15 +22,19 @@ $a_plus_icon_id = 429;
 $a_plus_icon_url = wp_get_attachment_url($a_plus_icon_id);
 ?>
 <a id="top"></a>
-<section class="dh-hero" style="--bg-image: url('<?php echo esc_url($background_image_url); ?>');">
+<section class="dh-hero" style="
+    --background-image-small: url('<?php echo get_image_url('hero/hero-background', 768); ?>');
+    --background-image-medium: url('<?php echo get_image_url('hero/hero-background', 1024); ?>');
+    --background-image-large: url('<?php echo get_image_url('hero/hero-background', 2048); ?>');
+    ">
     <div class="dh-hero__content">
         <div class="dh-hero__reviews">
             <div class="dh-hero__reviews-stars-wrapper">
-                <span class="dh-hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
-                <span class="dh-hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
-                <span class="dh-hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
-                <span class="dh-hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
-                <span class="dh-hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
+                <span class="dh-hero__star"><?php echo get_responsive_image('hero/star', 'star'); ?></span>
+                <span class="dh-hero__star"><?php echo get_responsive_image('hero/star', 'star'); ?></span>
+                <span class="dh-hero__star"><?php echo get_responsive_image('hero/star', 'star'); ?></span>
+                <span class="dh-hero__star"><?php echo get_responsive_image('hero/star', 'star'); ?></span>
+                <span class="dh-hero__star"><?php echo get_responsive_image('hero/star', 'star'); ?></span>
             </div>
             <div class="dh-hero__reviews-text">
                 <p>Rated <strong>4.7/5</strong> | Based on <strong>100+</strong> reviews</p>
@@ -49,35 +47,35 @@ $a_plus_icon_url = wp_get_attachment_url($a_plus_icon_id);
         <?php echo do_shortcode('[doctor_homes_lead-form-multistep]'); ?>
         <!-- [gravityform id="1" title="false"] -->
         <div class="dh-hero__trust-icons">
-            <img class="dh-hero__trust-icon" src="<?php echo esc_url($google_icon_url); ?>" alt="">
-            <img class="dh-hero__trust-icon" src="<?php echo esc_url($bbb_icon_url); ?>" alt="">
-            <img class="dh-hero__trust-icon" src="<?php echo esc_url($a_plus_icon_url); ?>" alt="">
+            <?php echo get_responsive_image('hero/google-five-stars', 'google-five-stars', 'dh-hero__trust-icon'); ?>
+            <?php echo get_responsive_image('hero/BBB', 'BBB', 'dh-hero__trust-icon'); ?>
+            <?php echo get_responsive_image('hero/a-plus', 'a-plus', 'dh-hero__trust-icon'); ?>
         </div>
         <ul class="dh-hero__bullet-points">
-            <li class="dh-hero__bullet-point"><img src="<?php echo esc_url($checkmark_icon_url); ?>" alt="checkmark">
+            <li class="dh-hero__bullet-point"><?php echo get_responsive_image('hero/check-mark-yellow', 'checkmark'); ?>
                 <span>No need for you to clean or make repairs.</span>
             </li>
-            <li class="dh-hero__bullet-point"><img src="<?php echo esc_url($checkmark_icon_url); ?>" alt="checkmark">
+            <li class="dh-hero__bullet-point"><?php echo get_responsive_image('hero/check-mark-yellow', 'checkmark'); ?>
                 <span>No realtors, fees, banks, commissions, or inspectors.</span>
             </li>
-            <li class="dh-hero__bullet-point"><img src="<?php echo esc_url($checkmark_icon_url); ?>" alt="checkmark">
+            <li class="dh-hero__bullet-point"><?php echo get_responsive_image('hero/check-mark-yellow', 'checkmark'); ?>
                 <span>Close on Your timeline Whenever You're Ready.</span>
             </li>
         </ul>
         <div class="dh-hero__credibility">
             <div class="dh-hero__credibility-testimonial">
-                <img class="dh-hero__credibility-testimonial-image" src="<?php echo esc_url($testimonial_image_url); ?>" alt="">
+                <?php echo get_responsive_image('hero/liv-skyler', '', 'dh-hero__credibility-testimonial-image'); ?>
                 <div class="dh-hero__credibility-content">
                     <p class="dh-hero__credibility-text">“We are very grateful for Doctor Homes. They were always professional and reliable, they answered my first call right away and kept me updated throughout the whole selling process.”</p>
                     <div class="dh-hero__credibility-testimonial-name">
                         <span class="dh-hero__credibility-testimonial-name-container">
                             <span>Liv Skyler</span>
                             <div class="dh-hero__credibility-stars-wrapper">
-                                <span class="dh-hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
-                                <span class="dh-hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
-                                <span class="dh-hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
-                                <span class="dh-hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
-                                <span class="dh-hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
+                                <span class="dh-hero__star"><?php echo get_responsive_image('hero/star', 'star'); ?></span>
+                                <span class="dh-hero__star"><?php echo get_responsive_image('hero/star', 'star'); ?></span>
+                                <span class="dh-hero__star"><?php echo get_responsive_image('hero/star', 'star'); ?></span>
+                                <span class="dh-hero__star"><?php echo get_responsive_image('hero/star', 'star'); ?></span>
+                                <span class="dh-hero__star"><?php echo get_responsive_image('hero/star', 'star'); ?></span>
                             </div>
                         </span>
                     </div>

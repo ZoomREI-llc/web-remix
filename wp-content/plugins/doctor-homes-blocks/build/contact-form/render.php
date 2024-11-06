@@ -85,6 +85,6 @@
             <h3>Thank you for submitting your inquiry.</h3>
             <p>We will get in touch with you as soon as we can.</p>
         </div>
-        <?php echo get_responsive_image('contact-form/letter', 'Send Letter'); ?>
+        <?php echo get_responsive_image('contact-form/letter', 'Send Letter', 'contact-form__airplane'); ?>
     </div>
 </section>

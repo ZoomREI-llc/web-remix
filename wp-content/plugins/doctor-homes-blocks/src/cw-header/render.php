@@ -1,14 +1,11 @@
 <?php
-$logoUrl = esc_url(plugins_url('src/cw-header/assets/header_logo.svg', dirname(__FILE__, 2)));
-
-$telephoneUrl = plugins_url('src/cw-header/assets/telephone_1.svg', dirname(__FILE__, 2));
 $phoneNumber = isset($attributes['phoneNumber']) ? esc_html($attributes['phoneNumber']) : '';
 ?>
 
 <header class="cw-header">
     <div class="cw-header__content">
         <div class="cw-header__logo">
-            <img src="<?php echo $logoUrl; ?>" alt="Logo" />
+            <?php echo get_responsive_image('cw-header/header_logo', 'Logo'); ?>
         </div>
         <div class="cw-header__menu">
             <a href="#how-it-works" class="cw-header__menu--link">How it works</a>
@@ -20,7 +17,7 @@ $phoneNumber = isset($attributes['phoneNumber']) ? esc_html($attributes['phoneNu
         </div>
         <a class="call-btn" href="tel:<?php echo $phoneNumber; ?>">
             <div class="cw-header__phone-number">
-                <span class="cw-header__phone-number--icon"><img src="<?php echo $telephoneUrl; ?>" alt="Phone Icon"></span>
+                <span class="cw-header__phone-number--icon"><?php echo get_responsive_image('cw-header/telephone_1', 'Phone Icon'); ?></span>
                 <span class="cw-header__phone-number--text">Call Us </span>
                 <span class="cw-header__phone-number--number"><?php echo $phoneNumber; ?></span>
             </div>

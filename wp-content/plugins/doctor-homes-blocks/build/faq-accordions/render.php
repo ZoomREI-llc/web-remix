@@ -1,13 +1,4 @@
 <?php
-    $icons = [
-        'mail' => plugins_url('src/faq-accordions/assets/mail.svg', dirname(__FILE__, 2)),
-        'graphs' => plugins_url('src/faq-accordions/assets/graphs.svg', dirname(__FILE__, 2)),
-        'hammer' => plugins_url('src/faq-accordions/assets/hammer.svg', dirname(__FILE__, 2)),
-        'car' => plugins_url('src/faq-accordions/assets/car.svg', dirname(__FILE__, 2)),
-        'map' => plugins_url('src/faq-accordions/assets/map.svg', dirname(__FILE__, 2)),
-        'info' => plugins_url('src/faq-accordions/assets/info.svg', dirname(__FILE__, 2))
-    ];
-    
     $faqs = $attributes['faqs'] ?: [];
     
     if(!function_exists('generate_anchor_id')) {
@@ -22,8 +13,6 @@
             return $text;
         }
     }
-    
-    $accordion_arrow_icon_url = plugins_url('src/faq-accordions/assets/arrow.svg', dirname(__FILE__, 2));
 ?>
 
 <section class="faq-accordions">
@@ -39,7 +28,7 @@
 	<div class="faq-accordions-info">
         <?php foreach ($faqs as $category) : ?>
             <a href="#<?php echo generate_anchor_id($category['category']) ?>" class="faq-accordions-rounds__element">
-                <img src="<?php echo $icons[$category['icon']] ?: ''; ?>" alt="">
+                <?php echo get_responsive_image('faq-accordions/'.$category['icon'], 'Icon') ?>
                 <span><?php echo $category['category']; ?></span>
             </a>
         <?php endforeach; ?>
@@ -66,7 +55,7 @@
 					<div class="faq-question faq-accordions-question">
 						<span><?php echo esc_html($faq['question']); ?></span>
 						<div class="faq-accordions-question__img">
-							<img src="<?php echo esc_url($accordion_arrow_icon_url); ?>" alt="">
+                            <?php echo get_responsive_image('faq-accordions/arrow', 'Icon') ?>
 						</div>
 					</div>
 					<div class="faq-accordions-answer">

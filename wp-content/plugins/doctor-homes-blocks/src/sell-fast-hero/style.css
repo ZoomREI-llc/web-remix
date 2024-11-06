@@ -143,6 +143,10 @@
 	gap: 1.25rem;
 }
 
+.sf-hero__trust-icons img {
+	height: 2.1875rem;
+	object-fit: contain;
+}
 @media (min-width: 1024px) {
 	.sf-hero__trust-icons {
 		grid-column: 1 / 4;

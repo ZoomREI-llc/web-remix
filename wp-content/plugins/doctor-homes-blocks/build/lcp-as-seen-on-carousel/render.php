@@ -1,10 +1,10 @@
 <?php
 $logos = [
-    'abc.webp',
-    'cbs.webp',
-    'forbes.webp',
-    'fox.webp',
-    'nbc.webp',
+    'abc',
+    'cbs',
+    'forbes',
+    'fox',
+    'nbc',
 ];
 $clones = 4;
 $index = -1;
@@ -16,7 +16,9 @@ $index = -1;
             <div class="lcp-as-seen-on-carousel__logos-wrapper">
                 <div class="lcp-as-seen-on-carousel__logos">
                     <?php for ($i = 0; $i < count($logos) * $clones; $i++): $index = $index >= count($logos) - 1 ? 0 : ($index + 1); ?>
-                        <div class="lcp-as-seen-on-carousel__logo"><img src="<?= plugins_url('src/lcp-as-seen-on-carousel/assets/'.$logos[$index], dirname(__FILE__, 2)) ?>" alt="<?= explode('.', $logos[$index])[0] ?>"></div>
+                        <div class="lcp-as-seen-on-carousel__logo">
+                            <?php echo get_responsive_image('lcp-as-seen-on-carousel/'.$logos[$index], $logos[$index]); ?>
+                        </div>
                     <?php endfor; ?>
                 </div>
             </div>

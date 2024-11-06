@@ -1,16 +1,3 @@
-<?php
-$testimonee_url = plugins_url('src/ao-fresh-start/assets/testimonee.webp', dirname(__FILE__, 2));
-
-$star_icon_url = plugins_url('src/ao-fresh-start/assets/star.svg', dirname(__FILE__, 2));
-$check_url = plugins_url('src/ao-fresh-start/assets/check-circle.svg', dirname(__FILE__, 2));
-
-$arrow_icon_url = plugins_url('src/ao-fresh-start/assets/cta-arrow.svg', dirname(__FILE__, 2));
-
-$emotional_url = plugins_url('src/ao-fresh-start/assets/emotial.svg', dirname(__FILE__, 2));
-$time_url = plugins_url('src/ao-fresh-start/assets/time.svg', dirname(__FILE__, 2));
-$select_url = plugins_url('src/ao-fresh-start/assets/select.svg', dirname(__FILE__, 2));
-$home_url = plugins_url('src/ao-fresh-start/assets/home.svg', dirname(__FILE__, 2));
-?>
 
 <section class="ao-fresh-start">
     <div class="ao-fresh-start__inner">
@@ -21,7 +8,7 @@ $home_url = plugins_url('src/ao-fresh-start/assets/home.svg', dirname(__FILE__, 
        <div class="ao-fresh-start__reasons">
            <div class="ao-reason">
                <div class="ao-reason__icon">
-                   <img src="<?php echo esc_url($emotional_url); ?>" alt="Emotional Burden">
+                   <?php echo get_responsive_image('ao-fresh-start/emotial', 'Emotional Burden'); ?>
                </div>
                <div class="ao-reason__content">
                    <h3>Emotional Burden</h3>
@@ -30,7 +17,7 @@ $home_url = plugins_url('src/ao-fresh-start/assets/home.svg', dirname(__FILE__, 
            </div>
            <div class="ao-reason">
                <div class="ao-reason__icon">
-                   <img src="<?php echo esc_url($home_url); ?>" alt="Maintenance Challenges">
+                   <?php echo get_responsive_image('ao-fresh-start/home', 'Maintenance Challenges'); ?>
 
                </div>
                <div class="ao-reason__content">
@@ -40,7 +27,7 @@ $home_url = plugins_url('src/ao-fresh-start/assets/home.svg', dirname(__FILE__, 
            </div>
            <div class="ao-reason">
                <div class="ao-reason__icon">
-                   <img src="<?php echo esc_url($select_url); ?>" alt="Financial Strain">
+                   <?php echo get_responsive_image('ao-fresh-start/select', 'Financial Strain'); ?>
                </div>
                <div class="ao-reason__content">
                    <h3>Financial Strain</h3>
@@ -49,7 +36,7 @@ $home_url = plugins_url('src/ao-fresh-start/assets/home.svg', dirname(__FILE__, 
            </div>
            <div class="ao-reason">
                <div class="ao-reason__icon">
-                   <img src="<?php echo esc_url($time_url); ?>" alt="Time Constraints">
+                   <?php echo get_responsive_image('ao-fresh-start/time', 'Time Constraints'); ?>
                </div>
                <div class="ao-reason__content">
                    <h3>Time Constraints</h3>
@@ -58,14 +45,27 @@ $home_url = plugins_url('src/ao-fresh-start/assets/home.svg', dirname(__FILE__, 
            </div>
        </div>
 
-       <a class="cta-btn ao-fresh-start__cta" href="#ao-form">Get Fast Cash OFFER<img src="<?php echo esc_url($arrow_icon_url); ?>" alt="Arrow"></a>
+       <a class="cta-btn ao-fresh-start__cta" href="#ao-form">
+           Get Fast Cash OFFER
+           <?php echo get_responsive_image('ao-fresh-start/cta-arrow', 'Arrow'); ?>
+       </a>
        <div class="ao-hero__reviews">
            <div class="ao-hero__reviews-stars-wrapper">
-               <span class="ao-hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
-               <span class="ao-hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
-               <span class="ao-hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
-               <span class="ao-hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
-               <span class="ao-hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
+               <span class="ao-hero__star">
+                   <?php echo get_responsive_image('ao-fresh-start/star', 'star'); ?>
+               </span>
+               <span class="ao-hero__star">
+                   <?php echo get_responsive_image('ao-fresh-start/star', 'star'); ?>
+               </span>
+               <span class="ao-hero__star">
+                   <?php echo get_responsive_image('ao-fresh-start/star', 'star'); ?>
+               </span>
+               <span class="ao-hero__star">
+                   <?php echo get_responsive_image('ao-fresh-start/star', 'star'); ?>
+               </span>
+               <span class="ao-hero__star">
+                   <?php echo get_responsive_image('ao-fresh-start/star', 'star'); ?>
+               </span>
            </div>
            <div class="ao-hero__reviews-text">
                <p>Rated <strong>4.7/5</strong> | Based on <strong>100+</strong> reviews</p>
@@ -73,19 +73,31 @@ $home_url = plugins_url('src/ao-fresh-start/assets/home.svg', dirname(__FILE__, 
        </div>
 
        <div class="ao-fresh-start__testimonial">
-           <img class="ao-fresh-start__testimonee" src="<?php echo esc_url($testimonee_url); ?>" alt="Leigh Williams">
+           <?php echo get_responsive_image('ao-fresh-start/testimonee', 'Leigh Williams', 'ao-fresh-start__testimonee'); ?>
            <div class="ao-fresh-start__testimonial--content">
                <div class="ao-hero__reviews-stars-wrapper">
-                   <span class="ao-hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
-                   <span class="ao-hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
-                   <span class="ao-hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
-                   <span class="ao-hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
-                   <span class="ao-hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
+                   <span class="ao-hero__star">
+                       <?php echo get_responsive_image('ao-fresh-start/star', 'star'); ?>
+                   </span>
+                       <span class="ao-hero__star">
+                       <?php echo get_responsive_image('ao-fresh-start/star', 'star'); ?>
+                   </span>
+                       <span class="ao-hero__star">
+                       <?php echo get_responsive_image('ao-fresh-start/star', 'star'); ?>
+                   </span>
+                       <span class="ao-hero__star">
+                       <?php echo get_responsive_image('ao-fresh-start/star', 'star'); ?>
+                   </span>
+                       <span class="ao-hero__star">
+                       <?php echo get_responsive_image('ao-fresh-start/star', 'star'); ?>
+                   </span>
                </div>
                <blockquote>
                    <p>"The <strong>customer service experience with Doctor Homes was outstanding.</strong> From beginning to end, the process of selling my home was exemplary."</p>
                    <cite>
-                       Leigh Williams <img src="<?php echo esc_url($check_url); ?>" alt="checkmark"> <span class="verified">Verified customer</span></cite>
+                       Leigh Williams
+                       <?php echo get_responsive_image('ao-fresh-start/check-circle', 'checkmark'); ?>
+                        <span class="verified">Verified customer</span></cite>
                </blockquote>
            </div>
        </div>

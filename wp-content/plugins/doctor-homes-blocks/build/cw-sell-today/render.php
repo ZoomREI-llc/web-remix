@@ -1,42 +1,27 @@
-<?php
-
-$background_image_url = plugins_url('src/cw-sell-today/assets/last-block-fon.webp', dirname(__FILE__, 2));
-$foto_image_url = plugins_url('src/cw-sell-today/assets/last-block-foto.webp', dirname(__FILE__, 2));
-$testimonee_url = plugins_url('src/cw-sell-today/assets/hero-testimoniels.webp', dirname(__FILE__, 2));
-$star_icon_url = plugins_url('src/cw-sell-today/assets/star.svg', dirname(__FILE__, 2));
-$arrow_icon_url = plugins_url('src/cw-sell-today/assets/cta-arrow.svg', dirname(__FILE__, 2));
-$checkmark_icon_url = plugins_url('src/cw-sell-today/assets/check-circle.svg', dirname(__FILE__, 2));
-?>
 <section class="cw-sell-today-wrapper">
-         <div class="cw-sell-today__media">
-            <img src="<?php echo esc_url($background_image_url); ?>" alt="" class="cw-sell-today__fon">
-         </div>
+    <div class="cw-sell-today__media">
+        <?php echo get_responsive_image('cw-sell-today/last-block-fon', '', 'cw-sell-today__fon'); ?>
+    </div>
     <div class="cw-sell-today">
-
-        <div class=" cw-hero__content">
+        <div class="cw-hero__content">
             <div class="cw-hero__titles">
                 <div class="cw-hero__subtitle">SELL YOUR HOUSE TODAY</div>
                 <h1>We Make It Incredibly Easy To Sell Your House For Cash</h1>
                 <p>Whatever your circumstances, no matter the condition of your house, we’re happy to buy. Contact us today for an immediate cash offer, and let’s get that house sold!</p>
             </div>
-
             <div class="cw-hero__footer-block">
-               <a class="cta-btn cw-hero__cta" href="#cw-form">Get my offer<img src="<?php echo esc_url($arrow_icon_url); ?>" alt="Arrow"></a>
-               <div class="cw-hero__reviews">
-                   <div class="cw-hero__reviews-stars-wrapper">
-                       <span class="cw-hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
-                       <span class="cw-hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
-                       <span class="cw-hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
-                       <span class="cw-hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
-                       <span class="cw-hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
-                   </div>
-                   <div class="cw-hero__reviews-text">
-                       <p>Rated <strong>4.7/5</strong> Based on <strong>100+</strong> reviews</p>
-                   </div>
-               </div>
+                <a class="cta-btn cw-hero__cta" href="#cw-form">Get my offer<?php echo get_responsive_image('cw-sell-today/cta-arrow', 'Arrow'); ?></a>
+                <div class="cw-hero__reviews">
+                    <div class="cw-hero__reviews-stars-wrapper">
+                        <?php for ($i = 0; $i < 5; $i++): ?>
+                            <span class="cw-hero__star"><?php echo get_responsive_image('cw-sell-today/star', 'star'); ?></span>
+                        <?php endfor; ?>
+                    </div>
+                    <div class="cw-hero__reviews-text">
+                        <p>Rated <strong>4.7/5</strong> Based on <strong>100+</strong> reviews</p>
+                    </div>
+                </div>
             </div>
-
-
             <ul class="cw-hero__statistic--list">
                 <li class="cw-hero__statistic--item">
                     <div class="cw-hero__statistic--amunt">36M+</div>

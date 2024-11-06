@@ -1,9 +1,5 @@
 <?php
 $selectedMarket = isset($attributes['selectedMarket']) ? esc_html($attributes['selectedMarket']) : 'Saint Louis';
-
-$time_logo_url = plugins_url('src/lcp-steps/assets/fi-ss-time-quarter-past.svg', dirname(__FILE__, 2));
-$document_logo_url = plugins_url('src/lcp-steps/assets/document-s.svg', dirname(__FILE__, 2));
-$paid_logo_url = plugins_url('src/lcp-steps/assets/get-paid.svg', dirname(__FILE__, 2));
 ?>
 
 <section class="lcp-steps">
@@ -14,7 +10,7 @@ $paid_logo_url = plugins_url('src/lcp-steps/assets/get-paid.svg', dirname(__FILE
     <div class="lcp-steps__steps">
         <div class="lcp-steps__item">
             <div class="lcp-steps__item-icon">
-                <img src="<?php echo esc_url($time_logo_url); ?>" alt="Clock Icon">
+                <?php echo get_responsive_image('lcp-steps/fi-ss-time-quarter-past', 'Clock Icon'); ?>
             </div>
             <div class="lcp-steps__item-content">
                 <h3>Step 1</h3>
@@ -24,7 +20,7 @@ $paid_logo_url = plugins_url('src/lcp-steps/assets/get-paid.svg', dirname(__FILE
         </div>
         <div class="lcp-steps__item">
             <div class="lcp-steps__item-icon">
-                <img src="<?php echo esc_url($document_logo_url); ?>" alt="Document Icon">
+                <?php echo get_responsive_image('lcp-steps/document-s', 'Document Icon'); ?>
             </div>
             <div class="lcp-steps__item-content">
                 <h3>Step 2</h3>
@@ -34,7 +30,7 @@ $paid_logo_url = plugins_url('src/lcp-steps/assets/get-paid.svg', dirname(__FILE
         </div>
         <div class="lcp-steps__item">
             <div class="lcp-steps__item-icon">
-                <img src="<?php echo esc_url($paid_logo_url); ?>" alt="Money Icon">
+                <?php echo get_responsive_image('lcp-steps/get-paid', 'Money Icon'); ?>
             </div>
             <div class="lcp-steps__item-content">
                 <h3>Step 3</h3>

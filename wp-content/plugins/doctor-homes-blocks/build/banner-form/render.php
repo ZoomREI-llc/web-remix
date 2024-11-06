@@ -1,11 +1,3 @@
-<?php
-$star_icon_id = 408;
-$star_icon_url = wp_get_attachment_url($star_icon_id);
-
-$background_image_id = 586;
-$background_image_url = wp_get_attachment_url($background_image_id);
-?>
-
 <section class="dh-banner-form" style="
     --background-image-small: url('<?php echo get_image_url('banner-form/bg', 768); ?>');
     --background-image-medium: url('<?php echo get_image_url('banner-form/bg', 1024); ?>');

@@ -1,6 +1,6 @@
 .lcp-hero-wrapper {
 	position: relative;
-	background-image: var(--background-image);
+	background-image: var(--background-image-small);
 	background-size: cover;
 	overflow: hidden;
 	transition: all 0.3s ease;
@@ -8,6 +8,17 @@
 	display: flex;
 	justify-content: center;
 	background-position: center;
+}
+@media (min-width: 768px) {
+	.lcp-hero-wrapper {
+		background-image: var(--background-image-medium);
+	}
+}
+
+@media (min-width: 1024px) {
+	.lcp-hero-wrapper {
+		background-image: var(--background-image-large);
+	}
 }
 .lcp-hero-wrapper .cw-fresh-start__testimonee {
 	width: 50px;
@@ -262,6 +273,11 @@
 		display: flex;
 		gap: 1rem;
 	}
+}
+
+.lcp-hero__trust-icons img {
+	height: 2.1875rem;
+	object-fit: contain;
 }
 .lcp-hero__content--footer {
 	display: flex;

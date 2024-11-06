@@ -26,61 +26,61 @@
       "type": "array",
       "default": [
         {
-          "asset": "about-us-benefits/fixer-upper",
+          "id": 443,
           "position": "left",
           "text": "Fixer Upper",
           "uuid": "uuid-1"
         },
         {
-          "asset": "about-us-benefits/job-relocation",
+          "id": 445,
           "position": "right",
           "text": "Job Relocation",
           "uuid": "uuid-2"
         },
         {
-          "asset": "about-us-benefits/downsizing-upsizing",
+          "id": 441,
           "position": "left",
           "text": "Downsizing or Upsizing",
           "uuid": "uuid-3"
         },
         {
-          "asset": "about-us-benefits/inherited-property",
+          "id": 444,
           "position": "right",
           "text": "Inherited Property",
           "uuid": "uuid-4"
         },
         {
-          "asset": "about-us-benefits/vacant-property",
+          "id": 448,
           "position": "left",
           "text": "Vacant Property",
           "uuid": "uuid-5"
         },
         {
-          "asset": "about-us-benefits/tenant-trouble",
+          "id": 446,
           "position": "right",
           "text": "Tenant Trouble",
           "uuid": "uuid-6"
         },
         {
-          "asset": "about-us-benefits/water-fire-damage",
+          "id": 449,
           "position": "left",
           "text": "Water & Fire Damage",
           "uuid": "uuid-7"
         },
         {
-          "asset": "about-us-benefits/financial-issues",
+          "id": 442,
           "position": "right",
           "text": "Financial Issues",
           "uuid": "uuid-8"
         },
         {
-          "asset": "about-us-benefits/unexpected-life-events",
+          "id": 447,
           "position": "left",
           "text": "Unexpected Life Events",
           "uuid": "uuid-9"
         },
         {
-          "asset": "about-us-benefits/divorce",
+          "id": 440,
           "position": "right",
           "text": "Divorce",
           "uuid": "uuid-10"

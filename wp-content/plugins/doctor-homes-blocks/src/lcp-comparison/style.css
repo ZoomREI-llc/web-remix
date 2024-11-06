@@ -181,7 +181,15 @@ div.lcp-comparison-row:nth-child(2) > div:nth-child(1) {
 	position: relative; /* Ensure content is above the pseudo-element */
 	overflow: hidden; /* Ensure pseudo-element is contained */
 }
-
+.lcp-comparison-column > img {
+	height: 40px;
+	margin: 0 auto;
+}
+@media (min-width: 1024px) {
+	.lcp-comparison-column > img {
+		height: 95px;
+	}
+}
 @media (min-width: 1024px) {
 	.lcp-comparison-row > .lcp-comparison-column {
 		align-items: start;
@@ -217,7 +225,7 @@ div.lcp-comparison-row:nth-child(2) > div:nth-child(1) {
 	margin-inline: 0.25rem;
 }
 
-.lcp-comparison-column img {
+.lcp-comparison-column .column__content img {
 	width: 1.125rem;
 	height: auto;
 	margin: 0 auto;
@@ -225,7 +233,7 @@ div.lcp-comparison-row:nth-child(2) > div:nth-child(1) {
 }
 
 @media (min-width: 1024px) {
-	.lcp-comparison-column img {
+	.lcp-comparison-column .column__content img {
 		width: 2.75rem;
 	}
 }

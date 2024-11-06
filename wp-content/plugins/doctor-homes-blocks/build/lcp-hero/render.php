@@ -1,21 +1,20 @@
 <?php
-// $formId = isset($attributes['formId']) ? esc_html($attributes['formId']) : '1';
-
 $selectedMarket = isset($attributes['selectedMarket']) ? esc_html($attributes['selectedMarket']) : 'Saint Louis';
-$background_image_url = plugins_url('src/lcp-hero/assets/hero-background.webp', dirname(__FILE__, 2));
-$testimonial_image_id = 455;
-$testimonee_url = wp_get_attachment_url($testimonial_image_id);
-$star_icon_url = plugins_url('src/lcp-hero/assets/star.svg', dirname(__FILE__, 2));
-$checkmark_icon_url = plugins_url('src/lcp-hero/assets/check-circle.svg', dirname(__FILE__, 2));
 ?>
 
-<section class="lcp-hero-wrapper" style="--background-image: url('<?php echo esc_url($background_image_url); ?>');">
+<section class="lcp-hero-wrapper" style="
+    --background-image-small: url('<?php echo get_image_url('lcp-hero/hero-background', 768); ?>');
+    --background-image-medium: url('<?php echo get_image_url('lcp-hero/hero-background', 1024); ?>');
+    --background-image-large: url('<?php echo get_image_url('lcp-hero/hero-background', 2048); ?>');
+">
     <div class="lcp-hero">
         <div class="lcp-hero__content">
             <div class="lcp-hero__reviews">
                 <div class="lcp-hero__reviews-stars-wrapper">
                     <?php for ($i = 0; $i < 5; $i++): ?>
-                        <span class="lcp-hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
+                        <span class="lcp-hero__star">
+                            <?php echo get_responsive_image('lcp-hero/star', 'star'); ?>
+                        </span>
                     <?php endfor; ?>
                 </div>
                 <div class="lcp-hero__reviews-text">
@@ -27,19 +26,22 @@ $checkmark_icon_url = plugins_url('src/lcp-hero/assets/check-circle.svg', dirnam
                 <p>We Buy Houses Quickly for Cash – No Realtors, No Fees, No Repairs Needed!</p>
             </div>
             <ul class="lcp-hero__bullet-points">
-                <li class="lcp-hero__bullet-point"><img src="<?php echo esc_url($checkmark_icon_url); ?>" alt="checkmark">
+                <li class="lcp-hero__bullet-point">
+                    <?php echo get_responsive_image('lcp-hero/check-circle', 'checkmark'); ?>
                     <span><strong>No need for you to clean</strong> or make repairs</span>
                 </li>
-                <li class="lcp-hero__bullet-point"><img src="<?php echo esc_url($checkmark_icon_url); ?>" alt="checkmark">
+                <li class="lcp-hero__bullet-point">
+                    <?php echo get_responsive_image('lcp-hero/check-circle', 'checkmark'); ?>
                     <span>No realtors, <strong>fees, banks, commissions,</strong> or inspectors</span>
                 </li>
-                <li class="lcp-hero__bullet-point"><img src="<?php echo esc_url($checkmark_icon_url); ?>" alt="checkmark">
+                <li class="lcp-hero__bullet-point">
+                    <?php echo get_responsive_image('lcp-hero/check-circle', 'checkmark'); ?>
                     <span>We pay all closing costs - <strong>you pay nothing</strong></span>
                 </li>
             </ul>
             <div class="lcp-hero__content--footer">
                 <div class="cw-fresh-start__testimonial">
-                    <img class="cw-fresh-start__testimonee" src="<?php echo esc_url($testimonee_url); ?>" alt="Leigh Williams">
+                    <?php echo get_responsive_image('lcp-hero/liv-skyler', 'Leigh Williams', 'cw-fresh-start__testimonee'); ?>
                     <div class="lcp-hero-start__testimonial--content cw-fresh-start__testimonial--content">
                         <blockquote>
                             <p>We are very grateful for Doctor Homes and his team's work. They were always professional and reliable, Doctor Homes answered my first call right away and kept me updated throughout the whole selling process.</p>
@@ -47,7 +49,7 @@ $checkmark_icon_url = plugins_url('src/lcp-hero/assets/check-circle.svg', dirnam
                                 <span>Liv Skyler</span>
                                 <div class="lcp-hero__reviews-stars-wrapper">
                                     <?php for ($i = 0; $i < 5; $i++): ?>
-                                        <span class="lcp-hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
+                                        <span class="lcp-hero__star"><?php echo get_responsive_image('lcp-hero/star', 'star'); ?></span>
                                     <?php endfor; ?>
                                 </div>
                             </cite>

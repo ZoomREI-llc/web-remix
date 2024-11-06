@@ -79,6 +79,20 @@ async function copySVGs(srcDir, destDir) {
 	}
 }
 
+async function renameFileIfNeeded(filePath) {
+	const dir = path.dirname(filePath);
+	const originalName = path.basename(filePath);
+	const updatedName = originalName.replace(/--/g, "-");
+
+	if (originalName !== updatedName) {
+		const newFilePath = path.join(dir, updatedName);
+		await fs.rename(filePath, newFilePath);
+		console.log(`Renamed ${originalName} to ${updatedName}`);
+		return newFilePath;
+	}
+	return filePath;
+}
+
 async function processImages() {
 	try {
 		const srcPath = path.join(__dirname, "../src");
@@ -111,7 +125,10 @@ async function processImages() {
 
 			const processingPromises = images.map(async (image) => {
 				const ext = path.extname(image).toLowerCase();
-				const imagePath = path.join(inputDir, image);
+				let imagePath = path.join(inputDir, image);
+
+				imagePath = await renameFileIfNeeded(imagePath);
+
 				const lastModified = (await fs.stat(imagePath)).mtimeMs;
 				const relativeImagePath = path.relative(__dirname, imagePath);
 
@@ -144,10 +161,7 @@ async function processImages() {
 
 					// Process image at each size up to and including the first size larger than original
 					for (const size of sizes) {
-						const outputPath = path.join(
-							outputDir,
-							`${path.parse(image).name}-${size}.webp`,
-						);
+						const outputPath = path.join(outputDir, `${path.parse(imagePath).name}-${size}.webp`);
 
 						if (size <= originalWidth) {
 							// Resize the image

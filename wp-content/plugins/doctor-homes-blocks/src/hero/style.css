@@ -21,11 +21,22 @@
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background-image: var(--bg-image);
+	background-image: var(--background-image-small);
 	background-size: cover;
 	background-position: center;
 	opacity: 0.4;
 	z-index: 0;
+}
+@media (min-width: 768px) {
+	.dh-hero::before {
+		background-image: var(--background-image-medium);
+	}
+}
+
+@media (min-width: 1024px) {
+	.dh-hero::before {
+		background-image: var(--background-image-large);
+	}
 }
 
 .dh-hero__content {
@@ -126,7 +137,10 @@
 	border-radius: 100vmax;
 	gap: 1.25rem;
 }
-
+.dh-hero__trust-icons img {
+	height: 2.1875rem;
+	object-fit: contain;
+}
 .dh-hero__bullet-points {
 	display: flex;
 	flex-direction: column;

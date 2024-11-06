@@ -1,14 +1,17 @@
 <?php
 // $formId = isset($attributes['formId']) ? esc_html($attributes['formId']) : '1';
 
-$background_image_url = plugins_url('src/cw-hero/assets/life-changes-hero-background.webp', dirname(__FILE__, 2));
 $testimonial_image_id = 455;
 $testimonee_url = wp_get_attachment_url($testimonial_image_id);
 $star_icon_url = plugins_url('src/cw-hero/assets/star.svg', dirname(__FILE__, 2));
 $checkmark_icon_url = plugins_url('src/cw-hero/assets/check-circle.svg', dirname(__FILE__, 2));
 ?>
 
-<section class="cw-hero-wrapper" style="--background-image: url('<?php echo esc_url($background_image_url); ?>');">
+<section class="cw-hero-wrapper" style="
+    --background-image-small: url('<?php echo get_image_url('cw-hero/life-changes-hero-background', 768); ?>');
+    --background-image-medium: url('<?php echo get_image_url('cw-hero/life-changes-hero-background', 1024); ?>');
+    --background-image-large: url('<?php echo get_image_url('cw-hero/life-changes-hero-background', 2048); ?>');
+">
     <div class="cw-hero">
         <div class="cw-hero__content">
             <div class="cw-hero__reviews">
