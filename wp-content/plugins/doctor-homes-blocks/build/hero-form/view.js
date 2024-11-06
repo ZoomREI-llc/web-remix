@@ -1,1 +1,0 @@
-document.addEventListener("DOMContentLoaded",(function(){const e=document.querySelector(".dh-hero-form__titles > p"),n=document.querySelector(".dh-hero-form"),t=document.querySelector(".dh-hero-form__form");function o(){window.innerWidth<1024?e.insertAdjacentElement("afterend",t):n.insertAdjacentElement("beforeend",t)}o(),window.addEventListener("resize",o)}));

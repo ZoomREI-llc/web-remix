@@ -1,1 +1,0 @@
-document.addEventListener("DOMContentLoaded",(function(){const e=document.querySelector(".cw-hero__titles h1"),n=document.querySelector(".cw-hero"),t=document.querySelector(".cw-hero-form__form");function o(){window.innerWidth<1024?e.insertAdjacentElement("afterend",t):n.insertAdjacentElement("beforeend",t)}o(),window.addEventListener("resize",o)}));

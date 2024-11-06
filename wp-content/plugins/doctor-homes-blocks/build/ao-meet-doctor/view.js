@@ -1,1 +1,0 @@
-document.addEventListener("DOMContentLoaded",(function(){const e=document.querySelector(".ao-meet-doctor__description"),t=document.querySelector(".ao-meet-doctor__container"),n=document.querySelector(".ao-meet-doctor__img");function o(){window.innerWidth<1024?e.insertAdjacentElement("afterbegin",n):t.insertAdjacentElement("beforeend",n)}o(),window.addEventListener("resize",o)}));

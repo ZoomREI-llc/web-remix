@@ -1,1 +1,0 @@
-document.addEventListener("DOMContentLoaded",(function(){const e=document.querySelector(".ao-hero"),n=document.querySelector(".ao-hero__content"),t=document.querySelector(".ao-hero__bullet-points");function o(){window.innerWidth<1024?e.insertAdjacentElement("beforeend",t):n.insertAdjacentElement("beforeend",t)}o(),window.addEventListener("resize",o)}));
