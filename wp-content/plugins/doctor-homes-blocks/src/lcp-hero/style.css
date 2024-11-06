@@ -9,9 +9,6 @@
 	display: flex;
 	justify-content: center;
 }
-<<<<<<< HEAD
-.lcp-hero-wrapper .lcp-fresh-start__testimonee {
-=======
 @media (min-width: 768px) {
 	.lcp-hero-wrapper {
 		background-image: var(--background-image-medium);
@@ -24,7 +21,6 @@
 	}
 }
 .lcp-hero-wrapper .cw-fresh-start__testimonee {
->>>>>>> feature/image-optimization
 	width: 50px;
 	height: 50px;
 	overflow: hidden;
