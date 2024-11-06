@@ -2,18 +2,6 @@
 $selectedMarket = isset($attributes['selectedMarket']) ? esc_html($attributes['selectedMarket']) : 'Saint Louis';
 ?>
 
-<<<<<<< HEAD
-<section class="lcp-hero-wrapper" style="--background-image: url('<?php echo esc_url($background_image_url); ?>');">
-    <div class="lcp-hero__content">
-        <div class="lcp-hero__reviews">
-            <div class="lcp-hero__reviews-stars-wrapper">
-                <?php for ($i = 0; $i < 5; $i++): ?>
-                    <span class="lcp-hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
-                <?php endfor; ?>
-            </div>
-            <div class="lcp-hero__reviews-text">
-                <p>Rated <strong>4.7/5</strong> | Based on <strong>100+</strong> reviews</p>
-=======
 <section class="lcp-hero-wrapper" style="
     --background-image-small: url('<?php echo get_image_url('lcp-hero/hero-background', 768); ?>');
     --background-image-medium: url('<?php echo get_image_url('lcp-hero/hero-background', 1024); ?>');
@@ -82,7 +70,6 @@ $selectedMarket = isset($attributes['selectedMarket']) ? esc_html($attributes['s
                         <div class="lcp-hero__statistic--text">SATISFIED <span>CUSTOMERS</span></div>
                     </li>
                 </ul>
->>>>>>> feature/image-optimization
             </div>
         </div>
         <h1 class="lcp-hero__title">Want to sell your house in <?= $selectedMarket ?> with no hassle?</h1>

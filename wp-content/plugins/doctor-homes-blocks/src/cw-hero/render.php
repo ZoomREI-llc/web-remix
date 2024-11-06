@@ -8,15 +8,6 @@ $star_icon_url = plugins_url('src/cw-hero/assets/star.svg', dirname(__FILE__, 2)
 $checkmark_icon_url = plugins_url('src/cw-hero/assets/check-circle.svg', dirname(__FILE__, 2));
 ?>
 
-<<<<<<< HEAD
-<section class="cw-hero-wrapper" style="--background-image: url('<?php echo esc_url($background_image_url); ?>');">
-    <div class="cw-hero__content">
-        <div class="cw-hero__reviews">
-            <div class="cw-hero__reviews-stars-wrapper">
-                <?php for ($i = 0; $i < 5; $i++): ?>
-                    <span class="cw-hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
-                <?php endfor; ?>
-=======
 <section class="cw-hero-wrapper" style="
     --background-image-small: url('<?php echo get_image_url('cw-hero/life-changes-hero-background', 768); ?>');
     --background-image-medium: url('<?php echo get_image_url('cw-hero/life-changes-hero-background', 1024); ?>');
@@ -33,7 +24,6 @@ $checkmark_icon_url = plugins_url('src/cw-hero/assets/check-circle.svg', dirname
                 <div class="cw-hero__reviews-text">
                     <p>Rated <strong>4.7/5</strong> | Based on <strong>100+</strong> reviews</p>
                 </div>
->>>>>>> feature/image-optimization
             </div>
             <div class="cw-hero__reviews-text">
                 <p>Rated <strong>4.7/5</strong> | Based on <strong>100+</strong> reviews</p>
