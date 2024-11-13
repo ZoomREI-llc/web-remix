@@ -92,6 +92,16 @@ p {
   display: block;
 }
 
+.swiper{
+  overflow: hidden;
+  width: 100%;
+}
+.swiper-wrapper{
+  display: flex;
+}
+.swiper-slide{
+  height: auto;
+}
 .btn {
   padding: 1.25rem 3.75rem;
   background-color: var(--secondaryYellow);
