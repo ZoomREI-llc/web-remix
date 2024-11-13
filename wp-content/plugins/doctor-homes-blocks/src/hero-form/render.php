@@ -26,13 +26,13 @@
         </div>
         <h3 class="dh-hero-form__subtitle">Sell Your House Fast For Cash In Any Condition.</h3>
         <ul class="dh-hero-form__bullet-points">
-            <li class="dh-hero-form__bullet-point"><?php echo get_responsive_image('hero-form/check-circle', 'checkmark'); ?>
+            <li class="dh-hero-form__bullet-point"><?php echo get_responsive_image('lcp-hero/check-circle', 'checkmark'); ?>
                 <span><strong>No need for you to clean or make repairs.</strong></span>
             </li>
-            <li class="dh-hero-form__bullet-point"><?php echo get_responsive_image('hero-form/check-circle', 'checkmark'); ?>
+            <li class="dh-hero-form__bullet-point"><?php echo get_responsive_image('lcp-hero/check-circle', 'checkmark'); ?>
                 <span><strong>No realtors, fees, banks, commissions, or inspectors.</strong></span>
             </li>
-            <li class="dh-hero-form__bullet-point"><?php echo get_responsive_image('hero-form/check-circle', 'checkmark'); ?>
+            <li class="dh-hero-form__bullet-point"><?php echo get_responsive_image('lcp-hero/check-circle', 'checkmark'); ?>
                 <span><strong>Close on Your timeline Whenever You're Ready.</strong></span>
             </li>
         </ul>
