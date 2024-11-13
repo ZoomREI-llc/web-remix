@@ -40,6 +40,7 @@
 	align-items: flex-start;
 	margin: 0;
 	text-align: left;
+
 }
 .lcp-hero-wrapper .lcp-fresh-start__testimonial cite {
 	font-weight: bold;
@@ -432,7 +433,39 @@
 	margin-bottom: 20px;
 }
 
+.lcp-fresh-start__testimonee {
+	width: 50px;
+	height: 50px;
+	flex-shrink: 0;
+	border-radius: 50%;
+	object-fit: cover;
+}
+
+.lcp-hero-wrapper .lcp-fresh-start__testimonial cite > :not(:last-child) {
+	margin-right: 16px;
+}
+
+.lcp-hero-wrapper .lcp-fresh-start__testimonial {
+	gap: 15px;
+}
+
+.lcp-hero-wrapper .lcp-fresh-start__testimonial cite {
+	display: flex;
+	margin-top: 9px;
+	align-items: center;
+}
+
 @media (min-width: 1024px) {
+	.lcp-hero__star {
+		width: 12.5px;
+	}
+	.lcp-hero-wrapper .lcp-fresh-start__testimonial cite > :not(:last-child) {
+		margin-right: 5px;
+	}
+
+	.lcp-hero__content {
+		padding: 2.5rem 1rem 0;
+	}
 	.lcp-hero__form {
 		grid-row: span 6;
 		grid-column: 2 / 3;
