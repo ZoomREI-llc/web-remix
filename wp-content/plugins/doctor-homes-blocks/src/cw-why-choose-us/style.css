@@ -311,7 +311,35 @@
 .cw-why-choose-us__carousel .dot.active {
 	background-color: #00b43d;
 } */
+@media (min-width: 1024px) {
+	.cw-fresh-start__testimonee {
+		width: 4.375rem;
+		border-radius: 50%;
+	}
+
+	.cw-fresh-start__testimonial .cw-hero__reviews-stars-wrapper {
+		margin-left: 10px;
+	}
+}
+
 .cw-fresh-start__testimonee {
-	width: 4.375rem;
+	width: 3.125rem;
 	border-radius: 50%;
+}
+.cw-fresh-start__testimonial .cw-hero__reviews-stars-wrapper {
+	margin-left: 15px;
+}
+.cw-why-choose-us__item .cw-fresh-start__testimonial {
+	display: flex;
+}
+.cw-fresh-start__testimonee {
+	margin-right: 10px;
+}
+.cw-why-choose-us .cw-fresh-start__testimonial cite {
+	display: flex;
+	align-items: center;
+	margin-top: 12px;
+}
+.cw-fresh-start__testimonial .cw-hero__star {
+	width: 13px;
 }

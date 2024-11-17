@@ -40,11 +40,6 @@ $selectedMarket = isset($attributes['selectedMarket']) ? esc_html($attributes['s
                 <span>We pay all closing costs - <strong>you pay nothing</strong></span>
             </li>
         </ul>
-        <div class="lcp-hero__logos">
-            <?php echo get_responsive_image('lcp-hero/logo-google', 'Google'); ?>
-            <?php echo get_responsive_image('lcp-hero/logo-bbb', 'BBB'); ?>
-            <?php echo get_responsive_image('lcp-hero/logo-a-plus', 'A+'); ?>
-        </div>
         <div class="lcp-hero__content--footer">
             <div class="lcp-fresh-start__testimonial">
                 <?php echo get_responsive_image('hero-form/liv-skyler', 'Liv Skyler', 'lcp-fresh-start__testimonee'); ?>

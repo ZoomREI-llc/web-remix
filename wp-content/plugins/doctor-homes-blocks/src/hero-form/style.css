@@ -446,8 +446,8 @@
 
 .dh-hero-form-wrapper .cw-fresh-start__testimonial {
 	font-size: 12px;
-	gap: 10px;
-	align-items: center;
+	align-items: flex-start;
+	gap: 15px;
 }
 
 .dh-hero-form .cw-fresh-start__testimonial blockquote p {
@@ -455,11 +455,6 @@
 	line-height: 16px;
 }
 
-.dh-hero-form-wrapper .cw-fresh-start__testimonee {
-	flex: 0 0 36px;
-	height: 36px;
-	width: 36px;
-}
 
 .dh-hero-form-wrapper .cw-fresh-start__testimonial cite {
 	align-items: center;
@@ -503,7 +498,10 @@
 		height: 12px;
 		width: 12px;
 	}
-
+	.dh-hero-form-wrapper .cw-fresh-start__testimonial {
+		gap: 10px;
+		align-items: center;
+	}
 	.dh-hero-form__reviews .dh-hero-form__reviews-stars-wrapper {
 		margin-bottom: 0;
 	}

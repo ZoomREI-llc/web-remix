@@ -31,7 +31,6 @@
 }
 .cw-hero-wrapper .cw-fresh-start__testimonial {
 	display: flex;
-	gap: 1.375rem;
 	padding: 0rem 0;
 	box-shadow: none;
 	background-color: transparent;
@@ -46,9 +45,11 @@
 	font-weight: bold;
 	font-style: normal;
 	margin: 0;
-	align-items: flex-start;
+	align-items: center;
 	font-size: 12px;
+	display: flex;
 }
+
 .cw-hero-wrapper .cw-fresh-start__testimonial blockquote {
 	line-height: 1.4;
 }
@@ -129,7 +130,7 @@
 		align-items: start;
 		gap: 2rem;
 		grid-template-columns: 1fr 45%;
-		padding: 6rem 1rem;
+		padding: 2.5rem 1rem 0;
 		max-width: 1260px;
 	}
 }
