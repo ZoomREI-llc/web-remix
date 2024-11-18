@@ -54,8 +54,14 @@
 
 
 
-.s2-form__step {
+.s2-form__step:not(:first-child) {
 	display: none;
+}
+.s2-form__form .gform_wrapper.gform_validation_error{
+	padding-top: 40px;
+}
+.s2-form__form .gform-theme--framework .gform_validation_errors{
+	--gf-form-validation-margin-y: 0;
 }
 
 .s2-form__title-custom {
@@ -292,6 +298,7 @@
 .s2-form__form .ginput_container {
 	position: relative;
 }
+.s2-form__form .gfield_validation_message,
 .s2-form__form .ginput_container .error-message-container {
 	display: block;
 	background-color: #feebe7;

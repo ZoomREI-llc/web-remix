@@ -177,6 +177,7 @@
 }
 .swiper-navigation__btn{
 	cursor: pointer;
+	transition: opacity .3s ease-in-out;
 }
 .swiper-navigation__btn[disabled]{
 	cursor: not-allowed;
@@ -197,6 +198,7 @@
 	height: .5rem;
 	width: .5rem;
 	opacity: 1;
+	transition: background-color .3s ease-in-out;
 }
 .swiper-pagination-bullet.swiper-pagination-bullet-active {
 	background: #000;

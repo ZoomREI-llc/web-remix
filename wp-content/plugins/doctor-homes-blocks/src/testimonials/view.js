@@ -20,11 +20,6 @@ function lcVirtueCarouselCallback() {
 				slideChange: function () {
 					updateButtons();
 				}
-			},
-			breakpoints: {
-				1024: {
-					autoHeight: false
-				}
 			}
 		})
 		
