@@ -243,6 +243,7 @@ input[type="hidden"] {
 	border-radius: 20px;
 	color: #c02b0a;
 	font-size: .75rem;
+	line-height: .75rem;
 	padding: .5rem 19px;
 	text-align: left;
 }

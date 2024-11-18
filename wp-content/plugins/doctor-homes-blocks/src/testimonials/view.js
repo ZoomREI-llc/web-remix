@@ -10,7 +10,6 @@ function lcVirtueCarouselCallback() {
 		let swiper = new Swiper(sliderEl, {
 			slidesPerView: 'auto',
 			spaceBetween: 48,
-			autoHeight: true,
 			speed: 600,
 			pagination: {
 				el: pagination,
