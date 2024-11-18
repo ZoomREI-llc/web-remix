@@ -1,7 +1,7 @@
 <footer id="doctor-homes-footer">
     <div class="footer-content">
         <div class="footer-logo">
-            <img src="<?php echo get_template_directory_uri() . '/src/assets/brand/doctor-homes-logo-alt.svg'; ?>" alt="Site Logo" class="logo-img">
+            <img src="<?php echo get_template_directory_uri() . '/src/assets/brand/DH-logoNoAvatar-Alt.svg'; ?>" alt="Site Logo" class="logo-img">
         </div>
         <a href="#top" class="back-to-top">
             <div class="back-to-top-icon">

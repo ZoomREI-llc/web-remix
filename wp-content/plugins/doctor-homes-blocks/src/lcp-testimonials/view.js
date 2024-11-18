@@ -10,7 +10,6 @@ function lcpVirtueCarouselCallback() {
 		let swiper = new Swiper(sliderEl, {
 			slidesPerView: 'auto',
 			spaceBetween: 48,
-			autoHeight: true,
 			speed: 600,
 			pagination: {
 				el: pagination,
@@ -19,11 +18,6 @@ function lcpVirtueCarouselCallback() {
 			on: {
 				slideChange: function () {
 					updateButtons();
-				}
-			},
-			breakpoints: {
-				1024: {
-					autoHeight: false
 				}
 			}
 		})
