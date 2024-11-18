@@ -55,6 +55,32 @@ function leadFormCallback() {
 
         return formData;
     }
+    function getRedirectParams(formData) {
+        let params = {
+            'fullName': 'full-name',
+            'phone': 'phone',
+            'email': 'email',
+            'propertyAddress': 'propaddress',
+            'street': 'propstreet',
+            'city': 'propcity',
+            'state': 'propstate',
+            'zipcode': 'propzip',
+            'country': 'propcountry',
+        }
+        let query = {}
+
+        Object.keys(params).forEach(function (inputName) {
+            let propName = params[inputName]
+
+            if(inputName === 'country'){
+                query[propName] = 'United States'
+            } else if(formData.get(inputName)) {
+                query[propName] = formData.get(inputName)
+            }
+        })
+
+        return new URLSearchParams(query).toString()
+    }
     function sendAjax() {
         let formData = populateUtms(new FormData(leadForm));
         let formBtn = leadForm.querySelector('[type="submit"]');
@@ -82,7 +108,7 @@ function leadFormCallback() {
         xhr.send(formData);
         xhr.onload = function() {
             if (xhr.status === 200) {
-                document.location.href = leadForm.dataset.redirect
+                document.location.href = leadForm.dataset.redirect + '?' + getRedirectParams(formData)
             }
         };
     }

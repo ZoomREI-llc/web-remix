@@ -140,6 +140,7 @@ form button {
 	border-radius: .25rem;
 	color: #c02b0a;
 	font-size: .75rem;
+	line-height: .75rem;
 	margin-top: .5rem;
 	padding: .5rem;
 }
