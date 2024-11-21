@@ -70,11 +70,11 @@ class Mobile_Walker_Nav_Menu extends Walker_Nav_Menu
 {
     public function start_el(&$output, $item, $depth = 0, $args = array(), $id = 0)
     {
-        $polygon_icon_url = wp_get_attachment_url(406);
+        $polygon_icon_url = get_template_directory_uri() . '/src/assets/menus/polygon-1.svg';
         $output .= '<li class="menu-item menu-item-' . $item->ID . '">';
         $output .= '<div class="menu-item-title"><a href="' . esc_url($item->url) . '">' . esc_html($item->title) . '</a>';
         if (in_array('menu-item-has-children', $item->classes)) {
-            $output .= '<img class="polygon-icon" src="' . $polygon_icon_url . '"></div>';
+            $output .= '<div class="polygon-icon-wrapper"><img class="polygon-icon" src="' . $polygon_icon_url . '"></div></div>';
         }
     }
 

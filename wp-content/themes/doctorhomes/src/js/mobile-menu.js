@@ -24,4 +24,27 @@ document.addEventListener("DOMContentLoaded", function () {
         : "rotate(90deg)";
     });
   });
+
+  document.querySelector('.mobile-nav-menu').addEventListener('click', function (e) {
+    let arrow = e.target
+
+    if(arrow.closest('.polygon-icon-wrapper')){
+      e.preventDefault()
+      e.stopPropagation()
+      e.stopImmediatePropagation()
+    } else {
+      return;
+    }
+    let previous = document.querySelector('.menu-item.is-open')
+    let isOpen = arrow.closest('.menu-item').classList.contains('is-open')
+
+    if(previous){
+      previous.classList.remove('is-open')
+    }
+    if(!isOpen) {
+      arrow.closest('.menu-item').classList.add('is-open')
+    }
+  })
+
+
 });
