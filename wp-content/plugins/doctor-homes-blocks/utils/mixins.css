@@ -1,7 +1,0 @@
-@define-mixin rem $size {
-    @return calc(($size / 16) * 1rem);
-}
-
-@define-mixin remF $size {
-    @return max(calc(($size / 16) * 1rem), 12);
-}
