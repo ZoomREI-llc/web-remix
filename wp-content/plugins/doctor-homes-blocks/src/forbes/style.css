@@ -1,23 +1,11 @@
 .quote-section {
 	background-color: var(--secondaryBeige);
-	padding: 2.5rem 1.25rem;
+	margin: 4rem 0 2rem;
+	padding: 2.5rem 0;
 	box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.3);
 	width: 100%;
 	position: relative;
 	z-index: 5;
-	margin-bottom: 3.75rem;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.quote-section__content {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	gap: 2.5rem;
-	max-width: 62.25rem;
 }
 
 .quote-section__quote-container {
@@ -40,32 +28,43 @@
 .quote-section p {
 	flex: 1;
 	text-align: center;
-	font-size: 1.5rem;
-	line-height: 1.5;
+	font-size: 1rem;
+	line-height: 140%;
 	display: flex;
 	flex-direction: column;
 	gap: 2.5rem;
 	justify-content: center;
 	align-items: center;
 }
-
-@media (min-width: 1024px) {
+.quote-section__container{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 2.5rem;
+	grid-column: span 12;
+}
+@media (min-width: 769px) {
 	.quote-section {
-		padding-block: 5rem;
-		margin-bottom: 4.5rem;
+		padding: 5rem 0;
+		margin: 2rem 0;
 	}
-
-	.quote-section__content {
+	.quote-section__container{
 		flex-direction: row;
 	}
-
+	.quote-section__forbes-logo {
+		width: 12.5rem;
+	}
 	.quote-section__quote-logo {
 		display: inline-block;
+		width: 2.625rem;
 		margin-right: 1.5rem;
+		margin-bottom: -0.625rem;
 	}
 
 	.quote-section p {
 		display: block;
 		text-align: left;
+		font-size: 1.5625rem;
+		line-height: 140%;
 	}
 }

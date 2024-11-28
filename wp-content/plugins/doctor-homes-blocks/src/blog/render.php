@@ -1,6 +1,6 @@
 <section class="latest-blog-posts">
-    <h2>Check Out the Latest From Our Blog</h2>
-    <div class="posts-container">
+    <div class="grid-container">
+        <h2 class="title-2">Check Out the Latest From Our Blog</h2>
         <?php
         $latest_posts = new WP_Query(array(
             'posts_per_page' => 4,
@@ -17,7 +17,7 @@
                                 <img src="path/to/default-image.jpg" alt="<?php the_title(); ?>">
                             <?php } ?>
                         </a>
-                        <span class="category-name"><?php the_category(', '); ?></span>
+                        <span class="category-name title-1"><?php the_category(', '); ?></span>
                     </div>
                     <div class="post-content">
                         <h3 class="post-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
