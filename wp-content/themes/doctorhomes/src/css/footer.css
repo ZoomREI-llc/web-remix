@@ -32,7 +32,9 @@
   max-width: max-content;
   color: var(--primaryGray);
 }
-
+.footer-menus .social-icons img{
+  width: 2rem;
+}
 @media (min-width: 769px) {
   .back-to-top {
     order: 1;
@@ -86,6 +88,9 @@
   }
 }
 
+.footer-menu{
+  max-width: 10rem;
+}
 .footer-menu,
 .footer-contact {
   display: flex;

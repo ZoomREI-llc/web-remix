@@ -295,7 +295,7 @@
 }
 @media (min-width: 769px) {
 	.dh-hero-form__form {
-		grid-row: span 6;
+		grid-row: 1 / span 6;
 		padding: 2.1875rem;
 	}
 	.dh-hero-form__form--title {
