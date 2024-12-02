@@ -1,469 +1,179 @@
-
-
-
-.lcp-sell-today-wrapper {
-	position: relative;
-	background-image: var(--background-image);
-	background-size: cover;
-	background-position: 0% center;
-	overflow: hidden;
-	transition: all 0.3s ease;
-	z-index: 0;
-	display: flex;
-	justify-content: center;
-	flex-direction: column;
-	padding: 4.375rem 0 2.25rem;
-}
-@media (min-width: 1024px) {
-	.lcp-sell-today-wrapper {
-		flex-direction: row;
-		padding: 3.125rem 0;
-	}
-}
-.lcp-sell-today-wrapper .cw-fresh-start__testimonee {
-	width: 5rem;
-	height: 5rem;
-	overflow: hidden;
-	object-fit: cover;
-	object-position: top;
-	border-radius: 50%;
-	flex: 0 0 5rem;
-}
-.lcp-sell-today-wrapper .cw-fresh-start__testimonial {
-	display: flex;
-	gap: 1.375rem;
-	padding: 0rem 0;
-	box-shadow: none;
-	background-color: transparent;
-	border-radius: 10px;
-	font-size: 0.875rem;
-	flex-direction: row;
-	align-items: flex-start;
-	margin: 0;
-}
-.lcp-sell-today-wrapper .cw-fresh-start__testimonial cite {
-	font-weight: bold;
-	font-style: normal;
-}
-.lcp-sell-today-wrapper .cw-fresh-start__testimonial blockquote {
-	line-height: 1.4;
-}
-.lcp-sell-today-wrapper::before {
-	content: "";
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-
-	z-index: 1;
-	background: linear-gradient(180deg, rgba(0,41,76,0.4) 0%, rgba(0,41,76,0.4) 100%);
-
-}
-
-@media (min-width: 1024px) {
-	.lcp-sell-today-wrapper::before {
-		/* background: linear-gradient(
-			270deg,
-			rgba(0, 21, 37, 0) 0%,
-			rgba(0, 21, 37, 0.69) 50%,
-			rgba(0, 21, 37, 1) 100%
-		); */
-	}
-}
-
 .lcp-sell-today {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	/* padding: 2rem 1.25rem; */
-	gap: 1.125rem;
-	width: 100%;
-	height: 100%;
-	position: relative;
+    padding: 3.125rem 0;
+    text-align: center;
+    position: relative;
+    color: #fff;
 }
-.lcp-sell-today__media {
-	width: 100%;
-	position: absolute;
-	top: 0;
-	left: 0;
-	height: 100%;
+.lcp-sell-today__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
 }
-.lcp-sell-today__media::after{
-	content: '';
-position: absolute;
-width: 100%;
-height: 100%;
-left: 0;top: 0;
-
-background: linear-gradient(180deg, rgba(0,41,76,0.4) 0%, rgba(0,41,76,0.4) 100%);
-display: block;
-z-index: 1;
+.lcp-sell-today__bg > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: bottom;
 }
-
-.lcp-sell-today__fon {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
+.lcp-sell-today__bg::before {
+    content: '';
+    background: rgba(0, 41, 76, 0.7);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
 }
-.lcp-sell-today__foto {
-	position: absolute;
-	width: 294px;
-	bottom: 0;
-	left: 50%;
-	z-index: 2;
-	transform: translateX(-50%);
+.lcp-sell-today__content {
+    grid-column: span 4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    position: relative;
+    z-index: 2;
 }
-@media (min-width: 1024px) {
-	.lcp-sell-today {
-		/* padding: 2rem 7.75rem; */
-		flex-direction: row;
-		max-width: 1040px;
-		background-color: transparent;
-		/* gap: 3rem; */
-		justify-content: center;
-		padding: 0 1rem;
-		text-align: center;
-	}
-	.lcp-sell-today__media {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		left: 0;
-		/* z-index: 0; */
-	}
-	.lcp-sell-today__fon {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-	}
-
-.lcp-sell-today__foto {
-	position: absolute;
-	display: flex;
-z-index: 2;
-
-height: auto;
-object-fit: contain;
-bottom: 0;
-left: 50%;
-transform: translateX(-50%);
-/* min-height: 90%; */
+.lcp-sell-today__subtitle {
+    font-weight: 700;
+    line-height: 140%;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-size: .75rem;
+    color: #DFA01F;
 }
-}
-.lcp-sell-today-wrapper .cw-hero__content {
-	position: relative;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	text-align: center;
-	z-index: 1;
-	color: white;
-	gap: 1.5rem;
-	width: 100%;
-	max-width: 320px;
+.lcp-sell-today__titles{
+    display: flex;
+    flex-direction: column;
+    gap: 1.125rem;
 }
 
-@media (min-width: 1024px) {
-	.lcp-sell-today-wrapper .cw-hero__content {
-		align-items: start;
-		margin: 0;
-		flex: unset;
-		gap: 25px;
-		width: 100%;
-		max-width: 537px;
-	}
-	.lcp-sell-today__foto {
-		position: absolute;
-		display: flex;
-z-index: 2;
-
-width: 474px;
-height: auto;
-object-fit: contain;
-bottom: 0;
-left: 65%;
-/* min-height: 90%; */
-	}
+.lcp-sell-today__reviews {
+    align-items: center;
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
+.lcp-sell-today__reviews-text p {
+    margin: 0 0 0 5px;
+}
+.lcp-sell-today__reviews-stars-wrapper {
+    display: flex;
+}
+.lcp-sell-today__reviews {
+    flex-direction: column;
+    justify-content: center;
+}
+.lcp-sell-today__star {
+    height: 0.75rem;
+    width: 0.75rem;
+}
+.lcp-sell-today__reviews-stars-wrapper {
+    gap: 1px;
+    margin-bottom: 0;
+    margin-left: .5rem;
+}
+.lcp-sell-today__reviews .lcp-sell-today__reviews-stars-wrapper {
+    gap: 2px;
+    margin-left: 0;
+}
+.lcp-sell-today__reviews .lcp-sell-today__star {
+    height: 1rem;
+    width: 1rem;
+}
+.lcp-sell-today__button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
 }
 
 
-.lcp-sell-today-wrapper .cw-hero__reviews {
-	display: flex;
-	align-items: center;
-	justify-content: flex-start;
-	width: 100%;
+@media (min-width: 769px) {
+    .lcp-sell-today__subtitle {
+        font-size: 0.875rem;
+    }
+    .lcp-sell-today__reviews {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+    }
+    .lcp-sell-today__reviews-text p {
+        font-size: 1.125rem;
+    }
 }
 
-@media (min-width: 1024px) {
-	.lcp-sell-today-wrapper .cw-hero__reviews {
-		justify-content: start;
-		align-items: center;
-		display: flex;
-	}
-}
 
-.lcp-sell-today-wrapper .cw-hero__reviews-text {
-	margin-left: 0.25rem;
+.lcp-sell-today__statistic--list {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
 }
+.lcp-sell-today__statistic--item {
+    flex: 0 0 30%;
+    width: 30%;
+}
+.lcp-sell-today__statistic--amunt {
+    font-size: 1.5625rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.4rem;
+}
+.lcp-sell-today__statistic--amunt,
+.lcp-sell-today__statistic--text {
+    color: #fff;
+    font-style: normal;
+    text-align: left;
+    text-transform: uppercase;
+}
+.lcp-sell-today__statistic--text {
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 1.5;
+}
+.lcp-sell-today__statistic--text span {
+    display: block;
+}
+@media (min-width: 769px) {
+    .lcp-sell-today__statistic--list {
+        gap: 2rem;
+        justify-content: space-between;
+        max-width: 27.375rem;
+    }
+    .lcp-sell-today__statistic--amunt {
+        font-size: 2.5rem;
+    }
+    .lcp-sell-today__statistic--text {
+        font-size: 1rem;
+    }
+    .lcp-sell-today__statistic--text span {
+        display: inline;
+    }
+    .lcp-sell-today__statistic--item {
+        flex: 0 0 max-content;
+        max-width: 25%;
+        width: -moz-max-content;
+        width: max-content;
+    }
 
-.lcp-sell-today-wrapper .cw-hero__reviews-text p {
-	font-size: 0.75rem;
-	margin: 0;
-}
-
-@media (min-width: 1024px) {
-	.lcp-sell-today-wrapper .cw-hero__reviews-text p {
-		text-align: center;
-		font-size: 14px;
-	}
-	.lcp-sell-today-wrapper .cw-hero__reviews-text {
-		margin-left: 0;
-		margin-top: 5px;
-	}
-}
-
-.lcp-sell-today-wrapper .cw-hero__reviews-stars-wrapper {
-	display: flex;
-}
-
-.lcp-sell-today-wrapper .cw-hero__titles {
-	text-align: left;
-	display: flex;
-	flex-direction: column;
-	gap: 1rem;
-}
-
-.lcp-sell-today-wrapper .cw-hero__titles h1 {
-	font-size: 24px;
-	line-height: 1.2;
-	margin: 0;
-	/* margin-block-end: 0.83em; */
-}
-.lcp-sell-today-wrapper .cw-hero__titles span{
-
-		font-size: clamp(20px, 3vw + 0.5rem, 34px);
-		display: block;
-
-}
-.lcp-sell-today-wrapper .cw-hero__subtitle{
-	font-size: 14px;
-	font-weight: 700;
-	font-style: normal;
-	line-height: 1.4;
-	letter-spacing: 0.2em;
-	text-transform: uppercase;
-	color: #DFA01F;
-	/* margin-bottom: 0.8rem; */
-}
-.lcp-sell-today-wrapper .cw-hero__titles > p {
-	line-height: 1.4;
-	font-size: 16px;
-	margin: 0;
-	/* margin-block-end: 1em; */
-}
-
-@media (min-width: 1024px) {
-	.lcp-sell-today-wrapper .cw-hero__titles {
-		text-align: center;
-		gap: 10px;
-	}
-	.lcp-sell-today-wrapper .cw-hero__titles h1 {
-		font-size: 45px;
-	}
-	.lcp-sell-today-wrapper .cw-hero__titles > p {
-		margin-top: 18px;
-	}
-	/* .lcp-sell-today-wrapper .cw-hero__subtitle{font-size: 0.9rem;} */
-}
-
-.lcp-sell-today-wrapper .cw-hero__bullet-points {
-	display: flex;
-	flex-direction: column;
-	gap: 0.25rem;
-	color: #fff;
-
-	padding: 0;
-}
-
-@media (min-width: 1024px) {
-	.lcp-sell-today-wrapper .cw-hero__bullet-points {
-		display: flex;
-		flex-direction: column;
-		gap: 1rem;
-		margin: 0;
-	}
-}
-
-.lcp-sell-today-wrapper .cw-hero__bullet-point {
-	display: flex;
-	align-items: center;
-	text-align: left;
-	width: 100%;
-	position: relative;
-	z-index: 1;
-	padding: 0;
-	margin: 0;
-	/* text-wrap: nowrap; */
-}
-
-@media (min-width: 1024px) {
-	.lcp-sell-today-wrapper .cw-hero__bullet-point {
-		font-size: 1.25rem;
-	}
-}
-
-.lcp-sell-today-wrapper .cw-hero__bullet-point img {
-	margin-right: 0.625rem;
-}
-
-@media (min-width: 1024px) {
-	.lcp-sell-today-wrapper .cw-hero__trust-icons {
-		width: max-content;
-		display: flex;
-		gap: 1rem;
-	}
-}
-
-.lcp-sell-today-wrapper .cw-hero__trust-icons img {
-	height: 2.1875rem;
-	object-fit: contain;
-}
-
-.lcp-sell-today-wrapper .cw-hero__statistic--list {
-	width: 100%;
-	list-style: none;
-	display: flex;
-	justify-content: space-between;
-	padding: 0;
-	margin: 0;
-}
-.lcp-sell-today-wrapper .cw-hero__statistic--item{
-	flex: 0 0 30%;
-	width: 30%;
-}
-.lcp-sell-today-wrapper .cw-hero__statistic--amunt {
-	font-style: normal;
-	font-weight: 700;
-	font-size: 25px;
-	line-height: 1.2;
-	text-transform: uppercase;
-	color: #FFFFFF;
-	margin-bottom: 0.4rem;
-}
-.lcp-sell-today-wrapper .cw-hero__statistic--text {
-	font-style: normal;
-	font-weight: 400;
-	font-size: 12px;
-	line-height: 1.5;
-	text-transform: uppercase;
-	color: #FFFFFF;
-}
-.lcp-sell-today-wrapper .cw-hero__cta {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	gap: 0.5rem;
-	background-color: #dfa01f;
-	color: white;
-	border-radius: 70px;
-	width: 100%;
-	max-width: 100%;
-	font-size: 18px;
-	font-weight: 700;
-	/* margin-right: 1rem; */
-	text-transform: uppercase;
-	text-decoration: none;
-	margin-bottom: 1rem;
-	padding-block: 0.875rem;
-}
-@media (min-width: 1024px) {
-	.lcp-sell-today-wrapper .cw-hero__statistic--list {
-		gap: 3rem;
-		justify-content: space-between;
-		max-width: 466px;
-		margin: 0 auto;
-	}
-	.lcp-sell-today-wrapper .cw-hero__statistic--text {
-		font-size: 16px;
-		line-height: 1.5;
-	}
-.lcp-sell-today-wrapper .cw-hero__statistic--amunt {
-	font-size: 40px;
-}
-.lcp-sell-today-wrapper .cw-hero__statistic--item{
-	flex: 0 0 max-content;
-	width: max-content;
-	max-width: 31%;
-}
-
-.lcp-sell-today-wrapper .cw-hero__footer-block{
-	display: flex;
-	align-items: center;
-	width: 100%;
-	justify-content: flex-start;
-}
-.lcp-sell-today-wrapper .cw-hero__cta {
-	margin: 0;
-	margin-right: 1rem;
-}
-.lcp-sell-today-wrapper .cw-hero__footer-block .cw-hero__reviews {
-	flex-direction: column;
-	justify-content: flex-start;
-	align-items: flex-start;
-	display: flex;
-	width: 100%;
-}
+    .lcp-sell-today__content {
+        grid-column: span 12;
+        max-width: 48.875rem;
+        margin: 0 auto;
+    }
+    .lcp-sell-today {
+        padding: 6.25rem 0;
+    }
+    .lcp-sell-today__reviews-text p {
+        margin: 5px 0 0;
+    }
+    .lcp-sell-today__content > p {
+        max-width: 30.125rem;
+    }
 
 }
-
-@media (min-width: 1024px) {
-	.lcp-sell-today-wrapper .cw-hero__cta {
-		font-size: 18px;
-		max-width: 220px;
-		padding-block: 20px;
-		margin: 0;
-	}
-	.lcp-sell-today-wrapper .cw-hero__cta img{
-		width: 15px;
-		height: auto;
-	}
-
-	.lcp-sell-today .cw-hero__footer-block {
-		flex-direction: column;
-		justify-content: center;
-	}
-	.lcp-sell-today-wrapper .cw-hero__footer-block .cw-hero__reviews {
-		align-items: center;
-		justify-content: center;
-		margin-top: 17px;
-	}
-}
-
-/* .lcp-sell-today-wrapper .cw-hero__form {
-	flex: 0 0 45%;
-	min-height: 60vh;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-
-	background-color: white;
-	border-radius: 20px;
-	z-index: 1;
-}
-
-.lcp-sell-today-wrapper .cw-hero__form .gform_wrapper {
-	background-color: white;
-	padding: 1.375rem 1.875rem;
-	z-index: 1;
-	position: relative;
-	border-radius: 20px;
-}
-
-just for development
-#field_1_4 {
-	display: none !important;
-} */
