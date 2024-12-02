@@ -1,74 +1,54 @@
-.comparison {
-	display: flex;
-	flex-direction: column;
-	gap: 2rem;
-	padding-inline: 1rem;
-	text-align: center;
-	background: none;
-	margin-bottom: 3.75rem;
+.sell-fast-comparison {
+	padding: 2rem 0;
 }
-
-@media (min-width: 1024px) {
-	.comparison {
-		margin-bottom: 4.5rem;
-		max-width: 82rem;
-		gap: 3.25rem;
-	}
-}
-
-.comparison__text {
-	display: flex;
-	flex-direction: column;
-	gap: 1.5rem;
-}
-
-.comparison h2 {
-	font-size: 2.25rem;
-	color: var(--primaryBlue2);
-}
-
-@media (min-width: 1024px) {
-	.comparison h2 {
-		font-size: 3rem;
-	}
-}
-
-.comp-vs {
-	display: inline-block;
-	position: relative;
-	font-size: 2.375rem;
-	font-weight: 300;
+.sell-fast-comparison__text mark {
+	color: inherit;
+	font-weight: 100;
 	font-style: italic;
-	z-index: 0;
-	padding: 0.5rem;
-}
-
-.comp-vs::before {
-	content: "";
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-image: var(--text-vector);
+	background-image: url('data:image/svg+xml,%3Csvg width="42" height="27" viewBox="0 0 42 27" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M37.7884 21.3239L37.1304 25.5468L9.97916 26.0366L4.84081 24.1626L0.610554 23.9001L1.01612 16.5876L1.70008 13.5356L1.63362 11.1638L3.49681 0.666284L10.2524 4.55971L17.9557 3.83063L28.3231 5.44597L41.8903 2.99023L39.5075 18.2833L37.7884 21.3239Z" fill="%23DFA01F" /%3E%3C/svg%3E');
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
-	z-index: -1;
-	transform: rotate(4.5deg);
+	background-color: transparent;
+	padding: 0 .5rem;
 }
 
-.comparison p {
-	font-size: 1.375rem;
+.sell-fast-comparison-column.sell-fast-comparison-column--first {
+	align-items: flex-start;
 }
 
-@media (min-width: 1024px) {
-	.comparison p {
-		font-size: 1.5rem;
+.sell-fast-comparison-row:not(.row-header) .doctor-homes {
+	background-color: #475568;
+}
+
+.sell-fast-comparison-row:last-child .sell-fast-comparison-column {
+	border-radius: 0 0 10px 10px;
+}
+
+
+.sell-fast-comparison__text {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+	grid-column: span 4;
+	margin-bottom: 2rem;
+	text-align: center;
+	align-items: center;
+}
+
+.sell-fast-comparison h2 {
+	color: var(--primaryBlue2);
+}
+.sell-fast-comparison p {
+	display: none;
+}
+@media (min-width: 769px) {
+	.sell-fast-comparison p {
+		display: block;
 	}
 }
 
-.comparison-table {
+.sell-fast-comparison-table {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -76,100 +56,88 @@
 	margin: 0 auto;
 	overflow-x: auto;
 	background: none; /* Ensure no background color */
+	grid-column: span 4;
 }
 
-.comparison-logo {
+#comparison-logo {
 	width: 5.25rem;
 	height: auto;
 }
 
-@media (min-width: 1024px) {
-	.comparison-logo {
+@media (min-width: 769px) {
+	#comparison-logo {
 		width: 12.125rem;
 	}
 }
 
-.comparison-row {
+.sell-fast-comparison-row {
 	display: flex;
 	width: 100%;
 	justify-content: space-between;
 	position: relative; /* Ensure pseudo-elements are positioned correctly */
 }
 
-.comparison-row.header > * {
+.sell-fast-comparison-row.row-header > * {
 	border-radius: 10px 10px 0 0;
+	font-size: 0.875rem;
+	line-height: 93%;
 }
 
-.comparison-column--first > span {
+.sell-fast-comparison-column--first > span {
 	z-index: 1;
+	font-size: .75rem;
+	text-align: left;
 }
 
-@media (min-width: 1024px) {
-	.comparison-row.header {
-		height: 12.5rem;
-	}
+@media (min-width: 769px) {
 
-	.comparison-row.header > .comparison-column {
+	.sell-fast-comparison-row.row-header > .sell-fast-comparison-column {
 		text-align: center;
 	}
 
-	.comparison-column--first {
+	.sell-fast-comparison-column--first {
 		padding: 1.5rem 5rem;
 	}
 
-	.comparison-row.header,
-	.comparison-column--first {
+	.sell-fast-comparison-row.row-header,
+	.sell-fast-comparison-column--first {
 		font-size: 1.5rem;
 	}
 }
 
-@media (min-width: 1024px) {
-	.comparison-row.header > div:nth-child(1) {
-		height: 25%;
-		align-self: end;
-		background-color: white !important;
-	}
-
-	.comparison-row.header > div:nth-child(2) {
-		padding-block: 3.375rem;
-	}
-
-	.comparison-row.header > div:nth-child(3) {
-		height: 75%;
-		align-self: end;
+@media (min-width: 769px) {
+	.sell-fast-comparison-row.row-header > div:nth-child(2) {
+		padding: 2rem 0 1.25rem;
 	}
 }
 
-@media (min-width: 1024px) {
-	div.comparison-row:last-child > * {
+@media (min-width: 769px) {
+	div.sell-fast-comparison-row:last-child > * {
 		border-radius: 0 0 10px 10px;
 	}
 }
 
-div.comparison-row:nth-child(1) > div:nth-child(1) {
+div.sell-fast-comparison-row:nth-child(1) > div:nth-child(1) {
 	background-color: transparent;
+	position: relative;
 }
-
-div.comparison-row:nth-child(2) > div:nth-child(1) {
+div.sell-fast-comparison-row:nth-child(1) > div:nth-child(1)::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 1.5rem;
+	background: #fff;
 	border-radius: 10px 10px 0 0;
 }
 
-.comparison-row--uneven .comparison-column::after {
-	content: "";
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-color: var(--primaryGray);
-	opacity: 0.3;
-	pointer-events: none; /* Ensure the overlay does not interfere with clicks */
-	z-index: 0; /* Ensure it is below the text */
+div.sell-fast-comparison-row:nth-child(2) > div:nth-child(1) {
+	border-radius: 10px 10px 0 0;
 }
 
-.comparison-column {
+.sell-fast-comparison-column {
 	flex: 1;
-	padding: 0.5rem;
 	text-align: center;
 	display: flex;
 	flex-direction: column;
@@ -180,17 +148,17 @@ div.comparison-row:nth-child(2) > div:nth-child(1) {
 	font-weight: 600;
 	position: relative; /* Ensure content is above the pseudo-element */
 	overflow: hidden; /* Ensure pseudo-element is contained */
+	padding: .5rem;
+}
+.sell-fast-comparison-row.row-header .sell-fast-comparison-column{
+	padding: 0.875rem 0.5625rem;
 }
 
-@media (min-width: 1024px) {
-	.comparison-row > .comparison-column {
+@media (min-width: 769px) {
+	.sell-fast-comparison-row > .sell-fast-comparison-column {
 		align-items: start;
-		padding: 1.5rem 2rem 1.5rem 3.25rem;
+		padding: 1rem 2rem;
 		text-align: left;
-	}
-
-	.comparison-column.doctor-homes {
-		padding: 1.5rem 4.75rem;
 	}
 }
 
@@ -198,11 +166,12 @@ div.comparison-row:nth-child(2) > div:nth-child(1) {
 	display: flex;
 	flex-direction: column;
 	gap: 0.25rem;
-	font-size: 0.875rem;
 	z-index: 1; /* Ensure content is above the pseudo-element */
+	font-size: .75rem;
+	line-height: 100%;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 769px) {
 	.column__content {
 		flex-direction: row;
 		gap: 0.625rem;
@@ -211,29 +180,102 @@ div.comparison-row:nth-child(2) > div:nth-child(1) {
 	}
 }
 
-.comparison-column.doctor-homes {
+.sell-fast-comparison-column.doctor-homes {
 	background-color: var(--primaryBlue2);
 	color: white;
-	margin-inline: 0.25rem;
 }
-.comparison-column > img {
-	height: 40px;
+
+.sell-fast-comparison-column > img {
+	height: 1.875rem;
 	margin: 0 auto;
 }
-@media (min-width: 1024px) {
-	.comparison-column > img {
-		height: 95px;
+@media (min-width: 769px) {
+	.sell-fast-comparison-column > img {
+		height: 3.125rem;
 	}
 }
-.comparison-column .column__content img {
+.sell-fast-comparison-column .column__content img {
 	width: 1.125rem;
 	height: auto;
 	margin: 0 auto;
 	z-index: 1; /* Ensure images are above the pseudo-element */
 }
 
-@media (min-width: 1024px) {
-	.comparison-column .column__content img {
+@media (min-width: 769px) {
+	.sell-fast-comparison-column .column__content img {
 		width: 2.75rem;
+	}
+}
+@media (min-width: 769px) {
+	.sell-fast-comparison__text,
+	.sell-fast-comparison-table {
+		grid-column: span 12;
+	}
+
+	div.sell-fast-comparison-row:nth-child(1) > div:nth-child(1)::before {
+		content: none;
+	}
+
+	.sell-fast-comparison-row.row-header .sell-fast-comparison-column {
+		padding: 2rem 0 1.5rem;
+		text-align: center;
+		align-items: center;
+		font-weight: 600;
+		font-size: 1.375rem;
+		line-height: 109%;
+		flex: unset;
+		flex-basis: 0;
+		flex-grow: 1;
+	}
+
+	.sell-fast-comparison-column {
+		flex: unset;
+		flex-basis: 0;
+		flex-grow: 1;
+		margin: 0 0.25rem;
+	}
+	.sell-fast-comparison-row > .sell-fast-comparison-column.sell-fast-comparison-column--first > span {
+		display: block;
+		padding: 0 1rem;
+		font-size: 1.125rem;
+	}
+
+	.sell-fast-comparison-column.sell-fast-comparison-column--first {
+		position: relative;
+	}
+	.sell-fast-comparison-column.sell-fast-comparison-column--first::before {
+		content: '';
+		position: absolute;
+		top: 1rem;
+		bottom: 1rem;
+		left: 2rem;
+		right: 2rem;
+		background: #F0F0F0;
+	}
+	.sell-fast-comparison-row:not(.row-header) .doctor-homes{
+		background-color: var(--primaryBlue2);
+	}
+	.sell-fast-comparison-row.row-header .sell-fast-comparison-column:nth-child(2){
+		border-bottom: 1px solid #fff;
+	}
+	.sell-fast-comparison-row.row-header .sell-fast-comparison-column:nth-child(3){
+		border-bottom: 1px solid #000;
+	}
+	.sell-fast-comparison-row.row-header .sell-fast-comparison-column:nth-child(3) > span{
+		display: block;
+		max-width: 14.125rem;
+		margin: 0 auto;
+	}
+	.sell-fast-comparison-row:nth-child(2) .sell-fast-comparison-column{
+		padding-top: 2rem;
+	}
+	.sell-fast-comparison-row:last-child .sell-fast-comparison-column{
+		padding-bottom: 2rem;
+	}
+	.sell-fast-comparison-row:nth-child(2) .sell-fast-comparison-column.sell-fast-comparison-column--first::before{
+		top: 2rem;
+	}
+	.sell-fast-comparison-row:last-child .sell-fast-comparison-column.sell-fast-comparison-column--first::before{
+		bottom: 2rem;
 	}
 }

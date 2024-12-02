@@ -1,40 +1,13 @@
 .why-choose-us {
-	padding: 2rem 1rem 0;
+	padding: 2rem 0;
 	text-align: center;
-	margin-bottom: 4.5rem;
 }
 
+.why-choose-us__header {
+	grid-column: span 4;
+}
 .why-choose-us__header h2 {
-	font-size: 2.5rem;
-	margin-bottom: 2.5rem;
 	color: var(--primaryBlue2);
-}
-
-.why-choose-us__list {
-	display: flex;
-	justify-content: center;
-	flex-direction: column;
-	gap: 2rem;
-	max-width: 78rem;
-}
-
-.why-choose-us__item--content {
-	display: flex;
-	flex-direction: column;
-	gap: 1.5rem;
-	align-items: center;
-	text-align: center;
-	padding-inline: 1.875rem;
-}
-
-@media (min-width: 1024px) {
-	.why-choose-us__item--content {
-		flex-direction: row;
-		text-align: left;
-	}
-	.why-choose-us__list {
-		margin: 0 auto;
-	}
 }
 
 .why-choose-us__item--image {
@@ -48,10 +21,6 @@
 	flex-shrink: 0;
 }
 
-.why-choose-us__item--content img {
-	max-width: 50px;
-}
-
 .why-choose-us__item--text {
 	display: flex;
 	flex-direction: column;
@@ -60,9 +29,63 @@
 
 .why-choose-us__item h3 {
 	color: var(--primaryBlue2);
-	font-size: 2.25rem;
 }
 
-.why-choose-us__item p {
-	font-size: 1.375rem;
+.why-choose-us__item {
+	grid-column: span 4;
+}
+
+.why-choose-us .grid-container {
+	row-gap: 2rem;
+}
+.why-choose-us__item--image {
+	height: 4rem;
+	width: 4rem;
+	margin: 0 auto 1.5rem;
+}
+.why-choose-us__item--image img {
+	width: 2.375rem;
+	height: 2.375rem;
+}
+
+@media (min-width: 769px) {
+	.why-choose-us__header {
+		grid-column: span 12;
+	}
+
+	.why-choose-us__item {
+		display: grid;
+		grid-column: span 12;
+		grid-template-columns: subgrid;
+		align-items: start;
+	}
+
+	.why-choose-us__item--image {
+		grid-column: 1/1;
+		position: relative;
+		margin: 0;
+		width: auto;
+		height: auto;
+	}
+
+	.why-choose-us__item--text {
+		grid-column: 2/13;
+		text-align: left;
+	}
+	.why-choose-us__item--image img {
+		width: 56%;
+		height: 56%;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	.why-choose-us__item--image::before {
+		content: '';
+		display: block;
+		width: 100%;
+		padding-top: 100%;
+	}
+
 }

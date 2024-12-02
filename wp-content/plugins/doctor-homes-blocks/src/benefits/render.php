@@ -1,6 +1,5 @@
 <?php
 $title = $attributes['title'] ?? '';
-$benefit_items = $attributes['position'] ?? [];
 $paragraph = $attributes['paragraph'] ?? '';
 $benefit_items = $attributes['benefitItems'] ?? [];
 
@@ -9,7 +8,9 @@ $benefit_items = $attributes['benefitItems'] ?? [];
     <div class="grid-container">
         <div class="benefits__text">
             <h2 class="title-2"><?php echo esc_html($title); ?></h2>
-            <p class="title-4"><?php echo esc_html($paragraph); ?></p>
+            <?php if($paragraph): ?>
+                <p class="title-4"><?php echo esc_html($paragraph); ?></p>
+            <?php endif; ?>
         </div>
     </div>
     <div class="grid-container">
@@ -23,6 +24,3 @@ $benefit_items = $attributes['benefitItems'] ?? [];
         <?php endforeach; ?>
     </div>
 </section>
-<?php
-
-?>
