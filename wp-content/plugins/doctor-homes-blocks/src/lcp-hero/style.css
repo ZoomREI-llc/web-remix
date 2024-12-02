@@ -9,7 +9,7 @@
 	display: flex;
 	justify-content: center;
 }
-@media (min-width: 768px) {
+@media (min-width: 769px) {
 	.lcp-hero-wrapper {
 		background-image: var(--background-image-medium);
 	}
