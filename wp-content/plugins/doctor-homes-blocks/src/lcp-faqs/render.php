@@ -31,18 +31,23 @@ $faqs = [
 ?>
 
 <section class="faq-section">
-    <h2 class="faq-title">Frequently Asked Questions</h2>
-    <div class="faq-items">
-        <?php foreach ($faqs as $faq) : ?>
-            <div class="faq-item">
-                <div class="faq-question">
-                    <?php echo esc_html($faq['question']); ?>
-                    <?php echo get_responsive_image('lcp-faqs/polygon-1', 'Arrow'); ?>
-                </div>
-                <div class="faq-answer">
-                    <?php echo wp_kses_post($faq['answer']); ?>
-                </div>
+    <div class="grid-container">
+        <h2 class="faq-title title-2">Frequently Asked Questions</h2>
+        <div class="faq-section__content">
+            <div class="faq-items">
+                <?php foreach ($faqs as $faq) : ?>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <?php echo esc_html($faq['question']); ?>
+                            <?php echo get_responsive_image('lcp-faqs/polygon', 'Polygon Icon'); ?>
+                        </div>
+                        <div class="faq-answer">
+                            <?php echo wp_kses_post($faq['answer']); ?>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
             </div>
-        <?php endforeach; ?>
+            <a href="<?php echo esc_url(home_url('/faqs')); ?>">More FAQs >></a>
+        </div>
     </div>
 </section>

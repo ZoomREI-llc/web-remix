@@ -32,43 +32,13 @@ $testimonials = [
     ]
 ];
 ?>
-<section class="testimonial-carousel-wrapper">
-    <div class="testimonial-carousel-text">
-        <h2>See What Our Customers Are Saying</h2>
-        <p></p>
 
-        <div class="swiper-navigation">
-            <button type="button" class="swiper-navigation__btn js-swiper-prev">
-                <?php echo get_responsive_image('lcp-testimonials/navigation-arrow', 'Previous'); ?>
-            </button>
-            <button type="button" class="swiper-navigation__btn js-swiper-next">
-                <?php echo get_responsive_image('lcp-testimonials/navigation-arrow', 'Next'); ?>
-            </button>
-        </div>
-    </div>
-    <div class="testimonial-carousel">
-        <div class="swiper">
-            <div class="swiper-wrapper">
-                <?php foreach ($testimonials as $index => $testimonial) : ?>
-                    <div class="swiper-slide testimonial__testimonial testimonial">
-                        <div class="testimonial-image-wrapper">
-                            <div class="testimonial-image-border">
-                                <?php echo get_responsive_image($testimonial['asset'], $testimonial['name'], 'testimonial__image'); ?>
-                            </div>
-                        </div>
-                        <div class="carousel-item__content">
-                            <span class="testimonial-name"><?php echo esc_html($testimonial['name']); ?></span>
-                            <div class="testimonial-rating">
-                                <?php for ($i = 0; $i < $testimonial['rating']; $i++) : ?>
-                                    <?php echo get_responsive_image('sell-fast-testimonials/star', 'Star Icon', 'testimonial__star'); ?>
-                                <?php endfor; ?>
-                            </div>
-                            <p class="testimonial__text"><?php echo esc_html($testimonial['text']); ?></p>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-            </div>
-            <div class="swiper-pagination"></div>
+<section class="testimonial-carousel-wrapper">
+    <div class="grid-container">
+        <div class="testimonial-carousel-text">
+            <h2 class="title-2">What People Are Saying</h2>
+            <p class="title-4"></p>
+
             <div class="swiper-navigation">
                 <button type="button" class="swiper-navigation__btn js-swiper-prev">
                     <?php echo get_responsive_image('lcp-testimonials/navigation-arrow', 'Previous'); ?>
@@ -76,6 +46,41 @@ $testimonials = [
                 <button type="button" class="swiper-navigation__btn js-swiper-next">
                     <?php echo get_responsive_image('lcp-testimonials/navigation-arrow', 'Next'); ?>
                 </button>
+            </div>
+        </div>
+
+
+        <div class="testimonial-carousel">
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    <?php foreach ($testimonials as $index => $testimonial) : ?>
+                        <div class="swiper-slide testimonial__testimonial testimonial">
+                            <div class="testimonial-image-wrapper">
+                                <div class="testimonial-image-border">
+                                    <?php echo get_responsive_image($testimonial['asset'], $testimonial['name'], 'testimonial__image'); ?>
+                                </div>
+                            </div>
+                            <div class="carousel-item__content">
+                                <span class="testimonial-name"><?php echo esc_html($testimonial['name']); ?></span>
+                                <div class="testimonial-rating">
+                                    <?php for ($i = 0; $i < $testimonial['rating']; $i++) : ?>
+                                        <?php echo get_responsive_image('sell-fast-testimonials/star', 'Star Icon', 'testimonial__star'); ?>
+                                    <?php endfor; ?>
+                                </div>
+                                <p class="testimonial__text"><?php echo esc_html($testimonial['text']); ?></p>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-navigation">
+                    <button type="button" class="swiper-navigation__btn js-swiper-prev">
+                        <?php echo get_responsive_image('lcp-testimonials/navigation-arrow', 'Previous'); ?>
+                    </button>
+                    <button type="button" class="swiper-navigation__btn js-swiper-next">
+                        <?php echo get_responsive_image('lcp-testimonials/navigation-arrow', 'Next'); ?>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
