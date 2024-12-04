@@ -91,15 +91,20 @@ export default function Edit({ attributes, setAttributes }) {
 
 	const fieldOptions = [
 		{ label: "Select", value: "" },
-		{ label: "Full Name", value: "fullName" },
-		{ label: "Phone", value: "phone" },
-		{ label: "Email", value: "email" },
+
 		{ label: "Full Address", value: "propertyAddress" },
+		{ label: "Full Name", value: "fullName" },
+		{ label: "Email", value: "email" },
+		{ label: "Phone", value: "phone" },
+		{ label: "Where did you hear about us", value: "heard_about_us" },
+		{ label: "Message", value: "message" },
+
 		{ label: "Street Address", value: "street" },
 		{ label: "City", value: "city" },
 		{ label: "State", value: "state" },
 		{ label: "Zipcode", value: "zipcode" },
 		{ label: "Country", value: "country" },
+
 		{ label: "UTM Source", value: "utm_source" },
 		{ label: "UTM Term", value: "utm_term" },
 		{ label: "UTM Campaign", value: "utm_campaign" },
@@ -118,7 +123,7 @@ export default function Edit({ attributes, setAttributes }) {
 	];
 	const presets = [
 		{ label: "Select", value: "" },
-		{ label: "CMS", value: "cms" },
+		{ label: "CMS", value: "cmsContact" },
 		{ label: "sGTM", value: "sgtm" },
 	];
 

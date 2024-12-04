@@ -4,8 +4,8 @@ import { validate } from "./modules/validate";
 import { telInputMask } from "./modules/telInputMask";
 import { inputSelect } from "./modules/inputSelect";
 
-function leadFormCallback() {
-    let leadForms = document.querySelectorAll('.lead-form:not(.is-initialized)')
+function leadFormContactCallback() {
+    let leadForms = document.querySelectorAll('.lead-form-final:not(.is-initialized)')
     if(!leadForms.length){
         return;
     }
@@ -13,6 +13,9 @@ function leadFormCallback() {
         let leadFormConfig = JSON.parse(document.getElementById('form-config-'+leadForm.id).innerHTML)
         let phoneInput = leadForm.querySelector('[data-validation="tel-mask"]')
         let formName = leadForm.closest('[data-form-name]') ? leadForm.closest('[data-form-name]').dataset.formName : leadForm.name
+        let showHideContainer = leadForm.closest('section') || leadForm
+        let showOnSuccess = showHideContainer.querySelector('.show-on-success')
+        let hideOnSuccess = showHideContainer.querySelector('.hide-on-success')
 
         leadForm.classList.add('is-initialized')
 
@@ -34,7 +37,7 @@ function leadFormCallback() {
                 email: formData.get('email'),
                 phone: formData.get('phone')
             });
-            trigger(leadForm, 'lead-form-submit')
+            trigger(leadForm, 'lead-form-final-submit')
 
             if (formBtn) {
                 formBtn.classList.add('is-loading');
@@ -50,6 +53,18 @@ function leadFormCallback() {
 
                         document.location.href = leadFormConfig.redirect + (redirectParams ? '?'+redirectParams : '')
                     }
+
+                    if(hideOnSuccess){
+                        fadeOut(hideOnSuccess, 300, function () {
+                            if(showOnSuccess) {
+                                fadeIn(showOnSuccess, 300)
+                            }
+                        })
+                    } else if(showOnSuccess){
+                        fadeIn(showOnSuccess, 300)
+                    }
+
+                    trigger(leadForm, 'lead-form-final-success')
                 }
             };
             xhr.send(formData);
@@ -74,13 +89,44 @@ function leadFormCallback() {
                     inputState.value = addressInput.dataset.state
                     inputZipcode.value = addressInput.dataset.zipcode
                 }
-                trigger(leadForm, 'lead-form-interaction')
+                trigger(leadForm, 'lead-form-final-interaction')
             });
             if(addressInputBtn) {
                 addressInputBtn.addEventListener('click', function (e) {
                     addressInput.closest('.input').classList.remove('is-error')
                 })
             }
+        }
+
+        function getValuesFromQueue() {
+            let getParams = new URLSearchParams(window.location.search)
+            let glossary = {
+                'full-name': 'fullName',
+                'phone': 'phone_masked',
+                'propaddress': 'propertyAddress',
+                'propstreet': 'street',
+                'propcity': 'city',
+                'propstate': 'state',
+                'propzip': 'zipcode',
+            }
+
+            getParams.forEach((value, key) => {
+                let input = leadForm.querySelector(`[name="${key}"]`)
+                let glossaryInput = leadForm.querySelector(`[name="${glossary[key] ? glossary[key] : ''}"]`)
+
+                if(input){
+                    input.value = value
+                    if(input.dataset.validation === "tel-mask"){
+                        trigger(input, 'input')
+                    }
+                }
+                if(glossaryInput){
+                    glossaryInput.value = value
+                    if(glossaryInput.dataset.validation === "tel-mask"){
+                        trigger(glossaryInput, 'input')
+                    }
+                }
+            })
         }
 
         telInputMask(phoneInput, {
@@ -93,11 +139,12 @@ function leadFormCallback() {
         })
         initAddress()
         inputSelect()
+        getValuesFromQueue()
     })
 }
 
 document.addEventListener("DOMContentLoaded", function () {
     sessionStorageUTM()
 
-    loadScript(`https://maps.googleapis.com/maps/api/js?key=${formConfig.googleMapsApiKey}&libraries=places`, leadFormCallback);
+    loadScript(`https://maps.googleapis.com/maps/api/js?key=${formConfig.googleMapsApiKey}&libraries=places`, leadFormContactCallback);
 });

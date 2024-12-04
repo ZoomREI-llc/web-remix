@@ -1,9 +1,9 @@
 {
     "$schema": "https://schemas.wp.org/trunk/block.json",
     "apiVersion": 3,
-    "name": "doctor-homes/lead-form",
+    "name": "doctor-homes/lead-form-contact",
     "version": "0.1.0",
-    "title": "Lead Form V2",
+    "title": "Lead Form Contact V2",
     "category": "widgets",
     "icon": "feedback",
     "description": "Form block built for the front-page.",
@@ -18,16 +18,16 @@
     "attributes": {
         "btnText": {
             "type": "string",
-            "default": "Get My Offer"
+            "default": "Send Message"
         },
         "redirectUrl": {
             "type": "string",
-            "default": "/step-2"
+            "default": ""
         },
         "webhooks": {
             "type": "array",
             "default": [
-                {"url":"https://workflow-automation.podio.com/catch/2kt203ir6i3uk64","usePreset":true,"fieldsPreset":"cms","fieldsMapping":[]},
+                {"url":"https://workflow-automation.podio.com/catch/2kt203ir6i3uk64","usePreset":true,"fieldsPreset":"cmsContact","fieldsMapping":[]},
                 {"url":"https://server-side-tagging-ued2wljvbq-uc.a.run.app/lead","usePreset":true,"fieldsPreset":"sgtm","fieldsMapping":[]}
             ]
         },

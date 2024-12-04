@@ -1,9 +1,9 @@
 {
     "$schema": "https://schemas.wp.org/trunk/block.json",
     "apiVersion": 3,
-    "name": "doctor-homes/lead-form",
+    "name": "doctor-homes/lead-form-final",
     "version": "0.1.0",
-    "title": "Lead Form V2",
+    "title": "Lead Form Step 2 V2",
     "category": "widgets",
     "icon": "feedback",
     "description": "Form block built for the front-page.",
@@ -18,32 +18,22 @@
     "attributes": {
         "btnText": {
             "type": "string",
-            "default": "Get My Offer"
+            "default": "SUBMIT"
         },
         "redirectUrl": {
             "type": "string",
-            "default": "/step-2"
+            "default": ""
         },
         "webhooks": {
             "type": "array",
             "default": [
-                {"url":"https://workflow-automation.podio.com/catch/2kt203ir6i3uk64","usePreset":true,"fieldsPreset":"cms","fieldsMapping":[]},
+                {"url":"https://workflow-automation.podio.com/catch/2kt203ir6i3uk64","usePreset":true,"fieldsPreset":"cmsFinal","fieldsMapping":[]},
                 {"url":"https://server-side-tagging-ued2wljvbq-uc.a.run.app/lead","usePreset":true,"fieldsPreset":"sgtm","fieldsMapping":[]}
             ]
         },
         "redirectQuery": {
             "type": "array",
-            "default": [
-                {"key":"full-name","field":"fullName"},
-                {"key":"phone","field":"phone"},
-                {"key":"email","field":"email"},
-                {"key":"propaddress","field":"propertyAddress"},
-                {"key":"propstreet","field":"street"},
-                {"key":"propcity","field":"city"},
-                {"key":"propstate","field":"state"},
-                {"key":"propzip","field":"zipcode"},
-                {"key":"propcountry","field":"country"}
-            ]
+            "default": []
         }
     },
     "style": "file:./style-index.css"
