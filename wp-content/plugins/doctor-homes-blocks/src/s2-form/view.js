@@ -82,7 +82,7 @@ function s2FormCallback() {
 		timing: 500
 	})
 
-	jQuery(document).bind('gform_confirmation_loaded', function(event, formId){
+	document.addEventListener('lead-form-final-success', function(){
 		pagesInstance.show('thanks')
 	});
 }

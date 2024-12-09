@@ -2,23 +2,23 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	margin-bottom: 1rem;
+	flex-direction: column;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 769px) {
 	.dh-hero__reviews {
 		grid-column: 1 / 5;
 		grid-row: 1;
 		justify-content: start;
 		align-items: center;
 		display: flex;
-		margin-bottom: 1.5rem;
+		flex-direction: row;
 		order: 0;
 	}
 }
 
 .dh-hero__reviews-text {
-	margin-left: 0.25rem;
+	margin-top: 0.25rem;
 }
 
 .dh-hero__reviews-text p {
@@ -28,41 +28,32 @@
 .dh-hero__reviews-stars-wrapper {
 	display: flex;
 }
-@media (min-width: 1024px) {
+@media (min-width: 769px) {
 	.dh-hero__reviews-text p {
 		font-size: 1.125rem;
 		line-height: 1.375rem;
 	}
+
+	.dh-hero__reviews-text {
+		margin-top: 0;
+		margin-left: 0.25rem;
+	}
 }
 
 .dh-banner-form {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	padding: 4rem 1rem;
 	position: relative;
 	background-color: var(--primaryBlue1);
 	overflow: hidden;
 	transition: all 0.3s ease;
 	text-align: center;
-	margin-bottom: 6.25rem;
-	width: 100%;
 	color: white;
-	gap: 1.5rem;
-	/* min-height: 34rem; */
+	padding: 2.75rem 0;
+	margin: 2rem 0;
+	min-height: 31rem;
 }
 
 .dh-banner-form > * {
 	z-index: 1;
-}
-
-@media (min-width: 1024px) {
-	/* .dh-banner-form {
-		text-align: left;
-		align-items: center;
-		margin-bottom: 3.75rem;
-	} */
 }
 
 .dh-banner-form::before {
@@ -79,7 +70,7 @@
 	z-index: 0;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 769px) {
 	.dh-banner-form::before {
 		background-image: var(--background-image-medium);
 	}
@@ -100,17 +91,7 @@
 	max-width: 40rem;
 }
 
-@media (min-width: 1024px) {
-	/* .dh-hero__content form {
-		grid-column: 1 / 6;
-		grid-row: 4;
-		display: flex;
-		align-items: center;
-	} */
-}
-
 .dh-banner-form h4 {
-	font-size: 2.25rem;
 	font-weight: 600;
 }
 
@@ -118,10 +99,6 @@
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
-	/* gap: 1rem; */
-	font-family: var(--font-ruddy);
-	font-size: 2.75rem;
-	font-weight: 700;
 	color: var(--secondaryBeige);
 }
 
@@ -131,4 +108,32 @@
 
 .dh-banner-form__doctor-homes {
 	white-space: nowrap;
+}
+
+.dh-banner-form__content {
+	grid-column: span 4;
+	position: relative;
+	z-index: 2;
+	row-gap: 1.5rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+form input {
+	border: none;
+}
+
+
+@media (min-width: 769px) {
+	.dh-banner-form__content {
+		grid-column: span 12;
+		align-items: center;
+	}
+	.dh-banner-form {
+		padding: 3.375rem 0 5.25rem;
+		display: flex;
+		align-items: center;
+	}
+
 }

@@ -1,4 +1,5 @@
 .sf-hero {
+	padding: 2rem 0;
 	position: relative;
 	background-color: var(--primaryBlue1);
 	overflow: hidden;
@@ -7,7 +8,7 @@
 	width: 100%;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 769px) {
 	.sf-hero {
 		text-align: left;
 	}
@@ -27,13 +28,13 @@
 	z-index: 0;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 769px) {
 	.sf-hero::before {
 		background-image: var(--background-image-medium);
 	}
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 769px) {
 	.sf-hero::before {
 		background-image: var(--background-image-large);
 	}
@@ -47,13 +48,12 @@
 	align-items: center;
 	z-index: 1;
 	color: white;
-	gap: 1.625rem;
-	padding: 1.5rem 1.25rem 7.75rem;
+	gap: 1rem;
+	grid-column: span 4;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 769px) {
 	.sf-hero__content {
-		padding: 2.75rem 4.125rem 4.5rem;
 		gap: 2rem;
 		align-items: center;
 		text-align: center;
@@ -67,15 +67,8 @@
 	max-width: 68rem;
 }
 
-@media (min-width: 1024px) {
-	.sf-hero__heading-wrapper {
-		padding-bottom: 1.5rem;
-	}
-}
-
 .sf-hero__content h1 {
 	position: relative;
-	font-size: 2rem;
 	color: #fff;
 }
 
@@ -92,31 +85,6 @@
 	z-index: -1;
 } */
 
-@media (min-width: 1024px) {
-	.sf-hero__content h1 {
-		font-size: 4rem;
-	}
-}
-
-.sf-hero__content h2 {
-	font-size: 1.375rem;
-	margin-bottom: 0.625rem;
-}
-
-@media (min-width: 1024px) {
-	.sf-hero__content h2 {
-		font-size: 3rem;
-		line-height: 2.625rem;
-		margin: 0;
-	}
-
-	.sf-hero__content > p {
-		max-width: 35rem;
-		font-size: 1.375rem;
-		line-height: 1.875rem;
-		margin-top: -0.625rem;
-	}
-}
 
 .sf-hero form {
 	display: flex;
@@ -126,12 +94,11 @@
 	width: 100%;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 769px) {
 	.sf-hero__content form {
 		display: flex;
 		align-items: center;
 		max-width: 35rem;
-		margin-top: -13px;
 	}
 }
 
@@ -141,17 +108,19 @@
 	background-color: white;
 	border-radius: 100vmax;
 	gap: 1.25rem;
+	margin-top: 2.125rem;
 }
 
 .sf-hero__trust-icons img {
 	height: 2.1875rem;
 	object-fit: contain;
 }
-@media (min-width: 1024px) {
+@media (min-width: 769px) {
 	.sf-hero__trust-icons {
 		grid-column: 1 / 4;
 		width: max-content;
 		gap: 1rem;
+		margin-top: 0;
 	}
 }
 
@@ -160,7 +129,60 @@
 	transition: transform 0.3s ease;
 }
 
-@media (min-width: 1024px) {
+
+@media (min-width: 769px) {
+	.sf-hero__content > .sf-hero__reviews .sf-hero__reviews-text p {
+		font-size: 1.125rem;
+		line-height: normal;
+	}
+}
+.sf-hero__reviews {
+	align-items: center;
+	display: flex;
+	justify-content: flex-start;
+	width: 100%;
+}
+@media (min-width: 769px) {
+	.sf-hero__reviews {
+		align-items: center;
+		display: flex;
+		justify-content: center;
+	}
+}
+.sf-hero__reviews-text p {
+	margin: 0 0 0 5px;
+}
+@media (min-width: 769px) {
+	.sf-hero__reviews-text p {
+		font-size: 1.125rem;
+	}
+}
+.sf-hero__reviews-stars-wrapper {
+	display: flex;
+}
+.sf-hero__reviews {
+	flex-direction: column;
+	justify-content: center;
+}
+.sf-hero__star {
+	height: 0.75rem;
+	width: 0.75rem;
+}
+.sf-hero__reviews-stars-wrapper {
+	gap: 1px;
+	margin-bottom: 0;
+	margin-left: .5rem;
+}
+.sf-hero__reviews .sf-hero__reviews-stars-wrapper {
+	gap: 2px;
+	margin-left: 0;
+}
+.sf-hero__reviews .sf-hero__star {
+	height: 1rem;
+	width: 1rem;
+}
+
+@media (min-width: 769px) {
 	.sf-hero__doctor-homes {
 		display: block;
 		height: 52rem;
@@ -175,4 +197,62 @@
 		height: 100%;
 		max-width: none;
 	}
+
+
+	.sf-hero {
+		padding: 3rem 0;
+	}
+
+	.sf-hero__content {
+		grid-column: 3/11;
+		gap: 1rem;
+	}
+
+	.sf-hero__trust-icons img {
+		height: 1.875rem;
+	}
+	.sf-hero__content .title-2 {
+		width: 100%;
+	}
+
+	.sf-hero__reviews {
+		flex-direction: revert;
+		justify-content: center;
+	}
+	.sf-hero__reviews .sf-hero__star {
+		height: 0.75rem;
+		width: 0.75rem;
+	}
+	.sf-hero-wrapper .cw-fresh-start__testimonial {
+		align-items: center;
+		gap: 0.625rem;
+	}
+	.sf-hero__reviews .sf-hero__reviews-stars-wrapper {
+		margin-bottom: 0;
+	}
+	.sf-hero__star {
+		height: 1.25rem;
+		width: 1.25rem;
+	}
+
+}
+@media (max-width: 768px) {
+	.sf-hero__star {
+		display: flex;
+		height: 1rem;
+		width: 1rem;
+	}
+	.sf-hero__star img {
+		height: 100%;
+		-o-object-fit: contain;
+		object-fit: contain;
+		width: 100%;
+	}
+}
+.sf-hero__reviews-text p {
+	font-size: 0.75rem;
+}
+.sf-hero__reviews .sf-hero__star {
+	height: 0.75rem;
+	width: 0.75rem;
 }

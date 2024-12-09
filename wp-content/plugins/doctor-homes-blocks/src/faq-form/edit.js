@@ -1,10 +1,12 @@
 import { __ } from "@wordpress/i18n";
 import {
+	InnerBlocks,
 	useBlockProps,
 	InspectorControls,
 } from "@wordpress/block-editor";
 import { PanelBody, TextControl } from "@wordpress/components";
 import "./editor.css";
+
 
 export default function Edit({ attributes, setAttributes }) {
 	const { phoneNumber } = attributes;
@@ -30,6 +32,8 @@ export default function Edit({ attributes, setAttributes }) {
 					/>
 				</PanelBody>
 			</InspectorControls>
+
+			<InnerBlocks />
 		</div>
 	);
 }

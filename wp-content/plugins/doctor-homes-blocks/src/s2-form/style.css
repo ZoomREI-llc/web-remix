@@ -247,8 +247,6 @@
 
 
 .s2-form__form {
-	background: #fff;
-	padding: 0 16px 20px;
 	margin-bottom: 96px;
 }
 
@@ -288,7 +286,7 @@
 
 .s2-form__form .ginput_container input, .s2-form__form .ginput_container select, .s2-form__form .ginput_container_text input {
 	border-radius: 5px;
-	background-color: #F1F1E6;
+	background-color: #F1F1E6 !important;
 }
 
 .s2-form__form .gfield option, .s2-form__form .gfield textarea, .s2-form__form .gfield_description {
@@ -369,7 +367,6 @@
 
 	.s2-form__form {
 		margin-bottom: 100px;
-		padding: 0 80px 20px;
 	}
 
 	.s2-form__form .gform-theme--foundation .gform_footer, .s2-form__form .gform-theme--foundation .gform_page_footer {

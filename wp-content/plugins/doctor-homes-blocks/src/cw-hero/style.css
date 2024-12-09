@@ -10,7 +10,7 @@
 	justify-content: center;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 769px) {
 	.cw-hero-wrapper {
 		background-image: var(--background-image-medium);
 	}
@@ -130,7 +130,7 @@
 		align-items: start;
 		gap: 2rem;
 		grid-template-columns: 1fr 45%;
-		padding: 2.5rem 1rem 0;
+		padding: 2.5rem 1rem 1.25rem;
 		max-width: 1260px;
 	}
 }

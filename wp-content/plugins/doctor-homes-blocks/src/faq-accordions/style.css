@@ -1,30 +1,16 @@
 .faq-accordions {
-	max-width: 22.5rem;
-	padding: 0 1.25rem;
-	margin: 0.625rem auto 2.25rem;
+	padding: 3.125rem 0;
 }
-.faq-accordions h1,
-.faq-accordions h2,
-.faq-accordions h3,
-.faq-accordions p {
-	font-size: inherit;
-	line-height: inherit;
-	font-weight: inherit;
+.faq-accordions__container{
+	grid-column: span 12;
 }
 .faq-accordions-title {
-	font-family: "Ruddy" !important;
-	font-weight: 700;
-	font-size: 2.75rem;
-	line-height: 3.25rem;
 	text-align: center;
 	color: #3c4b5f;
 }
 .faq-accordions-description {
 	margin-top: 1.5rem;
 	text-align: center;
-	font-weight: 600;
-	line-height: 1.875rem;
-	font-size: 1.375rem;
 	color: #3C4B5F;
 }
 .faq-accordions-info {
@@ -125,9 +111,6 @@
 }
 .faq-accordions-breakpoint {
 	color: #2B3849;
-	font-size: 2.25rem;
-	line-height: 2.5rem;
-	font-weight: 700;
 	margin-bottom: 1.5rem !important;
 }
 .faq-accordions-accordions {
@@ -169,28 +152,42 @@
 	width: 18px;
 }
 
-@media (min-width: 64rem) {
-	.faq-accordions {
-		max-width: 80rem;
-		margin: 3.75rem auto 6.25rem;
+.faq-accordions-accordions {
+	margin-top: 2.625rem;
+}
+
+.faq-accordions-question {
+	font-weight: 700;
+	font-size: 0.875rem;
+	line-height: 114%;
+}
+
+.faq-accordions-accordions > :not(:last-child) {
+	margin-bottom: 0.75rem;
+}
+
+.faq-accordions-question__img {
+	flex-shrink: 0;
+	margin-left: 1.875rem;
+}
+
+.faq-accordions-answer {
+	font-size: 0.875rem;
+	line-height: normal;
+}
+.faq-accordions-accordions + .faq-accordions-accordions {
+	margin-top: 2.25rem;
+}
+
+@media (min-width: 769px) {
+	.faq-accordions{
+		padding: 6.25rem 0;
 	}
 	.faq-accordions-question {
 		 padding: 1.5rem 1.875rem;
 	}
 	.faq-accordions-info {
 		display: flex;
-	}
-	.faq-accordions-title {
-		font-size: 4rem;
-		line-height: 4.875rem;
-	}
-	.faq-accordions-description {
-		font-size: 1.375rem;
-		line-height: 1.875rem;
-	}
-	.faq-accordions-breakpoint {
-		font-size: 3rem;
-		line-height: 2.5rem;
 	}
 	.faq-accordions-question {
 		padding: 1.5rem 1.875rem;
@@ -201,4 +198,25 @@
 	.faq-accordions-dpl{
 		display: none;
 	}
+
+	.faq-accordions-question {
+		font-size: 1.125rem;
+	}
+
+	.faq-accordions-answer {
+		font-size: 1.125rem;
+	}
+
+	.faq-accordions-breakpoint {
+		margin-bottom: 2.5rem !important;
+	}
+
+	.faq-accordions-accordions {
+		margin-top: 3.125rem;
+	}
+
+	.faq-accordions-accordions + .faq-accordions-accordions {
+		margin-top: 3.125rem;
+	}
+
 }

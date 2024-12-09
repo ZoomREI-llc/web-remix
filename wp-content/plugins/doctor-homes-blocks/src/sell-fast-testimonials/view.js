@@ -1,6 +1,6 @@
 
 function sfVirtueCarouselCallback() {
-	let sections = document.querySelectorAll('.testimonial-carousel-wrapper')
+	let sections = document.querySelectorAll('.sell-fast-testimonials-carousel-wrapper')
 
 	sections.forEach(function (section) {
 		let sliderEl = section.querySelector('.swiper')

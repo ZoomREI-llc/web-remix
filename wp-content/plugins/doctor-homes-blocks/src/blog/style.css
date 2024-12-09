@@ -1,50 +1,47 @@
 .latest-blog-posts {
-	display: flex;
-	flex-direction: column;
-	gap: 4.25rem;
-	padding-inline: 1.25rem;
-	margin-bottom: 3.75rem;
+	padding: 2rem 0;
+}
+.latest-blog-posts .title-2{
+	margin-bottom: 2rem;
+	grid-column: span 4;
 	text-align: center;
 }
 
-@media (min-width: 1024px) {
-	.latest-blog-posts {
-		text-align: left;
-		padding-inline: 6rem;
-		margin-bottom: 4.5rem;
-	}
+.post-image img {
+	height: 17.5rem;
 }
+
+.post-content {
+	padding: 0.875rem 0.5rem 1.25rem;
+}
+
+.latest-post {
+	margin-bottom: 2rem;
+}
+
+.post-title a {
+	font-weight: 600;
+	font-size: 18px;
+	line-height: 139%;
+}
+
+.post-meta {
+	font-weight: 600;
+	font-size: 14px;
+	line-height: 1.25rem;
+}
+
 
 .latest-blog-posts h2 {
-	font-size: 2.25rem;
 	color: var(--primaryBlue2);
 }
-
-.posts-container {
-	display: grid;
-	justify-content: space-between;
-	grid-template-columns: 1fr;
-	gap: 1.5rem;
-}
-
-@media (min-width: 1024px) {
-	.posts-container {
-		grid-template-columns: 1fr 1fr;
-	}
-}
-
-@media (min-width: 1280px) {
-	.posts-container {
-		grid-template-columns: 1fr 1fr 1fr 1fr;
-	}
-}
-
 .latest-post {
 	background-color: var(--primaryGray);
 	overflow: hidden;
 	display: flex;
 	flex-direction: column;
 	transition: transform 0.3s ease;
+	grid-column: span 4;
 }
 
 .latest-post:hover {
@@ -74,14 +71,6 @@
 	background-color: var(--secondaryYellow);
 	color: var(--primaryBlue1);
 	padding: 0.5rem 1.5rem;
-	font-size: 1rem;
-	font-family: var(--font-ruddy);
-	font-weight: 700;
-}
-
-.post-title {
-	font-size: 1.5rem;
-	font-weight: 600;
 }
 
 .post-title a {
@@ -92,4 +81,42 @@
 .post-meta {
 	font-size: 0.875rem;
 	font-weight: 600;
+}
+
+@media (min-width: 769px) {
+	.latest-blog-posts {
+		margin: 0;
+	}
+	.latest-blog-posts .title-2 {
+		grid-column: span 12;
+		text-align: left;
+	}
+
+	.latest-post {
+		grid-column: span 3;
+	}
+
+	.post-image img {
+		height: 15.5rem;
+	}
+
+	.post-title a {
+		font-size: 1rem;
+		line-height: normal;
+	}
+
+	.post-content {
+		padding: .5rem .5rem 1.625rem;
+	}
+
+	.category-name.title-1 {
+		font-size: 1.5rem;
+	}
+
+	.post-title {
+		font-size: unset;
+		line-height: unset;
+		margin-bottom: .5rem;
+	}
+
 }

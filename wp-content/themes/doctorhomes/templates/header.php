@@ -80,49 +80,46 @@ if ($hostname === 'doctorhomes.com') {
     <!-- End Google Tag Manager (noscript) -->
 
     <?php wp_body_open(); ?>
-    <header id="doctor-homes-header">
-        <div class="header-content">
-            <button id="mobile-menu-button" class="mobile-menu-button">
-                <img src="<?php echo get_template_directory_uri() . '/src/assets/menus/mobile-menu-icon.svg'; ?>" alt="Mobile Navigation Menu">
-            </button>
-            <div class="logo">
-                <?php
-                if (function_exists('the_custom_logo')) {
-                    the_custom_logo();
-                }
-                ?>
-            </div>
-            <nav class="main-nav">
-                <?php
-                wp_nav_menu(array(
-                    'theme_location' => 'primary-menu',
-                    'container'      => '',
-                    'menu_class'     => 'nav-menu',
-                ));
-                ?>
-            </nav>
-            <div class="contact-actions">
-                <a href="tel:234-374-6637" class="call-btn contact-phone">
+    <header class="header">
+        <div class="grid-container">
+            <div class="header__container">
+                <a href="<?= home_url() ?>" class="header__logo">
+                    <img src="<?= get_template_directory_uri() ?>/src/assets/brand/dh-logo.svg" alt="Doctor homes" width="57" height="31">
+                </a>
+                <nav class="header__nav main-nav">
+                    <?php
+                        wp_nav_menu(array(
+                            'theme_location' => 'primary-menu',
+                            'container'      => '',
+                            'menu_class'     => 'nav-menu',
+                        ));
+                    ?>
+                </nav>
+                <a href="tel:234-374-6637" class="header__call call-btn contact-phone">
                     <img src="<?php echo get_template_directory_uri() . '/src/assets/menus/phone-icon.svg'; ?>" alt="Phone Icon" class="phone-icon">
                     <span>Call us on: (234) DR-HOMES</span>
                 </a>
-                <a href="<?php echo get_offer_button_link(); ?>" class="get-offer-button">
+                <a href="<?php echo get_offer_button_link(); ?>" class="header__btn get-offer-button">
                     Get My Offer
                 </a>
+                <button id="mobile-menu-button" class="header__burger mobile-menu-button">
+                    <img src="<?php echo get_template_directory_uri() . '/src/assets/menus/mobile-menu-icon.svg'; ?>" alt="Mobile Navigation Menu">
+                </button>
             </div>
         </div>
+
         <div id="mobile-menu" class="mobile-menu">
             <button id="close-mobile-menu" class="close-mobile-menu">
                 <img src="<?php echo get_template_directory_uri() . '/src/assets/menus/close-mobile-menu-icon.svg'; ?>" alt="Close Mobile Navigation Menu">
             </button>
             <?php
-            wp_nav_menu(array(
-                'theme_location' => 'primary-menu',
-                'container'      => '',
-                'menu_class'     => 'mobile-nav-menu',
-                'walker'         => new Mobile_Walker_Nav_Menu(),
-                'add_polygon'    => true,
-            ));
+                wp_nav_menu(array(
+                    'theme_location' => 'primary-menu',
+                    'container'      => '',
+                    'menu_class'     => 'mobile-nav-menu',
+                    'walker'         => new Mobile_Walker_Nav_Menu(),
+                    'add_polygon'    => true,
+                ));
             ?>
             <a href="<?php echo get_offer_button_link(); ?>" class="get-offer-button">
                 Get My Offer <img src="<?php echo get_template_directory_uri() . '/src/assets/menus/cta-arrow.svg'; ?>" alt="Get My Offer">

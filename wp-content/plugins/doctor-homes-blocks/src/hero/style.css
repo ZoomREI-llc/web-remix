@@ -1,9 +1,4 @@
 
-
-
-
-
-
 .dh-hero {
 	position: relative;
 	background-color: var(--primaryBlue1);
@@ -27,7 +22,7 @@
 	opacity: 0.4;
 	z-index: 0;
 }
-@media (min-width: 768px) {
+@media (min-width: 769px) {
 	.dh-hero::before {
 		background-image: var(--background-image-medium);
 	}
