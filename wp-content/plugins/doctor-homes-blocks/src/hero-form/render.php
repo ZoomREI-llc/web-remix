@@ -55,7 +55,7 @@
             </div>
             <ul class="dh-hero-form__statistic--list">
                 <li class="dh-hero-form__statistic--item">
-                    <div class="dh-hero-form__statistic--amunt">36M+</div>
+                    <div class="dh-hero-form__statistic--amunt">$36M+</div>
                     <div class="dh-hero-form__statistic--text">Saved <span>Fees</span></div>
                 </li>
                 <li class="dh-hero-form__statistic--item">

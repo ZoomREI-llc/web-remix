@@ -14,7 +14,7 @@
             </a>
             <ul class="cta__credibility-data">
                 <li>
-                    <span class="cta__credibility-data-number">36M+</span>
+                    <span class="cta__credibility-data-number">$36M+</span>
                     <span class="cta__credibility-data-text">SAVED FEES</span>
                 </li>
                 <li>

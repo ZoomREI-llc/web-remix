@@ -34,7 +34,7 @@ $selectedMarket = isset($attributes['selectedMarket']) ? esc_html($attributes['s
 
             <ul class="lcp-sell-today__statistic--list">
                 <li class="lcp-sell-today__statistic--item">
-                    <div class="lcp-sell-today__statistic--amunt">36M+</div>
+                    <div class="lcp-sell-today__statistic--amunt">$36M+</div>
                     <div class="lcp-sell-today__statistic--text">Saved <br>Fees</div>
                 </li>
                 <li class="lcp-sell-today__statistic--item">
