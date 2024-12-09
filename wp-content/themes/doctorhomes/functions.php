@@ -315,9 +315,9 @@ function get_breadcrumb()
 function get_offer_button_link()
 {
     if (is_front_page()) {
-        return '#top';
+        return '#cw-form';
     } else {
-        return home_url('/#top');
+        return home_url('/#cw-form');
     }
 }
 

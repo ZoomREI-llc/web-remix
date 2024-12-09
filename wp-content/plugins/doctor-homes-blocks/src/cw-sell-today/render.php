@@ -24,7 +24,7 @@
             </div>
             <ul class="cw-hero__statistic--list">
                 <li class="cw-hero__statistic--item">
-                    <div class="cw-hero__statistic--amunt">36M+</div>
+                    <div class="cw-hero__statistic--amunt">$36M+</div>
                     <div class="cw-hero__statistic--text">Saved <br>Fees</div>
                 </li>
                 <li class="cw-hero__statistic--item">

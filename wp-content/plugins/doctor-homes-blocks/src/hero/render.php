@@ -83,7 +83,7 @@ $a_plus_icon_url = wp_get_attachment_url($a_plus_icon_id);
             </div>
             <ul class="dh-hero__credibility-data">
                 <li>
-                    <span class="dh-hero__credibility-data-number">36M+</span>
+                    <span class="dh-hero__credibility-data-number">$36M+</span>
                     <span class="dh-hero__credibility-data-text">SAVED FEES</span>
                 </li>
                 <li>
