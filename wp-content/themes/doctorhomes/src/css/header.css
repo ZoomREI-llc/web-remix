@@ -1,43 +1,9 @@
-<<<<<<< HEAD
-#doctor-homes-header {
-  width: 100%;
-  background-color: white;
-  z-index: 100;
+.header {
   position: sticky;
   top: 0;
+  z-index: 100;
+  background-color: white;
 }
-
-/* @media (min-width: 1024px) {
-  header {
-    top: 0;
-    position: sticky;
-  }
-} */
-
-.header-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.125rem 1.5rem;
-  position: relative;
-}
-
-@media (min-width: 1024px) {
-  .header-content {
-    padding: 0 6.5rem;
-    gap: 2rem;
-    max-width: 93.125rem;
-    margin: 0 auto;
-  }
-}
-
-.main-nav,
-.contact-actions,
-.mobile-menu-button {
-  flex: 1;
-}
-=======
->>>>>>> fed99e8b2847fd3f814f4eca1c70c069e4d07cf1
 
 .main-nav {
   color: var(--primaryBlue2);
@@ -91,7 +57,6 @@
   padding: 1.625rem;
 }
 
-
 .mobile-nav-menu > li > .sub-menu {
   display: none;
 }
@@ -118,7 +83,7 @@
   .mobile-nav-menu > li.is-open > .menu-item-title {
     background-color: var(--secondaryBeige);
   }
-  .mobile-nav-menu > li.is-open > .menu-item-title .polygon-icon{
+  .mobile-nav-menu > li.is-open > .menu-item-title .polygon-icon {
     transform: rotate(180deg); /* Facing down when submenu is open */
   }
 }
@@ -137,7 +102,6 @@
   transform: rotate(90deg); /* Facing right by default */
   transition: transform 0.3s ease;
 }
-
 
 .mobile-menu .get-offer-button {
   display: flex;
@@ -251,7 +215,7 @@
   max-width: max-content;
   align-self: end;
   transition: all 0.2s ease;
-  padding: .5rem 0.75rem;
+  padding: 0.5rem 0.75rem;
   font-weight: 700;
   font-size: 0.875rem;
   line-height: normal;
@@ -306,10 +270,6 @@ nav ul li:hover ul {
   }
 }
 
-
-
-
-
 .header {
   padding: 1.125rem 0;
 }
@@ -341,7 +301,7 @@ nav ul li:hover ul {
   object-fit: contain;
 }
 @media (min-width: 769px) {
-  .header{
+  .header {
     padding: 0.6875rem 0;
   }
   .header__logo {
@@ -386,17 +346,16 @@ nav ul li:hover ul {
   }
 
   .main-nav > .nav-menu > li.menu-item-has-children > a::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 50%;
     right: 1rem;
     transform: translateY(-50%);
-    width: .875rem;
-    height: .875rem;
+    width: 0.875rem;
+    height: 0.875rem;
     background-image: url('data:image/svg+xml,%3Csvg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M0.301014 0.90352C-0.0267477 1.24196 -0.0268068 1.77943 0.30088 2.11795L5.1672 7.14507C5.95112 7.95209 7.21818 7.95209 8.00211 7.14507L12.8753 2.11129C13.203 1.77281 13.2029 1.23533 12.875 0.89701C12.532 0.543067 11.9642 0.543217 11.6214 0.897341L6.78741 5.89079C6.67542 6.00636 6.49415 6.00636 6.38243 5.89079L1.55533 0.903689C1.21233 0.549327 0.644101 0.549251 0.301014 0.90352Z" fill="%232B3849"/%3E%3C/svg%3E%0A');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
   }
-
 }
