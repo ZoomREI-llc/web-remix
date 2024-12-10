@@ -9,12 +9,13 @@ $form_config = [
 ];
 ?>
 <script type="application/json" id="form-config-<?= $short_id ?>"><?= json_encode($form_config) ?></script>
-<form id="<?= $short_id ?>" name="lead_form_v2" class="lead-form-final" method="POST" style="--loader-gif: url('<?php echo get_image_url('lead-form-final/loader'); ?>');">
+<form id="<?= $short_id ?>" name="form-step-2" class="lead-form-final" method="POST" style="--loader-gif: url('<?php echo get_image_url('lead-form-final/loader'); ?>');">
     <input type="hidden" name="entry_id" value="<?= $short_id ?>" autocomplete="off">
     <input type="hidden" name="street" value="" autocomplete="off">
     <input type="hidden" name="city" value="" autocomplete="off">
     <input type="hidden" name="state" value="" autocomplete="off">
     <input type="hidden" name="zipcode" value="" autocomplete="off">
+    <input type="hidden" name="country" value="US" autocomplete="off">
 
     <div class="lead-form-final__section">
         <div class="lead-form-final__title">
@@ -183,8 +184,8 @@ $form_config = [
                 <div class="input__message"></div>
             </div>
             <div class="input input--rounded">
-                <label for="phone">Best Time to Call</label>
-                <select id="soon" name="soon">
+                <label for="bestTime">Best Time to Call</label>
+                <select id="bestTime" name="bestTime">
                     <option value="" selected="selected">Please select one of the options</option><option value="Anytime">Anytime</option><option value="Morning">Morning</option><option value="Afternoon">Afternoon</option><option value="Evening">Evening</option>
                 </select>
                 <div class="input__message"></div>
