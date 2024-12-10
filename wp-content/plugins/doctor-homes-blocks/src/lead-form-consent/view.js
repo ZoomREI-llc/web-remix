@@ -95,7 +95,7 @@ function leadFormCallback() {
         inputSelect()
     })
 
-    Fancybox.bind('[data-fancybox]', {
+    Fancybox.bind('.lead-form [data-fancybox]', {
         dragToClose: false
     })
 }

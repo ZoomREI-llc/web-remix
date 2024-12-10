@@ -14,7 +14,7 @@ services:
       - doctorhomes_network
 
   wordpress:
-    image: wordpress:6.7-fpm
+    image: wordpress:6.6.1-fpm
     container_name: ${ENV_NAME}_wordpress
     volumes:
       - wordpress_data_${ENV_NAME}:/var/www/html
@@ -71,8 +71,8 @@ services:
       - doctorhomes_network
 
 volumes:
-  db_data_doctorhomes:
-  wordpress_data_doctorhomes:
+  db_data_zoomrei:
+  wordpress_data_zoomrei:
 
 
 networks:

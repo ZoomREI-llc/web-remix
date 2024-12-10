@@ -22,6 +22,10 @@ function cookieBannerCallback() {
     e.preventDefault()
     cookieBanner.classList.remove('is-shown')
   })
+
+  Fancybox.bind('.cookie-banner [data-fancybox]', {
+    dragToClose: false
+  })
 }
 
 document.addEventListener("DOMContentLoaded", function () {

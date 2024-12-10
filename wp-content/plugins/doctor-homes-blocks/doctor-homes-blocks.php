@@ -31,8 +31,8 @@ function doctor_homes_blocks_doctor_homes_blocks_block_init()
 		'lead-form',
 		'lead-form-consent',
 		'lead-form-contact',
-		'lead-form-final',
-		'lead-form-multistep',
+		'form-step-2',
+		'lead-form-compact',
 		'contact-form',
 		'banner-form',
 		'media',
@@ -127,6 +127,8 @@ function doctor_homes_blocks_doctor_homes_blocks_block_init()
 		'lcp-sell-today',
 
 		's2-form',
+
+		'cookie-banner'
 	];
 
 	foreach ($blocks as $block) {
