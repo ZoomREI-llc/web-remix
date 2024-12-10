@@ -1,9 +1,9 @@
 {
     "$schema": "https://schemas.wp.org/trunk/block.json",
     "apiVersion": 3,
-    "name": "doctor-homes/lead-form-multistep",
+    "name": "doctor-homes/lead-form-compact",
     "version": "0.1.0",
-    "title": "DH Form multistep",
+    "title": "Lead form compact",
     "category": "widgets",
     "icon": "feedback",
     "description": "Form block built for the front-page.",

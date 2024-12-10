@@ -1,9 +1,9 @@
 {
     "$schema": "https://schemas.wp.org/trunk/block.json",
     "apiVersion": 3,
-    "name": "doctor-homes/lead-form-final",
+    "name": "doctor-homes/form-step-2",
     "version": "0.1.0",
-    "title": "Lead Form Step 2 V2",
+    "title": "Form Step 2 V2",
     "category": "widgets",
     "icon": "feedback",
     "description": "Form block built for the front-page.",
@@ -27,8 +27,7 @@
         "webhooks": {
             "type": "array",
             "default": [
-                {"url":"https://workflow-automation.podio.com/catch/2kt203ir6i3uk64","usePreset":true,"fieldsPreset":"cmsFinal","fieldsMapping":[]},
-                {"url":"https://server-side-tagging-ued2wljvbq-uc.a.run.app/lead","usePreset":true,"fieldsPreset":"sgtm","fieldsMapping":[]}
+                {"url":"https://hooks.zapier.com/hooks/catch/3840841/o4yfm3b","usePreset":true,"fieldsPreset":"cmsFinal","fieldsMapping":[]}
             ]
         },
         "redirectQuery": {

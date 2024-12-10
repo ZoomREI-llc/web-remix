@@ -66,7 +66,7 @@ function leadFormCallback() {
 
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
-            event: "lead_step_1",
+            event: "lead_step_2",
             formName: leadForm.name,
             fullName: formData.get('fullName'),
             street: formData.get('street'),

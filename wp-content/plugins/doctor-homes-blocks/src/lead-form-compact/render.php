@@ -8,7 +8,7 @@
         <input type="text" name="propertyAddress" data-validation="address-autocomplete" autocomplete="off" placeholder="Enter your property address">
         <button type="button" class="lead-form-multistep__address-btn">
             Get My Offer
-            <?php echo get_responsive_image('lead-form-multistep/cta-arrow', 'Arrow Icon', 'form-btn-arrow'); ?>
+            <?php echo get_responsive_image('lead-form-compact/cta-arrow', 'Arrow Icon', 'form-btn-arrow'); ?>
         </button>
     </div>
     <div class="lead-form-multistep__fields" style="display: none">

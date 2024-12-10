@@ -139,7 +139,6 @@ export default function Edit({ attributes, setAttributes }) {
 	const presets = [
 		{ label: "Select", value: "" },
 		{ label: "CMS", value: "cmsFinal" },
-		{ label: "sGTM", value: "sgtm" },
 	];
 
 	return (

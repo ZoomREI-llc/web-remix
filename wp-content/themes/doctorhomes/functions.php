@@ -520,7 +520,7 @@ function handle_lead_form_v2(WP_REST_Request $request)
         'cmsFinal' => [
             [
                 "field" => "bedrooms",
-                "key" => "Number of Bedrooms"
+                "key" => "Number_of_bedrooms"
             ],
             [
                 "field" => "bathrooms",

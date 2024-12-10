@@ -196,7 +196,7 @@ $form_config = [
     <div class="lead-form-final__btn">
         <button type="submit" class="form-submit">
             <?= $btnText ?>
-            <?php echo get_responsive_image('lead-form-final/cta-arrow', 'Arrow Icon', 'form-btn-arrow'); ?>
+            <?php echo get_responsive_image('form-step-2/cta-arrow', 'Arrow Icon', 'form-btn-arrow'); ?>
         </button>
     </div>
 </form>
