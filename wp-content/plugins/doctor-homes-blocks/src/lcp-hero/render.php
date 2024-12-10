@@ -59,7 +59,7 @@ $selectedMarket = isset($attributes['selectedMarket']) ? esc_html($attributes['s
             </div>
             <ul class="lcp-hero__statistic--list">
                 <li class="lcp-hero__statistic--item">
-                    <div class="lcp-hero__statistic--amunt">36M+</div>
+                    <div class="lcp-hero__statistic--amunt">$36M+</div>
                     <div class="lcp-hero__statistic--text">Saved <span>Fees</span></div>
                 </li>
                 <li class="lcp-hero__statistic--item">
