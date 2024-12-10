@@ -362,6 +362,13 @@ add_action('rest_api_init', function () {
 // Define the form submission handler
 function handle_lead_form_v2(WP_REST_Request $request)
 {
+    if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+        $ip = $_SERVER['HTTP_CLIENT_IP'];
+    } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+        $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+    } else {
+        $ip = $_SERVER['REMOTE_ADDR'];
+    }
     $form_data = $request->get_params();
     $webhooks = $form_data['webhooks'] ? json_decode($form_data['webhooks'], true) : [];
     $presets = [
@@ -520,7 +527,7 @@ function handle_lead_form_v2(WP_REST_Request $request)
         'cmsFinal' => [
             [
                 "field" => "bedrooms",
-                "key" => "Number_of_bedrooms"
+                "key" => "Number of Bedrooms"
             ],
             [
                 "field" => "bathrooms",
@@ -536,31 +543,31 @@ function handle_lead_form_v2(WP_REST_Request $request)
             ],
             [
                 "field" => "owned",
-                "key" => "How long have you owned the property"
+                "key" => "How long have you owned the property?"
             ],
             [
                 "field" => "condition",
-                "key" => "What is the current condition of the property"
+                "key" => "What is the current condition of the property?"
             ],
             [
                 "field" => "repairs",
-                "key" => "What kind of repairs and maintenance does the house need"
+                "key" => "What kind of repairs and maintenance does the house need?"
             ],
             [
                 "field" => "living",
-                "key" => "Is there anyone living in the house"
+                "key" => "Is there anyone living in the house?"
             ],
             [
                 "field" => "realtor",
-                "key" => "Is the house currently listed with a realtor"
+                "key" => "Is the house currently listed with a realtor?"
             ],
             [
                 "field" => "fast",
-                "key" => "Do you need to sell your house fast"
+                "key" => "Do you need to sell your house fast?"
             ],
             [
                 "field" => "soon",
-                "key" => "How soon would you like to sell your property"
+                "key" => "How soon would you like to sell your property?"
             ],
             [
                 "field" => "price",
@@ -568,23 +575,19 @@ function handle_lead_form_v2(WP_REST_Request $request)
             ],
             [
                 "field" => "reason",
-                "key" => "What is the reason you are selling your house"
+                "key" => "What is the reason you are selling your house?"
             ],
             [
                 "field" => "goal",
-                "key" => "What’s your ultimate goal with your house"
+                "key" => "What's your ultimate goal with your house?"
             ],
             [
                 "field" => "fullName",
-                "key" => "Name"
+                "key" => "Full Name"
             ],
             [
                 "field" => "phone",
                 "key" => "Phone"
-            ],
-            [
-                "field" => "propertyAddress",
-                "key" => "Property Address"
             ],
             [
                 "field" => "email",
@@ -596,8 +599,57 @@ function handle_lead_form_v2(WP_REST_Request $request)
                 "key" => "Landline"
             ],
             [
-                "field" => "soon",
+                "field" => "bestTime",
                 "key" => "Best Time to Call"
+            ],
+    
+    
+            [
+                "field" => "propertyAddress",
+                "key" => "Property Address"
+            ],
+            [
+                "field" => "street",
+                "key" => "Property Address (Street Address)"
+            ],
+            [
+                "field" => "city",
+                "key" => "Property Address (City)"
+            ],
+            [
+                "field" => "state",
+                "key" => "Property Address (State / Province)"
+            ],
+            [
+                "field" => "zipcode",
+                "key" => "Property Address (Zip / Postal Code)"
+            ],
+            [
+                "field" => "country",
+                "key" => "Property Address (Country)"
+            ],
+            
+            
+            [
+                "field" => "form_name",
+                "key" => "Form Title"
+            ],
+            [
+                "field" => "entry_id",
+                "key" => "Entry ID"
+            ],
+            [
+                "field" => "timestamp",
+                "key" => "Entry Date"
+            ],
+            [
+                "field" => "userIp",
+                "default" => $ip,
+                "key" => "User IP"
+            ],
+            [
+                "field" => "page_url",
+                "key" => "Source Url"
             ],
             
             
