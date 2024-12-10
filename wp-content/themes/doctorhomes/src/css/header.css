@@ -272,6 +272,8 @@ nav ul li:hover ul {
 
 .header {
   padding: 1.125rem 0;
+  position: sticky;
+  top: 0;
 }
 .header__container {
   grid-column: span 12;
