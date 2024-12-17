@@ -27,7 +27,7 @@
         "webhooks": {
             "type": "array",
             "default": [
-                {"url":"https://workflow-automation.podio.com/catch/2kt203ir6i3uk64","usePreset":true,"fieldsPreset":"cmsContact","fieldsMapping":[]},
+                {"url":"https://workflow-automation.podio.com/catch/2kt203ir6i3uk64","usePreset":true,"fieldsPreset":"cms","fieldsMapping":[]},
                 {"url":"https://server-side-tagging-ued2wljvbq-uc.a.run.app/lead","usePreset":true,"fieldsPreset":"sgtm","fieldsMapping":[]}
             ]
         },

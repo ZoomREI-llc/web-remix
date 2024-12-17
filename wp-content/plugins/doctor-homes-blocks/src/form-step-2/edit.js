@@ -92,18 +92,33 @@ export default function Edit({ attributes, setAttributes }) {
 	const fieldOptions = [
 		{ label: "Select", value: "" },
 
+		{ label: "Number of Bedrooms", value: "bedrooms" },
+		{ label: "Number of Bathrooms", value: "bathrooms" },
+		{ label: "Garage", value: "garage" },
+		{ label: "Basement", value: "basement" },
+		{ label: "How long have you owned the property", value: "owned" },
+		{ label: "What is the current condition of the property", value: "condition" },
+		{ label: "What kind of repairs and maintenance does the house need", value: "repairs" },
+		{ label: "Is there anyone living in the house", value: "living" },
+		{ label: "Is the house currently listed with a realtor", value: "realtor" },
+		{ label: "Do you need to sell your house fast", value: "fast" },
+		{ label: "How soon would you like to sell your property", value: "soon" },
+		{ label: "Asking Price", value: "price" },
+		{ label: "What is the reason you are selling your house", value: "reason" },
+		{ label: "What’s your ultimate goal with your house", value: "goal" },
+		{ label: "Seller Full Name", value: "fullName" },
 		{ label: "Full Address", value: "propertyAddress" },
-		{ label: "Full Name", value: "fullName" },
 		{ label: "Email", value: "email" },
 		{ label: "Phone", value: "phone" },
-		{ label: "Where did you hear about us", value: "heard_about_us" },
-		{ label: "Message", value: "message" },
+		{ label: "Landline", value: "landline" },
+		{ label: "Best Time to Call", value: "soon" },
 
 		{ label: "Street Address", value: "street" },
 		{ label: "City", value: "city" },
 		{ label: "State", value: "state" },
 		{ label: "Zipcode", value: "zipcode" },
 		{ label: "Country", value: "country" },
+
 
 		{ label: "UTM Source", value: "utm_source" },
 		{ label: "UTM Term", value: "utm_term" },
@@ -123,8 +138,7 @@ export default function Edit({ attributes, setAttributes }) {
 	];
 	const presets = [
 		{ label: "Select", value: "" },
-		{ label: "CMS", value: "cms" },
-		{ label: "sGTM", value: "sgtm" },
+		{ label: "CMS", value: "cmsFinal" },
 	];
 
 	return (
