@@ -224,4 +224,8 @@ $form_config = [
       },
     }
   }
+  
+  document.addEventListener("DOMContentLoaded", function () {
+    initFormEngine(document.getElementById('<?= $short_id ?>'));
+  });
 </script>

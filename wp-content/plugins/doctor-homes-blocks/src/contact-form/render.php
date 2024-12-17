@@ -43,7 +43,7 @@
                     </div>
                 </div>
             </div>
-            <div class="contact-form__wrapper hide-on-success">
+            <div class="contact-form__wrapper hide-on-success" data-form-name="Contact Inquiry">
                 <?= $content ?>
             </div>
             <div class="contact-form__success-wrapper show-on-success">

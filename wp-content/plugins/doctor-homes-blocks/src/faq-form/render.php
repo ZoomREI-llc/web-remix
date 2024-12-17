@@ -17,7 +17,7 @@ $phoneNumber = isset($attributes['phoneNumber']) ? esc_html($attributes['phoneNu
 	</a>
 
 	<div class="faq-form-main">
-        <div class="faq-form-wrap hide-on-success">
+        <div class="faq-form-wrap hide-on-success" data-form-name="Contact Inquiry">
             <div class="faq-form-main__title">
                 <h3>Prefer to write? Send us a message here.</h3>
             </div>

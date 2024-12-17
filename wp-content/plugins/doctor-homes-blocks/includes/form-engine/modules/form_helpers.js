@@ -16,15 +16,31 @@ export function populateUtms(form, formData) {
 			return localStorage.getItem('Initial_Lead_Source') || ''
 		},
 		'timestamp': ()=>{
-			return (new Date()).getTime()
+			const date = new Date();
+
+			const year = date.getUTCFullYear();
+			const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+			const day = String(date.getUTCDate()).padStart(2, '0');
+			const hours = String(date.getUTCHours()).padStart(2, '0');
+			const minutes = String(date.getUTCMinutes()).padStart(2, '0');
+			const seconds = String(date.getUTCSeconds()).padStart(2, '0');
+
+			return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}Z`;
 		},
 		'client_id': ()=>{
-			return '??'
+			let match = document.cookie.match('(?:^|;)\\s*_ga=([^;]*)'),
+				raw = match ? decodeURIComponent(match[1]) : null;
+			if (raw) {
+				match = raw.match(/(\d+\.\d+)$/)
+			}
+			return (match) ? match[1] : '';
 		},
 		'session_id': ()=>{
 			return '??'
 		},
-		'form_name': form.name,
+		'referrer': ()=>{
+			return document.referrer
+		}
 	}
 	let getParams = new URLSearchParams(window.location.search)
 

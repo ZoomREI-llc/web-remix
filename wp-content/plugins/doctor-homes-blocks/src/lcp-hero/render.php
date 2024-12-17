@@ -20,7 +20,7 @@ $selectedMarket = isset($attributes['selectedMarket']) ? esc_html($attributes['s
         </div>
         <h1 class="lcp-hero__title title-1">Want to sell your house in <?= $selectedMarket ?> with no hassle?</h1>
         <h3 class="lcp-hero__subtitle sub-title">We Buy Houses Quickly for Cash – No Realtors, No Fees, No Repairs Needed!</h3>
-        <div id="lcp-form" class="lcp-hero__form">
+        <div id="lcp-form" class="lcp-hero__form" data-form-name="Property Inquiry">
             <div class="lcp-hero__form--title">
                 <span>Get Your Offer In Record Time</span>
             </div>
