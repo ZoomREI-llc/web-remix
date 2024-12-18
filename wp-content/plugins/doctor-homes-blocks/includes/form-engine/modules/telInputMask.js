@@ -9,7 +9,7 @@ export function telInputMask(input, newOpts={}) {
 			letter: 'x'
 		},
 		hiddenInput: false,
-		mask: '+38 0xx xxx-xx-xx',
+		mask: '+1 (xxx) xxx-xxxx',
 		clearOnBlur: true,
 		showOnFocus: true,
 		onFilled: (unmaskedValue, maskedValue)=>{}
@@ -139,7 +139,7 @@ export function telInputMask(input, newOpts={}) {
 				this.setSelectionRange(firstFillableChar, firstFillableChar);
 			}
 			if(this.hiddenInput) {
-				this.hiddenInput.value = getUnmaskedValue(this.value)
+				this.hiddenInput.value = '+1' + getUnmaskedValue(this.value)
 
 				if (opts.hiddenInput.mask) {
 					onInput.call(this.hiddenInput, opts.hiddenInput.mask)

@@ -129,7 +129,7 @@ export function validate(form, newOpts = {}) {
 		checkOnFocusOut: true,
 		disableButton: false,
 		errorClass: 'is-error',
-		dontValidateInputs: 'input:not([type="hidden"])[name], .output_value, select, textarea',
+		dontValidateInputs: 'input[name], .output_value, select, textarea',
 		inputContainerSelector: '.input',
 		formErrorBlock: '',
 		addInputErrors: true,

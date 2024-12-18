@@ -18,6 +18,7 @@ if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
 
+// Include form handler
 function doctor_homes_blocks_doctor_homes_blocks_block_init()
 {
 	$blocks = [
@@ -155,17 +156,17 @@ add_action('wp_enqueue_scripts', function () {
 	}
 
 	wp_enqueue_script('doctor-homes-inline');
-    wp_enqueue_script('form-engine', plugin_dir_url(__FILE__) . 'includes/form-engine/script.js');
-    
-    add_filter('script_loader_tag', function($tag, $handle) {
-        if ('form-engine' === $handle) {
-            $tag = str_replace('<script ', '<script type="module" ', $tag);
-        }
-        return $tag;
-    }, 10, 2);
+	wp_enqueue_script('form-engine', plugin_dir_url(__FILE__) . 'includes/form-engine/script.js');
+
+	add_filter('script_loader_tag', function ($tag, $handle) {
+		if ('form-engine' === $handle) {
+			$tag = str_replace('<script ', '<script type="module" ', $tag);
+		}
+		return $tag;
+	}, 10, 2);
 }, 0);
 
 add_filter('should_load_separate_core_block_assets', '__return_true');
 
-
+require_once plugin_dir_path(__FILE__) . 'includes/form-engine/handler.php';
 include_once plugin_dir_path(__FILE__) . 'includes/image-helper.php';

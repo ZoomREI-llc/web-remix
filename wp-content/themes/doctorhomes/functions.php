@@ -1,7 +1,4 @@
 <?php
-define('GOOGLE_MAPS_API_KEY', 'AIzaSyCwwLF50kEF6wS1rTEqTDPfTXcSlF9REuI');
-define('CRM_WEBHOOK_URL', 'https://workflow-automation.podio.com/catch/2kt203ir6i3uk64');
-
 // Enqueue Scripts and Styles
 function doctor_homes_enqueue_assets()
 {

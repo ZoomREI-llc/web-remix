@@ -49,9 +49,6 @@ return [
         "field" => "heard_about_us",
         "key" => "hear_about_us"
     ],
-    
-    
-    
     [
         "field" => "timestamp",
         "key" => "timestamp"
@@ -88,14 +85,12 @@ return [
     ],
     [
         "field" => "client_id",
-        "key" => "ga_customer_id"
+        "key" => "ga_cid"
     ],
     [
         "field" => "session_id",
-        "key" => "ga_session_id"
-    ],
-    
-    
+        "key" => "ga_sid"
+    ],   
     [
         "field" => "utm_source",
         "key" => "utm_source"
