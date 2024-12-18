@@ -180,7 +180,7 @@ $form_config = [
         <div class="lead-form-final__row">
             <div class="input input--rounded">
                 <label for="landline">Landline</label>
-                <input type="text" id="landline" name="landline">
+                <input type="tel" id="landline" inputmode="numeric" name="landline" placeholder="(888) 888 - 888" data-validation="tel-mask" required>
                 <div class="input__message"></div>
             </div>
             <div class="input input--rounded">

@@ -6,7 +6,7 @@ import { inputSelect } from "./modules/inputSelect.js";
 
 function formEngineCallback(leadForm) {
   let leadFormConfig = JSON.parse(document.getElementById('form-config-'+leadForm.id).innerHTML)
-  let phoneInput = leadForm.querySelector('[data-validation="tel-mask"]')
+  let phoneInputs = leadForm.querySelectorAll('[data-validation="tel-mask"]')
   let formName = leadForm.closest('[data-form-name]') ? leadForm.closest('[data-form-name]').dataset.formName : leadForm.name
   let isPopup = leadForm.closest('[data-form-popup]')
   let showHideContainer = leadForm.closest('section') || leadForm
@@ -15,27 +15,11 @@ function formEngineCallback(leadForm) {
 
   leadForm.classList.add('is-initialized')
 
-  // Ensure the phone input has the 'required' attribute
-  if (phoneInput) {
-    phoneInput.setAttribute('required', 'required');
-  }
-
-  telInputMask(phoneInput, {
-    mask: '(xxx) xxx - xxxx',
-    hiddenInput: true
-  });
-
-  // Initialize validation for the form
-  validate(leadForm, {
-    submitFunction: sendAjax,
-    trackErrors: true
-  });
-
-  // After validation initialization, the inputs have the `setError` method
-  phoneInput = leadForm.querySelector('[name="phone"]');
-
   function sendAjax() {
+    let xhr = new XMLHttpRequest();
+    let formData = populateUtms(leadForm, new FormData(leadForm));
     let formBtn = leadForm.querySelector('[type="submit"]');
+
     if(leadForm.dataset.submitEvent) {
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({
@@ -58,97 +42,64 @@ function formEngineCallback(leadForm) {
       formBtn.setAttribute('disabled', 'disabled');
     }
 
-    // Get the phone number from the hidden input (unmasked phone number)
-    // Ensure `phoneInput` has `setError` method
-    let phoneNumber = phoneInput ? phoneInput.value : '';
+    formData.append('webhooks', JSON.stringify(leadFormConfig.webhooks))
+    formData.append('form_name', formName)
+    formData.append('popup', !!isPopup)
 
-    // Perform Numverify API validation
-    fetch(`https://apilayer.net/api/validate?access_key=d1c478a64c53bed8fa503af6541b7c21&number=${encodeURIComponent(phoneNumber)}`)
-      .then(response => response.json())
-      .then(data => {
-        console.log('Numverify API Response:', data); // Log the API response
+    xhr.open('post', leadFormConfig.handler);
+    xhr.onload = function() {
+      let data = xhr.responseText
 
-        if (data.error) {
-          console.error('Numverify API Error:', data.error);
-          if (formBtn) {
-            formBtn.classList.remove('is-loading');
-            formBtn.removeAttribute('disabled');
-          }
-          phoneInput.setError('Unable to validate phone number. Please try again later.');
-        } else if (data.valid && isAllowedLineType(data.line_type)) {
-          // Phone number is valid and line type is acceptable
-          let xhr = new XMLHttpRequest();
-          let formData = populateUtms(leadForm, new FormData(leadForm));
-          // ...existing code to append form data...
-          formData.append('webhooks', JSON.stringify(leadFormConfig.webhooks));
-          formData.append('form_name', formName);
-          formData.append('popup', isPopup);
+      try {
+        data = JSON.parse(data)
+        data = data['responseJSON'] || data['data'] || data
+      } catch (error) {}
 
-          xhr.open('post', leadFormConfig.handler);
-          xhr.onload = function() {
-            if (xhr.status === 200) {
-              if(leadFormConfig.redirect) {
-                let redirectParams = getRedirectParams(formData, leadFormConfig.query)
+      if (xhr.status === 200) {
+        if(leadFormConfig.redirect) {
+          let redirectParams = getRedirectParams(formData, leadFormConfig.query)
 
-                document.location.href = leadFormConfig.redirect + (redirectParams ? '?'+redirectParams : '')
-              }
+          document.location.href = leadFormConfig.redirect + (redirectParams ? '?'+redirectParams : '')
 
-              if(hideOnSuccess){
-                fadeOut(hideOnSuccess, 300, function () {
-                  if(showOnSuccess) {
-                    fadeIn(showOnSuccess, 300)
-                  }
-                })
-              } else if(showOnSuccess){
-                fadeIn(showOnSuccess, 300)
-              }
+          return;
+        }
 
-              trigger(leadForm, 'form-submit-success')
+        if(hideOnSuccess){
+          fadeOut(hideOnSuccess, 300, function () {
+            if(showOnSuccess) {
+              fadeIn(showOnSuccess, 300)
             }
-          };
-          xhr.send(formData);
-        } else {
-          // Phone number is invalid or line type is not acceptable
-          if (formBtn) {
-            formBtn.classList.remove('is-loading');
-            formBtn.removeAttribute('disabled');
-          }
-          phoneInput.setError('Invalid phone number. Please enter a valid mobile or landline number.');
+          })
+        } else if(showOnSuccess){
+          fadeIn(showOnSuccess, 300)
         }
-      })
-      .catch(error => {
-        console.error('Error validating phone number:', error);
-        if (formBtn) {
-          formBtn.classList.remove('is-loading');
-          formBtn.removeAttribute('disabled');
+
+        trigger(leadForm, 'form-submit-success')
+      } else {
+        if(typeof data === 'object' && data['errors']){
+          let scrolledToInput = false
+          Object.keys(data['errors']).forEach(name => {
+            let formInput = leadForm.querySelector(`[name="${name}"]`)
+            if(formInput && formInput['setError']) {
+              formInput.setError(data['errors'][name])
+              if(!scrolledToInput){
+                if(document.scrollTo) {
+                  document.scrollTo(formInput, 700)
+                }
+                scrolledToInput = true;
+              }
+            }
+          })
         }
-        phoneInput.setError('Unable to validate phone number at this time. Please try again later.');
-      });
-  }
 
-  function isAllowedLineType(lineType) {
-    // Accept line types that are valid for communication
-    const allowedLineTypes = [
-      'mobile',
-      'fixed_line',
-      'fixed_line_or_mobile',
-      'voip'
-    ];
-    return allowedLineTypes.includes(lineType);
-  }
+        trigger(leadForm, 'form-submit-error')
+      }
 
-  function isValidPhoneNumberFormat(number) {
-    // Reject numbers with repeating digits like 1111111111, 1234567890, etc.
-    const invalidPatterns = [
-      /^(\d)\1{9}$/,         // Repeating digits
-      /^(1234567890)$/,      // Sequential digits
-      /^(0987654321)$/,      // Reverse sequential digits
-      /^0+$/,                // All zeros
-      /^1+$/                 // All ones
-    ];
-    return !invalidPatterns.some(pattern => pattern.test(number));
+      formBtn.classList.remove('is-loading')
+      formBtn.removeAttribute('disabled');
+    };
+    xhr.send(formData);
   }
-
   function initAddress() {
     let addressInput = leadForm.querySelector('[data-validation="address-autocomplete"]')
     let addressInputBtn = leadForm.querySelector('[type="submit"]')
@@ -197,18 +148,34 @@ function formEngineCallback(leadForm) {
       if(input){
         input.value = value
         if(input.dataset.validation === "tel-mask"){
+          if(value.indexOf('+1') > -1){
+            input.value = value.replace('+1', '')
+          }
           trigger(input, 'input')
         }
       }
       if(glossaryInput){
         glossaryInput.value = value
         if(glossaryInput.dataset.validation === "tel-mask"){
+          if(value.indexOf('+1') > -1){
+            glossaryInput.value = value.replace('+1', '')
+          }
           trigger(glossaryInput, 'input')
         }
       }
     })
   }
 
+  phoneInputs.forEach(function (phoneInput) {
+    telInputMask(phoneInput, {
+      mask: '(xxx) xxx - xxxx',
+      hiddenInput: true
+    })
+  })
+  validate(leadForm, {
+    submitFunction: sendAjax,
+    trackErrors: true
+  })
   initAddress()
   inputSelect()
   getValuesFromQueue()

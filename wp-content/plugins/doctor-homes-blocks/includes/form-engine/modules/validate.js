@@ -128,8 +128,9 @@ export function validate(form, newOpts = {}) {
 		checkOnInputAfterSubmit: false,
 		checkOnFocusOut: true,
 		disableButton: false,
+		disableButtonValid: false,
 		errorClass: 'is-error',
-		dontValidateInputs: 'input[name], .output_value, select, textarea',
+		dontValidateInputs: 'input:not([type="hidden"])[name], .output_value, select, textarea',
 		inputContainerSelector: '.input',
 		formErrorBlock: '',
 		addInputErrors: true,
@@ -178,8 +179,8 @@ export function validate(form, newOpts = {}) {
 				if (!min || !value) return true;
 				return value.length >= min;
 			},
-			"maxlength": function (value, element, regexp) {
-				let max = +element.getAttribute("maxlength");
+			"maxlength": function (value, element, passed) {
+				let max = +element.getAttribute("maxlength") || parseInt(passed);
 				if (!max) return true;
 				if (element.value.length > max) {
 					element.value = element.value.substr(0, max);
@@ -242,20 +243,17 @@ export function validate(form, newOpts = {}) {
 		if(!opts.checkOnInput && !opts.checkOnInputAfterSubmit){
 			return;
 		}
-		if(opts.disableButton){
+		if(opts.disableButton || opts.disableButtonValid){
 			_this.checkDisableButton()
 		}
 		if (opts.methodsOnInput.length) {
 			_this.valid(this, opts.methodsOnInput);
-			return;
 		}
-		if (opts.checkOnFocusOut && input['had_focusout']) {
+		if (opts.checkOnFocusOut && this['had_focusout']) {
 			_this.valid(this);
-			return;
 		}
 		if (opts.checkOnInput) {
 			_this.valid(this);
-			return;
 		}
 		if (opts.checkOnInputAfterSubmit && _this.formSubmitted) {
 			_this.valid(this);
@@ -282,7 +280,8 @@ export function validate(form, newOpts = {}) {
 	}
 	function inputFocusListener(e) {
 		let inputsSameName = Array.from(form.querySelectorAll(`[name="${this.getAttribute('name')}"]`))
-		if(opts.disableButton){
+
+		if(opts.disableButton || opts.disableButtonValid){
 			_this.checkDisableButton()
 		}
 		if(inputsSameName.length > 1){
@@ -304,7 +303,7 @@ export function validate(form, newOpts = {}) {
 		}
 	}
 	function inputFocusoutListener(e) {
-		if(opts.disableButton){
+		if(opts.disableButton || opts.disableButtonValid){
 			_this.checkDisableButton()
 		}
 		let thisInput = this
@@ -318,7 +317,7 @@ export function validate(form, newOpts = {}) {
 		}
 	}
 	function inputChangeListener(e) {
-		if(opts.disableButton){
+		if(opts.disableButton || opts.disableButtonValid){
 			_this.checkDisableButton()
 		}
 		if (this.getAttribute('type') === 'checkbox' || this.getAttribute('type') === 'radio' ) {
@@ -352,10 +351,11 @@ export function validate(form, newOpts = {}) {
 	}
 	let _this = {
 		isValid: true,
-		allInputs: selectAll(opts.dontValidateInputs, form),
+		allInputs: [],
 		formSubmitted: false,
 		init: function () {
-			_this.allInputs = selectAll(opts.dontValidateInputs, form)
+			let allInputs = selectAll(opts.dontValidateInputs, form)
+
 			form.setAttribute('novalidate', 'novalidate');
 			form.setAttribute('data-js-validation', 'novalidate');
 			form.addEventListener('submit', formSubmitListener);
@@ -363,105 +363,8 @@ export function validate(form, newOpts = {}) {
 				let addErrors = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
 				return _this.validate(false, addErrors);
 			};
-			_this.allInputs.map(function (input) {
-				let thisInputMethods = [];
-				let dataValidation = input.getAttribute('data-validation');
-				if (input.hasAttribute('required')) {
-					thisInputMethods.push({
-						callback: opts.methods['required'],
-						errorMessage: getMethodError(input, 'required', 'This field is required')
-					});
-				}
-				if (input.hasAttribute('minlength')) {
-					thisInputMethods.push({
-						callback: opts.methods['minlength'],
-						errorMessage: getMethodError(input, 'minlength', 'Min length is &1 symbols', [input.getAttribute('minlength')])
-					});
-				}
-				if (input.hasAttribute('maxlength')) {
-					thisInputMethods.push({
-						callback: opts.methods['maxlength'],
-						errorMessage: getMethodError(input, 'maxlength', 'Max length is &1 symbols', [input.getAttribute('maxlength')])
-					});
-				}
-
-
-
-				// if (input.getAttribute('type') === 'email') {
-				//   thisInputMethods.push({
-				//     callback: opts.methods['regex'],
-				//     passedValue: email_reg,
-				//     errorMessage: opts.validationErrors['email']['regex'] || opts.validationErrors['invalid'] || 'This field is invalid'
-				//   });
-				// }
-				if (dataValidation) {
-					let thisValidation = opts.validationRules[input.getAttribute('data-validation')];
-					if (thisValidation) {
-						thisValidation = thisValidation['rules'];
-					}
-					if (thisValidation) {
-						Object.keys(thisValidation).forEach(methodName => {
-							let existingMethod = false;
-							let thisValidationValue = thisValidation[methodName];
-							if (opts.methods[methodName]){
-								existingMethod = {
-									callback: opts.methods[methodName],
-									passedValue: thisValidationValue,
-									errorMessage: getMethodError(input, methodName, opts.validationErrors['invalid'] || 'This field is invalid')
-								};
-							}
-
-							if (existingMethod) thisInputMethods.push(existingMethod);
-						});
-					}
-				}
-				function isInputRequired() {
-					let removeIt = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
-					let thisInputActualMethods = input['validationMethods'];
-					let hasRequired = false;
-					thisInputActualMethods.map(function (method) {
-						if (method.callback.name === 'required') {
-							hasRequired = true;
-							if (removeIt) thisInputActualMethods.splice(thisInputActualMethods.indexOf(method), 1);
-						}
-					});
-					return hasRequired;
-				}
-				function setRequired() {
-					let thisInputActualMethods = input['validationMethods'];
-					if (isInputRequired()) return;
-					thisInputActualMethods.push({
-						callback: opts.methods['required'],
-						errorMessage: getMethodError(input, 'required', 'This field is required')
-					});
-					input['validationMethods'] = thisInputMethods;
-				}
-				function removeRequired() {
-					isInputRequired(true);
-				}
-				function setError(message) {
-					_this.highlight(input)
-					_this.errorPlacement(message, input)
-				}
-				function removeError() {
-					_this.unhighlight(input)
-					_this.errorRemove(input)
-				}
-				input['setError'] = setError
-				input['removeError'] = removeError
-				input['setRequired'] = setRequired;
-				input['removeRequired'] = removeRequired;
-				input['isRequired'] = isInputRequired;
-				input['validationMethods'] = thisInputMethods;
-				input['had_input'] = false;
-				input['had_focusout'] = false;
-				input['isValid'] = function (addError = true) {
-					return _this.valid(input, addError);
-				};
-				input.addEventListener('input', inputInputListener);
-				input.addEventListener('change', inputChangeListener);
-				input.addEventListener('focus', inputFocusListener);
-				input.addEventListener('focusout', inputFocusoutListener);
+			allInputs.map(function (input) {
+				_this.addInput(input)
 			});
 			if (opts['rules']) {
 				Object.keys(opts['rules']).forEach(function (rule) {
@@ -482,11 +385,116 @@ export function validate(form, newOpts = {}) {
 				});
 			}
 
-			if(opts.disableButton){
+			if(opts.disableButton || opts.disableButtonValid){
 				_this.checkDisableButton()
 			}
 
 			_this.updateDefaultFormData()
+		},
+		addInput: function (input) {
+			let thisInputMethods = [];
+			let dataValidation = input.getAttribute('data-validation');
+
+			_this.allInputs.push(input)
+			if (input.hasAttribute('required')) {
+				thisInputMethods.push({
+					callback: opts.methods['required'],
+					errorMessage: getMethodError(input, 'required', 'This field is required')
+				});
+			}
+			if (input.hasAttribute('minlength')) {
+				thisInputMethods.push({
+					callback: opts.methods['minlength'],
+					errorMessage: getMethodError(input, 'minlength', 'Min length is &1 symbols', [input.getAttribute('minlength')])
+				});
+			}
+			if (input.hasAttribute('maxlength')) {
+				thisInputMethods.push({
+					callback: opts.methods['maxlength'],
+					errorMessage: getMethodError(input, 'maxlength', 'Max length is &1 symbols', [input.getAttribute('maxlength')])
+				});
+			}
+
+
+
+			// if (input.getAttribute('type') === 'email') {
+			//   thisInputMethods.push({
+			//     callback: opts.methods['regex'],
+			//     passedValue: email_reg,
+			//     errorMessage: opts.validationErrors['email']['regex'] || opts.validationErrors['invalid'] || 'This field is invalid'
+			//   });
+			// }
+			if (dataValidation) {
+				let thisValidation = opts.validationRules[input.getAttribute('data-validation')];
+				if (thisValidation) {
+					thisValidation = thisValidation['rules'];
+				}
+				if (thisValidation) {
+					Object.keys(thisValidation).forEach(methodName => {
+						let existingMethod = false;
+						let thisValidationValue = thisValidation[methodName];
+						if (opts.methods[methodName]){
+							existingMethod = {
+								callback: opts.methods[methodName],
+								passedValue: thisValidationValue,
+								errorMessage: getMethodError(input, methodName, opts.validationErrors['invalid'] || 'This field is invalid')
+							};
+						}
+
+						if (existingMethod) thisInputMethods.push(existingMethod);
+					});
+				}
+			}
+			function isInputRequired() {
+				let removeIt = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+				let thisInputActualMethods = input['validationMethods'];
+				let hasRequired = false;
+				thisInputActualMethods.map(function (method) {
+					if (method.callback.name === 'required') {
+						hasRequired = true;
+						if (removeIt) thisInputActualMethods.splice(thisInputActualMethods.indexOf(method), 1);
+					}
+				});
+				return hasRequired;
+			}
+			function setRequired() {
+				let thisInputActualMethods = input['validationMethods'];
+				if (isInputRequired()) return;
+				thisInputActualMethods.push({
+					callback: opts.methods['required'],
+					errorMessage: getMethodError(input, 'required', 'This field is required')
+				});
+				input['validationMethods'] = thisInputMethods;
+			}
+			function removeRequired() {
+				isInputRequired(true);
+			}
+			function setError(message) {
+				_this.highlight(input)
+				_this.errorPlacement(message, input)
+			}
+			function removeError() {
+				_this.unhighlight(input)
+				_this.errorRemove(input)
+			}
+			input['setError'] = setError
+			input['removeError'] = removeError
+			input['setRequired'] = setRequired;
+			input['removeRequired'] = removeRequired;
+			input['isRequired'] = isInputRequired;
+			input['validationMethods'] = thisInputMethods;
+			input['had_input'] = false;
+			input['had_focusout'] = false;
+			input['isValid'] = function () {
+				return _this.valid(input);
+			};
+			input.addEventListener('input', inputInputListener);
+			input.addEventListener('change', inputChangeListener);
+			input.addEventListener('focus', inputFocusListener);
+			input.addEventListener('focusout', inputFocusoutListener);
+		},
+		removeInput: function (input) {
+			_this.allInputs = _this.allInputs.filter(addedInput=>addedInput!=input)
 		},
 		destroy: function () {
 			form.removeAttribute('novalidate', 'novalidate');
@@ -509,10 +517,12 @@ export function validate(form, newOpts = {}) {
 				input.removeEventListener('focusout', inputFocusoutListener);
 			});
 		},
-		valid: function (input, addError = true) {
+		valid: function (input) {
 			if(input['dont-check']){
 				return true;
 			}
+			let checkMethods = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
+			let addError = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
 			let thisMethods = input['validationMethods'];
 			if (!thisMethods) {
 				_this.errorRemove(input);
@@ -520,7 +530,15 @@ export function validate(form, newOpts = {}) {
 				return true;
 			}
 			let isInputValid = true;
-
+			if (checkMethods.length) {
+				thisMethods = [];
+				checkMethods.forEach(function (thisMethod) {
+					let thisInputMethod = input['validationMethods'].find(obj => obj.callback.name === thisMethod);
+					if (thisInputMethod) {
+						thisMethods.push(thisInputMethod);
+					}
+				});
+			}
 			thisMethods.forEach(function (thisMethod) {
 				if (!isInputValid) return;
 				let isThisValid = thisMethod['callback'](input.value, input, thisMethod['passedValue']);
@@ -613,26 +631,46 @@ export function validate(form, newOpts = {}) {
 			if (container) container.classList.remove(opts.errorClass);
 		},
 		updateDefaultFormData: function () {
-			_this.defaultFormData = new FormData(form)
+			form.defaultFormData = new FormData(form)
 		},
 		checkDisableButton: function () {
-			let currentFormData = new FormData(form)
-			let formHasChanges = false
-			let formIsValid = form.valid(false)
+			setTimeout(function () {
+				let currentFormData = new FormData(form)
+				let formHasChanges = false
+				let formIsValid = form.valid(false)
 
-			if(typeof _this.defaultFormData !== 'undefined') {
-				for (let [key, value] of _this.defaultFormData.entries()) {
-					if (currentFormData.get(key) !== value) {
-						formHasChanges = true
+				if(typeof form.defaultFormData !== 'undefined') {
+					for (let [key, value] of form.defaultFormData.entries()) {
+						if (currentFormData.get(key) !== value) {
+							if(value instanceof File){
+								if(!value.size && value.size){
+									formHasChanges = true
+								}
+							} else {
+								formHasChanges = true
+							}
+						}
 					}
 				}
-			}
 
-			if(formIsValid && formHasChanges){
-				form.querySelector('[type="submit"]').removeAttribute('disabled')
-			} else {
-				form.querySelector('[type="submit"]').setAttribute('disabled', 'disabled')
-			}
+				let btnSubmit = form.querySelector('[type="submit"]')
+
+				if(!btnSubmit && form.id){
+					btnSubmit = form.querySelector('[type="submit"][form="'+form.id+'"]')
+				}
+
+				if((opts.disableButtonValid ? formIsValid : false) || (opts.disableButton ? formHasChanges : false)){
+					if(btnSubmit) {
+						btnSubmit.removeAttribute('disabled')
+					}
+					trigger(form, 'activate-button')
+				} else if(opts.disableButtonValid || opts.disableButton) {
+					if(btnSubmit) {
+						btnSubmit.setAttribute('disabled', 'disabled')
+					}
+					trigger(form, 'disable-button')
+				}
+			}, 10)
 		},
 		errorPlacement: function (error, element) {
 			if (!error) return;

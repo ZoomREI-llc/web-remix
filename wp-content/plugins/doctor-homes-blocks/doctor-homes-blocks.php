@@ -164,7 +164,57 @@ add_action('wp_enqueue_scripts', function () {
 		}
 		return $tag;
 	}, 10, 2);
+    
+    if (is_page()) {
+        $post_id = get_the_ID();
+        $market_code = get_post_meta($post_id, '_market_code', true);
+
+        if ($market_code) {
+            $script = 'window.marketCode = "' . esc_js($market_code) . '";';
+            wp_add_inline_script('doctor-homes-inline', $script);
+        }
+    }
 }, 0);
+
+function add_market_code_metabox() {
+    add_meta_box(
+        'market_code_metabox',
+        'Market Code',
+        'render_market_code_metabox',
+        'page',
+        'side'
+    );
+}
+add_action('add_meta_boxes', 'add_market_code_metabox');
+
+function render_market_code_metabox($post) {
+    $market_code = get_post_meta($post->ID, '_market_code', true);
+    
+    wp_nonce_field('market_code_nonce_action', 'market_code_nonce');
+    
+    echo '<style>.postbox-header .handle-actions{flex-direction: row;display: flex;padding: 12px 10px;}.edit-post-meta-boxes-area .postbox .handle-order-higher, .edit-post-meta-boxes-area .postbox .handle-order-lower {width: 20px;height: 20px;padding: 0 !important;}</style>';
+    echo '<label for="market_code_field">Market Code:</label>';
+    echo '<input type="text" id="market_code_field" name="market_code_field" value="' . esc_attr($market_code) . '" style="width:100%;">';
+}
+
+function save_market_code_metabox($post_id) {
+    if (!isset($_POST['market_code_nonce']) || !wp_verify_nonce($_POST['market_code_nonce'], 'market_code_nonce_action')) {
+        return;
+    }
+    
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        return;
+    }
+    
+    if (!current_user_can('edit_post', $post_id)) {
+        return;
+    }
+    
+    if (isset($_POST['market_code_field'])) {
+        update_post_meta($post_id, '_market_code', sanitize_text_field($_POST['market_code_field']));
+    }
+}
+add_action('save_post', 'save_market_code_metabox');
 
 add_filter('should_load_separate_core_block_assets', '__return_true');
 

@@ -12,6 +12,12 @@ export function populateUtms(form, formData) {
 		'page_url': ()=>{
 			return document.location.href
 		},
+		'market_code': ()=>{
+			return window.marketCode || ''
+		},
+		'user_agent': ()=>{
+			return navigator.userAgent || ''
+		},
 		'lead_source': ()=>{
 			return localStorage.getItem('Initial_Lead_Source') || ''
 		},
@@ -36,7 +42,14 @@ export function populateUtms(form, formData) {
 			return (match) ? match[1] : '';
 		},
 		'session_id': ()=>{
-			return '??'
+			let match = document.cookie.match(/(?:^|;)\s*_ga_[^=]+=([^;]*)/),
+				raw = match ? decodeURIComponent(match[1]) : null;
+
+			if (raw) {
+				match = raw.match(/^GS1\.\d+\.(\d+)/);
+			}
+
+			return match ? match[1] : '';
 		},
 		'referrer': ()=>{
 			return document.referrer

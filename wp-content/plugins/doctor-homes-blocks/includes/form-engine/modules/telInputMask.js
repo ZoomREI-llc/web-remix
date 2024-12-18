@@ -36,6 +36,7 @@ export function telInputMask(input, newOpts={}) {
 
 		hiddenInput.type = 'hidden'
 		hiddenInput.name = input.name
+		hiddenInput.required = true
 		input.name = input.name+'_masked'
 		input.hiddenInput = hiddenInput
 		input.insertAdjacentElement('afterend', hiddenInput)
@@ -44,6 +45,11 @@ export function telInputMask(input, newOpts={}) {
 		if(opts.hiddenInput.mask) {
 			onInput.call(hiddenInput, opts.hiddenInput.mask)
 		}
+		setTimeout(function () {
+			if(hiddenInput.closest('form') && hiddenInput.closest('form').validateMethods){
+				hiddenInput.closest('form').validateMethods.addInput(hiddenInput)
+			}
+		}, 10)
 	}
 
 	function getUnmaskedValue(maskedString, mask=opts.mask) {
@@ -139,7 +145,7 @@ export function telInputMask(input, newOpts={}) {
 				this.setSelectionRange(firstFillableChar, firstFillableChar);
 			}
 			if(this.hiddenInput) {
-				this.hiddenInput.value = '+1' + getUnmaskedValue(this.value)
+				this.hiddenInput.value = getUnmaskedValue(this.value)
 
 				if (opts.hiddenInput.mask) {
 					onInput.call(this.hiddenInput, opts.hiddenInput.mask)
