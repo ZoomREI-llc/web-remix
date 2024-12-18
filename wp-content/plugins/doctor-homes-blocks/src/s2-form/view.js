@@ -61,7 +61,11 @@ function s2FormCallback() {
 				gsap.set(newPage, { display: 'block', opacity: 1, x: 0 });
 			}
 
-			jQuery('html, body').animate({ scrollTop: 0 }, 300);
+			if(typeof jQuery !== 'undefined') {
+				jQuery('html, body').animate({scrollTop: 0}, 300);
+			} else {
+				window.scrollTo(0,0)
+			}
 			trigger(activePage, 'show');
 		}
 
@@ -82,7 +86,7 @@ function s2FormCallback() {
 		timing: 500
 	})
 
-	document.addEventListener('lead-form-final-success', function(){
+	document.addEventListener('form-submit-success', function(){
 		pagesInstance.show('thanks')
 	});
 }

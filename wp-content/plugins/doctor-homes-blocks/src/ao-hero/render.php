@@ -54,7 +54,7 @@ $formId = isset($attributes['formId']) ? esc_html($attributes['formId']) : '1';
                 </li>
             </ul>
         </div>
-        <div id="ao-form" class="ao-hero__form">
+        <div id="ao-form" class="ao-hero__form" data-form-name="Property Inquiry">
             <div class="gform_heading">
                 <div class="gform__header">
                     <h3>Ready For Your Cash Offer?</h3>

@@ -25,7 +25,7 @@ $checkmark_icon_url = plugins_url('src/cw-hero/assets/check-circle.svg', dirname
             </div>
         </div>
         <h1 class="cw-hero__title">We Buy ANY House In <span>ANY Condition, On YOUR Timeline</span></h1>
-        <div id="cw-form" class="cw-hero__form">
+        <div id="cw-form" class="cw-hero__form" data-form-name="Property Inquiry">
             <div class="cw-hero__form-title">
                 <span>Get Your Offer In Record Time</span>
             </div>
