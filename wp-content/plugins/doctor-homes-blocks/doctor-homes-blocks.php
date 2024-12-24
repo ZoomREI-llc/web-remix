@@ -220,3 +220,4 @@ add_filter('should_load_separate_core_block_assets', '__return_true');
 
 require_once plugin_dir_path(__FILE__) . 'includes/form-engine/handler.php';
 include_once plugin_dir_path(__FILE__) . 'includes/image-helper.php';
+include_once plugin_dir_path(__FILE__) . 'includes/preload-helper.php';

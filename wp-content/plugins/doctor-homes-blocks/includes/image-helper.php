@@ -3,62 +3,160 @@
 /**
  * Image Helper Functions
  *
- * Provides functions to generate responsive images and image URLs
- * for use in templates.
+ * Provides functions to generate responsive images, image URLs, and handle
+ * extra HTML attributes in a more developer-friendly way.
  *
  * @package YourPluginName
  */
 
 /**
- * Generates a responsive <img> tag for an image or serves an SVG if it exists.
+ * Helper to build a string of HTML attributes from an associative array.
+ * E.g. ['class'=>'my-class','loading'=>'lazy'] -> ' class="my-class" loading="lazy"'
  *
- * @param string $image_name   The base name of the image, including subdirectories relative to the optimized-assets folder.
- * @param string $alt          The alt text for the image.
- * @param string $class        The class attribute for the <img> tag.
- * @param string $sizes_attr   The sizes attribute for the <img> tag.
- * @param string $extension    The image file extension (default 'webp').
- * @param int    $default_size The default image size for the src attribute.
- * @return string              The HTML <img> tag.
+ * @param array $attributes Associative array of attribute => value
+ * @return string A space-prefixed string of HTML attributes (e.g. ` src="..." alt="..."`)
  */
-function get_responsive_image($image_name, $alt = '', $class = '', $sizes_attr = '', $extension = 'webp', $default_size = 300)
+function build_html_attributes($attributes)
 {
-    static $file_cache = []; // Cache to store file existence checks and image dimensions
+    $attributes_str = '';
 
+    foreach ($attributes as $key => $value) {
+        // Allow boolean attributes: if true, add the attribute; if false, omit
+        if (is_bool($value)) {
+            if ($value) {
+                $attributes_str .= ' ' . esc_attr($key);
+            }
+        } else {
+            // Otherwise, key="value"
+            $attributes_str .= ' ' . esc_attr($key) . '="' . esc_attr($value) . '"';
+        }
+    }
+
+    return $attributes_str;
+}
+
+/**
+ * Generates a responsive <img> tag for an image or serves an SVG if it exists.
+ * (The original, positional-parameters version for backwards compatibility.)
+ *
+ * @param string $image_name    The base name of the image (subdirs allowed).
+ * @param string $alt           Alt text.
+ * @param string $class         <img> CSS class.
+ * @param string $sizes_attr    The sizes attribute for <img>.
+ * @param string $extension     The file extension (default 'webp').
+ * @param int    $default_size  The default width to use for the src.
+ * @param array  $additional_attrs Extra HTML attributes (e.g. ['loading'=>'lazy']).
+ * @return string <img> HTML or empty string if no image found.
+ */
+function get_responsive_image(
+    $image_name,
+    $alt = '',
+    $class = '',
+    $sizes_attr = '',
+    $extension = 'webp',
+    $default_size = 300,
+    $additional_attrs = []
+) {
+    // Internally, we can pass everything to get_responsive_image2:
+    return get_responsive_image2([
+        'image_name'       => $image_name,
+        'alt'              => $alt,
+        'class'            => $class,
+        'sizes_attr'       => $sizes_attr,
+        'extension'        => $extension,
+        'default_size'     => $default_size,
+        'additional_attrs' => $additional_attrs,
+    ]);
+}
+
+/**
+ * Generates a responsive <img> tag (or SVG) using an array of arguments.
+ * Developer-friendly: no more passing empty placeholder parameters!
+ *
+ * @param array $args {
+ *     @type string $image_name        Required. Base name of the image in 'optimized-assets/'.
+ *     @type string $alt               Alt text (default '').
+ *     @type string $class             CSS class (default '').
+ *     @type string $sizes_attr        sizes attribute (default '100vw' fallback).
+ *     @type string $extension         File extension (default 'webp').
+ *     @type int    $default_size      Default width for the src (default 300).
+ *     @type array  $additional_attrs  Extra HTML attributes, e.g. ['loading'=>'lazy'] (default []).
+ * }
+ * @return string <img> HTML string, or empty string if not found.
+ */
+function get_responsive_image2($args = [])
+{
+    // 1) Define default arguments
+    $defaults = [
+        'image_name'       => '',
+        'alt'              => '',
+        'class'            => '',
+        'sizes_attr'       => '',
+        'extension'        => 'webp',
+        'default_size'     => 300,
+        'additional_attrs' => []
+    ];
+
+    // 2) Merge provided args with defaults
+    $args = wp_parse_args($args, $defaults);
+
+    // 3) Extract vars
+    $image_name       = $args['image_name'];
+    $alt              = $args['alt'];
+    $class            = $args['class'];
+    $sizes_attr       = $args['sizes_attr'];
+    $extension        = $args['extension'];
+    $default_size     = $args['default_size'];
+    $additional_attrs = $args['additional_attrs'];
+
+    // If no image name, bail out
+    if (empty($image_name)) {
+        return '';
+    }
+
+    static $file_cache = []; // Cache to store file existence + dimensions
     $base_url = plugin_dir_url(__DIR__) . 'optimized-assets/';
     $base_dir = plugin_dir_path(__DIR__) . 'optimized-assets/';
-    $sizes = [150, 300, 768, 1024, 1536, 2048];
+    $sizes    = [150, 300, 768, 1024, 1536, 2048];
 
-    // Sanitize inputs
+    // Sanitize the image path parts
     $image_parts = explode('/', $image_name);
     $image_parts = array_map('sanitize_file_name', $image_parts);
     $image_name_sanitized = implode('/', $image_parts);
 
-    $alt = esc_attr($alt);
+    $alt   = esc_attr($alt);
     $class = esc_attr($class);
 
-    // Check if the SVG version exists, and cache the result
+    // 4) Check if an SVG exists
     $svg_path = "{$base_dir}{$image_name_sanitized}.svg";
     if (!isset($file_cache[$svg_path])) {
         $file_cache[$svg_path] = file_exists($svg_path);
     }
-
-    // If SVG exists, serve it directly without responsive attributes
     if ($file_cache[$svg_path]) {
+        // Serve SVG directly (no srcset)
         $src = esc_url("{$base_url}{$image_name_sanitized}.svg");
-        return "<img src='{$src}' alt='{$alt}' class='{$class}'>";
+
+        // Build attributes
+        $attributes = [
+            'src'   => $src,
+            'alt'   => $alt,
+            'class' => $class
+        ];
+        $attributes = array_merge($attributes, $additional_attrs);
+
+        return '<img' . build_html_attributes($attributes) . '>';
     }
 
-    // Generate srcset for responsive images
+    // 5) Build srcset for raster images
     $srcset = [];
     foreach ($sizes as $size) {
         $image_file = "{$base_dir}{$image_name_sanitized}-{$size}.{$extension}";
+
         if (!isset($file_cache[$image_file])) {
             $file_cache[$image_file] = file_exists($image_file);
             if ($file_cache[$image_file]) {
-                // Get actual image dimensions
-                $image_info = getimagesize($image_file);
-                $actual_width = $image_info[0];
-                $file_cache[$image_file . '_width'] = $actual_width;
+                $img_info = getimagesize($image_file);
+                $file_cache[$image_file . '_width'] = $img_info[0];
             }
         }
         if ($file_cache[$image_file]) {
@@ -67,21 +165,20 @@ function get_responsive_image($image_name, $alt = '', $class = '', $sizes_attr =
         }
     }
 
-    // If no images are found, return an empty string or a placeholder
     if (empty($srcset)) {
-        return ''; // Or return a placeholder image if desired
+        // No images found
+        return '';
     }
-
     $srcset_attr = implode(', ', $srcset);
 
-    // Set default sizes attribute if not provided
+    // 6) Fallback for sizes attribute
     if (empty($sizes_attr)) {
         $sizes_attr = '100vw';
     } else {
         $sizes_attr = esc_attr($sizes_attr);
     }
 
-    // Use the default size for the src attribute
+    // 7) Determine the default src
     $default_image_file = "{$base_dir}{$image_name_sanitized}-{$default_size}.{$extension}";
     if (!isset($file_cache[$default_image_file])) {
         $file_cache[$default_image_file] = file_exists($default_image_file);
@@ -90,20 +187,31 @@ function get_responsive_image($image_name, $alt = '', $class = '', $sizes_attr =
     if ($file_cache[$default_image_file]) {
         $src = esc_url("{$base_url}{$image_name_sanitized}-{$default_size}.{$extension}");
     } else {
-        // Find first available size
+        // Fallback to first available
+        $src = '';
         foreach ($sizes as $size) {
             $image_file = "{$base_dir}{$image_name_sanitized}-{$size}.{$extension}";
-            if ($file_cache[$image_file]) {
+            if (!empty($file_cache[$image_file])) {
                 $src = esc_url("{$base_url}{$image_name_sanitized}-{$size}.{$extension}");
                 break;
             }
         }
-        if (!isset($src)) {
+        if (!$src) {
             return '';
         }
     }
 
-    return "<img src='{$src}' alt='{$alt}' class='{$class}' srcset='{$srcset_attr}' sizes='{$sizes_attr}'>";
+    // 8) Build final <img> attributes
+    $attributes = [
+        'src'    => $src,
+        'alt'    => $alt,
+        'class'  => $class,
+        'srcset' => $srcset_attr,
+        'sizes'  => $sizes_attr
+    ];
+    $attributes = array_merge($attributes, $additional_attrs);
+
+    return '<img' . build_html_attributes($attributes) . '>';
 }
 
 /**
@@ -112,46 +220,42 @@ function get_responsive_image($image_name, $alt = '', $class = '', $sizes_attr =
  * @param string   $image_name The base name of the image, including subdirectories relative to the optimized-assets folder.
  * @param int|null $size       The desired image size (e.g., 2048). If null, attempts to use the largest available size.
  * @param string   $extension  The primary image file extension (default 'webp').
- * @return string              The URL to the image file.
+ * @return string              The URL to the image file or an empty string if not found.
  */
 function get_image_url($image_name, $size = null, $extension = 'webp')
 {
+    static $file_cache = []; // Cache to store file existence checks
     $base_url = plugin_dir_url(__DIR__) . 'optimized-assets/';
     $base_dir = plugin_dir_path(__DIR__) . 'optimized-assets/';
-    $sizes = [2048, 1536, 1024, 768, 300, 150]; // Sizes in descending order for fallback
+    $sizes    = [2048, 1536, 1024, 768, 300, 150];
 
-    // Split the image name into parts and sanitize each one
+    // Sanitize
     $image_parts = explode('/', $image_name);
     $image_parts = array_map('sanitize_file_name', $image_parts);
     $image_name_sanitized = implode('/', $image_parts);
 
-    static $file_cache = []; // Cache to store file existence checks
-
-    // List of extensions to try, starting with the primary extension
+    // We'll try the primary extension first, then 'svg'
     $extensions_to_try = [$extension];
-
-    // Add 'svg' to the list of extensions to try if it's not the primary extension
     if ($extension !== 'svg') {
         $extensions_to_try[] = 'svg';
     }
 
     foreach ($extensions_to_try as $ext) {
-        // If size is specified, attempt to get that size
+        // If size is specified, attempt that size
         if ($size !== null) {
-            $size = intval($size); // Ensure size is an integer
+            $size = intval($size);
             $image_file = "{$image_name_sanitized}-{$size}.{$ext}";
             $image_path = "{$base_dir}{$image_file}";
 
             if (!isset($file_cache[$image_path])) {
                 $file_cache[$image_path] = file_exists($image_path);
             }
-
             if ($file_cache[$image_path]) {
                 return esc_url("{$base_url}{$image_file}");
             }
         }
 
-        // If size not specified or specified size not found, attempt to use the largest available size
+        // If no size or size not found, try largest to smallest
         foreach ($sizes as $available_size) {
             $image_file = "{$image_name_sanitized}-{$available_size}.{$ext}";
             $image_path = "{$base_dir}{$image_file}";
@@ -159,25 +263,22 @@ function get_image_url($image_name, $size = null, $extension = 'webp')
             if (!isset($file_cache[$image_path])) {
                 $file_cache[$image_path] = file_exists($image_path);
             }
-
             if ($file_cache[$image_path]) {
                 return esc_url("{$base_url}{$image_file}");
             }
         }
 
-        // If no sized image is found, check for image without size suffix
+        // If still not found, check for an unsuffixed file, e.g. 'image_name.webp'
         $image_file = "{$image_name_sanitized}.{$ext}";
         $image_path = "{$base_dir}{$image_file}";
-
         if (!isset($file_cache[$image_path])) {
             $file_cache[$image_path] = file_exists($image_path);
         }
-
         if ($file_cache[$image_path]) {
             return esc_url("{$base_url}{$image_file}");
         }
     }
 
-    // Image not found; return empty string or a placeholder URL if desired
-    return ''; // Or return a default image URL
+    // Nothing found
+    return '';
 }
