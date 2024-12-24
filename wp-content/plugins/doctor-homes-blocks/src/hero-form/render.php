@@ -1,8 +1,20 @@
-<section class="dh-hero-form-wrapper" style="
-    --background-image-small: url('<?php echo get_image_url('hero-form/bg', 768); ?>');
-    --background-image-medium: url('<?php echo get_image_url('hero-form/bg', 1024); ?>');
-    --background-image-large: url('<?php echo get_image_url('hero-form/bg', 2048); ?>');
-">
+<section class="dh-hero-form-wrapper">
+    <div class="dh-hero-form-bg">
+        <?php
+        $url_for_preload = get_image_url('hero-form/bg', 768);
+        schedule_preload($url_for_preload, 'image', ['fetchpriority' => 'high']);
+
+        echo get_responsive_image2([
+            'image_name' => 'hero-form/bg',
+            'alt'        => 'Background decoration',
+            'default_size'     => 768,
+            'additional_attrs' => [
+                'decoding'      => 'async',
+                'fetchpriority' => 'high',
+            ]
+        ]);
+        ?>
+    </div>
     <div class="dh-hero-form__content grid-container">
         <div class="dh-hero-form__reviews">
             <div class="dh-hero-form__reviews-stars-wrapper">
