@@ -5,8 +5,9 @@
         schedule_preload($url_for_preload, 'image', ['fetchpriority' => 'high']);
 
         echo get_responsive_image2([
-            'image_name' => 'hero-form/bg',
-            'alt'        => 'Background decoration',
+            'image_name'       => 'hero-form/bg',
+            'alt'              => 'Hero background',
+            'class'           => 'dh-hero-form-img',
             'default_size'     => 768,
             'additional_attrs' => [
                 'decoding'      => 'async',

@@ -39,7 +39,7 @@ $testimonials = [
             <h2 class="title-2">What People Are Saying</h2>
             <p class="title-4">Fast sales, helpful & professional, zero hassle.
                 96% of sellers love our service – here’s what our clients have to say.</p>
-    
+
             <div class="swiper-navigation">
                 <button type="button" class="swiper-navigation__btn js-swiper-prev">
                     <?php echo get_responsive_image('testimonials/navigation-arrow', 'Previous'); ?>
@@ -49,8 +49,8 @@ $testimonials = [
                 </button>
             </div>
         </div>
-    
-    
+
+
         <div class="testimonial-carousel">
             <div class="swiper">
                 <div class="swiper-wrapper">
@@ -58,7 +58,18 @@ $testimonials = [
                         <div class="swiper-slide testimonial__testimonial testimonial">
                             <div class="testimonial-image-wrapper">
                                 <div class="testimonial-image-border">
-                                    <?php echo get_responsive_image($testimonial['asset'], $testimonial['name'], 'testimonial__image'); ?>
+                                    <?php echo get_responsive_image2([
+                                        'image_name'       => $testimonial['asset'],
+                                        'alt'              => $testimonial['name'],
+                                        'class'           => 'testimonial__image',
+                                        'sizes_attr'  => '(max-width: 767px) 125px, 185px',
+                                        'default_size' => 300,
+                                        'additional_attrs' => [
+                                            'decoding'      => 'async',
+                                            'loading'       => 'lazy',
+                                        ]
+                                    ]); ?>
+                                    ,
                                 </div>
                             </div>
                             <div class="carousel-item__content">
