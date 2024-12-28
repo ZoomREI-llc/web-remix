@@ -1,6 +1,16 @@
 <section class="cw-sell-today-wrapper">
     <div class="cw-sell-today__media">
-        <?php echo get_responsive_image('cw-sell-today/last-block-fon', '', 'cw-sell-today__fon'); ?>
+        <?php
+        echo get_responsive_image([
+            'image_name'       => 'cw-sell-today/bg',
+            'alt'              => 'House Background',
+            'class'           => 'cw-sell-today__fon',
+            'additional_attrs' => [
+                'decoding'      => 'async',
+                'loading' => 'lazy',
+            ]
+        ]);
+        ?>
     </div>
     <div class="cw-sell-today">
         <div class="cw-hero__content">
@@ -10,11 +20,29 @@
                 <p>Whatever your circumstances, no matter the condition of your house, we’re happy to buy. Contact us today for an immediate cash offer, and let’s get that house sold!</p>
             </div>
             <div class="cw-hero__footer-block">
-                <a class="cta-btn cw-hero__cta" href="#cw-form">Get my offer<?php echo get_responsive_image('cw-sell-today/cta-arrow', 'Arrow'); ?></a>
+                <a class="cta-btn cw-hero__cta" href="#cw-form">Get my offer<?php
+                                                                            echo get_responsive_image([
+                                                                                'image_name'       => 'cw-sell-today/cta-arrow',
+                                                                                'alt'              => 'Arrow',
+                                                                                'additional_attrs' => [
+                                                                                    'decoding'      => 'async',
+                                                                                    'loading' => 'lazy',
+                                                                                ]
+                                                                            ]);
+                                                                            ?></a>
                 <div class="cw-hero__reviews">
                     <div class="cw-hero__reviews-stars-wrapper">
                         <?php for ($i = 0; $i < 5; $i++): ?>
-                            <span class="cw-hero__star"><?php echo get_responsive_image('cw-sell-today/star', 'star'); ?></span>
+                            <span class="cw-hero__star"> <?php
+                                                            echo get_responsive_image([
+                                                                'image_name'       => 'cw-sell-today/star',
+                                                                'alt'              => 'Star',
+                                                                'additional_attrs' => [
+                                                                    'decoding'      => 'async',
+                                                                    'loading' => 'lazy',
+                                                                ]
+                                                            ]);
+                                                            ?></span>
                         <?php endfor; ?>
                     </div>
                     <div class="cw-hero__reviews-text">

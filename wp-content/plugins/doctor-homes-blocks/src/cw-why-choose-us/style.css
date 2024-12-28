@@ -311,6 +311,14 @@
 .cw-why-choose-us__carousel .dot.active {
 	background-color: #00b43d;
 } */
+.cw-fresh-start__testimonee {
+	width: 3.125rem;
+	height: auto;
+	aspect-ratio: 1/1;
+	object-fit: cover;
+	border-radius: 50%;
+}
+
 @media (min-width: 1024px) {
 	.cw-fresh-start__testimonee {
 		width: 4.375rem;
@@ -322,10 +330,6 @@
 	}
 }
 
-.cw-fresh-start__testimonee {
-	width: 3.125rem;
-	border-radius: 50%;
-}
 .cw-fresh-start__testimonial .cw-hero__reviews-stars-wrapper {
 	margin-left: 15px;
 }

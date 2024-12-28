@@ -1,4 +1,3 @@
-
 <section class="ao-steps">
     <div class="ao-steps__text">
         <h2>House Sales Are Complicated, Right? <br>Not With Us - Just 3 Easy Steps</h2>
@@ -8,7 +7,14 @@
     <div class="ao-steps__steps">
         <div class="ao-step">
             <div class="ao-step__img">
-                <?php echo get_responsive_image('ao-steps/steps1', 'Sharing Details'); ?>
+                <?php echo get_responsive_image([
+                    'image_name'       => 'ao-steps/step1',
+                    'alt'              => 'Sharing Details',
+                    'additional_attrs' => [
+                        'decoding'      => 'async',
+                        'loading'       => 'lazy',
+                    ]
+                ]); ?>
             </div>
             <div class="ao-step__content">
                 <div class="ao-step__title">
@@ -20,7 +26,14 @@
         </div>
         <div class="ao-step">
             <div class="ao-step__img">
-                <?php echo get_responsive_image('ao-steps/steps2', 'Get Cash Offer'); ?>
+                <?php echo get_responsive_image([
+                    'image_name'       => 'ao-steps/step2',
+                    'alt'              => 'Get Cash Offer',
+                    'additional_attrs' => [
+                        'decoding'      => 'async',
+                        'loading'       => 'lazy',
+                    ]
+                ]); ?>
             </div>
             <div class="ao-step__content">
                 <div class="ao-step__title">
@@ -32,7 +45,14 @@
         </div>
         <div class="ao-step">
             <div class="ao-step__img">
-                <?php echo get_responsive_image('ao-steps/steps3', 'Get Paid'); ?>
+                <?php echo get_responsive_image([
+                    'image_name'       => 'ao-steps/step3',
+                    'alt'              => 'Get Paid',
+                    'additional_attrs' => [
+                        'decoding'      => 'async',
+                        'loading'       => 'lazy',
+                    ]
+                ]); ?>
             </div>
             <div class="ao-step__content">
                 <div class="ao-step__title">

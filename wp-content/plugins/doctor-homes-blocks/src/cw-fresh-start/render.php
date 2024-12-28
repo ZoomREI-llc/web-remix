@@ -7,7 +7,16 @@
         <div class="cw-fresh-start__reasons">
             <div class="cw-reason">
                 <div class="cw-reason__icon">
-                    <?php echo get_responsive_image('cw-fresh-start/emotial', 'Emotional Burden'); ?>
+                    <?php
+                    echo get_responsive_image([
+                        'image_name'       => 'cw-fresh-start/emotional',
+                        'alt'              => 'Emotional Burden',
+                        'additional_attrs' => [
+                            'decoding'      => 'async',
+                            'loading' => 'lazy',
+                        ]
+                    ]);
+                    ?>
                 </div>
                 <div class="cw-reason__content">
                     <h3>Emotional Burden</h3>
@@ -16,7 +25,16 @@
             </div>
             <div class="cw-reason">
                 <div class="cw-reason__icon">
-                    <?php echo get_responsive_image('cw-fresh-start/home', 'Maintenance Challenges'); ?>
+                    <?php
+                    echo get_responsive_image([
+                        'image_name'       => 'cw-fresh-start/home',
+                        'alt'              => 'Maintenance Challenges',
+                        'additional_attrs' => [
+                            'decoding'      => 'async',
+                            'loading' => 'lazy',
+                        ]
+                    ]);
+                    ?>
                 </div>
                 <div class="cw-reason__content">
                     <h3>Maintenance Challenges</h3>
@@ -25,7 +43,16 @@
             </div>
             <div class="cw-reason">
                 <div class="cw-reason__icon">
-                    <?php echo get_responsive_image('cw-fresh-start/select', 'Financial Strain'); ?>
+                    <?php
+                    echo get_responsive_image([
+                        'image_name'       => 'cw-fresh-start/select',
+                        'alt'              => 'Financial Strain',
+                        'additional_attrs' => [
+                            'decoding'      => 'async',
+                            'loading' => 'lazy',
+                        ]
+                    ]);
+                    ?>
                 </div>
                 <div class="cw-reason__content">
                     <h3>Financial Strain</h3>
@@ -34,7 +61,16 @@
             </div>
             <div class="cw-reason">
                 <div class="cw-reason__icon">
-                    <?php echo get_responsive_image('cw-fresh-start/time', 'Time Constraints'); ?>
+                    <?php
+                    echo get_responsive_image([
+                        'image_name'       => 'cw-fresh-start/time',
+                        'alt'              => 'Time Constraints',
+                        'additional_attrs' => [
+                            'decoding'      => 'async',
+                            'loading' => 'lazy',
+                        ]
+                    ]);
+                    ?>
                 </div>
                 <div class="cw-reason__content">
                     <h3>Time Constraints</h3>
@@ -43,14 +79,30 @@
             </div>
         </div>
 
-        <a class="cw-fresh-start__cta" href="#cw-form">Get Fast Cash OFFER<?php echo get_responsive_image('cw-fresh-start/cta-arrow', 'Arrow'); ?></a>
+        <a class="cw-fresh-start__cta" href="#cw-form">Get Fast Cash OFFER<?php
+                                                                            echo get_responsive_image([
+                                                                                'image_name'       => 'cw-fresh-start/cta-arrow',
+                                                                                'alt'              => 'Arrow',
+                                                                                'additional_attrs' => [
+                                                                                    'decoding'      => 'async',
+                                                                                    'loading' => 'lazy',
+                                                                                ]
+                                                                            ]);
+                                                                            ?></a>
         <div class="cw-hero__reviews">
             <div class="cw-hero__reviews-stars-wrapper">
-                <span class="cw-hero__star"><?php echo get_responsive_image('cw-fresh-start/star', 'star'); ?></span>
-                <span class="cw-hero__star"><?php echo get_responsive_image('cw-fresh-start/star', 'star'); ?></span>
-                <span class="cw-hero__star"><?php echo get_responsive_image('cw-fresh-start/star', 'star'); ?></span>
-                <span class="cw-hero__star"><?php echo get_responsive_image('cw-fresh-start/star', 'star'); ?></span>
-                <span class="cw-hero__star"><?php echo get_responsive_image('cw-fresh-start/star', 'star'); ?></span>
+                <?php for ($i = 0; $i < 5; $i++): ?>
+                    <span class="cw-hero__star"><?php
+                                                echo get_responsive_image([
+                                                    'image_name'       => 'cw-fresh-start/star',
+                                                    'alt'              => 'Star',
+                                                    'additional_attrs' => [
+                                                        'decoding'      => 'async',
+                                                        'loading' => 'lazy',
+                                                    ]
+                                                ]);
+                                                ?></span>
+                <?php endfor; ?>
             </div>
             <div class="cw-hero__reviews-text">
                 <p>Rated <strong>4.7/5</strong> | Based on <strong>100+</strong> reviews</p>
@@ -58,19 +110,47 @@
         </div>
 
         <div class="cw-fresh-start__testimonial">
-            <?php echo get_responsive_image('cw-fresh-start/testimonee', 'Leigh Williams', 'cw-fresh-start__testimonee'); ?>
+            <?php
+            echo get_responsive_image([
+                'image_name'       => 'cw-fresh-start/testimonee',
+                'alt'              => 'Leigh Williams',
+                'class'            => 'cw-fresh-start__testimonee',
+                'default_size'     => 300,
+                'sizes_attr'      => '80px',
+                'additional_attrs' => [
+                    'decoding'      => 'async',
+                    'loading' => 'lazy',
+                ]
+            ]);
+            ?>
             <div class="cw-fresh-start__testimonial--content">
                 <div class="cw-hero__reviews-stars-wrapper">
-                    <span class="cw-hero__star"><?php echo get_responsive_image('cw-fresh-start/star', 'star'); ?></span>
-                    <span class="cw-hero__star"><?php echo get_responsive_image('cw-fresh-start/star', 'star'); ?></span>
-                    <span class="cw-hero__star"><?php echo get_responsive_image('cw-fresh-start/star', 'star'); ?></span>
-                    <span class="cw-hero__star"><?php echo get_responsive_image('cw-fresh-start/star', 'star'); ?></span>
-                    <span class="cw-hero__star"><?php echo get_responsive_image('cw-fresh-start/star', 'star'); ?></span>
+                    <?php for ($i = 0; $i < 5; $i++): ?>
+                        <span class="cw-hero__star"><?php
+                                                    echo get_responsive_image([
+                                                        'image_name'       => 'cw-fresh-start/star',
+                                                        'alt'              => 'Star',
+                                                        'additional_attrs' => [
+                                                            'decoding'      => 'async',
+                                                            'loading' => 'lazy',
+                                                        ]
+                                                    ]);
+                                                    ?></span>
+                    <?php endfor; ?>
                 </div>
                 <blockquote>
                     <p>"The <strong>customer service experience with Doctor Homes was outstanding.</strong> From beginning to end, the process of selling my home was exemplary."</p>
                     <cite>
-                        Leigh Williams <?php echo get_responsive_image('cw-fresh-start/check-circle', 'checkmark'); ?> <span class="verified">Verified customer</span></cite>
+                        Leigh Williams <?php
+                                        echo get_responsive_image([
+                                            'image_name'       => 'cw-fresh-start/check-circle',
+                                            'alt'              => 'Checkmark',
+                                            'additional_attrs' => [
+                                                'decoding'      => 'async',
+                                                'loading' => 'lazy',
+                                            ]
+                                        ]);
+                                        ?> <span class="verified">Verified customer</span></cite>
                 </blockquote>
             </div>
         </div>

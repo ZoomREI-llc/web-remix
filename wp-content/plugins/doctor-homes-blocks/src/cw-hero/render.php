@@ -1,23 +1,39 @@
 <?php
 $selectedMarket = isset($attributes['selectedMarket']) ? esc_html($attributes['selectedMarket']) : 'St. Louis, Missouri';
-// $formId = isset($attributes['formId']) ? esc_html($attributes['formId']) : '1';
-
-$testimonial_image_id = 455;
-$testimonee_url = wp_get_attachment_url($testimonial_image_id);
-$star_icon_url = plugins_url('src/cw-hero/assets/star.svg', dirname(__FILE__, 2));
-$checkmark_icon_url = plugins_url('src/cw-hero/assets/check-circle.svg', dirname(__FILE__, 2));
 ?>
 
-<section class="cw-hero-wrapper" style="
-    --background-image-small: url('<?php echo get_image_url('cw-hero/life-changes-hero-background', 768); ?>');
-    --background-image-medium: url('<?php echo get_image_url('cw-hero/life-changes-hero-background', 1024); ?>');
-    --background-image-large: url('<?php echo get_image_url('cw-hero/life-changes-hero-background', 2048); ?>');
-">
+<section class="cw-hero-wrapper">
+    <div class="cw-hero-bg">
+        <?php
+        $url_for_preload = get_image_url('cw-hero/bg', 768);
+        schedule_preload($url_for_preload, 'image', ['fetchpriority' => 'high']);
+
+        echo get_responsive_image([
+            'image_name'       => 'cw-hero/bg',
+            'alt'              => 'Hero background',
+            'class'           => 'cw-hero-img',
+            'default_size'     => 768,
+            'additional_attrs' => [
+                'decoding'      => 'async',
+                'fetchpriority' => 'high',
+            ]
+        ]);
+        ?>
+    </div>
     <div class="cw-hero__content">
         <div class="cw-hero__reviews">
             <div class="cw-hero__reviews-stars-wrapper">
                 <?php for ($i = 0; $i < 5; $i++): ?>
-                    <span class="cw-hero__star"><?php echo get_responsive_image('lcp-hero/star', 'star'); ?></span>
+                    <span class="cw-hero__star"><?php
+                                                echo get_responsive_image([
+                                                    'image_name'       => 'cw-hero/star',
+                                                    'alt'              => 'Star',
+                                                    'additional_attrs' => [
+                                                        'decoding'      => 'async',
+                                                        'loading' => 'lazy',
+                                                    ]
+                                                ]);
+                                                ?></span>
                 <?php endfor; ?>
             </div>
             <div class="cw-hero__reviews-text">
@@ -36,19 +52,59 @@ $checkmark_icon_url = plugins_url('src/cw-hero/assets/check-circle.svg', dirname
         </div>
         <h3 class="cw-hero__subtitle">House to sell in <?php echo esc_html($selectedMarket); ?>? <strong>Get a cash offer in just 7 minutes</strong>, and get the sale closed as soon as you want to.</h3>
         <ul class="cw-hero__bullet-points">
-            <li class="cw-hero__bullet-point"><?php echo get_responsive_image('lcp-hero/check-circle', 'checkmark'); ?>
+            <li class="cw-hero__bullet-point"><?php
+                                                echo get_responsive_image([
+                                                    'image_name'       => 'cw-hero/check-circle',
+                                                    'alt'              => 'Checkmark',
+                                                    'additional_attrs' => [
+                                                        'decoding'      => 'async',
+                                                        'loading' => 'lazy',
+                                                    ]
+                                                ]);
+                                                ?>
                 <span><strong>No need for you to clean</strong> or make repairs</span>
             </li>
-            <li class="cw-hero__bullet-point"><?php echo get_responsive_image('lcp-hero/check-circle', 'checkmark'); ?>
+            <li class="cw-hero__bullet-point"><?php
+                                                echo get_responsive_image([
+                                                    'image_name'       => 'cw-hero/check-circle',
+                                                    'alt'              => 'Checkmark',
+                                                    'additional_attrs' => [
+                                                        'decoding'      => 'async',
+                                                        'loading' => 'lazy',
+                                                    ]
+                                                ]);
+                                                ?>
                 <span>No realtors, <strong>fees, banks, commissions,</strong> or inspectors</span>
             </li>
-            <li class="cw-hero__bullet-point"><?php echo get_responsive_image('lcp-hero/check-circle', 'checkmark'); ?>
+            <li class="cw-hero__bullet-point"><?php
+                                                echo get_responsive_image([
+                                                    'image_name'       => 'cw-hero/check-circle',
+                                                    'alt'              => 'Checkmark',
+                                                    'additional_attrs' => [
+                                                        'decoding'      => 'async',
+                                                        'loading' => 'lazy',
+                                                    ]
+                                                ]);
+                                                ?>
                 <span>We pay all closing costs - <strong>you pay nothing</strong></span>
             </li>
         </ul>
         <div class="cw-hero__content--footer">
             <div class="cw-fresh-start__testimonial">
                 <?php echo get_responsive_image('hero-form/liv-skyler', 'Liv Skyler', 'cw-fresh-start__testimonee'); ?>
+                <?php
+                echo get_responsive_image([
+                    'image_name'       => 'cw-hero/liv-skyler',
+                    'alt'              => 'Liv Skyler',
+                    'class'           => 'cw-fresh-start__testimonee',
+                    'default_size'     => 300,
+                    'sizes_attr'       => '80px',
+                    'additional_attrs' => [
+                        'decoding'      => 'async',
+                        'loading' => 'lazy',
+                    ]
+                ]);
+                ?>
                 <div class="cw-hero-start__testimonial--content cw-fresh-start__testimonial--content">
                     <blockquote>
                         <p>We are very grateful for Doctor Homes and his team's work. They were always professional and reliable, Doctor Homes answered my first call right away and kept me updated throughout the whole selling process.</p>
@@ -56,7 +112,16 @@ $checkmark_icon_url = plugins_url('src/cw-hero/assets/check-circle.svg', dirname
                             <span>Liv Skyler</span>
                             <div class="cw-hero__reviews-stars-wrapper">
                                 <?php for ($i = 0; $i < 5; $i++): ?>
-                                    <span class="cw-hero__star"><img src="<?php echo esc_url($star_icon_url); ?>" alt="star"></span>
+                                    <span class="cw-hero__star"><?php
+                                                                echo get_responsive_image([
+                                                                    'image_name'       => 'cw-hero/star',
+                                                                    'alt'              => 'Star',
+                                                                    'additional_attrs' => [
+                                                                        'decoding'      => 'async',
+                                                                        'loading' => 'lazy',
+                                                                    ]
+                                                                ]);
+                                                                ?></span>
                                 <?php endfor; ?>
                             </div>
                         </cite>

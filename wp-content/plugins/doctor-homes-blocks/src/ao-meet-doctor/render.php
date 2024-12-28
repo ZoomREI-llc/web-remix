@@ -1,4 +1,3 @@
-
 <section class="ao-meet-doctor">
     <div class="ao-meet-doctor__container">
         <div class="ao-meet-doctor__content">
@@ -13,24 +12,26 @@
                 </div>
                 <h3 class="ao-meet-doctor__cta-text">Ready to sell your house right now?</h3>
             </div>
-            <a class="cta-btn ao-meet-doctor__cta" href="#ao-form">Get Fast Cash OFFER <?php get_responsive_image('ao-meet-doctor/cta-arrow', 'Arrow') ?></a>
+            <a class="cta-btn ao-meet-doctor__cta" href="#ao-form">Get Fast Cash OFFER <?php echo get_responsive_image([
+                                                                                            'image_name'       => 'ao-meet-doctor/cta-arrow',
+                                                                                            'alt'              => 'cta arrow',
+                                                                                            'additional_attrs' => [
+                                                                                                'decoding'      => 'async',
+                                                                                                'loading'       => 'lazy',
+                                                                                            ]
+                                                                                        ]); ?></a>
             <div class="ao-hero__reviews">
                 <div class="ao-hero__reviews-stars-wrapper">
-                    <span class="ao-hero__star">
-                        <?php echo get_responsive_image('ao-meet-doctor/star', 'star'); ?>
-                    </span>
-                    <span class="ao-hero__star">
-                        <?php echo get_responsive_image('ao-meet-doctor/star', 'star'); ?>
-                    </span>
-                    <span class="ao-hero__star">
-                        <?php echo get_responsive_image('ao-meet-doctor/star', 'star'); ?>
-                    </span>
-                    <span class="ao-hero__star">
-                        <?php echo get_responsive_image('ao-meet-doctor/star', 'star'); ?>
-                    </span>
-                    <span class="ao-hero__star">
-                        <?php echo get_responsive_image('ao-meet-doctor/star', 'star'); ?>
-                    </span>
+                    <?php for ($i = 0; $i < 5; $i++): ?>
+                        <span class="ao-meet-doctor__star"><?php echo get_responsive_image([
+                                                                'image_name'       => 'ao-meet-doctor/star',
+                                                                'alt'              => 'star',
+                                                                'additional_attrs' => [
+                                                                    'decoding'      => 'async',
+                                                                    'loading'       => 'lazy',
+                                                                ]
+                                                            ]); ?></span>
+                    <?php endfor; ?>
                 </div>
                 <div class="ao-hero__reviews-text">
                     <p>Rated <strong>4.7/5</strong> | Based on <strong>100+</strong> reviews</p>
@@ -38,7 +39,14 @@
             </div>
         </div>
         <div class="ao-meet-doctor__img">
-            <?php echo get_responsive_image('ao-meet-doctor/person-buys', 'Doctor Homes'); ?>
+            <?php echo get_responsive_image([
+                'image_name'       => 'ao-meet-doctor/person-buys',
+                'alt'              => 'House with a garden',
+                'additional_attrs' => [
+                    'decoding'      => 'async',
+                    'loading'       => 'lazy',
+                ]
+            ]); ?>
         </div>
     </div>
 </section>

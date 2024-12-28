@@ -10,7 +10,16 @@ $reasons = $attributes['reasons'] ?? [];
         <?php foreach ($reasons as $reason) : ?>
             <div class="hit-why-choose-us__item">
                 <div class="hit-why-choose-us__item--image">
-                    <?php echo get_responsive_image($reason['asset'], $reason['title'],); ?>
+                    <?php
+                    echo get_responsive_image([
+                        'image_name'       => esc_attr($reason['asset']),
+                        'alt'              => esc_attr($reason['title']),
+                        'additional_attrs' => [
+                            'decoding'      => 'async',
+                            'loading' => 'lazy',
+                        ]
+                    ]);
+                    ?>
                 </div>
                 <div class="hit-why-choose-us__item--text">
                     <h3 class="sub-title"><?php echo esc_html($reason['title']); ?></h3>

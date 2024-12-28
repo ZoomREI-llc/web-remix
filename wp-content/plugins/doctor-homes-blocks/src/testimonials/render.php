@@ -39,18 +39,36 @@ $testimonials = [
             <h2 class="title-2">What People Are Saying</h2>
             <p class="title-4">Fast sales, helpful & professional, zero hassle.
                 96% of sellers love our service – here’s what our clients have to say.</p>
-    
+
             <div class="swiper-navigation">
                 <button type="button" class="swiper-navigation__btn js-swiper-prev">
-                    <?php echo get_responsive_image('testimonials/navigation-arrow', 'Previous'); ?>
+                    <?php
+                    echo get_responsive_image([
+                        'image_name'       => 'testimonials/navigation-arrow',
+                        'alt'              => 'Previous',
+                        'additional_attrs' => [
+                            'decoding'      => 'async',
+                            'loading' => 'lazy',
+                        ]
+                    ]);
+                    ?>
                 </button>
                 <button type="button" class="swiper-navigation__btn js-swiper-next">
-                    <?php echo get_responsive_image('testimonials/navigation-arrow', 'Next'); ?>
+                    <?php
+                    echo get_responsive_image([
+                        'image_name'       => 'testimonials/navigation-arrow',
+                        'alt'              => 'Next',
+                        'additional_attrs' => [
+                            'decoding'      => 'async',
+                            'loading' => 'lazy',
+                        ]
+                    ]);
+                    ?>
                 </button>
             </div>
         </div>
-    
-    
+
+
         <div class="testimonial-carousel">
             <div class="swiper">
                 <div class="swiper-wrapper">
@@ -58,14 +76,35 @@ $testimonials = [
                         <div class="swiper-slide testimonial__testimonial testimonial">
                             <div class="testimonial-image-wrapper">
                                 <div class="testimonial-image-border">
-                                    <?php echo get_responsive_image($testimonial['asset'], $testimonial['name'], 'testimonial__image'); ?>
+                                    <?php echo get_responsive_image([
+                                        'image_name'       => $testimonial['asset'],
+                                        'alt'              => $testimonial['name'],
+                                        'class'           => 'testimonial__image',
+                                        'default_size' => 300,
+                                        'sizes_attr'  => '(max-width: 767px) 125px, 185px',
+                                        'additional_attrs' => [
+                                            'decoding'      => 'async',
+                                            'loading'       => 'lazy',
+                                        ]
+                                    ]); ?>
+                                    ,
                                 </div>
                             </div>
                             <div class="carousel-item__content">
                                 <span class="testimonial-name"><?php echo esc_html($testimonial['name']); ?></span>
                                 <div class="testimonial-rating">
                                     <?php for ($i = 0; $i < $testimonial['rating']; $i++) : ?>
-                                        <?php echo get_responsive_image('sell-fast-testimonials/star', 'Star Icon', 'testimonial__star'); ?>
+                                        <?php
+                                        echo get_responsive_image([
+                                            'image_name'       => 'testimonials/star',
+                                            'alt'              => 'Star',
+                                            'class'           => 'testimonial__star',
+                                            'additional_attrs' => [
+                                                'decoding'      => 'async',
+                                                'loading' => 'lazy',
+                                            ]
+                                        ]);
+                                        ?>
                                     <?php endfor; ?>
                                 </div>
                                 <p class="testimonial__text"><?php echo esc_html($testimonial['text']); ?></p>
@@ -76,10 +115,28 @@ $testimonials = [
                 <div class="swiper-pagination"></div>
                 <div class="swiper-navigation">
                     <button type="button" class="swiper-navigation__btn js-swiper-prev">
-                        <?php echo get_responsive_image('testimonials/navigation-arrow', 'Previous'); ?>
+                        <?php
+                        echo get_responsive_image([
+                            'image_name'       => 'testimonials/navigation-arrow',
+                            'alt'              => 'Previous',
+                            'additional_attrs' => [
+                                'decoding'      => 'async',
+                                'loading' => 'lazy',
+                            ]
+                        ]);
+                        ?>
                     </button>
                     <button type="button" class="swiper-navigation__btn js-swiper-next">
-                        <?php echo get_responsive_image('testimonials/navigation-arrow', 'Next'); ?>
+                        <?php
+                        echo get_responsive_image([
+                            'image_name'       => 'testimonials/navigation-arrow',
+                            'alt'              => 'Next',
+                            'additional_attrs' => [
+                                'decoding'      => 'async',
+                                'loading' => 'lazy',
+                            ]
+                        ]);
+                        ?>
                     </button>
                 </div>
             </div>

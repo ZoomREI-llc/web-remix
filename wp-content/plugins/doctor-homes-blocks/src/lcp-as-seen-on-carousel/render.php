@@ -17,7 +17,16 @@ $index = -1;
                 <div class="lcp-as-seen-on-carousel__logos">
                     <?php for ($i = 0; $i < count($logos) * $clones; $i++): $index = $index >= count($logos) - 1 ? 0 : ($index + 1); ?>
                         <div class="lcp-as-seen-on-carousel__logo">
-                            <?php echo get_responsive_image('lcp-as-seen-on-carousel/'.$logos[$index], $logos[$index]); ?>
+                            <?php
+                            echo get_responsive_image([
+                                'image_name'       => 'lcp-as-seen-on-carousel/' . $logos[$index],
+                                'alt'              =>  $logos[$index],
+                                'additional_attrs' => [
+                                    'decoding'      => 'async',
+                                    'loading' => 'lazy',
+                                ]
+                            ]);
+                            ?>
                         </div>
                     <?php endfor; ?>
                 </div>

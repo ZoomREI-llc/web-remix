@@ -1,4 +1,3 @@
-
 <section class="lc-steps">
     <div class="lc-steps__text">
         <h2>House Sales Are Complicated, Right? Not With Us - Just 3 Easy Steps</h2>
@@ -7,7 +6,16 @@
     <div class="lc-steps__steps">
         <div class="step">
             <div class="step__img">
-                <?php echo get_responsive_image('lc-steps/steps1', 'Sharing Details'); ?>
+                <?php
+                echo get_responsive_image([
+                    'image_name'       => 'lc-steps/step1',
+                    'alt'              => 'Sharing Details',
+                    'additional_attrs' => [
+                        'decoding'      => 'async',
+                        'loading' => 'lazy',
+                    ]
+                ]);
+                ?>
             </div>
             <div class="step__content">
                 <div class="step__title">
@@ -19,7 +27,16 @@
         </div>
         <div class="step">
             <div class="step__img">
-                <?php echo get_responsive_image('lc-steps/steps2', 'Get Cash Offer'); ?>
+                <?php
+                echo get_responsive_image([
+                    'image_name'       => 'lc-steps/step2',
+                    'alt'              => 'Get an immediate cash offer',
+                    'additional_attrs' => [
+                        'decoding'      => 'async',
+                        'loading' => 'lazy',
+                    ]
+                ]);
+                ?>
             </div>
             <div class="step__content">
                 <div class="step__title">
@@ -31,7 +48,16 @@
         </div>
         <div class="step">
             <div class="step__img">
-                <?php echo get_responsive_image('lc-steps/steps3', 'Get Paid'); ?>
+                <?php
+                echo get_responsive_image([
+                    'image_name'       => 'lc-steps/step3',
+                    'alt'              => 'Close and get paid',
+                    'additional_attrs' => [
+                        'decoding'      => 'async',
+                        'loading' => 'lazy',
+                    ]
+                ]);
+                ?>
             </div>
             <div class="step__content">
                 <div class="step__title">

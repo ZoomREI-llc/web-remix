@@ -1,38 +1,24 @@
 .lc-hero-wrapper {
 	position: relative;
-	background-image: var(--background-image-small);
-	background-size: cover;
-	background-position: 0% center;
-	overflow: hidden;
-	transition: all 0.3s ease;
-	z-index: 0;
 	display: flex;
 	justify-content: center;
-}
-@media (min-width: 769px) {
-	.lc-hero-wrapper {
-		background-image: var(--background-image-medium);
-	}
-}
-
-@media (min-width: 1024px) {
-	.lc-hero-wrapper {
-		background-image: var(--background-image-large);
-	}
+	overflow: hidden;
+	z-index: 0;
+	transition: all 0.3s ease;
 }
 
 .lc-hero-wrapper::before {
 	content: "";
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
 	background: linear-gradient(
 		180deg,
 		rgba(0, 21, 37, 0.37) 0%,
 		rgba(0, 21, 37, 0.95) 100%
 	);
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
 	z-index: 1;
 }
 
@@ -45,6 +31,23 @@
 			rgba(0, 21, 37, 1) 100%
 		);
 	}
+}
+
+.lc-hero-bg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+}
+
+.lc-hero-img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
+	display: block;
 }
 
 .lc-hero {
@@ -372,7 +375,6 @@
 	/* cursor: not-allowed !important; */
 }
 
-
 .lc-hero-wrapper .input.input--squared > label {
 	font-size: 16px !important;
 	text-transform: none;
@@ -398,4 +400,3 @@
 	height: 13px;
 	width: 11px;
 }
-

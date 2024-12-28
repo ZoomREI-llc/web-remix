@@ -1,4 +1,3 @@
-
 <section class="ao-guarantee__wrapper">
     <div class="ao-guarantee__title">
         <h2>Here’s Our Guarantee To You</h2>
@@ -8,7 +7,14 @@
         <div class="ao-guarantee">
             <div class="ao-guarantee__heading">
                 <div class="ao-guarantee__icon">
-                    <?php echo get_responsive_image('ao-guarantee/select', 'Fast Cash Offers'); ?>
+                    <?php echo get_responsive_image([
+                        'image_name'       => 'ao-guarantee/select',
+                        'alt'              => 'Fast Cash Offers',
+                        'additional_attrs' => [
+                            'decoding'      => 'async',
+                            'loading'       => 'lazy',
+                        ]
+                    ]); ?>
                 </div>
                 <h3>Fast Cash Offers</h3>
             </div>
@@ -19,7 +25,14 @@
         <div class="ao-guarantee">
             <div class="ao-guarantee__heading">
                 <div class="ao-guarantee__icon">
-                    <?php echo get_responsive_image('ao-guarantee/no-money', 'No Fees / Commissions'); ?>
+                    <?php echo get_responsive_image([
+                        'image_name'       => 'ao-guarantee/no-money',
+                        'alt'              => 'No Fees / Commissions',
+                        'additional_attrs' => [
+                            'decoding'      => 'async',
+                            'loading'       => 'lazy',
+                        ]
+                    ]); ?>
                 </div>
                 <h3>No Fees / Commissions</h3>
             </div>
@@ -30,7 +43,14 @@
         <div class="ao-guarantee">
             <div class="ao-guarantee__heading">
                 <div class="ao-guarantee__icon">
-                    <?php echo get_responsive_image('ao-guarantee/house', 'No Repairs Needed'); ?>
+                    <?php echo get_responsive_image([
+                        'image_name'       => 'ao-guarantee/house',
+                        'alt'              => 'No Repairs Needed',
+                        'additional_attrs' => [
+                            'decoding'      => 'async',
+                            'loading'       => 'lazy',
+                        ]
+                    ]); ?>
                 </div>
                 <h3>No Repairs Needed</h3>
             </div>
@@ -41,7 +61,14 @@
         <div class="ao-guarantee">
             <div class="ao-guarantee__heading">
                 <div class="ao-guarantee__icon">
-                    <?php echo get_responsive_image('ao-guarantee/calendar', 'Flexible Closing Dates'); ?>
+                    <?php echo get_responsive_image([
+                        'image_name'       => 'ao-guarantee/calendar',
+                        'alt'              => 'Flexible Closing Dates',
+                        'additional_attrs' => [
+                            'decoding'      => 'async',
+                            'loading'       => 'lazy',
+                        ]
+                    ]); ?>
                 </div>
                 <h3>Flexible Closing Dates</h3>
             </div>
@@ -51,28 +78,30 @@
         </div>
     </div>
     <div class="ao-guarantee__footer">
-       <a class="cta-btn ao-fresh-start__cta" href="#ao-form">Get Fast Cash OFFER <?php echo get_responsive_image('ao-fresh-start/cta-arrow', 'Arrow'); ?></a>
-       <div class="ao-hero__reviews">
-           <div class="ao-hero__reviews-stars-wrapper">
-               <span class="ao-hero__star">
-                   <?php echo get_responsive_image('ao-fresh-start/star', 'star'); ?>
-               </span>
-               <span class="ao-hero__star">
-                   <?php echo get_responsive_image('ao-fresh-start/star', 'star'); ?>
-               </span>
-               <span class="ao-hero__star">
-                   <?php echo get_responsive_image('ao-fresh-start/star', 'star'); ?>
-               </span>
-               <span class="ao-hero__star">
-                   <?php echo get_responsive_image('ao-fresh-start/star', 'star'); ?>
-               </span>
-               <span class="ao-hero__star">
-                   <?php echo get_responsive_image('ao-fresh-start/star', 'star'); ?>
-               </span>
-           </div>
-           <div class="ao-hero__reviews-text">
-               <p>Rated <strong>4.7/5</strong> | Based on <strong>100+</strong> reviews</p>
-           </div>
-       </div>
+        <a class="cta-btn ao-fresh-start__cta" href="#ao-form">Get Fast Cash OFFER <?php echo get_responsive_image([
+                                                                                        'image_name'       => 'ao-guarantee/cta-arrow',
+                                                                                        'alt'              => 'cta arrow',
+                                                                                        'additional_attrs' => [
+                                                                                            'decoding'      => 'async',
+                                                                                            'loading'       => 'lazy',
+                                                                                        ]
+                                                                                    ]); ?></a>
+        <div class="ao-hero__reviews">
+            <div class="ao-hero__reviews-stars-wrapper">
+                <?php for ($i = 0; $i < 5; $i++): ?>
+                    <span class="about-us-hero__star"><?php echo get_responsive_image([
+                                                            'image_name'       => 'ao-guarantee/star',
+                                                            'alt'              => 'star',
+                                                            'additional_attrs' => [
+                                                                'decoding'      => 'async',
+                                                                'loading'       => 'lazy',
+                                                            ]
+                                                        ]); ?></span>
+                <?php endfor; ?>
+            </div>
+            <div class="ao-hero__reviews-text">
+                <p>Rated <strong>4.7/5</strong> | Based on <strong>100+</strong> reviews</p>
+            </div>
+        </div>
     </div>
 </section>

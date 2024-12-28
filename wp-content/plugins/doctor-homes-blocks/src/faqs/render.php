@@ -44,7 +44,16 @@ $faqs = array(
                     <div class="faq-item">
                         <div class="faq-question">
                             <?php echo esc_html($faq['question']); ?>
-                            <?php echo get_responsive_image('faqs/polygon', 'Polygon Icon'); ?>
+                            <?php
+                            echo get_responsive_image([
+                                'image_name'       => 'faqs/polygon',
+                                'alt'              => 'Polygon Icon',
+                                'additional_attrs' => [
+                                    'decoding'      => 'async',
+                                    'loading' => 'lazy',
+                                ]
+                            ]);
+                            ?>
                         </div>
                         <div class="faq-answer">
                             <?php echo wp_kses_post($faq['answer']); ?>

@@ -1,18 +1,18 @@
 <?php
-    $faqs = $attributes['faqs'] ?: [];
-    
-    if(!function_exists('generate_anchor_id')) {
-        function generate_anchor_id($text)
-        {
-            $text = strtolower($text);
-            $text = preg_replace('/[^a-z0-9\s]/', '', $text);
-            $text = str_replace(' ', '-', $text);
-            $text = preg_replace('/-+/', '-', $text);
-            $text = trim($text, '-');
-        
-            return $text;
-        }
+$faqs = $attributes['faqs'] ?: [];
+
+if (!function_exists('generate_anchor_id')) {
+    function generate_anchor_id($text)
+    {
+        $text = strtolower($text);
+        $text = preg_replace('/[^a-z0-9\s]/', '', $text);
+        $text = str_replace(' ', '-', $text);
+        $text = preg_replace('/-+/', '-', $text);
+        $text = trim($text, '-');
+
+        return $text;
     }
+}
 ?>
 
 <section class="faq-accordions">
@@ -30,7 +30,16 @@
             <div class="faq-accordions-info">
                 <?php foreach ($faqs as $category) : ?>
                     <a href="#<?php echo generate_anchor_id($category['category']) ?>" class="faq-accordions-rounds__element">
-                        <?php echo get_responsive_image('faq-accordions/'.$category['icon'], 'Icon') ?>
+                        <?php
+                        echo get_responsive_image([
+                            'image_name'       => 'faq-accordions/' . $category['icon'],
+                            'alt'              => $category . ' Icon',
+                            'additional_attrs' => [
+                                'decoding'      => 'async',
+                                'loading' => 'lazy',
+                            ]
+                        ]);
+                        ?>
                         <span><?php echo $category['category']; ?></span>
                     </a>
                 <?php endforeach; ?>
@@ -42,11 +51,11 @@
                 </svg>
                 <ul>
                     <?php foreach ($faqs as $category) : ?>
-                        <li><a href="#<?php echo generate_anchor_id($category['category']) ?>"><?= esc_html( $category['category'] ) ?></a></li>
+                        <li><a href="#<?php echo generate_anchor_id($category['category']) ?>"><?= esc_html($category['category']) ?></a></li>
                     <?php endforeach; ?>
                 </ul>
             </div>
-        
+
             <?php foreach ($faqs as $category) : ?>
                 <div class="faq-accordions-accordions" id="<?php echo generate_anchor_id($category['category']) ?>">
                     <div class="faq-accordions-breakpoint">
@@ -57,7 +66,16 @@
                             <div class="faq-question faq-accordions-question">
                                 <span><?php echo esc_html($faq['question']); ?></span>
                                 <div class="faq-accordions-question__img">
-                                    <?php echo get_responsive_image('faq-accordions/arrow', 'Icon') ?>
+                                    <?php
+                                    echo get_responsive_image([
+                                        'image_name'       => 'faq-accordions/arrow',
+                                        'alt'              => 'Arrow',
+                                        'additional_attrs' => [
+                                            'decoding'      => 'async',
+                                            'loading' => 'lazy',
+                                        ]
+                                    ]);
+                                    ?>
                                 </div>
                             </div>
                             <div class="faq-accordions-answer">
