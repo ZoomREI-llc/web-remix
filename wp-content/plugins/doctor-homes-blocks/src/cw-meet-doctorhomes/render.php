@@ -1,8 +1,17 @@
-
 <section id='about' class="cw-meet-doctorhomes-wrapper">
     <div class="cw-meet-doctorhomes">
         <div class="cw-meet-doctorhomes__media">
-            <?php echo get_responsive_image('cw-meet-doctorhomes/meet-person-fon', 'image fon', 'cw-meet-doctorhomes__media--fon'); ?>
+            <?php
+            echo get_responsive_image([
+                'image_name'       => 'cw-meet-doctorhomes/meet-doctor-bg',
+                'alt'              => 'Meet Doctor Homes Background',
+                'class'           => 'cw-meet-doctorhomes__media--fon',
+                'additional_attrs' => [
+                    'decoding'      => 'async',
+                    'loading' => 'lazy',
+                ]
+            ]);
+            ?>
         </div>
         <div class="cw-meet-doctorhomes__container">
             <div class="cw-meet-doctorhomes__content">
@@ -17,11 +26,29 @@
                     <h3 class="cw-meet-doctorhomes__cta-text">Ready to sell your house right now?</h3>
                 </div>
                 <div class="cw-meet-doctorhomes__footer-block">
-                    <a class="cta-btn cw-meet-doctorhomes__cta" href="#cw-form">Get my offer<?php echo get_responsive_image('cw-meet-doctorhomes/cta-arrow', 'Arrow'); ?></a>
+                    <a class="cta-btn cw-meet-doctorhomes__cta" href="#cw-form">Get my offer<?php
+                                                                                            echo get_responsive_image([
+                                                                                                'image_name'       => 'cw-meet-doctorhomes/cta-arrow',
+                                                                                                'alt'              => 'Arrow',
+                                                                                                'additional_attrs' => [
+                                                                                                    'decoding'      => 'async',
+                                                                                                    'loading' => 'lazy',
+                                                                                                ]
+                                                                                            ]);
+                                                                                            ?></a>
                     <div class="cw-hero__reviews">
                         <div class="cw-hero__reviews-stars-wrapper">
                             <?php for ($i = 0; $i < 5; $i++): ?>
-                                <span class="cw-hero__star"><?php echo get_responsive_image('cw-meet-doctorhomes/star', 'star'); ?></span>
+                                <span class="cw-hero__star"><?php
+                                                            echo get_responsive_image([
+                                                                'image_name'       => 'cw-meet-doctorhomes/star',
+                                                                'alt'              => 'Star',
+                                                                'additional_attrs' => [
+                                                                    'decoding'      => 'async',
+                                                                    'loading' => 'lazy',
+                                                                ]
+                                                            ]);
+                                                            ?></span>
                             <?php endfor; ?>
                         </div>
                         <div class="cw-hero__reviews-text">

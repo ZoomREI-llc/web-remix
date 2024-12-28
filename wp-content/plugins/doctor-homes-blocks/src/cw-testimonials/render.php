@@ -1,4 +1,3 @@
-
 <section id='reviews' class="cw-testimonials">
     <div class="cw-testimonials__prevtitle">client reviews</div>
     <div class="cw-testimonials__title">
@@ -11,17 +10,45 @@
                 <div class="_carousel-slide">
                     <div class="cw-testimonials__testimonial">
                         <div class="cw-testimonials__person">
-                            <?php echo get_responsive_image('cw-testimonials/nataly-lebedev', 'Nataly Lebedev', 'cw-testimonials__testimonee'); ?>
+                            <?php
+                            echo get_responsive_image([
+                                'image_name'       => 'cw-testimonials/nataly-lebedev',
+                                'alt'              => 'Nataly Lebedev',
+                                'class'            => 'cw-testimonials__testimonee',
+                                'default_size'     => 300,
+                                'sizes_attr'       => '75px',
+                                'additional_attrs' => [
+                                    'decoding'      => 'async',
+                                    'loading' => 'lazy',
+                                ]
+                            ]);
+                            ?>
                             <div class="cw-testimonials__person--about">
                                 <div class="cw-hero__reviews-stars-wrapper">
-                                    <span class="cw-hero__star"><?php echo get_responsive_image('cw-testimonials/star', 'star'); ?></span>
-                                    <span class="cw-hero__star"><?php echo get_responsive_image('cw-testimonials/star', 'star'); ?></span>
-                                    <span class="cw-hero__star"><?php echo get_responsive_image('cw-testimonials/star', 'star'); ?></span>
-                                    <span class="cw-hero__star"><?php echo get_responsive_image('cw-testimonials/star', 'star'); ?></span>
-                                    <span class="cw-hero__star"><?php echo get_responsive_image('cw-testimonials/star', 'star'); ?></span>
+                                    <?php for ($i = 0; $i < 5; $i++): ?>
+                                        <span class="cw-hero__star"> <?php
+                                                                        echo get_responsive_image([
+                                                                            'image_name'       => 'cw-testimonials/star',
+                                                                            'alt'              => 'Star',
+                                                                            'additional_attrs' => [
+                                                                                'decoding'      => 'async',
+                                                                                'loading' => 'lazy',
+                                                                            ]
+                                                                        ]);
+                                                                        ?></span>
+                                    <?php endfor; ?>
                                 </div>
                                 <cite>
-                                    Nataly Lebedev <span class="verified"> <?php echo get_responsive_image('cw-testimonials/verified-check-circle', 'checkmark'); ?>Verified customer</span>
+                                    Nataly Lebedev <span class="verified"> <?php
+                                                                            echo get_responsive_image([
+                                                                                'image_name'       => 'cw-testimonials/verified-check-circle',
+                                                                                'alt'              => 'Checkmark',
+                                                                                'additional_attrs' => [
+                                                                                    'decoding'      => 'async',
+                                                                                    'loading' => 'lazy',
+                                                                                ]
+                                                                            ]);
+                                                                            ?>Verified customer</span>
                                 </cite>
                             </div>
                         </div>
@@ -35,17 +62,45 @@
                 <div class="_carousel-slide ">
                     <div class="cw-testimonials__testimonial">
                         <div class="cw-testimonials__person">
-                            <?php echo get_responsive_image('cw-testimonials/liv-skyler', 'Liv Skyler', 'cw-testimonials__testimonee'); ?>
+                            <?php
+                            echo get_responsive_image([
+                                'image_name'       => 'cw-testimonials/liv-skyler',
+                                'alt'              => 'Liv Skyler',
+                                'class'            => 'cw-testimonials__testimonee',
+                                'default_size'     => 300,
+                                'sizes_attr'       => '75px',
+                                'additional_attrs' => [
+                                    'decoding'      => 'async',
+                                    'loading' => 'lazy',
+                                ]
+                            ]);
+                            ?>
                             <div class="cw-testimonials__person--about">
                                 <div class="cw-hero__reviews-stars-wrapper">
-                                    <span class="cw-hero__star"><?php echo get_responsive_image('cw-testimonials/star', 'star'); ?></span>
-                                    <span class="cw-hero__star"><?php echo get_responsive_image('cw-testimonials/star', 'star'); ?></span>
-                                    <span class="cw-hero__star"><?php echo get_responsive_image('cw-testimonials/star', 'star'); ?></span>
-                                    <span class="cw-hero__star"><?php echo get_responsive_image('cw-testimonials/star', 'star'); ?></span>
-                                    <span class="cw-hero__star"><?php echo get_responsive_image('cw-testimonials/star', 'star'); ?></span>
+                                    <?php for ($i = 0; $i < 5; $i++): ?>
+                                        <span class="cw-hero__star"> <?php
+                                                                        echo get_responsive_image([
+                                                                            'image_name'       => 'cw-testimonials/star',
+                                                                            'alt'              => 'Star',
+                                                                            'additional_attrs' => [
+                                                                                'decoding'      => 'async',
+                                                                                'loading' => 'lazy',
+                                                                            ]
+                                                                        ]);
+                                                                        ?></span>
+                                    <?php endfor; ?>
                                 </div>
                                 <cite>
-                                    Liv Skyler <span class="verified"> <?php echo get_responsive_image('cw-testimonials/verified-check-circle', 'checkmark'); ?>Verified customer</span>
+                                    Liv Skyler <span class="verified"> <?php
+                                                                        echo get_responsive_image([
+                                                                            'image_name'       => 'cw-testimonials/verified-check-circle',
+                                                                            'alt'              => 'Checkmark',
+                                                                            'additional_attrs' => [
+                                                                                'decoding'      => 'async',
+                                                                                'loading' => 'lazy',
+                                                                            ]
+                                                                        ]);
+                                                                        ?>Verified customer</span>
                                 </cite>
                             </div>
                         </div>
@@ -59,17 +114,45 @@
                 <div class="_carousel-slide">
                     <div class="cw-testimonials__testimonial">
                         <div class="cw-testimonials__person">
-                            <?php echo get_responsive_image('cw-testimonials/darren-pilch', 'Darren Pilch', 'cw-testimonials__testimonee'); ?>
+                            <?php
+                            echo get_responsive_image([
+                                'image_name'       => 'cw-testimonials/darren-pilch',
+                                'alt'              => 'Darren Pilch',
+                                'class'            => 'cw-testimonials__testimonee',
+                                'default_size'     => 300,
+                                'sizes_attr'       => '75px',
+                                'additional_attrs' => [
+                                    'decoding'      => 'async',
+                                    'loading' => 'lazy',
+                                ]
+                            ]);
+                            ?>
                             <div class="cw-testimonials__person--about">
                                 <div class="cw-hero__reviews-stars-wrapper">
-                                    <span class="cw-hero__star"><?php echo get_responsive_image('cw-testimonials/star', 'star'); ?></span>
-                                    <span class="cw-hero__star"><?php echo get_responsive_image('cw-testimonials/star', 'star'); ?></span>
-                                    <span class="cw-hero__star"><?php echo get_responsive_image('cw-testimonials/star', 'star'); ?></span>
-                                    <span class="cw-hero__star"><?php echo get_responsive_image('cw-testimonials/star', 'star'); ?></span>
-                                    <span class="cw-hero__star"><?php echo get_responsive_image('cw-testimonials/star', 'star'); ?></span>
+                                    <?php for ($i = 0; $i < 5; $i++): ?>
+                                        <span class="cw-hero__star"> <?php
+                                                                        echo get_responsive_image([
+                                                                            'image_name'       => 'cw-testimonials/star',
+                                                                            'alt'              => 'Star',
+                                                                            'additional_attrs' => [
+                                                                                'decoding'      => 'async',
+                                                                                'loading' => 'lazy',
+                                                                            ]
+                                                                        ]);
+                                                                        ?></span>
+                                    <?php endfor; ?>
                                 </div>
                                 <cite>
-                                    Darren Pilch<span class="verified"> <?php echo get_responsive_image('cw-testimonials/verified-check-circle', 'checkmark'); ?>Verified customer</span>
+                                    Darren Pilch<span class="verified"> <?php
+                                                                        echo get_responsive_image([
+                                                                            'image_name'       => 'cw-testimonials/verified-check-circle',
+                                                                            'alt'              => 'Checkmark',
+                                                                            'additional_attrs' => [
+                                                                                'decoding'      => 'async',
+                                                                                'loading' => 'lazy',
+                                                                            ]
+                                                                        ]);
+                                                                        ?>Verified customer</span>
                                 </cite>
                             </div>
                         </div>
@@ -83,17 +166,45 @@
                 <div class="_carousel-slide">
                     <div class="cw-testimonials__testimonial">
                         <div class="cw-testimonials__person">
-                            <?php echo get_responsive_image('cw-testimonials/shaked-elnatan', 'Shaked Elnatan', 'cw-testimonials__testimonee'); ?>
+                            <?php
+                            echo get_responsive_image([
+                                'image_name'       => 'cw-testimonials/shaked-elnatan',
+                                'alt'              => 'Shaked Elnatan',
+                                'class'            => 'cw-testimonials__testimonee',
+                                'default_size'     => 300,
+                                'sizes_attr'       => '75px',
+                                'additional_attrs' => [
+                                    'decoding'      => 'async',
+                                    'loading' => 'lazy',
+                                ]
+                            ]);
+                            ?>
                             <div class="cw-testimonials__person--about">
                                 <div class="cw-hero__reviews-stars-wrapper">
-                                    <span class="cw-hero__star"><?php echo get_responsive_image('cw-testimonials/star', 'star'); ?></span>
-                                    <span class="cw-hero__star"><?php echo get_responsive_image('cw-testimonials/star', 'star'); ?></span>
-                                    <span class="cw-hero__star"><?php echo get_responsive_image('cw-testimonials/star', 'star'); ?></span>
-                                    <span class="cw-hero__star"><?php echo get_responsive_image('cw-testimonials/star', 'star'); ?></span>
-                                    <span class="cw-hero__star"><?php echo get_responsive_image('cw-testimonials/star', 'star'); ?></span>
+                                    <?php for ($i = 0; $i < 5; $i++): ?>
+                                        <span class="cw-hero__star"> <?php
+                                                                        echo get_responsive_image([
+                                                                            'image_name'       => 'cw-testimonials/star',
+                                                                            'alt'              => 'Star',
+                                                                            'additional_attrs' => [
+                                                                                'decoding'      => 'async',
+                                                                                'loading' => 'lazy',
+                                                                            ]
+                                                                        ]);
+                                                                        ?></span>
+                                    <?php endfor; ?>
                                 </div>
                                 <cite>
-                                    Shaked Elnatan <span class="verified"> <?php echo get_responsive_image('cw-testimonials/verified-check-circle', 'checkmark'); ?>Verified customer</span>
+                                    Shaked Elnatan <span class="verified"> <?php
+                                                                            echo get_responsive_image([
+                                                                                'image_name'       => 'cw-testimonials/verified-check-circle',
+                                                                                'alt'              => 'Checkmark',
+                                                                                'additional_attrs' => [
+                                                                                    'decoding'      => 'async',
+                                                                                    'loading' => 'lazy',
+                                                                                ]
+                                                                            ]);
+                                                                            ?>Verified customer</span>
                                 </cite>
                             </div>
                         </div>
@@ -107,17 +218,45 @@
                 <div class="_carousel-slide">
                     <div class="cw-testimonials__testimonial">
                         <div class="cw-testimonials__person">
-                            <?php echo get_responsive_image('cw-testimonials/leigh-williams', 'Leigh Williams', 'cw-testimonials__testimonee'); ?>
+                            <?php
+                            echo get_responsive_image([
+                                'image_name'       => 'cw-testimonials/leigh-williams',
+                                'alt'              => 'Leigh Williams',
+                                'class'            => 'cw-testimonials__testimonee',
+                                'default_size'     => 300,
+                                'sizes_attr'       => '75px',
+                                'additional_attrs' => [
+                                    'decoding'      => 'async',
+                                    'loading' => 'lazy',
+                                ]
+                            ]);
+                            ?>
                             <div class="cw-testimonials__person--about">
                                 <div class="cw-hero__reviews-stars-wrapper">
-                                    <span class="cw-hero__star"><?php echo get_responsive_image('cw-testimonials/star', 'star'); ?></span>
-                                    <span class="cw-hero__star"><?php echo get_responsive_image('cw-testimonials/star', 'star'); ?></span>
-                                    <span class="cw-hero__star"><?php echo get_responsive_image('cw-testimonials/star', 'star'); ?></span>
-                                    <span class="cw-hero__star"><?php echo get_responsive_image('cw-testimonials/star', 'star'); ?></span>
-                                    <span class="cw-hero__star"><?php echo get_responsive_image('cw-testimonials/star', 'star'); ?></span>
+                                    <?php for ($i = 0; $i < 5; $i++): ?>
+                                        <span class="cw-hero__star"> <?php
+                                                                        echo get_responsive_image([
+                                                                            'image_name'       => 'cw-testimonials/star',
+                                                                            'alt'              => 'Star',
+                                                                            'additional_attrs' => [
+                                                                                'decoding'      => 'async',
+                                                                                'loading' => 'lazy',
+                                                                            ]
+                                                                        ]);
+                                                                        ?></span>
+                                    <?php endfor; ?>
                                 </div>
                                 <cite>
-                                    Leigh Williams<span class="verified"> <?php echo get_responsive_image('cw-testimonials/verified-check-circle', 'checkmark'); ?>Verified customer</span>
+                                    Leigh Williams<span class="verified"> <?php
+                                                                            echo get_responsive_image([
+                                                                                'image_name'       => 'cw-testimonials/verified-check-circle',
+                                                                                'alt'              => 'Checkmark',
+                                                                                'additional_attrs' => [
+                                                                                    'decoding'      => 'async',
+                                                                                    'loading' => 'lazy',
+                                                                                ]
+                                                                            ]);
+                                                                            ?>Verified customer</span>
                                 </cite>
                             </div>
                         </div>
@@ -131,17 +270,45 @@
                 <div class="_carousel-slide ">
                     <div class="cw-testimonials__testimonial">
                         <div class="cw-testimonials__person">
-                            <?php echo get_responsive_image('cw-testimonials/gregory-marks', 'Gregory Marks', 'cw-testimonials__testimonee'); ?>
+                            <?php
+                            echo get_responsive_image([
+                                'image_name'       => 'cw-testimonials/gregory-marks',
+                                'alt'              => 'Gregory Marks',
+                                'class'            => 'cw-testimonials__testimonee',
+                                'default_size'     => 300,
+                                'sizes_attr'       => '75px',
+                                'additional_attrs' => [
+                                    'decoding'      => 'async',
+                                    'loading' => 'lazy',
+                                ]
+                            ]);
+                            ?>
                             <div class="cw-testimonials__person--about">
                                 <div class="cw-hero__reviews-stars-wrapper">
-                                    <span class="cw-hero__star"><?php echo get_responsive_image('cw-testimonials/star', 'star'); ?></span>
-                                    <span class="cw-hero__star"><?php echo get_responsive_image('cw-testimonials/star', 'star'); ?></span>
-                                    <span class="cw-hero__star"><?php echo get_responsive_image('cw-testimonials/star', 'star'); ?></span>
-                                    <span class="cw-hero__star"><?php echo get_responsive_image('cw-testimonials/star', 'star'); ?></span>
-                                    <span class="cw-hero__star"><?php echo get_responsive_image('cw-testimonials/star', 'star'); ?></span>
+                                    <?php for ($i = 0; $i < 5; $i++): ?>
+                                        <span class="cw-hero__star"> <?php
+                                                                        echo get_responsive_image([
+                                                                            'image_name'       => 'cw-testimonials/star',
+                                                                            'alt'              => 'Star',
+                                                                            'additional_attrs' => [
+                                                                                'decoding'      => 'async',
+                                                                                'loading' => 'lazy',
+                                                                            ]
+                                                                        ]);
+                                                                        ?></span>
+                                    <?php endfor; ?>
                                 </div>
                                 <cite>
-                                    Gregory Marks <span class="verified"> <?php echo get_responsive_image('cw-testimonials/verified-check-circle', 'checkmark'); ?>Verified customer</span>
+                                    Gregory Marks <span class="verified"> <?php
+                                                                            echo get_responsive_image([
+                                                                                'image_name'       => 'cw-testimonials/verified-check-circle',
+                                                                                'alt'              => 'Checkmark',
+                                                                                'additional_attrs' => [
+                                                                                    'decoding'      => 'async',
+                                                                                    'loading' => 'lazy',
+                                                                                ]
+                                                                            ]);
+                                                                            ?>Verified customer</span>
                                 </cite>
                             </div>
                         </div>
@@ -157,10 +324,28 @@
 
         <div class="_carousel-controls">
             <button id="prevButton">
-                <?php echo get_responsive_image('cw-testimonials/arrow-p', 'arrow'); ?>
+                <?php
+                echo get_responsive_image([
+                    'image_name'       => 'cw-testimonials/arrow-p',
+                    'alt'              => 'Previous',
+                    'additional_attrs' => [
+                        'decoding'      => 'async',
+                        'loading' => 'lazy',
+                    ]
+                ]);
+                ?>
             </button>
             <button id="nextButton">
-                <?php echo get_responsive_image('cw-testimonials/arrow-n', 'arrow'); ?>
+                <?php
+                echo get_responsive_image([
+                    'image_name'       => 'cw-testimonials/arrow-n',
+                    'alt'              => 'Next',
+                    'additional_attrs' => [
+                        'decoding'      => 'async',
+                        'loading' => 'lazy',
+                    ]
+                ]);
+                ?>
             </button>
         </div>
 

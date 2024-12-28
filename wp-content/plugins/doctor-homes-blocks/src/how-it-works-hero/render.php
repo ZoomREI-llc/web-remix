@@ -1,19 +1,38 @@
-
 <a id="top"></a>
-<section class="hit-hero" style="
-    --background-image-small: url('<?php echo get_image_url('how-it-works-hero/bg', 768); ?>');
-    --background-image-medium: url('<?php echo get_image_url('how-it-works-hero/bg', 1024); ?>');
-    --background-image-large: url('<?php echo get_image_url('how-it-works-hero/bg', 2048); ?>');
-    ">
+<section class="hit-hero">
+    <div class="hit-hero-bg">
+        <?php
+        $url_for_preload = get_image_url('how-it-works-hero/bg', 768);
+        schedule_preload($url_for_preload, 'image', ['fetchpriority' => 'high']);
+
+        echo get_responsive_image([
+            'image_name'       => 'how-it-works-hero/bg',
+            'alt'              => 'Hero background',
+            'class'           => 'hit-hero-img',
+            'default_size'     => 768,
+            'additional_attrs' => [
+                'decoding'      => 'async',
+                'fetchpriority' => 'high',
+            ]
+        ]);
+        ?>
+    </div>
     <div class="grid-container">
         <div class="hit-hero__content">
             <div class="hit-hero__reviews">
                 <div class="hit-hero__reviews-stars-wrapper">
-                    <span class="hit-hero__star"><?php echo get_responsive_image('how-it-works-hero/star', 'star'); ?></span>
-                    <span class="hit-hero__star"><?php echo get_responsive_image('how-it-works-hero/star', 'star'); ?></span>
-                    <span class="hit-hero__star"><?php echo get_responsive_image('how-it-works-hero/star', 'star'); ?></span>
-                    <span class="hit-hero__star"><?php echo get_responsive_image('how-it-works-hero/star', 'star'); ?></span>
-                    <span class="hit-hero__star"><?php echo get_responsive_image('how-it-works-hero/star', 'star'); ?></span>
+                    <?php for ($i = 0; $i < 5; $i++): ?>
+                        <span class="hit-hero__star"><?php
+                                                        echo get_responsive_image([
+                                                            'image_name'       => 'how-it-works-hero/star',
+                                                            'alt'              => 'Star',
+                                                            'additional_attrs' => [
+                                                                'decoding'      => 'async',
+                                                                'loading' => 'lazy',
+                                                            ]
+                                                        ]);
+                                                        ?></span>
+                    <?php endfor; ?>
                 </div>
                 <div class="hit-hero__reviews-text">
                     <p>Rated <strong>4.7/5</strong> | Based on <strong>100+</strong> reviews</p>

@@ -12,9 +12,20 @@
                     <div class="post-image">
                         <a href="<?php the_permalink(); ?>">
                             <?php if (has_post_thumbnail()) {
-                                the_post_thumbnail('medium');
+                                the_post_thumbnail('large');
                             } else { ?>
-                                <img src="path/to/default-image.jpg" alt="<?php the_title(); ?>">
+                                <?php
+                                echo get_responsive_image([
+                                    'image_name'       => 'blog/blog-example',
+                                    'alt'              => get_the_title(),
+                                    'default_size'     => 768,
+                                    'sizes_attr'       => '(max-width: 1000px) 100vw, 1000px',
+                                    'additional_attrs' => [
+                                        'decoding'      => 'async',
+                                        'loading' => 'lazy',
+                                    ]
+                                ]);
+                                ?>
                             <?php } ?>
                         </a>
                         <span class="category-name title-1"><?php the_category(', '); ?></span>

@@ -1,4 +1,3 @@
-
 <section class="lc-guarantee">
     <div class="lc-guarantee__title">
         <h2>Here’s Our Guarantee To You</h2>
@@ -8,7 +7,16 @@
         <div class="guarantee">
             <div class="guarantee__heading">
                 <div class="guarantee__icon">
-                    <?php echo get_responsive_image('lc-guarantee/select', 'Fast Cash Offers'); ?>
+                    <?php
+                    echo get_responsive_image([
+                        'image_name'       => 'lc-guarantee/select',
+                        'alt'              => 'Fast Cash Offers',
+                        'additional_attrs' => [
+                            'decoding'      => 'async',
+                            'loading' => 'lazy',
+                        ]
+                    ]);
+                    ?>
                 </div>
                 <h3>Fast Cash Offers</h3>
             </div>
@@ -19,7 +27,16 @@
         <div class="guarantee">
             <div class="guarantee__heading">
                 <div class="guarantee__icon">
-                    <?php echo get_responsive_image('lc-guarantee/no-money', 'No Fees / Commissions'); ?>
+                    <?php
+                    echo get_responsive_image([
+                        'image_name'       => 'lc-guarantee/no-money',
+                        'alt'              => 'No Fees / Commissions',
+                        'additional_attrs' => [
+                            'decoding'      => 'async',
+                            'loading' => 'lazy',
+                        ]
+                    ]);
+                    ?>
                 </div>
                 <h3>No Fees / Commissions</h3>
             </div>
@@ -30,7 +47,16 @@
         <div class="guarantee">
             <div class="guarantee__heading">
                 <div class="guarantee__icon">
-                    <?php echo get_responsive_image('lc-guarantee/house', 'No Repairs Needed'); ?>
+                    <?php
+                    echo get_responsive_image([
+                        'image_name'       => 'lc-guarantee/house',
+                        'alt'              => 'No Repairs Needed',
+                        'additional_attrs' => [
+                            'decoding'      => 'async',
+                            'loading' => 'lazy',
+                        ]
+                    ]);
+                    ?>
                 </div>
                 <h3>No Repairs Needed</h3>
             </div>
@@ -41,7 +67,16 @@
         <div class="guarantee">
             <div class="guarantee__heading">
                 <div class="guarantee__icon">
-                    <?php echo get_responsive_image('lc-guarantee/calendar', 'Flexible Closing Dates'); ?>
+                    <?php
+                    echo get_responsive_image([
+                        'image_name'       => 'lc-guarantee/calendar',
+                        'alt'              => 'Flexible Closing Dates',
+                        'additional_attrs' => [
+                            'decoding'      => 'async',
+                            'loading' => 'lazy',
+                        ]
+                    ]);
+                    ?>
                 </div>
                 <h3>Flexible Closing Dates</h3>
             </div>

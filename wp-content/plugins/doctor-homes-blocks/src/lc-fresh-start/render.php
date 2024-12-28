@@ -1,14 +1,19 @@
-
 <section class="lc-fresh-start">
     <div class="lc-fresh-start__container">
         <div class="lc-hero__reviews">
             <div class="lc-hero__reviews-stars-wrapper">
-                <span class="lc-hero__star"><?php echo get_responsive_image('lc-cta/star', 'star'); ?></span>
-                <span class="lc-hero__star"><?php echo get_responsive_image('lc-cta/star', 'star'); ?></span>
-                <span class="lc-hero__star"><?php echo get_responsive_image('lc-cta/star', 'star'); ?></span>
-                <span class="lc-hero__star"><?php echo get_responsive_image('lc-cta/star', 'star'); ?></span>
-                <span class="lc-hero__star"><?php echo get_responsive_image('lc-cta/star', 'star'); ?></span>
-                <span class="lc-hero__star"><?php echo get_responsive_image('lc-cta/star', 'star'); ?></span>
+                <?php for ($i = 0; $i < 5; $i++): ?>
+                    <span class="lc-hero__star"><?php
+                                                echo get_responsive_image([
+                                                    'image_name'       => 'lc-cta/star',
+                                                    'alt'              => 'Star',
+                                                    'additional_attrs' => [
+                                                        'decoding'      => 'async',
+                                                        'loading' => 'lazy',
+                                                    ]
+                                                ]);
+                                                ?></span>
+                <?php endfor; ?>
             </div>
             <div class="lc-hero__reviews-text">
                 <p>Rated <strong>4.7/5</strong> | Based on <strong>100+</strong> reviews</p>
@@ -21,7 +26,16 @@
         <div class="lc-fresh-start__reasons">
             <div class="reason">
                 <div class="reason__icon">
-                    <?php echo get_responsive_image('lc-fresh-start/balance', 'Divorce'); ?>
+                    <?php
+                    echo get_responsive_image([
+                        'image_name'       => 'lc-fresh-start/balance',
+                        'alt'              => 'Divorce',
+                        'additional_attrs' => [
+                            'decoding'      => 'async',
+                            'loading' => 'lazy',
+                        ]
+                    ]);
+                    ?>
                 </div>
                 <div class="reason__content">
                     <h3>Divorce</h3>
@@ -30,7 +44,16 @@
             </div>
             <div class="reason">
                 <div class="reason__icon">
-                    <?php echo get_responsive_image('lc-fresh-start/medical', 'Medical Expenses'); ?>
+                    <?php
+                    echo get_responsive_image([
+                        'image_name'       => 'lc-fresh-start/medical',
+                        'alt'              => 'Medical Expenses',
+                        'additional_attrs' => [
+                            'decoding'      => 'async',
+                            'loading' => 'lazy',
+                        ]
+                    ]);
+                    ?>
                 </div>
                 <div class="reason__content">
                     <h3>Medical Expenses</h3>
@@ -39,7 +62,16 @@
             </div>
             <div class="reason">
                 <div class="reason__icon">
-                    <?php echo get_responsive_image('lc-fresh-start/old', 'Senior'); ?>
+                    <?php
+                    echo get_responsive_image([
+                        'image_name'       => 'lc-fresh-start/old',
+                        'alt'              => 'Senior',
+                        'additional_attrs' => [
+                            'decoding'      => 'async',
+                            'loading' => 'lazy',
+                        ]
+                    ]);
+                    ?>
                 </div>
                 <div class="reason__content">
                     <h3>Moving To Senior Living</h3>
@@ -48,7 +80,16 @@
             </div>
             <div class="reason">
                 <div class="reason__icon">
-                    <?php echo get_responsive_image('lc-fresh-start/army', 'Military Deployment'); ?>
+                    <?php
+                    echo get_responsive_image([
+                        'image_name'       => 'lc-fresh-start/army',
+                        'alt'              => 'Military Deployment',
+                        'additional_attrs' => [
+                            'decoding'      => 'async',
+                            'loading' => 'lazy',
+                        ]
+                    ]);
+                    ?>
                 </div>
                 <div class="reason__content">
                     <h3>Military Deployment</h3>
@@ -57,19 +98,47 @@
             </div>
         </div>
         <div class="lc-fresh-start__testimonial">
-            <?php echo get_responsive_image('lc-fresh-start/testimonee', 'Leigh Williams', 'lc-fresh-start__testimonee'); ?>
+            <?php
+            echo get_responsive_image([
+                'image_name'       => 'lc-fresh-start/leigh-williams',
+                'alt'              => 'Leigh Williams',
+                'class'           => 'lc-fresh-start__testimonee',
+                'default_size'     => 300,
+                'sizes'            => '80px',
+                'additional_attrs' => [
+                    'decoding'      => 'async',
+                    'loading' => 'lazy',
+                ]
+            ]);
+            ?>
             <div class="lc-fresh-start__testimonial--content">
                 <div class="lc-hero__reviews-stars-wrapper">
-                    <span class="lc-hero__star"><?php echo get_responsive_image('lc-cta/star', 'star'); ?></span>
-                    <span class="lc-hero__star"><?php echo get_responsive_image('lc-cta/star', 'star'); ?></span>
-                    <span class="lc-hero__star"><?php echo get_responsive_image('lc-cta/star', 'star'); ?></span>
-                    <span class="lc-hero__star"><?php echo get_responsive_image('lc-cta/star', 'star'); ?></span>
-                    <span class="lc-hero__star"><?php echo get_responsive_image('lc-cta/star', 'star'); ?></span>
+                    <?php for ($i = 0; $i < 5; $i++): ?>
+                        <span class="lc-hero__star"><?php
+                                                    echo get_responsive_image([
+                                                        'image_name'       => 'lc-cta/star',
+                                                        'alt'              => 'Star',
+                                                        'additional_attrs' => [
+                                                            'decoding'      => 'async',
+                                                            'loading' => 'lazy',
+                                                        ]
+                                                    ]);
+                                                    ?></span>
+                    <?php endfor; ?>
                 </div>
                 <blockquote>
                     <p>"The <strong>customer service experience with Doctor Homes was outstanding.</strong> From beginning to end, the process of selling my home was exemplary."</p>
                     <cite>
-                        Leigh Williams <?php echo get_responsive_image('lc-fresh-start/check-circle', 'checkmark'); ?> <span class="verified">Verified customer</span></cite>
+                        Leigh Williams <?php
+                                        echo get_responsive_image([
+                                            'image_name'       => 'lc-fresh-start/check-circle',
+                                            'alt'              => 'Verified',
+                                            'additional_attrs' => [
+                                                'decoding'      => 'async',
+                                                'loading' => 'lazy',
+                                            ]
+                                        ]);
+                                        ?> <span class="verified">Verified customer</span></cite>
                 </blockquote>
             </div>
         </div>

@@ -1,16 +1,16 @@
 <?php
-    $categories = get_categories();
+$categories = get_categories();
 ?>
-<?php if(!empty($categories)): ?>
-    <?php foreach($categories as $category): ?>
-        <section class="blog-categories" id="category-<?= esc_html( $category->slug ) ?>">
+<?php if (!empty($categories)): ?>
+    <?php foreach ($categories as $category): ?>
+        <section class="blog-categories" id="category-<?= esc_html($category->slug) ?>">
             <div class="blog-categories__container">
                 <div class="blog-section-header">
                     <div class="blog-section-header__title">
-                        <h2><?= esc_html( $category->name ) ?></h2>
+                        <h2><?= esc_html($category->name) ?></h2>
                     </div>
                     <span class="blog-section-header__line"></span>
-                    <a href="<?= get_category_link( $category->term_id ) ?>" class="blog-section-header__link">
+                    <a href="<?= get_category_link($category->term_id) ?>" class="blog-section-header__link">
                         <span>See all</span>
                     </a>
                 </div>
@@ -20,13 +20,28 @@
                         'cat' => $category->term_id,
                         'posts_per_page' => 3
                     );
-                    $query = new WP_Query( $args );
+                    $query = new WP_Query($args);
                     ?>
                     <?php if ($query->have_posts()): ?>
                         <?php while ($query->have_posts()): $query->the_post(); ?>
                             <article class="blog-categories-element">
                                 <a href="<?= get_permalink() ?>" class="blog-categories-element__img">
-                                    <?= get_the_post_thumbnail(get_the_ID(), 'medium') ?>
+                                    <?php if (has_post_thumbnail()) {
+                                        the_post_thumbnail('large');
+                                    } else { ?>
+                                        <?php
+                                        echo get_responsive_image([
+                                            'image_name'       => 'blog-categories/blog-example',
+                                            'alt'              => get_the_title(),
+                                            'default_size'     => 768,
+                                            'sizes_attr'       => '(max-width: 1000px) 100vw, 1000px',
+                                            'additional_attrs' => [
+                                                'decoding'      => 'async',
+                                                'loading' => 'lazy',
+                                            ]
+                                        ]);
+                                        ?>
+                                    <?php } ?>
                                 </a>
                                 <div class="blog-categories-element__content">
                                     <a href="<?= get_permalink() ?>" class="blog-categories-element__title">

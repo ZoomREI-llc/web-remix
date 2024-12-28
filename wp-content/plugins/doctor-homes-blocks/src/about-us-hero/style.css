@@ -1,18 +1,11 @@
-
 .about-us-hero {
 	position: relative;
-	background-color: #2D3A4B;
+	background-color: #2d3a4b;
 	overflow: hidden;
 	transition: all 0.3s ease;
 	text-align: center;
 	width: 100%;
-}
-
-.about-us-hero .grid-container{
-	padding-top: 2rem;
-	padding-bottom: 2rem;
-	min-height: 29.5rem;
-	align-items: center;
+	z-index: 0;
 }
 
 .about-us-hero::before {
@@ -22,22 +15,32 @@
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background-image: var(--background-image-small);
-	background-size: cover;
-	background-position: 60%;
+	background-color: #2d3a4b;
 	z-index: 0;
-	opacity: .4;
-}
-@media (min-width: 769px) {
-	.about-us-hero::before {
-		background-image: var(--background-image-medium);
-	}
+	opacity: 0.6;
 }
 
-@media (min-width: 1024px) {
-	.about-us-hero::before {
-		background-image: var(--background-image-large);
-	}
+.about-us-hero-bg {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+}
+
+.about-us-hero-img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
+	display: block;
+}
+
+.about-us-hero .grid-container {
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+	min-height: 29.5rem;
+	align-items: center;
 }
 
 .about-us-hero__content {
@@ -80,7 +83,7 @@
 .about-us-hero__reviews-stars-wrapper {
 	gap: 1px;
 	margin-bottom: 0;
-	margin-left: .5rem;
+	margin-left: 0.5rem;
 }
 .about-us-hero__reviews .about-us-hero__reviews-stars-wrapper {
 	gap: 2px;
@@ -91,7 +94,7 @@
 	width: 1rem;
 }
 @media (min-width: 769px) {
-	.about-us-hero__content{
+	.about-us-hero__content {
 		grid-column: 3 / span 8;
 	}
 	.about-us-hero__reviews {

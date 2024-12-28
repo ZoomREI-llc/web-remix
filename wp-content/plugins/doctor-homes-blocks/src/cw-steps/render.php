@@ -7,13 +7,31 @@
     <div class="cw-steps__steps">
         <div class="cw-step">
             <div class="cw-step__img">
-                <?php echo get_responsive_image('cw-steps/st_1', 'Sharing Details'); ?>
+                <?php
+                echo get_responsive_image([
+                    'image_name'       => 'cw-steps/st_1',
+                    'alt'              => 'Sharing Details',
+                    'additional_attrs' => [
+                        'decoding'      => 'async',
+                        'loading' => 'lazy',
+                    ]
+                ]);
+                ?>
             </div>
             <div class="cw-step__content">
                 <div class="cw-step__title">
                     <div class="cw-step__number">1
-                        <?php echo get_responsive_image('cw-steps/step-arrow', '', 'cw-step__number--arrow'); ?>
-                    </div>
+                        <?php
+                        echo get_responsive_image([
+                            'image_name'       => 'cw-steps/step-arrow',
+                            'alt'              => 'Arrow',
+                            'class'            => 'cw-step__number--arrow',
+                            'additional_attrs' => [
+                                'decoding'      => 'async',
+                                'loading' => 'lazy',
+                            ]
+                        ]);
+                        ?> </div>
                     <h3>Get An Immediate Cash Offer</h3>
                 </div>
                 <p>Fill out the form for a callback, or phone us directly to get a cash offer in under 7 minutes.</p>
@@ -21,12 +39,31 @@
         </div>
         <div class="cw-step">
             <div class="cw-step__img">
-                <?php echo get_responsive_image('cw-steps/st_2', 'Get Cash Offer'); ?>
+                <?php
+                echo get_responsive_image([
+                    'image_name'       => 'cw-steps/st_2',
+                    'alt'              => 'Get A Cash Offer',
+                    'additional_attrs' => [
+                        'decoding'      => 'async',
+                        'loading' => 'lazy',
+                    ]
+                ]);
+                ?>
             </div>
             <div class="cw-step__content">
                 <div class="cw-step__title">
                     <div class="cw-step__number">2
-                        <?php echo get_responsive_image('cw-steps/step-arrow', '', 'cw-step__number--arrow'); ?>
+                        <?php
+                        echo get_responsive_image([
+                            'image_name'       => 'cw-steps/step-arrow',
+                            'alt'              => 'Arrow',
+                            'class'            => 'cw-step__number--arrow',
+                            'additional_attrs' => [
+                                'decoding'      => 'async',
+                                'loading' => 'lazy',
+                            ]
+                        ]);
+                        ?>
                     </div>
                     <h3>Let Us Do The Hard Work</h3>
                 </div>
@@ -35,7 +72,16 @@
         </div>
         <div class="cw-step">
             <div class="cw-step__img">
-                <?php echo get_responsive_image('cw-steps/st_3', 'Get Paid'); ?>
+                <?php
+                echo get_responsive_image([
+                    'image_name'       => 'cw-steps/st_3',
+                    'alt'              => 'Get Paid',
+                    'additional_attrs' => [
+                        'decoding'      => 'async',
+                        'loading' => 'lazy',
+                    ]
+                ]);
+                ?>
             </div>
             <div class="cw-step__content">
                 <div class="cw-step__title">

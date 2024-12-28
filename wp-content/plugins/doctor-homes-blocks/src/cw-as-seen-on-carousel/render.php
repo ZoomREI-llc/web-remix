@@ -1,62 +1,59 @@
-
 <section id='how-it-works' class="cw-as-seen-on-carousel-wrapper">
     <div class="cw-as-seen-on-carousel">
         <div class="cw-as-seen-on-carousel__container">
             <span class="cw-as-seen-on-carousel__text">As Seen On</span>
             <div class="cw-as-seen-on-carousel__logos-wrapper">
                 <div class="cw-as-seen-on-carousel__logos">
-                    <div class="cw-as-seen-on-carousel__logo">
-                        <?php echo get_responsive_image('cw-as-seen-on-carousel/nbc', 'NBC'); ?>
-                    </div>
-                    <div class="cw-as-seen-on-carousel__logo">
-                        <?php echo get_responsive_image('cw-as-seen-on-carousel/forbes', 'Forbes'); ?>
-                    </div>
-                    <div class="cw-as-seen-on-carousel__logo">
-                        <?php echo get_responsive_image('cw-as-seen-on-carousel/fox', 'FOX'); ?>
-                    </div>
-                    <div class="cw-as-seen-on-carousel__logo">
-                        <?php echo get_responsive_image('cw-as-seen-on-carousel/cbs', 'CBS'); ?>
-                    </div>
-                    
-                    <div class="cw-as-seen-on-carousel__logo">
-                        <?php echo get_responsive_image('cw-as-seen-on-carousel/nbc', 'NBC'); ?>
-                    </div>
-                    <div class="cw-as-seen-on-carousel__logo">
-                        <?php echo get_responsive_image('cw-as-seen-on-carousel/forbes', 'Forbes'); ?>
-                    </div>
-                    <div class="cw-as-seen-on-carousel__logo">
-                        <?php echo get_responsive_image('cw-as-seen-on-carousel/fox', 'FOX'); ?>
-                    </div>
-                    <div class="cw-as-seen-on-carousel__logo">
-                        <?php echo get_responsive_image('cw-as-seen-on-carousel/cbs', 'CBS'); ?>
-                    </div>
-                    
-                    <div class="cw-as-seen-on-carousel__logo">
-                        <?php echo get_responsive_image('cw-as-seen-on-carousel/nbc', 'NBC'); ?>
-                    </div>
-                    <div class="cw-as-seen-on-carousel__logo">
-                        <?php echo get_responsive_image('cw-as-seen-on-carousel/forbes', 'Forbes'); ?>
-                    </div>
-                    <div class="cw-as-seen-on-carousel__logo">
-                        <?php echo get_responsive_image('cw-as-seen-on-carousel/fox', 'FOX'); ?>
-                    </div>
-                    <div class="cw-as-seen-on-carousel__logo">
-                        <?php echo get_responsive_image('cw-as-seen-on-carousel/cbs', 'CBS'); ?>
-                    </div>
-                    
-                    <div class="cw-as-seen-on-carousel__logo">
-                        <?php echo get_responsive_image('cw-as-seen-on-carousel/nbc', 'NBC'); ?>
-                    </div>
-                    <div class="cw-as-seen-on-carousel__logo">
-                        <?php echo get_responsive_image('cw-as-seen-on-carousel/forbes', 'Forbes'); ?>
-                    </div>
-                    <div class="cw-as-seen-on-carousel__logo">
-                        <?php echo get_responsive_image('cw-as-seen-on-carousel/fox', 'FOX'); ?>
-                    </div>
-                    <div class="cw-as-seen-on-carousel__logo">
-                        <?php echo get_responsive_image('cw-as-seen-on-carousel/cbs', 'CBS'); ?>
-                    </div>
-                    
+                    <?php for ($i = 0; $i < 4; $i++): ?>
+                        <div class="cw-as-seen-on-carousel__logo">
+                            <?php
+                            echo get_responsive_image([
+                                'image_name'       => 'cw-as-seen-on-carousel/nbc',
+                                'alt'              => 'NBC',
+                                'additional_attrs' => [
+                                    'decoding'      => 'async',
+                                    'loading' => 'lazy',
+                                ]
+                            ]);
+                            ?>
+                        </div>
+                        <div class="cw-as-seen-on-carousel__logo">
+                            <?php
+                            echo get_responsive_image([
+                                'image_name'       => 'cw-as-seen-on-carousel/forbes',
+                                'alt'              => 'Forbes',
+                                'additional_attrs' => [
+                                    'decoding'      => 'async',
+                                    'loading' => 'lazy',
+                                ]
+                            ]);
+                            ?>
+                        </div>
+                        <div class="cw-as-seen-on-carousel__logo">
+                            <?php
+                            echo get_responsive_image([
+                                'image_name'       => 'cw-as-seen-on-carousel/fox',
+                                'alt'              => 'FOX',
+                                'additional_attrs' => [
+                                    'decoding'      => 'async',
+                                    'loading' => 'lazy',
+                                ]
+                            ]);
+                            ?>
+                        </div>
+                        <div class="cw-as-seen-on-carousel__logo">
+                            <?php
+                            echo get_responsive_image([
+                                'image_name'       => 'cw-as-seen-on-carousel/cbs',
+                                'alt'              => 'CBS',
+                                'additional_attrs' => [
+                                    'decoding'      => 'async',
+                                    'loading' => 'lazy',
+                                ]
+                            ]);
+                            ?>
+                        </div>
+                    <?php endfor; ?>
                 </div>
             </div>
         </div>

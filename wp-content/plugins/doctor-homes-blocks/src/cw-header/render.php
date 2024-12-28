@@ -5,7 +5,16 @@ $phoneNumber = isset($attributes['phoneNumber']) ? esc_html($attributes['phoneNu
 <header class="cw-header">
     <div class="cw-header__content">
         <div class="cw-header__logo">
-            <?php echo get_responsive_image('cw-header/header_logo', 'Logo'); ?>
+            <?php
+            echo get_responsive_image([
+                'image_name'       => 'cw-header/dh-logo',
+                'alt'              => 'Doctor Homes Logo',
+                'additional_attrs' => [
+                    'decoding'      => 'async',
+                    'loading' => 'lazy',
+                ]
+            ]);
+            ?>
         </div>
         <div class="cw-header__menu">
             <a href="#how-it-works" class="cw-header__menu--link">How it works</a>
@@ -17,12 +26,30 @@ $phoneNumber = isset($attributes['phoneNumber']) ? esc_html($attributes['phoneNu
         </div>
         <a class="call-btn" href="tel:<?php echo $phoneNumber; ?>">
             <div class="cw-header__phone-number">
-                <span class="cw-header__phone-number--icon"><?php echo get_responsive_image('cw-header/telephone_1', 'Phone Icon'); ?></span>
+                <span class="cw-header__phone-number--icon"><?php
+                                                            echo get_responsive_image([
+                                                                'image_name'       => 'cw-header/telephone-1',
+                                                                'alt'              => 'Phone Icon',
+                                                                'additional_attrs' => [
+                                                                    'decoding'      => 'async',
+                                                                    'loading' => 'lazy',
+                                                                ]
+                                                            ]);
+                                                            ?></span>
                 <span class="cw-header__phone-number--text">Call Us </span>
                 <span class="cw-header__phone-number--number"><?php echo $phoneNumber; ?></span>
             </div>
             <div class="contact-phone">
-                <?php echo get_responsive_image('cw-header/phone-icon', 'Phone Icon'); ?>
+                <?php
+                echo get_responsive_image([
+                    'image_name'       => 'cw-header/phone-icon',
+                    'alt'              => 'Phone Icon',
+                    'additional_attrs' => [
+                        'decoding'      => 'async',
+                        'loading' => 'lazy',
+                    ]
+                ]);
+                ?>
             </div>
         </a>
     </div>

@@ -22,7 +22,6 @@ if (!defined('ABSPATH')) {
 function doctor_homes_blocks_doctor_homes_blocks_block_init()
 {
 	$blocks = [
-		'hero',
 		'hero-form',
 		'sell-fast-hero',
 		'how-it-works-hero',
@@ -219,5 +218,5 @@ add_action('save_post', 'save_market_code_metabox');
 add_filter('should_load_separate_core_block_assets', '__return_true');
 
 require_once plugin_dir_path(__FILE__) . 'includes/form-engine/handler.php';
-include_once plugin_dir_path(__FILE__) . 'includes/image-helper.php';
-include_once plugin_dir_path(__FILE__) . 'includes/preload-helper.php';
+include_once plugin_dir_path(__FILE__) . 'includes/image-helpers.php';
+include_once plugin_dir_path(__FILE__) . 'includes/preload-helpers.php';

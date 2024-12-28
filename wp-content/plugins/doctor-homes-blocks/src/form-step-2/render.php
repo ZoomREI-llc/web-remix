@@ -8,7 +8,9 @@ $form_config = [
     "query" => $attributes['redirectQuery']
 ];
 ?>
-<script type="application/json" id="form-config-<?= $short_id ?>"><?= json_encode($form_config) ?></script>
+<script type="application/json" id="form-config-<?= $short_id ?>">
+    <?= json_encode($form_config) ?>
+</script>
 <form id="<?= $short_id ?>" name="form-step-2" class="lead-form-final" method="POST" style="--loader-gif: url('<?php echo get_image_url('lead-form-final/loader'); ?>');">
     <input type="hidden" name="entry_id" value="<?= $short_id ?>" autocomplete="off">
     <input type="hidden" name="street" value="" autocomplete="off">
@@ -55,14 +57,23 @@ $form_config = [
             <div class="input input--rounded">
                 <label for="garage">Garage</label>
                 <select id="garage" name="garage">
-                    <option value="" selected="selected">Please select one of the options</option><option value="Attached Garage">Attached Garage</option><option value="Detached Garage">Detached Garage</option><option value="Car Port">Car Port</option><option value="Driveway">Driveway</option><option value="No Parking">No Parking</option><option value="Other">Other</option>
+                    <option value="" selected="selected">Please select one of the options</option>
+                    <option value="Attached Garage">Attached Garage</option>
+                    <option value="Detached Garage">Detached Garage</option>
+                    <option value="Car Port">Car Port</option>
+                    <option value="Driveway">Driveway</option>
+                    <option value="No Parking">No Parking</option>
+                    <option value="Other">Other</option>
                 </select>
                 <div class="input__message"></div>
             </div>
             <div class="input input--rounded">
                 <label for="basement">Basement</label>
                 <select id="basement" name="basement">
-                    <option value="" selected="selected">Please select one of the options</option><option value="Full Basement">Full Basement</option><option value="Partial Basement">Partial Basement</option><option value="No Basement">No Basement</option>
+                    <option value="" selected="selected">Please select one of the options</option>
+                    <option value="Full Basement">Full Basement</option>
+                    <option value="Partial Basement">Partial Basement</option>
+                    <option value="No Basement">No Basement</option>
                 </select>
                 <div class="input__message"></div>
             </div>
@@ -76,7 +87,12 @@ $form_config = [
             <div class="input input--rounded">
                 <label for="condition">What is the current condition of the property? <span style="color: #FF0000">*</span></label>
                 <select id="condition" name="condition" required>
-                    <option value="" selected="selected">Please select one of the options</option><option value="Excellent">Excellent</option><option value="Good">Good</option><option value="Fair">Fair</option><option value="Poor">Poor</option><option value="Terrible">Terrible</option>
+                    <option value="" selected="selected">Please select one of the options</option>
+                    <option value="Excellent">Excellent</option>
+                    <option value="Good">Good</option>
+                    <option value="Fair">Fair</option>
+                    <option value="Poor">Poor</option>
+                    <option value="Terrible">Terrible</option>
                 </select>
                 <div class="input__message"></div>
             </div>
@@ -93,14 +109,20 @@ $form_config = [
             <div class="input input--rounded">
                 <label for="living">Is there anyone living in the house? <span style="color: #FF0000">*</span></label>
                 <select id="living" name="living" required>
-                    <option value="" selected="selected">Please select one of the options</option><option value="Owner Occupied">Owner Occupied</option><option value="Rented">Rented</option><option value="Vacant">Vacant</option><option value="Other">Other</option>
+                    <option value="" selected="selected">Please select one of the options</option>
+                    <option value="Owner Occupied">Owner Occupied</option>
+                    <option value="Rented">Rented</option>
+                    <option value="Vacant">Vacant</option>
+                    <option value="Other">Other</option>
                 </select>
                 <div class="input__message"></div>
             </div>
             <div class="input input--rounded">
                 <label for="realtor">Is the house currently listed with a realtor? <span style="color: #FF0000">*</span></label>
                 <select id="realtor" name="realtor" required>
-                    <option value="" selected="selected">Please select one of the options</option><option value="Yes">Yes</option><option value="No">No</option>
+                    <option value="" selected="selected">Please select one of the options</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
                 </select>
                 <div class="input__message"></div>
             </div>
@@ -116,14 +138,22 @@ $form_config = [
             <div class="input input--rounded">
                 <label for="fast">Do you need to sell your house fast? <span style="color: #FF0000">*</span></label>
                 <select id="fast" name="fast" required>
-                    <option value="" selected="selected">Please select one of the options</option><option value="Yes">Yes</option><option value="No">No</option>
+                    <option value="" selected="selected">Please select one of the options</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
                 </select>
                 <div class="input__message"></div>
             </div>
             <div class="input input--rounded">
                 <label for="soon">How soon would you like to sell your property?</label>
                 <select id="soon" name="soon">
-                    <option value="" selected="selected">Please select one of the options</option><option value="ASAP">ASAP</option><option value="30 Days">30 Days</option><option value="60 Days">60 Days</option><option value="90 Days">90 Days</option><option value="120 Days">120 Days</option><option value="Not in a rush">Not in a rush</option>
+                    <option value="" selected="selected">Please select one of the options</option>
+                    <option value="ASAP">ASAP</option>
+                    <option value="30 Days">30 Days</option>
+                    <option value="60 Days">60 Days</option>
+                    <option value="90 Days">90 Days</option>
+                    <option value="120 Days">120 Days</option>
+                    <option value="Not in a rush">Not in a rush</option>
                 </select>
                 <div class="input__message"></div>
             </div>
@@ -186,46 +216,60 @@ $form_config = [
             <div class="input input--rounded">
                 <label for="bestTime">Best Time to Call</label>
                 <select id="bestTime" name="bestTime">
-                    <option value="" selected="selected">Please select one of the options</option><option value="Anytime">Anytime</option><option value="Morning">Morning</option><option value="Afternoon">Afternoon</option><option value="Evening">Evening</option>
+                    <option value="" selected="selected">Please select one of the options</option>
+                    <option value="Anytime">Anytime</option>
+                    <option value="Morning">Morning</option>
+                    <option value="Afternoon">Afternoon</option>
+                    <option value="Evening">Evening</option>
                 </select>
                 <div class="input__message"></div>
             </div>
         </div>
     </div>
-    
+
 
     <div class="lead-form-final__btn">
         <button type="submit" class="form-submit">
             <?= $btnText ?>
-            <?php echo get_responsive_image('form-step-2/cta-arrow', 'Arrow Icon', 'form-btn-arrow'); ?>
+            <?php
+            echo get_responsive_image([
+                'image_name'       => 'form-step-2/cta-arrow',
+                'alt'              => 'Arrow Icon',
+                'class'           => 'form-btn-arrow',
+                'additional_attrs' => [
+                    'decoding'      => 'async',
+                    'loading' => 'lazy',
+                ]
+            ]);
+            ?>
         </button>
     </div>
 </form>
 
 <script>
-  if(typeof validationErrors === 'undefined') {
-    let validationErrors = {
-      "required": "This field is required",
-      "invalid": "This field is invalid",
+    if (typeof validationErrors === 'undefined') {
+        let validationErrors = {
+            "required": "This field is required",
+            "invalid": "This field is invalid",
 
-      "address-autocomplete": {
-        "addressAutocomplete": "Please re-enter and select your address from the dropdown"
-      },
-      "email": {
-        "regex": "The E-mail must be a valid email address.",
-        "required": "E-mail is required."
-      },
-      "name": {
-        "required": "Please enter your full name."
-      },
-      "tel-mask": {
-        "required": "Please enter your phone number.",
-        "telMask": "Phone number is invalid."
-      },
+            "address-autocomplete": {
+                "addressAutocomplete": "Please re-enter and select your address from the dropdown"
+            },
+            "email": {
+                "regex": "The E-mail must be a valid email address.",
+                "required": "E-mail is required."
+            },
+            "name": {
+                "required": "Please enter your full name."
+            },
+            "tel-mask": {
+                "required": "Please enter your phone number.",
+                "telMask": "Phone number is invalid."
+            },
+        }
     }
-  }
-  
-  document.addEventListener("DOMContentLoaded", function () {
-    initFormEngine(document.getElementById('<?= $short_id ?>'));
-  });
+
+    document.addEventListener("DOMContentLoaded", function() {
+        initFormEngine(document.getElementById('<?= $short_id ?>'));
+    });
 </script>

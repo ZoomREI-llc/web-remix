@@ -4,7 +4,7 @@
         $url_for_preload = get_image_url('hero-form/bg', 768);
         schedule_preload($url_for_preload, 'image', ['fetchpriority' => 'high']);
 
-        echo get_responsive_image2([
+        echo get_responsive_image([
             'image_name'       => 'hero-form/bg',
             'alt'              => 'Hero background',
             'class'           => 'dh-hero-form-img',
@@ -20,7 +20,16 @@
         <div class="dh-hero-form__reviews">
             <div class="dh-hero-form__reviews-stars-wrapper">
                 <?php for ($i = 0; $i < 5; $i++): ?>
-                    <span class="dh-hero-form__star"><?php echo get_responsive_image('hero-form/star', 'star'); ?></span>
+                    <span class="dh-hero-form__star"> <?php
+                                                        echo get_responsive_image([
+                                                            'image_name'       => 'hero-form/star',
+                                                            'alt'              => 'Star',
+                                                            'additional_attrs' => [
+                                                                'decoding'      => 'async',
+                                                                'loading' => 'lazy',
+                                                            ]
+                                                        ]);
+                                                        ?></span>
                 <?php endfor; ?>
             </div>
             <div class="dh-hero-form__reviews-text">
@@ -39,19 +48,58 @@
             <?php echo $content; ?>
         </div>
         <ul class="dh-hero-form__bullet-points">
-            <li class="dh-hero-form__bullet-point"><?php echo get_responsive_image('lcp-hero/check-circle', 'checkmark'); ?>
+            <li class="dh-hero-form__bullet-point"><?php
+                                                    echo get_responsive_image([
+                                                        'image_name'       => 'hero-form/checkmark',
+                                                        'alt'              => 'Checkmark',
+                                                        'additional_attrs' => [
+                                                            'decoding'      => 'async',
+                                                            'loading' => 'lazy',
+                                                        ]
+                                                    ]);
+                                                    ?>
                 <span><strong>No need for you to clean or make repairs.</strong></span>
             </li>
-            <li class="dh-hero-form__bullet-point"><?php echo get_responsive_image('lcp-hero/check-circle', 'checkmark'); ?>
+            <li class="dh-hero-form__bullet-point"><?php
+                                                    echo get_responsive_image([
+                                                        'image_name'       => 'hero-form/checkmark',
+                                                        'alt'              => 'Checkmark',
+                                                        'additional_attrs' => [
+                                                            'decoding'      => 'async',
+                                                            'loading' => 'lazy',
+                                                        ]
+                                                    ]);
+                                                    ?>
                 <span><strong>No realtors, fees, banks, commissions, or inspectors.</strong></span>
             </li>
-            <li class="dh-hero-form__bullet-point"><?php echo get_responsive_image('lcp-hero/check-circle', 'checkmark'); ?>
+            <li class="dh-hero-form__bullet-point"><?php
+                                                    echo get_responsive_image([
+                                                        'image_name'       => 'hero-form/checkmark',
+                                                        'alt'              => 'Checkmark',
+                                                        'additional_attrs' => [
+                                                            'decoding'      => 'async',
+                                                            'loading' => 'lazy',
+                                                        ]
+                                                    ]);
+                                                    ?>
                 <span><strong>Close on Your timeline Whenever You're Ready.</strong></span>
             </li>
         </ul>
         <div class="dh-hero-form__content--footer">
             <div class="cw-fresh-start__testimonial">
-                <?php echo get_responsive_image('hero-form/liv-skyler', 'Liv Skyler', 'cw-fresh-start__testimonee'); ?>
+                <?php
+                echo get_responsive_image([
+                    'image_name'       => 'hero-form/liv-skyler',
+                    'alt'              => 'Liv Skyler',
+                    'class'           => 'cw-fresh-start__testimonee',
+                    'default_size'     => 300,
+                    'sizes_attr'       => '80px',
+                    'additional_attrs' => [
+                        'decoding'      => 'async',
+                        'loading' => 'lazy',
+                    ]
+                ]);
+                ?>
                 <div class="dh-hero-form-start__testimonial--content cw-fresh-start__testimonial--content">
                     <blockquote>
                         <p>We are very grateful for Doctor Homes and his team's work. They were always professional and reliable, Doctor Homes answered my first call right away and kept me updated throughout the whole selling process.</p>
@@ -59,7 +107,16 @@
                             <span>Liv Skyler</span>
                             <div class="dh-hero-form__reviews-stars-wrapper">
                                 <?php for ($i = 0; $i < 5; $i++): ?>
-                                    <span class="dh-hero-form__star"><?php echo get_responsive_image('hero-form/star', 'star'); ?></span>
+                                    <span class="dh-hero-form__star"><?php
+                                                                        echo get_responsive_image([
+                                                                            'image_name'       => 'hero-form/star',
+                                                                            'alt'              => 'Star',
+                                                                            'additional_attrs' => [
+                                                                                'decoding'      => 'async',
+                                                                                'loading' => 'lazy',
+                                                                            ]
+                                                                        ]);
+                                                                        ?></span>
                                 <?php endfor; ?>
                             </div>
                         </cite>
@@ -82,9 +139,36 @@
             </ul>
         </div>
         <div class="dh-hero__logos">
-            <?php echo get_responsive_image('hero-form/logo-google', 'Google'); ?>
-            <?php echo get_responsive_image('hero-form/logo-bbb', 'BBB'); ?>
-            <?php echo get_responsive_image('hero-form/logo-a-plus', 'A+'); ?>
+            <?php
+            echo get_responsive_image([
+                'image_name'       => 'hero-form/logo-google',
+                'alt'              => 'Google',
+                'additional_attrs' => [
+                    'decoding'      => 'async',
+                    'loading' => 'lazy',
+                ]
+            ]);
+            ?>
+            <?php
+            echo get_responsive_image([
+                'image_name'       => 'hero-form/logo-bbb',
+                'alt'              => 'BBB',
+                'additional_attrs' => [
+                    'decoding'      => 'async',
+                    'loading' => 'lazy',
+                ]
+            ]);
+            ?>
+            <?php
+            echo get_responsive_image([
+                'image_name'       => 'hero-form/logo-a-plus',
+                'alt'              => 'A+',
+                'additional_attrs' => [
+                    'decoding'      => 'async',
+                    'loading' => 'lazy',
+                ]
+            ]);
+            ?>
         </div>
     </div>
 </section>

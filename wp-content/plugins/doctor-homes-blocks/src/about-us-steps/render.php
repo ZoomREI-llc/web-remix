@@ -7,8 +7,14 @@
 
         <div class="step">
             <div class="step__icon">
-                <?php echo get_responsive_image('steps/time', 'Clock Icon'); ?>
-
+                <?php echo get_responsive_image([
+                    'image_name'       => 'steps/time',
+                    'alt'              => 'Clock Icon',
+                    'additional_attrs' => [
+                        'decoding'      => 'async',
+                        'loading'       => 'lazy',
+                    ]
+                ]); ?>
             </div>
             <div class="step__content">
                 <h3 class="title-1">Step 1</h3>
@@ -18,7 +24,14 @@
         </div>
         <div class="step">
             <div class="step__icon">
-                <?php echo get_responsive_image('steps/document', 'Document Icon'); ?>
+                <?php echo get_responsive_image([
+                    'image_name'       => 'steps/document',
+                    'alt'              => 'Document Icon',
+                    'additional_attrs' => [
+                        'decoding'      => 'async',
+                        'loading'       => 'lazy',
+                    ]
+                ]); ?>
             </div>
             <div class="step__content">
                 <h3 class="title-1">Step 2</h3>
@@ -28,7 +41,14 @@
         </div>
         <div class="step">
             <div class="step__icon">
-                <?php echo get_responsive_image('steps/get-paid', 'Get Paid Icon'); ?>
+                <?php echo get_responsive_image([
+                    'image_name'       => 'steps/get-paid',
+                    'alt'              => 'Get Paid Icon',
+                    'additional_attrs' => [
+                        'decoding'      => 'async',
+                        'loading'       => 'lazy',
+                    ]
+                ]); ?>
             </div>
             <div class="step__content">
                 <h3 class="title-1">Step 3</h3>

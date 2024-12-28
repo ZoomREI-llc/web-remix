@@ -6,7 +6,7 @@ export default function Edit() {
 	return (
 		<div {...useBlockProps()}>
 			<h3>
-				{__("DH Lead Form Placeholder", "doctor-homes")}
+				{__("DH Lead Form Compact", "doctor-homes")}
 			</h3>
 		</div>
 	);

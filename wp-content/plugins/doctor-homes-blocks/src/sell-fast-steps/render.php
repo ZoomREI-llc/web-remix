@@ -7,7 +7,16 @@
 
         <div class="step">
             <div class="step__icon">
-                <?php echo get_responsive_image('sell-fast-steps/time', 'Clock Icon'); ?>
+                <?php
+                echo get_responsive_image([
+                    'image_name'       => 'sell-fast-steps/time',
+                    'alt'              => 'Clock Icon',
+                    'additional_attrs' => [
+                        'decoding'      => 'async',
+                        'loading' => 'lazy',
+                    ]
+                ]);
+                ?>
             </div>
             <div class="step__content">
                 <h3 class="title-1">Step 1</h3>
@@ -17,7 +26,16 @@
         </div>
         <div class="step">
             <div class="step__icon">
-                <?php echo get_responsive_image('sell-fast-steps/document', 'Document Icon'); ?>
+                <?php
+                echo get_responsive_image([
+                    'image_name'       => 'sell-fast-steps/document',
+                    'alt'              => 'Document Icon',
+                    'additional_attrs' => [
+                        'decoding'      => 'async',
+                        'loading' => 'lazy',
+                    ]
+                ]);
+                ?>
             </div>
             <div class="step__content">
                 <h3 class="title-1">Step 2</h3>
@@ -27,8 +45,16 @@
         </div>
         <div class="step">
             <div class="step__icon">
-                <?php echo get_responsive_image('sell-fast-steps/get-paid', 'Get Paid Icon'); ?>
-            </div>
+                <?php
+                echo get_responsive_image([
+                    'image_name'       => 'sell-fast-steps/get-paid',
+                    'alt'              => 'Get Paid Icon',
+                    'additional_attrs' => [
+                        'decoding'      => 'async',
+                        'loading' => 'lazy',
+                    ]
+                ]);
+                ?> </div>
             <div class="step__content">
                 <h3 class="title-1">Step 3</h3>
                 <h4>Close And Get Paid</h4>

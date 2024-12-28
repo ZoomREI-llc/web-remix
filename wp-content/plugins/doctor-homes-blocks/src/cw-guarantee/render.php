@@ -7,7 +7,16 @@
         <div class="cw-guarantee">
             <div class="cw-guarantee__heading">
                 <div class="cw-guarantee__icon">
-                    <?php echo get_responsive_image('cw-guarantee/select', 'Fast Cash Offers'); ?>
+                    <?php
+                    echo get_responsive_image([
+                        'image_name'       => 'cw-guarantee/select',
+                        'alt'              => 'Fast Cash Offers',
+                        'additional_attrs' => [
+                            'decoding'      => 'async',
+                            'loading' => 'lazy',
+                        ]
+                    ]);
+                    ?>
                 </div>
                 <h3>Fast Cash Offers</h3>
             </div>
@@ -18,7 +27,16 @@
         <div class="cw-guarantee">
             <div class="cw-guarantee__heading">
                 <div class="cw-guarantee__icon">
-                    <?php echo get_responsive_image('cw-guarantee/no-money', 'No Fees / Commissions'); ?>
+                    <?php
+                    echo get_responsive_image([
+                        'image_name'       => 'cw-guarantee/no-money',
+                        'alt'              => 'No Fees / Commissions',
+                        'additional_attrs' => [
+                            'decoding'      => 'async',
+                            'loading' => 'lazy',
+                        ]
+                    ]);
+                    ?>
                 </div>
                 <h3>No Fees / Commissions</h3>
             </div>
@@ -29,7 +47,16 @@
         <div class="cw-guarantee">
             <div class="cw-guarantee__heading">
                 <div class="cw-guarantee__icon">
-                    <?php echo get_responsive_image('cw-guarantee/house', 'No Repairs Needed'); ?>
+                    <?php
+                    echo get_responsive_image([
+                        'image_name'       => 'cw-guarantee/house',
+                        'alt'              => 'No Repairs Needed',
+                        'additional_attrs' => [
+                            'decoding'      => 'async',
+                            'loading' => 'lazy',
+                        ]
+                    ]);
+                    ?>
                 </div>
                 <h3>No Repairs Needed</h3>
             </div>
@@ -40,7 +67,16 @@
         <div class="cw-guarantee">
             <div class="cw-guarantee__heading">
                 <div class="cw-guarantee__icon">
-                    <?php echo get_responsive_image('cw-guarantee/calendar', 'Flexible Closing Dates'); ?>
+                    <?php
+                    echo get_responsive_image([
+                        'image_name'       => 'cw-guarantee/calendar',
+                        'alt'              => 'Flexible Closing Dates',
+                        'additional_attrs' => [
+                            'decoding'      => 'async',
+                            'loading' => 'lazy',
+                        ]
+                    ]);
+                    ?>
                 </div>
                 <h3>Flexible Closing Dates</h3>
             </div>

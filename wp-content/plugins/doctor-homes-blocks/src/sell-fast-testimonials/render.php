@@ -1,36 +1,36 @@
 <?php
-    $testimonials = [
-        [
-            'name' => 'Nataly Lebedev',
-            'asset' => 'sell-fast-testimonials/nataly-lebedev',
-            'text' => '"In a day and age where professionals in the service industry never seem to answer their phones or return calls, Doctor Homes promptly responded to my initial call, and was always available during the entire selling process."',
-            'rating' => 5
-        ],
-        [
-            'name' => 'Shaked Elnatan',
-            'asset' => 'sell-fast-testimonials/shaked-elnatan',
-            'text' => '"Great experience selling my house as is to Doctor Homes. They were incredibly professional and bought our home quickly for a price we were satisfied with."',
-            'rating' => 5
-        ],
-        [
-            'name' => 'Darren Pilch',
-            'asset' => 'sell-fast-testimonials/darren-pilch',
-            'text' => '"I am quite happy with the easy, fast, stress- free process of dealing with Doctor Homes.  I needed to rehab this property that sat vacant too long. He made a reasonable offer and the sale went quickly with prompt payment."',
-            'rating' => 5
-        ],
-        [
-            'name' => 'Liv Skyler ',
-            'asset' => 'sell-fast-testimonials/liv-skyler',
-            'text' => '“We are very grateful for Doctor Homes. They were always professional and reliable, they answered my first call right away and kept me updated throughout the whole selling process.” ',
-            'rating' => 5
-        ],
-        [
-            'name' => 'Leigh Williams',
-            'asset' => 'sell-fast-testimonials/leigh-williams',
-            'text' => '"The customer service experience with Doctor Homes was outstanding. From beginning to end, the process of selling my home was exemplary."',
-            'rating' => 5
-        ]
-    ];
+$testimonials = [
+    [
+        'name' => 'Nataly Lebedev',
+        'asset' => 'sell-fast-testimonials/nataly-lebedev',
+        'text' => '"In a day and age where professionals in the service industry never seem to answer their phones or return calls, Doctor Homes promptly responded to my initial call, and was always available during the entire selling process."',
+        'rating' => 5
+    ],
+    [
+        'name' => 'Shaked Elnatan',
+        'asset' => 'sell-fast-testimonials/shaked-elnatan',
+        'text' => '"Great experience selling my house as is to Doctor Homes. They were incredibly professional and bought our home quickly for a price we were satisfied with."',
+        'rating' => 5
+    ],
+    [
+        'name' => 'Darren Pilch',
+        'asset' => 'sell-fast-testimonials/darren-pilch',
+        'text' => '"I am quite happy with the easy, fast, stress- free process of dealing with Doctor Homes.  I needed to rehab this property that sat vacant too long. He made a reasonable offer and the sale went quickly with prompt payment."',
+        'rating' => 5
+    ],
+    [
+        'name' => 'Liv Skyler ',
+        'asset' => 'sell-fast-testimonials/liv-skyler',
+        'text' => '“We are very grateful for Doctor Homes. They were always professional and reliable, they answered my first call right away and kept me updated throughout the whole selling process.” ',
+        'rating' => 5
+    ],
+    [
+        'name' => 'Leigh Williams',
+        'asset' => 'sell-fast-testimonials/leigh-williams',
+        'text' => '"The customer service experience with Doctor Homes was outstanding. From beginning to end, the process of selling my home was exemplary."',
+        'rating' => 5
+    ]
+];
 ?>
 
 <section class="sell-fast-testimonials-carousel-wrapper">
@@ -42,10 +42,28 @@
 
             <div class="swiper-navigation">
                 <button type="button" class="swiper-navigation__btn js-swiper-prev">
-                    <?php echo get_responsive_image('sell-fast-testimonials/navigation-arrow', 'Previous'); ?>
+                    <?php
+                    echo get_responsive_image([
+                        'image_name'       => 'sell-fast-testimonials/navigation-arrow',
+                        'alt'              => 'Previous',
+                        'additional_attrs' => [
+                            'decoding'      => 'async',
+                            'loading' => 'lazy',
+                        ]
+                    ]);
+                    ?>
                 </button>
                 <button type="button" class="swiper-navigation__btn js-swiper-next">
-                    <?php echo get_responsive_image('sell-fast-testimonials/navigation-arrow', 'Next'); ?>
+                    <?php
+                    echo get_responsive_image([
+                        'image_name'       => 'sell-fast-testimonials/navigation-arrow',
+                        'alt'              => 'Next',
+                        'additional_attrs' => [
+                            'decoding'      => 'async',
+                            'loading' => 'lazy',
+                        ]
+                    ]);
+                    ?>
                 </button>
             </div>
         </div>
@@ -58,14 +76,36 @@
                         <div class="swiper-slide testimonial__testimonial sell-fast-testimonials">
                             <div class="sell-fast-testimonials-image-wrapper">
                                 <div class="sell-fast-testimonials-image-border">
-                                    <?php echo get_responsive_image($testimonial['asset'], $testimonial['name'], 'testimonial__image'); ?>
+                                    <?php
+                                    echo get_responsive_image([
+                                        'image_name'       => esc_attr($testimonial['asset']),
+                                        'alt'              => esc_attr($testimonial['name']),
+                                        'class'           => 'testimonial__image',
+                                        'default_size'     => 300,
+                                        'sizes_attr'       => '(max-width: 768px) 150px, 185px',
+                                        'additional_attrs' => [
+                                            'decoding'      => 'async',
+                                            'loading' => 'lazy',
+                                        ]
+                                    ]);
+                                    ?>
                                 </div>
                             </div>
                             <div class="carousel-item__content">
                                 <span class="sell-fast-testimonials-name"><?php echo esc_html($testimonial['name']); ?></span>
                                 <div class="sell-fast-testimonials-rating">
                                     <?php for ($i = 0; $i < $testimonial['rating']; $i++) : ?>
-                                        <?php echo get_responsive_image('sell-fast-testimonials/star', 'Star Icon', 'testimonial__star'); ?>
+                                        <?php
+                                        echo get_responsive_image([
+                                            'image_name'       => 'sell-fast-testimonials/star',
+                                            'alt'              => 'Star',
+                                            'class'           => 'testimonial__star',
+                                            'additional_attrs' => [
+                                                'decoding'      => 'async',
+                                                'loading' => 'lazy',
+                                            ]
+                                        ]);
+                                        ?>
                                     <?php endfor; ?>
                                 </div>
                                 <p class="testimonial__text"><?php echo esc_html($testimonial['text']); ?></p>
@@ -76,10 +116,28 @@
                 <div class="swiper-pagination"></div>
                 <div class="swiper-navigation">
                     <button type="button" class="swiper-navigation__btn js-swiper-prev">
-                        <?php echo get_responsive_image('sell-fast-testimonials/navigation-arrow', 'Previous'); ?>
+                        <?php
+                        echo get_responsive_image([
+                            'image_name'       => 'sell-fast-testimonials/navigation-arrow',
+                            'alt'              => 'Previous',
+                            'additional_attrs' => [
+                                'decoding'      => 'async',
+                                'loading' => 'lazy',
+                            ]
+                        ]);
+                        ?>
                     </button>
                     <button type="button" class="swiper-navigation__btn js-swiper-next">
-                        <?php echo get_responsive_image('sell-fast-testimonials/navigation-arrow', 'Next'); ?>
+                        <?php
+                        echo get_responsive_image([
+                            'image_name'       => 'sell-fast-testimonials/navigation-arrow',
+                            'alt'              => 'Next',
+                            'additional_attrs' => [
+                                'decoding'      => 'async',
+                                'loading' => 'lazy',
+                            ]
+                        ]);
+                        ?>
                     </button>
                 </div>
             </div>

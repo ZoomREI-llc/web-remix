@@ -1,14 +1,33 @@
-<section class="dh-banner-form" style="
-    --background-image-small: url('<?php echo get_image_url('banner-form/bg', 768); ?>');
-    --background-image-medium: url('<?php echo get_image_url('banner-form/bg', 1024); ?>');
-    --background-image-large: url('<?php echo get_image_url('banner-form/bg', 2048); ?>');
-">
+<section class="dh-banner-form">
+    <div class="dh-banner-form-bg">
+        <?php
+        echo get_responsive_image([
+            'image_name'       => 'banner-form/bg',
+            'alt'              => 'banner background',
+            'class'           => 'dh-banner-form-img',
+            'default_size'     => 768,
+            'additional_attrs' => [
+                'decoding'      => 'async',
+                'fetchpriority' => 'high',
+            ]
+        ]);
+        ?>
+    </div>
     <div class="grid-container">
         <div class="dh-banner-form__content">
             <div class="dh-hero__reviews">
                 <div class="dh-hero__reviews-stars-wrapper">
                     <?php for ($i = 0; $i < 5; $i++) : ?>
-                        <span class="dh-hero__star"><?php echo get_responsive_image('banner-form/star', 'Star Icon'); ?></span>
+                        <span class="dh-hero__star"><?php
+                                                    echo get_responsive_image([
+                                                        'image_name'       => 'banner-form/star',
+                                                        'alt'              => 'Star',
+                                                        'additional_attrs' => [
+                                                            'decoding'      => 'async',
+                                                            'loading'      => 'lazy',
+                                                        ]
+                                                    ]);
+                                                    ?></span>
                     <?php endfor; ?>
                 </div>
                 <div class="dh-hero__reviews-text">
@@ -20,8 +39,7 @@
                 <span class="dh-banner-form__sell">Sell Your Home to &nbsp;</span>
                 <span class="dh-banner-form__doctor-homes">Doctor Homes</span>
             </h3>
-    
-            <?php echo do_shortcode('[doctor_homes_lead-form-multistep]'); ?>
+            <?= $content ?>
         </div>
     </div>
 </section>

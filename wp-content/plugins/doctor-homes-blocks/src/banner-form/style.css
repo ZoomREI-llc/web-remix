@@ -1,3 +1,44 @@
+.dh-banner-form {
+	position: relative;
+	overflow: hidden;
+	z-index: 0;
+	transition: all 0.3s ease;
+	text-align: center;
+	color: white;
+	padding: 2.75rem 0;
+	margin: 2rem 0;
+	min-height: 31rem;
+}
+
+.dh-banner-form::before {
+	content: "";
+	background: var(--primaryBlue1);
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0.6;
+	z-index: 1;
+}
+
+.dh-banner-form-bg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+}
+
+.dh-banner-form-img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
+	display: block;
+}
+
 .dh-hero__reviews {
 	display: flex;
 	align-items: center;
@@ -37,48 +78,6 @@
 	.dh-hero__reviews-text {
 		margin-top: 0;
 		margin-left: 0.25rem;
-	}
-}
-
-.dh-banner-form {
-	position: relative;
-	background-color: var(--primaryBlue1);
-	overflow: hidden;
-	transition: all 0.3s ease;
-	text-align: center;
-	color: white;
-	padding: 2.75rem 0;
-	margin: 2rem 0;
-	min-height: 31rem;
-}
-
-.dh-banner-form > * {
-	z-index: 1;
-}
-
-.dh-banner-form::before {
-	content: "";
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-image: var(--background-image-small);
-	background-size: cover;
-	background-position: center;
-	opacity: 0.6;
-	z-index: 0;
-}
-
-@media (min-width: 769px) {
-	.dh-banner-form::before {
-		background-image: var(--background-image-medium);
-	}
-}
-
-@media (min-width: 1024px) {
-	.dh-banner-form::before {
-		background-image: var(--background-image-large);
 	}
 }
 
@@ -124,7 +123,6 @@ form input {
 	border: none;
 }
 
-
 @media (min-width: 769px) {
 	.dh-banner-form__content {
 		grid-column: span 12;
@@ -135,5 +133,4 @@ form input {
 		display: flex;
 		align-items: center;
 	}
-
 }

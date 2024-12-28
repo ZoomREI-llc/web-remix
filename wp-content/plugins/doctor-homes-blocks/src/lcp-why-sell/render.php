@@ -1,11 +1,20 @@
 <section class="lcp-why-sell">
     <div class="grid-container">
         <h2 class="title-2">Why Sell to Us? <br> No Hassle, Super Flexible, Totally Reliable.</h2>
-        
+
         <div class="lcp-why-sell__item">
             <div class="lcp-why-sell__item--content">
                 <div class="lcp-why-sell__item--image">
-                    <?php echo get_responsive_image('lcp-why-sell/fast', 'Fast'); ?>
+                    <?php
+                    echo get_responsive_image([
+                        'image_name'       => 'lcp-why-sell/fast',
+                        'alt'              => 'Fast',
+                        'additional_attrs' => [
+                            'decoding'      => 'async',
+                            'loading' => 'lazy',
+                        ]
+                    ]);
+                    ?>
                 </div>
                 <div class="lcp-why-sell__item--text">
                     <h3 class="title-3">Fast and Hassle-Free</h3>
@@ -16,7 +25,16 @@
         <div class="lcp-why-sell__item">
             <div class="lcp-why-sell__item--content">
                 <div class="lcp-why-sell__item--image">
-                    <?php echo get_responsive_image('lcp-why-sell/condition', 'Condition'); ?>
+                    <?php
+                    echo get_responsive_image([
+                        'image_name'       => 'lcp-why-sell/condition',
+                        'alt'              => 'Condition',
+                        'additional_attrs' => [
+                            'decoding'      => 'async',
+                            'loading' => 'lazy',
+                        ]
+                    ]);
+                    ?>
                 </div>
                 <div class="lcp-why-sell__item--text">
                     <h3 class="title-3">Sell As-Is in Any Condition</h3>
@@ -27,7 +45,16 @@
         <div class="lcp-why-sell__item">
             <div class="lcp-why-sell__item--content">
                 <div class="lcp-why-sell__item--image">
-                    <?php echo get_responsive_image('lcp-why-sell/fees', 'Fees'); ?>
+                    <?php
+                    echo get_responsive_image([
+                        'image_name'       => 'lcp-why-sell/fees',
+                        'alt'              => 'Fees',
+                        'additional_attrs' => [
+                            'decoding'      => 'async',
+                            'loading' => 'lazy',
+                        ]
+                    ]);
+                    ?>
                 </div>
                 <div class="lcp-why-sell__item--text">
                     <h3 class="title-3">No Fees or Commissions</h3>
@@ -38,7 +65,16 @@
         <div class="lcp-why-sell__item">
             <div class="lcp-why-sell__item--content">
                 <div class="lcp-why-sell__item--image">
-                    <?php echo get_responsive_image('lcp-why-sell/time', 'Time'); ?>
+                    <?php
+                    echo get_responsive_image([
+                        'image_name'       => 'lcp-why-sell/time',
+                        'alt'              => 'Time',
+                        'additional_attrs' => [
+                            'decoding'      => 'async',
+                            'loading' => 'lazy',
+                        ]
+                    ]);
+                    ?>
                 </div>
                 <div class="lcp-why-sell__item--text">
                     <h3 class="title-3">Close on Your Timeline</h3>
@@ -46,7 +82,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="lcp-why-sell__bottom">
             <a href="#lcp-form" class="cta-btn btn lcp-why-sell__button">
                 Get My Offer

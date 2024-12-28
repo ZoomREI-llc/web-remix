@@ -1,17 +1,48 @@
 <?php
+$market_to_code = [
+    'San Francisco' => 'sf',
+    'Saint Louis' => 'stl',
+    'Kansas City' => 'kc',
+    'Metro Detroit' => 'det',
+    'Cleveland' => 'cle',
+    'Indianapolis' => 'ind'
+];
 $selectedMarket = isset($attributes['selectedMarket']) ? esc_html($attributes['selectedMarket']) : 'Saint Louis';
+$market_code = $market_to_code[$selectedMarket];
 ?>
 
-<section class="lcp-hero-wrapper" style="
-    --background-image-small: url('<?php echo get_image_url('lcp-hero/hero-background', 768); ?>');
-    --background-image-medium: url('<?php echo get_image_url('lcp-hero/hero-background', 1024); ?>');
-    --background-image-large: url('<?php echo get_image_url('lcp-hero/hero-background', 2048); ?>');
-    ">
+<section class="lcp-hero-wrapper">
+    <div class="lcp-hero-bg">
+        <?php
+        $url_for_preload = get_image_url('lcp-hero/bg-' . $market_code, 768);
+        schedule_preload($url_for_preload, 'image', ['fetchpriority' => 'high']);
+
+        echo get_responsive_image([
+            'image_name'       => 'lcp-hero/bg-' . $market_code,
+            'alt'              => 'Hero background',
+            'class'           => 'lcp-hero-img',
+            'default_size'     => 768,
+            'additional_attrs' => [
+                'decoding'      => 'async',
+                'fetchpriority' => 'high',
+            ]
+        ]);
+        ?>
+    </div>
     <div class="lcp-hero__content grid-container">
         <div class="lcp-hero__reviews">
             <div class="lcp-hero__reviews-stars-wrapper">
                 <?php for ($i = 0; $i < 5; $i++): ?>
-                    <span class="lcp-hero__star"><?php echo get_responsive_image('lcp-hero/star', 'star'); ?></span>
+                    <span class="lcp-hero__star"><?php
+                                                    echo get_responsive_image([
+                                                        'image_name'       => 'lcp-hero/star',
+                                                        'alt'              => 'Star',
+                                                        'additional_attrs' => [
+                                                            'decoding'      => 'async',
+                                                            'loading' => 'lazy',
+                                                        ]
+                                                    ]);
+                                                    ?></span>
                 <?php endfor; ?>
             </div>
             <div class="lcp-hero__reviews-text">
@@ -30,13 +61,40 @@ $selectedMarket = isset($attributes['selectedMarket']) ? esc_html($attributes['s
             <?php echo $content; ?>
         </div>
         <ul class="lcp-hero__bullet-points">
-            <li class="lcp-hero__bullet-point"><?php echo get_responsive_image('lcp-hero/check-circle', 'checkmark'); ?>
+            <li class="lcp-hero__bullet-point"><?php
+                                                echo get_responsive_image([
+                                                    'image_name'       => 'lcp-hero/checkmark',
+                                                    'alt'              => 'Checkmark',
+                                                    'additional_attrs' => [
+                                                        'decoding'      => 'async',
+                                                        'loading' => 'lazy',
+                                                    ]
+                                                ]);
+                                                ?>
                 <span><strong>No need for you to clean or make repairs.</strong></span>
             </li>
-            <li class="lcp-hero__bullet-point"><?php echo get_responsive_image('lcp-hero/check-circle', 'checkmark'); ?>
+            <li class="lcp-hero__bullet-point"><?php
+                                                echo get_responsive_image([
+                                                    'image_name'       => 'lcp-hero/checkmark',
+                                                    'alt'              => 'Checkmark',
+                                                    'additional_attrs' => [
+                                                        'decoding'      => 'async',
+                                                        'loading' => 'lazy',
+                                                    ]
+                                                ]);
+                                                ?>
                 <span><strong>No realtors, fees, banks, commissions, or inspectors.</strong></span>
             </li>
-            <li class="lcp-hero__bullet-point"><?php echo get_responsive_image('lcp-hero/check-circle', 'checkmark'); ?>
+            <li class="lcp-hero__bullet-point"><?php
+                                                echo get_responsive_image([
+                                                    'image_name'       => 'lcp-hero/checkmark',
+                                                    'alt'              => 'Checkmark',
+                                                    'additional_attrs' => [
+                                                        'decoding'      => 'async',
+                                                        'loading' => 'lazy',
+                                                    ]
+                                                ]);
+                                                ?>
                 <span><strong>Close on Your timeline Whenever You're Ready.</strong></span>
             </li>
         </ul>
@@ -50,7 +108,16 @@ $selectedMarket = isset($attributes['selectedMarket']) ? esc_html($attributes['s
                             <span>Liv Skyler</span>
                             <div class="lcp-hero__reviews-stars-wrapper">
                                 <?php for ($i = 0; $i < 5; $i++): ?>
-                                    <span class="lcp-hero__star"><?php echo get_responsive_image('lcp-hero/star', 'star'); ?></span>
+                                    <span class="lcp-hero__star"><?php
+                                                                    echo get_responsive_image([
+                                                                        'image_name'       => 'lcp-hero/star',
+                                                                        'alt'              => 'Star',
+                                                                        'additional_attrs' => [
+                                                                            'decoding'      => 'async',
+                                                                            'loading' => 'lazy',
+                                                                        ]
+                                                                    ]);
+                                                                    ?></span>
                                 <?php endfor; ?>
                             </div>
                         </cite>
@@ -73,9 +140,36 @@ $selectedMarket = isset($attributes['selectedMarket']) ? esc_html($attributes['s
             </ul>
         </div>
         <div class="dh-hero__logos">
-            <?php echo get_responsive_image('lcp-hero/logo-google', 'Google'); ?>
-            <?php echo get_responsive_image('lcp-hero/logo-bbb', 'BBB'); ?>
-            <?php echo get_responsive_image('lcp-hero/logo-a-plus', 'A+'); ?>
+            <?php
+            echo get_responsive_image([
+                'image_name'       => 'lcp-hero/logo-google',
+                'alt'              => 'Google',
+                'additional_attrs' => [
+                    'decoding'      => 'async',
+                    'loading' => 'lazy',
+                ]
+            ]);
+            ?>
+            <?php
+            echo get_responsive_image([
+                'image_name'       => 'lcp-hero/logo-bbb',
+                'alt'              => 'BBB',
+                'additional_attrs' => [
+                    'decoding'      => 'async',
+                    'loading' => 'lazy',
+                ]
+            ]);
+            ?>
+            <?php
+            echo get_responsive_image([
+                'image_name'       => 'lcp-hero/logo-a-plus',
+                'alt'              => 'A+',
+                'additional_attrs' => [
+                    'decoding'      => 'async',
+                    'loading' => 'lazy',
+                ]
+            ]);
+            ?>
         </div>
     </div>
 </section>

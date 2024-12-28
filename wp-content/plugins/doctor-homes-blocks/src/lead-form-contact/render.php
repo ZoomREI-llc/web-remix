@@ -8,7 +8,9 @@ $form_config = [
     "query" => $attributes['redirectQuery']
 ];
 ?>
-<script type="application/json" id="form-config-<?= $short_id ?>"><?= json_encode($form_config) ?></script>
+<script type="application/json" id="form-config-<?= $short_id ?>">
+    <?= json_encode($form_config) ?>
+</script>
 
 <form id="<?= $short_id ?>" name="lead_form_v2" class="lead-form-contact" method="POST" style="--loader-gif: url('<?php echo get_image_url('lead-form-contact/loader'); ?>');">
     <input type="hidden" name="entry_id" value="<?= $short_id ?>" autocomplete="off">
@@ -79,35 +81,45 @@ $form_config = [
     <div class="lead-form-contact__btn">
         <button type="submit" class="form-submit">
             <?= $btnText ?>
-            <?php echo get_responsive_image('lead-form-contact/cta-arrow', 'Arrow Icon', 'form-btn-arrow'); ?>
+            <?php
+            echo get_responsive_image([
+                'image_name'       => 'lead-form-contact/cta-arrow',
+                'alt'              => 'Arrow Icon',
+                'class'           => 'form-btn-arrow',
+                'additional_attrs' => [
+                    'decoding'      => 'async',
+                    'loading' => 'lazy',
+                ]
+            ]);
+            ?>>
         </button>
     </div>
 </form>
 
 <script>
-  if(typeof validationErrors === 'undefined') {
-    let validationErrors = {
-      "required": "This field is required",
-      "invalid": "This field is invalid",
+    if (typeof validationErrors === 'undefined') {
+        let validationErrors = {
+            "required": "This field is required",
+            "invalid": "This field is invalid",
 
-      "address-autocomplete": {
-        "addressAutocomplete": "Please re-enter and select your address from the dropdown"
-      },
-      "email": {
-        "regex": "The E-mail must be a valid email address.",
-        "required": "E-mail is required."
-      },
-      "name": {
-        "required": "Please enter your full name."
-      },
-      "tel-mask": {
-        "required": "Please enter your phone number.",
-        "telMask": "Phone number is invalid."
-      },
+            "address-autocomplete": {
+                "addressAutocomplete": "Please re-enter and select your address from the dropdown"
+            },
+            "email": {
+                "regex": "The E-mail must be a valid email address.",
+                "required": "E-mail is required."
+            },
+            "name": {
+                "required": "Please enter your full name."
+            },
+            "tel-mask": {
+                "required": "Please enter your phone number.",
+                "telMask": "Phone number is invalid."
+            },
+        }
     }
-  }
 
-  document.addEventListener("DOMContentLoaded", function () {
-    initFormEngine(document.getElementById('<?= $short_id ?>'));
-  });
+    document.addEventListener("DOMContentLoaded", function() {
+        initFormEngine(document.getElementById('<?= $short_id ?>'));
+    });
 </script>
